@@ -1,16 +1,12 @@
 import React from 'react';
 import RenderCompleted from '../../components/isMounted';
 import { Lobby } from 'boardgame.io/react';
-import { default as BoardTicTacToe } from '../../components/board';
-import { default as GameTicTacToe } from '../../components/game';
+import BoardTicTacToe from '../../components/board';
+import GameTicTacToe from '../../components/game';
 
 GameTicTacToe.minPlayers = 1;
 
-const importedGames = [
-  { game: GameTicTacToe, board: BoardTicTacToe },
-];
-
-const LobbyView = ({ games }) => {
+const LobbyView = () => {
   const [hostname, Ss] = React.useState();
   const isMounted = RenderCompleted();
 
@@ -25,14 +21,12 @@ const LobbyView = ({ games }) => {
       <Lobby
         gameServer={`http://${hostname}:8000`}
         lobbyServer={`http://${hostname}:8000`}
-        gameComponents={games}
+        gameComponents={[
+          { game: GameTicTacToe, board: BoardTicTacToe }
+        ]}
       />
     </div>
   )
 };
-
-LobbyView.defaultProps = {
-  games: importedGames
-}
 
 export default LobbyView;

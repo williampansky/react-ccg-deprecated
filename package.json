@@ -11,7 +11,9 @@
   "dependencies": {
     "boardgame.io": "^0.39.10",
     "esm": "^3.2.25",
+    "fetch": "^1.1.0",
     "next": "latest",
+    "node-fetch": "^2.6.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-helmet": "^6.0.0",
