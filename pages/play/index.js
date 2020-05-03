@@ -19,8 +19,8 @@ const LobbyView = () => {
       <h1>Lobby</h1>
 
       <Lobby
-        gameServer={`https://test-server-ten.now.sh/:8000`}
-        lobbyServer={`https://test-server-ten.now.sh/:8000`}
+        gameServer={`https://test-server-ten.now.sh:8000`}
+        lobbyServer={`https://test-server-ten.now.sh:8000`}
         gameComponents={[
           { game: GameTicTacToe, board: BoardTicTacToe }
         ]}
