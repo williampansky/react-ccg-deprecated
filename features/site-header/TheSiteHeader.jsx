@@ -29,7 +29,9 @@ export default function TheSiteHeader() {
               ]}
             />
             <Link href="/play">
-              <a className={styles.play__button}>Play</a>
+              <a className={styles.play__button}>
+                <span className="text-value">Play</span>
+              </a>
             </Link>
             <div className={styles.offcanvas__toggle}>
               <svg

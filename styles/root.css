@@ -20,11 +20,6 @@
   --color-rarity-GOLDEN:                        #fbef31;
 
   /* ================================ */
-  /* site theme color vars */
-  --theme-primary:                              var(--color-rarity-SUPERIOR);
-  --theme-primary-text:                         #065174;
-
-  /* ================================ */
   /* layout vars */
   --board-theirHand-background-color:           #151515;
   --board-theirHand-height:                     45px;
