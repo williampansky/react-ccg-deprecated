@@ -6,11 +6,11 @@ export default function Home({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Helmet
-        title="Hello next.js!"
-        meta={[{ property: 'og:title', content: 'About' }]}
+        title="Home | HSclone"
+        meta={[{ property: 'og:title', content: 'Home' }]}
       />
       <TheSiteHeader />
-      <div>Home</div>
+      <main className="site__wrapper">Home</main>
     </React.Fragment>
   );
 }

@@ -2,15 +2,15 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 
-export default function About() {
+export default function Store() {
   return (
     <React.Fragment>
       <Helmet
-        title="About | HSclone"
-        meta={[{ property: 'og:title', content: 'About' }]}
+        title="Store | HSclone"
+        meta={[{ property: 'og:title', content: 'Store' }]}
       />
       <TheSiteHeader />
-      <main className="site__wrapper">About</main>
+      <main className="site__wrapper">Store</main>
     </React.Fragment>
   );
 }

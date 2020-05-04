@@ -3,6 +3,8 @@ import RenderCompleted from '../../components/isMounted';
 import { Lobby } from 'boardgame.io/react';
 import BoardTicTacToe from '../../components/board';
 import GameTicTacToe from '../../components/game';
+import { Helmet } from 'react-helmet';
+import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 
 GameTicTacToe.minPlayers = 1;
 
@@ -12,21 +14,24 @@ const LobbyView = () => {
 
   React.useEffect(() => {
     Ss(window.location.hostname);
-  }, [isMounted])
+  }, [isMounted]);
 
   return (
-    <div style={{ padding: 50 }}>
-      <h1>Lobby</h1>
-
-      <Lobby
-        gameServer={`http://${hostname}:8000`}
-        lobbyServer={`http://${hostname}:8000`}
-        gameComponents={[
-          { game: GameTicTacToe, board: BoardTicTacToe }
-        ]}
+    <React.Fragment>
+      <Helmet
+        title="Play | HSclone"
+        meta={[{ property: 'og:title', content: 'Play' }]}
       />
-    </div>
-  )
+      <TheSiteHeader />
+      <main className="site__wrapper">
+        <Lobby
+          gameServer={`http://${hostname}:8000`}
+          lobbyServer={`http://${hostname}:8000`}
+          gameComponents={[{ game: GameTicTacToe, board: BoardTicTacToe }]}
+        />
+      </main>
+    </React.Fragment>
+  );
 };
 
 export default LobbyView;
