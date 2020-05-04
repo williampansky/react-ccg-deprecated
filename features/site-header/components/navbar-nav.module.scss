@@ -1,0 +1,51 @@
+@import 'styles/abstracts/breakpoints';
+
+.nav {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media (min-width: map-get($breakpoints, 'medium')) {
+    display: flex;
+  }
+}
+
+.item {
+  align-items: center;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 80px;
+  padding: 0 15px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 15px;
+    right: calc(102% - 15px);
+    bottom: 20px;
+    height: 1px;
+    background-color: currentColor;
+    transition: 300ms ease-in-out;
+    transition-property: right;
+  }
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+
+  &:hover:before,
+  &:focus:before {
+    right: 15px;
+  }
+}
