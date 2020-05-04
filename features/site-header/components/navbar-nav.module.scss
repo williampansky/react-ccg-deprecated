@@ -49,3 +49,10 @@
     right: 15px;
   }
 }
+
+.active .item {
+  color: white;
+  &:before {
+    right: 15px;
+  }
+}
