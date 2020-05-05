@@ -42,6 +42,10 @@ a.logo {
   min-height: var(--site-header-height);
   padding: 0 var(--site-global-spacing);
   text-transform: none;
+
+  img {
+    height: 40px;
+  }
 }
 
 a.play__button {
@@ -55,7 +59,7 @@ a.play__button {
   height: 41px;
   letter-spacing: 0.15em;
   line-height: 41px;
-  margin: 0 0 0 var(--site-global-spacing);
+  margin: 0 var(--site-global-spacing);
   max-width: 220px;
   min-width: 129px;
   outline: 0;

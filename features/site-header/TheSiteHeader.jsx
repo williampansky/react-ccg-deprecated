@@ -11,10 +11,14 @@ export default function TheSiteHeader() {
           <div className={styles.navbar__left}>
             <Link href="/">
               <a className={styles.logo}>HSclone</a>
+              {/* <a className={styles.logo}>
+                <img alt="HSclone" src="images/site/logo.png" />
+              </a> */}
             </Link>
             <NavbarNav
               data={[
                 { path: '/about', name: 'About' },
+                { path: '/mechanics', name: 'Mechanics' },
                 { path: '/news', name: 'News' },
                 { path: '/store', name: 'Store' }
               ]}

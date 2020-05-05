@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import Hero from '@/components/site/hero/Hero';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
+import ThreeColumnCards from '@/components/site/three-column-cards/ThreeColumnCards';
 
 export default function Home({ Component, pageProps }) {
   return (
@@ -12,8 +13,9 @@ export default function Home({ Component, pageProps }) {
         meta={[{ property: 'og:title', content: 'Home' }]}
       />
       <TheSiteHeader />
-      <main className="site__wrapper">
+      <main className="site__wrapper homepage">
         <Hero />
+        {/* <ThreeColumnCards /> */}
       </main>
     </React.Fragment>
   );

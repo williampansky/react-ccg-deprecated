@@ -1,0 +1,79 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+@import 'styles/mixins/flex';
+
+.component {
+  margin: 300px auto 100px;
+  position: relative;
+  width: 100%;
+  max-width: 90vw;
+  overflow: hidden;
+
+  @include breakpoint('xsmall') {
+    max-width: 80vw;
+  }
+
+  @include breakpoint('small') {
+    max-width: 60vw;
+  }
+}
+
+.columns__wrapper {
+  width: 80%;
+  max-width: 42rem;
+  margin: 0 auto;
+  overflow: visible;
+
+  @include breakpoint('xsmall') {
+    width: 70%;
+  }
+
+  @include breakpoint('large') {
+    width: 100%;
+    max-width: 1024px;
+  }
+}
+
+.columns__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.columns__item {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0 4.3%;
+
+  @include breakpoint('xsmall') {
+    padding: 0 8%;
+  }
+
+  @include breakpoint('medium') {
+    width: 33.33%;
+    padding: 0 1.5%;
+  }
+}
+
+.component article {
+  background-color: #c6b7a0;
+  color: #2b282c;
+  position: relative;
+  padding: 1.5rem 1.5rem 4.6rem;
+  text-align: center;
+
+  h3 {
+    font-family: 'Carter One', sans-serif;
+  }
+
+  p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    margin: 0;
+  }
+}

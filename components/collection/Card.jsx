@@ -48,7 +48,7 @@ export default function Card({
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `url(assets/images/sets/${set}/${cardId}-CARD.jpg)`;
+      : `url(images/sets/${set}/${cardId}-CARD.jpg)`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -64,13 +64,16 @@ export default function Card({
   return (
     <div
       className={[
-        'card__v3',
+        'card',
         IS_MINION ? '--is-minion' : '',
         IS_SPELL ? '--is-spell' : '',
         IS_ITEM ? '--is-item' : '',
         IS_WEAPON ? '--is-weapon' : ''
       ].join(' ')}
       onClick={onClick}
+      onKeyPress={onClick}
+      role="button"
+      tabIndex="0"
     >
       <div className={'card__cost'}>
         <div className={'text__value'}>{cost}</div>
@@ -122,7 +125,7 @@ export default function Card({
             <img
               alt=""
               className={`card__attack__badge`}
-              src={`assets/images/ic_sword.png`}
+              src={`images/card-assets/ic_sword.png`}
             />
           </div>
           <div className={'card__health'} data-value={health}>
@@ -130,7 +133,7 @@ export default function Card({
             <img
               alt=""
               className={`card__health__badge`}
-              src={`assets/images/ic_shield.png`}
+              src={`images/card-assets/ic_shield.png`}
             />
           </div>
         </React.Fragment>
@@ -139,19 +142,19 @@ export default function Card({
       <img
         alt=""
         className={`card__rarity__gem`}
-        src={`assets/images/gems/Gem_Rarity_${replaceConstant(rarity)}.png`}
+        src={`images/gems/Gem_Rarity_${replaceConstant(rarity)}.png`}
       />
 
       <div className={`card__type__image__wrapper`}>
         <img
           alt=""
           className={`card__type__image`}
-          src={`assets/icons/Card_Type--${type}.png`}
+          src={`images/card-assets/Card_Type--${type}.png`}
         />
         <img
           alt=""
           className={`card__type__image__badge`}
-          src={`assets/card-assets/Card_Type_Board.png`}
+          src={`images/card-assets/Card_Type_Board.png`}
         />
       </div>
 
@@ -162,7 +165,7 @@ export default function Card({
               <img
                 alt=""
                 className={`card__mechanic__image`}
-                src={`assets/icons/Mechanic-${m.replace(/%/g, '')}.png`}
+                src={`icons/Mechanic-${m.replace(/%/g, '')}.png`}
               />
             </div>
           );
@@ -173,13 +176,13 @@ export default function Card({
         <img
           alt=""
           className={`card__base__image`}
-          src={`assets/images/cards/front/GOLDEN.png`}
+          src={`images/cards/front/GOLDEN.png`}
         />
       ) : (
         <img
           alt=""
           className={`card__base__image`}
-          src={`assets/images/cards/front/${replaceConstant(rarity)}.png`}
+          src={`images/cards/front/${replaceConstant(rarity)}.png`}
         />
       )}
     </div>
@@ -220,7 +223,8 @@ Card.propTypes = {
   text: PropTypes.string,
   type: PropTypes.string,
   warcryNumber: PropTypes.number,
-  dynamicSpellDamageText: PropTypes.number
+  dynamicSpellDamageText: PropTypes.number,
+  onClick: PropTypes.func
 };
 
 Card.defaultProps = {
@@ -238,14 +242,14 @@ Card.defaultProps = {
   hideStats: false,
   howToEarn: null,
   howToEarnGolden: null,
-  id: null,
-  imageSrc: 'assets/images/card-image-placeholder.jpg',
+  id: 'CORE_001',
+  imageSrc: 'images/card-image-placeholder.jpg',
   mechanics: [],
   name: '',
   playRequirements: [],
   race: '',
-  rarity: '',
-  set: '',
+  rarity: 'FREE',
+  set: '%SET_002%',
   sounds: {
     attackSound: null,
     deathSound: null,
@@ -255,6 +259,7 @@ Card.defaultProps = {
   targetingArrowText: null,
   text: '',
   type: null,
+  onClick: () => {},
 
   // incoming transformative props
   isGolden: false
