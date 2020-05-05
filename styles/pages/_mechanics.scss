@@ -1,0 +1,72 @@
+.page__mechanics {
+  background: repeat url('/images/site/binding_dark.jpg') 0 0;
+  min-height: calc(100vh - var(--site-header-height));
+  padding: 0 0 100px;
+  width: 100vw;
+
+  .hero {
+    font-size: 1.65em;
+    padding: 2em 0;
+    text-align: center;
+
+    @media (min-width: 640px) {
+      font-size: 2.65em;
+    }
+  }
+
+  .hero h1 {
+    margin: 0;
+  }
+
+  .content__container {
+    border-radius: 20px;
+    margin: 0 auto;
+    max-width: 700px;
+    padding: 20px;
+  }
+
+  section:first-of-type {
+    padding-top: 20px;
+  }
+
+  section:last-of-type {
+    padding-bottom: 30px;
+  }
+
+  section + section {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid #a6a3a1;
+  }
+
+  dl {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  dt {
+    color: #222;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  dt h3 {
+    font-size: 1.365em;
+    letter-spacing: 0.03em;
+    margin: 0 0 0.25em;
+    word-spacing: 0.0625em;
+
+    & ~ span {
+      opacity: 0.725;
+      font-size: 0.875em;
+    }
+  }
+
+  dd {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.925em;
+    line-height: 1.65;
+    margin-left: 0;
+  }
+}

@@ -6,7 +6,7 @@ import styles from './the-site-header.module.scss';
 export default function TheSiteHeader() {
   return (
     <div className={styles.component}>
-      <div className="container">
+      <div className="container container--expand">
         <div className={styles.navbar}>
           <div className={styles.navbar__left}>
             <Link href="/">

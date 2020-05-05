@@ -48,16 +48,16 @@ const Hero = () => {
         src="images/site/logo.png"
       />
 
-      <dl className={styles.tech__stack}>
+      <dl className={[styles.tech__stack, 'uk-animation-fade'].join(' ')}>
         <dt>Built with</dt>
         <dd>
           <div>
-            <ReactSVG src="images/site/logo-boardgame.svg" />
+            <ReactSVG src="images/site/logo-next.svg" />
           </div>
         </dd>
         <dd>
           <div>
-            <ReactSVG src="images/site/logo-next.svg" />
+            <ReactSVG src="images/site/logo-boardgame.svg" />
           </div>
         </dd>
         <dd>

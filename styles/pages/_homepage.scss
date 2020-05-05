@@ -1,4 +1,4 @@
-.homepage {
+.page__homepage {
   // background-blend-mode: soft-light;
   // background-color: #111;
   // background-image: url('/images/site/concrete-texture.jpg');
@@ -8,4 +8,5 @@
   background: repeat url('/images/site/binding_dark.jpg') 0 0;
   min-height: calc(100vh - var(--site-header-height));
   padding: 0 0 100px;
+  width: 100vw;
 }

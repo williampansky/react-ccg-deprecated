@@ -72,26 +72,27 @@
 
   dd {
     height: 8.46vw;
-    width: 25.38vw;
+    // width: 25.38vw;
+    width: auto;
     display: inline-block;
     vertical-align: top;
     padding: 0;
-    margin: 0 2px;
+    margin: 0 6px;
 
     @media (min-width: map-get($breakpoints, 'xsmall')) {
       height: 32px;
-      width: 96px;
-      margin: 0 0.5vw;
+      // width: 96px;
+      margin: 0 2.5vw;
     }
 
     @media (min-width: map-get($breakpoints, 'small')) {
-      margin: 0 0.3rem;
+      margin: 0 0.875rem;
     }
 
     @media (min-width: map-get($breakpoints, 'medium')) {
       height: 40px;
       width: auto;
-      margin: 0 0.6rem;
+      margin: 0 1.625rem;
     }
   }
 

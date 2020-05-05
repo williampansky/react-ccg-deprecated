@@ -13,7 +13,7 @@ export default function Home({ Component, pageProps }) {
         meta={[{ property: 'og:title', content: 'Home' }]}
       />
       <TheSiteHeader />
-      <main className="site__wrapper homepage">
+      <main className="site__wrapper page__homepage">
         <Hero />
         {/* <ThreeColumnCards /> */}
       </main>

@@ -1,6 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
 import configSlice from '@/features/config.slice';
+import constantsSlice from '@/features/constants.slice';
 import databaseSlice from '@/features/database.slice';
 import filtersSlice from '@/features/filters/filters.slice';
 import filteredResultsSlice from '@/features/filtered-results.slice';
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   // routes: routesSlice,
   filters: filtersSlice,
   filteredResults: filteredResultsSlice,
-  database: databaseSlice
+  database: databaseSlice,
+  constants: constantsSlice
   // sidebar: sidebarSlice,
   // decks: decksSlice
 });
