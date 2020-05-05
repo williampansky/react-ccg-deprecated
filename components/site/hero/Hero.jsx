@@ -118,7 +118,7 @@ const Hero = () => {
                       text={obj.text}
                       type={obj.type}
                       warcryNumber={obj.warcryNumber}
-                      dynamicSpellDamageText={0}
+                      dynamicSpellDamageText={obj.warcryNumber}
                     />
                   </div>
                 </div>

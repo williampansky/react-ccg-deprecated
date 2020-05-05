@@ -142,14 +142,16 @@ export default function Card({
       <img
         alt=""
         className={`card__rarity__gem`}
-        src={`images/gems/Gem_Rarity_${replaceConstant(rarity)}.png`}
+        src={`images/gems/Gem_Rarity_${replaceConstant(
+          rarity
+        ).toUpperCase()}.png`}
       />
 
       <div className={`card__type__image__wrapper`}>
         <img
           alt=""
           className={`card__type__image`}
-          src={`images/card-assets/Card_Type--${type}.png`}
+          src={`images/card-assets/Card_Type--${type.toUpperCase()}.png`}
         />
         <img
           alt=""
@@ -182,7 +184,9 @@ export default function Card({
         <img
           alt=""
           className={`card__base__image`}
-          src={`images/cards/front/${replaceConstant(rarity)}.png`}
+          src={`images/cards/front/${replaceConstant(
+            rarity
+          ).toUpperCase()}.png`}
         />
       )}
     </div>
