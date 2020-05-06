@@ -20,6 +20,11 @@
     pointer-events: none;
   }
 
+  &[data-deckid] > div .card {
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
   & > div .card {
     transition: opacity 200ms ease-in-out;
   }

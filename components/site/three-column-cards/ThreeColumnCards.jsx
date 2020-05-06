@@ -19,7 +19,7 @@ const ThreeColumnCards = () => {
         <ul className={styles.columns__list}>
           <li className={styles.columns__item}>
             <article>
-              <h3 className="text-value">Collect</h3>
+              <h3 className="text__value">Collect</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Officiis, itaque quas molestias accusantium a nobis tenetur esse
@@ -29,7 +29,7 @@ const ThreeColumnCards = () => {
           </li>
           <li className={styles.columns__item}>
             <article>
-              <h3 className="text-value">Build</h3>
+              <h3 className="text__value">Build</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Officiis, itaque quas molestias accusantium a nobis tenetur esse
@@ -39,7 +39,7 @@ const ThreeColumnCards = () => {
           </li>
           <li className={styles.columns__item}>
             <article>
-              <h3 className="text-value">Destroy</h3>
+              <h3 className="text__value">Destroy</h3>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Officiis, itaque quas molestias accusantium a nobis tenetur esse
@@ -64,7 +64,7 @@ const ThreeColumnCards = () => {
       >
         <div>
           <article>
-            <h3 className="text-value">Collect</h3>
+            <h3 className="text__value">Collect</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
               itaque quas molestias accusantium a nobis tenetur esse
@@ -74,7 +74,7 @@ const ThreeColumnCards = () => {
         </div>
         <div>
           <article>
-            <h3 className="text-value">Build</h3>
+            <h3 className="text__value">Build</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
               itaque quas molestias accusantium a nobis tenetur esse
@@ -84,7 +84,7 @@ const ThreeColumnCards = () => {
         </div>
         <div>
           <article>
-            <h3 className="text-value">Destroy</h3>
+            <h3 className="text__value">Destroy</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
               itaque quas molestias accusantium a nobis tenetur esse

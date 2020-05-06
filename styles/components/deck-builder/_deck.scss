@@ -1,0 +1,18 @@
+.deck__builder__deck {
+  width: 100%;
+  margin: 0 auto;
+  z-index: 1;
+  position: relative;
+
+  .deck__item__wrapper {
+    cursor: pointer;
+  }
+
+  .deck__item__wrapper + .deck__item__wrapper {
+    margin-top: 2px;
+  }
+
+  .deck__item__wrapper:last-child {
+    margin-bottom: 30px;
+  }
+}

@@ -34,7 +34,7 @@ export default function DeckSidebar({ deckId }) {
   return (
     <div className="deck__sidebar">
       <input
-        className="text-value"
+        className="text__value"
         type="text"
         defaultValue={deck && deck.name ? deck.name : deckId}
         onChange={e =>

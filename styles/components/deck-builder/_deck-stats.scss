@@ -1,0 +1,36 @@
+.deck__builder__deck .deck__stats {
+  color: white;
+  padding: 10px 0 15px;
+  user-select: none;
+  cursor: default;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+
+  .item {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    min-width: 75px;
+  }
+
+  .item__label {
+    font-family: 'Verdana', monospace;
+    font-size: 0.675em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .text__value {
+    font-size: 1.5em;
+    margin: 4px 0 0;
+  }
+
+  .class__badge {
+    width: 100px;
+  }
+}

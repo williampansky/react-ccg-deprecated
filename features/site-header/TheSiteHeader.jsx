@@ -33,7 +33,7 @@ export default function TheSiteHeader() {
             />
             <Link href="/play">
               <a className={styles.play__button}>
-                <span className="text-value">Play</span>
+                <span className="text__value">Play</span>
               </a>
             </Link>
             <div className={styles.offcanvas__toggle}>

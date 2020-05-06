@@ -10,12 +10,12 @@ export default function DeckCollection() {
   function badgeSrc(string) {
     if (!exists(string)) return;
     const str = string.replace(/(%)/g, '');
-    return `assets/images/classes/${str}/BADGE.png`;
+    return `/images/classes/${str}/BADGE.png`;
   }
 
   return (
     <div className="deck__collection">
-      <h2 className="text-value">Your Decks</h2>
+      <h2 className="text__value">Your Decks</h2>
       {decksArray.map((deck, index) => {
         index = index + 1;
         const { name } = deck;
@@ -32,8 +32,8 @@ export default function DeckCollection() {
                 />
               </div>
               <div className="text">
-                <span className="text-value index">{name}</span>
-                <span className="text-value plus">{`Edit Deck`}</span>
+                <span className="text__value index">{name}</span>
+                <span className="text__value plus">{`Edit Deck`}</span>
               </div>
             </a>
           </Link>
@@ -41,8 +41,8 @@ export default function DeckCollection() {
           <Link key={index} href="decks/[id]" as={`decks/${index}`}>
             <a className="deck__slot" role="button">
               <div className="text">
-                <span className="text-value index">{index}</span>
-                <span className="text-value plus">{`New Deck`}</span>
+                <span className="text__value index">{index}</span>
+                <span className="text__value plus">{`New Deck`}</span>
               </div>
             </a>
           </Link>

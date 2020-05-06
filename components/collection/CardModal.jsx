@@ -107,10 +107,10 @@ export default function CardModal({
                 ) : null}
               </div>
               <div className="info magictime vanishIn">
-                <div className="text-value">
+                <div className="text__value">
                   <h2 className="name">{modalObject.name}</h2>
                 </div>
-                <div className="text-value">
+                <div className="text__value">
                   <p
                     className="flavor"
                     dangerouslySetInnerHTML={createMarkup(
@@ -126,7 +126,7 @@ export default function CardModal({
                     {modalObject.mechanics.map((m, i) => {
                       return (
                         <div className="mechanic" key={i}>
-                          <div className="text-value mechanics">
+                          <div className="text__value mechanics">
                             {/* <img
                               alt=""
                               className={`icon`}
@@ -148,24 +148,24 @@ export default function CardModal({
                 <div className="info__list">
                   <ul>
                     <li>
-                      <strong className="text-value">ID:</strong>{' '}
+                      <strong className="text__value">ID:</strong>{' '}
                       {modalObject.id}
                     </li>
                     <li>
-                      <strong className="text-value">Type:</strong>{' '}
+                      <strong className="text__value">Type:</strong>{' '}
                       {modalObject.type}
                     </li>
                     <li>
-                      <strong className="text-value">Set:</strong>{' '}
+                      <strong className="text__value">Set:</strong>{' '}
                       <span>{replaceConstant(modalObject.set)}</span>
                     </li>
                     <li>
-                      <strong className="text-value">Rarity:</strong>{' '}
+                      <strong className="text__value">Rarity:</strong>{' '}
                       <span>{replaceConstant(modalObject.rarity)}</span>
                     </li>
                     {modalObject.playRequirements && (
                       <li>
-                        <strong className="text-value">
+                        <strong className="text__value">
                           Play Requirements:
                         </strong>{' '}
                         {modalObject.playRequirements}
@@ -173,7 +173,7 @@ export default function CardModal({
                     )}
                     {modalObject.entourage && (
                       <li {...hoverProps} aria-describedby="overlay">
-                        <strong className="text-value">Entourage:</strong>{' '}
+                        <strong className="text__value">Entourage:</strong>{' '}
                         <span>{modalObject.entourage}</span>
                         {modalObject.entourage !== null ? (
                           database.find(o => o.id === modalObject.entourage) ? (
@@ -199,30 +199,30 @@ export default function CardModal({
                     )}
                     {modalObject.targetingArrowText && (
                       <li>
-                        <strong className="text-value">Targeting Text:</strong>{' '}
+                        <strong className="text__value">Targeting Text:</strong>{' '}
                         {replaceConstant(modalObject.targetingArrowText)}
                       </li>
                     )}
                     {modalObject.howToEarn && (
                       <li>
-                        <strong className="text-value">How to Earn:</strong>{' '}
+                        <strong className="text__value">How to Earn:</strong>{' '}
                         {modalObject.howToEarn}
                       </li>
                     )}
                     {modalObject.collectible && (
                       <li>
-                        <strong className="text-value">Collectible</strong>
+                        <strong className="text__value">Collectible</strong>
                       </li>
                     )}
                     {modalObject.elite && (
                       <li>
-                        <strong className="text-value">Elite</strong>
+                        <strong className="text__value">Elite</strong>
                       </li>
                     )}
                   </ul>
                   {modalObject.artist && (
                     <div className="artist">
-                      <strong className="text-value">Artist:</strong>{' '}
+                      <strong className="text__value">Artist:</strong>{' '}
                       <a
                         href={modalObject.artist}
                         target="_blank"
@@ -234,7 +234,7 @@ export default function CardModal({
                   )}
                   {modalObject.description && (
                     <div className="description">
-                      <strong className="text-value">Description</strong>{' '}
+                      <strong className="text__value">Description</strong>{' '}
                       <div
                         className="description__text"
                         dangerouslySetInnerHTML={createMarkup(

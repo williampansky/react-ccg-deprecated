@@ -96,7 +96,7 @@ export default function DeckBuilder({ deckId }) {
             exists(database) ? (
               <CardGrid
                 addSelectedCardCallback={addSelectedCardCallback}
-                database={filteredResults}
+                data={filteredResults}
                 handleClass={handleClass}
                 handleTooltipClick={handleTooltipClick}
               />

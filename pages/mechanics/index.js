@@ -15,7 +15,7 @@ export default function Mechanics() {
       <TheSiteHeader />
       <main className="site__wrapper page__mechanics">
         <div className="hero">
-          <h1 className="text-value">Mechanics</h1>
+          <h1 className="text__value">Mechanics</h1>
         </div>
         <div className="container">
           <div className="content__container">
@@ -25,7 +25,7 @@ export default function Mechanics() {
                 return type === 'MECHANIC' ? (
                   <section id={symbol} key={symbol}>
                     <dt>
-                      <h3 className="text-value">{name}</h3>
+                      <h3 className="text__value">{name}</h3>
                       {/* <span>{type}</span> */}
                     </dt>
                     <dd>{description ? description : 'Coming soon...'}</dd>

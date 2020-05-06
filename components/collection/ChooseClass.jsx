@@ -57,7 +57,7 @@ export default function ChooseClass({ deckId }) {
                       style={{ backgroundImage: imageSrc(value) }}
                     /> */}
                 <div className="class__name">
-                  <h2 className="text-value">{label}</h2>
+                  <h2 className="text__value">{label}</h2>
                 </div>
                 <div className="class__badge--wrapper">
                   <img alt="" className="class__badge" src={badgeSrc(value)} />

@@ -10,10 +10,12 @@ export default function CardGrid({
   handleTooltipClick
 }) {
   const router = useRouter();
-  const { query } = router;
+  const {
+    query: { id }
+  } = router;
 
   return (
-    <div className="card__grid" deckid={query}>
+    <div className="card__grid" data-deckid={id}>
       {data.map(card => {
         return (
           <div className={handleClass(card)} key={card.id}>

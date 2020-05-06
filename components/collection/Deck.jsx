@@ -24,8 +24,8 @@ export default function Deck({ data, deckId, length, onClick }) {
   }
 
   return (
-    <Component>
-      <Stats>
+    <div className="deck__builder__deck">
+      <div className="deck__stats">
         {classBadge(deckClass) !== false ? (
           <div className="item">
             <img alt="" className="class__badge" src={classBadge(deckClass)} />
@@ -33,15 +33,15 @@ export default function Deck({ data, deckId, length, onClick }) {
         ) : null}
         <div className="item">
           <div className="text__label">Deck</div>
-          <div className="text-value">{length}/30</div>
+          <div className="text__value">{length}/30</div>
         </div>
-      </Stats>
+      </div>
 
       {data.map((card, index) => {
         const { _amount, cost, elite, id, name, rarity, set } = card;
         return (
           <div
-            className="deck__item"
+            className="deck__item__wrapper"
             data-id={id}
             key={index}
             onClick={onClick}
@@ -58,7 +58,7 @@ export default function Deck({ data, deckId, length, onClick }) {
           </div>
         );
       })}
-    </Component>
+    </div>
   );
 }
 
@@ -73,60 +73,3 @@ Deck.defaultProps = {
   length: 0,
   onClick: () => {}
 };
-
-const Component = styled.div`
-  /* padding: 0 20px; */
-  width: 100%;
-  margin: 0 auto;
-  z-index: 1;
-  position: relative;
-
-  .deck__item {
-    cursor: pointer;
-  }
-
-  .deck__item + .deck__item {
-    margin-top: 2px;
-  }
-
-  .deck__item:last-child {
-    margin-bottom: 30px;
-  }
-`;
-
-const Stats = styled.div`
-  color: white;
-  padding: 10px 0 15px;
-  user-select: none;
-  cursor: default;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-
-  .item {
-    text-align: center;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    margin: 0 10px;
-    min-width: 75px;
-  }
-
-  .item__label {
-    font-family: 'Verdana', monospace;
-    font-size: 0.675em;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-
-  .text-value {
-    font-size: 1.5em;
-    margin: 4px 0 0;
-  }
-
-  .class__badge {
-    width: 100px;
-  }
-`;
