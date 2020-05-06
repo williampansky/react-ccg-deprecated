@@ -11,7 +11,8 @@
   top: 0;
   bottom: 0;
   width: 100vw;
-  height: calc(100vh - 80px);
+  // height: calc(100vh - 80px);
+  height: auto;
   margin-top: 80px;
   max-height: 0%;
   overflow-x: hidden;

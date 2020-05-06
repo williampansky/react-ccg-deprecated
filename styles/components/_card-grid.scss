@@ -16,6 +16,7 @@
     position: relative;
     width: calc(var(--card-height) / 1.4);
     margin: 0 auto 0;
+    outline: 0;
   }
 
   & > div .card {

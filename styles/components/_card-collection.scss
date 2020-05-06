@@ -84,10 +84,10 @@
   right: 0;
   top: 80px;
   width: 300px;
-  height: 100%;
   z-index: 3;
+  bottom: 60px;
   transform: translateX(100%);
-  transition: transform 150ms var(--animation-transition-cubic);
+  transition: transform 600ms var(--animation-transition-cubic);
 
   &.collection__sidebar--active {
     transform: translateX(0);
@@ -97,6 +97,8 @@
   }
 
   @include breakpoint('medium') {
+    bottom: 0;
+    height: 100%;
     transform: translateX(0) !important;
   }
 
@@ -115,8 +117,12 @@
 .deck__collection {
   height: 100%;
   overflow-y: auto;
-  padding: 10px 20px 60px;
+  padding: 10px 20px 20px;
   user-select: none;
+
+  @include breakpoint('medium') {
+    padding: 10px 20px 60px;
+  }
 
   & > h2 {
     text-align: center;
@@ -233,7 +239,7 @@
   margin: 0 auto 60px;
   padding: 20px 0;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
 
   @include breakpoint('medium') {
     margin: 0 auto;
@@ -244,9 +250,15 @@
     cursor: pointer;
     position: relative;
     text-align: center;
-    height: 250px;
-    width: 250px;
+    height: 150px;
+    width: 100%;
     margin: 0 auto;
+    @include display-flex(column nowrap, center, center);
+
+    @include breakpoint('medium') {
+      height: 250px;
+      width: 250px;
+    }
   }
 
   /* prettier-ignore */
@@ -269,17 +281,25 @@
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    height: 200px;
+    height: 100%;
     width: 100%;
-    opacity: 0;
+    font-size: 0.875em;
+    opacity: 1;
     top: 0;
     left: 0;
     transition: opacity, transform 150ms ease-in-out;
     will-change: opacity, transform;
     margin: 0 auto;
     border-radius: 50%;
-    transform: scale(0.5);
-    z-index: 1;
+    transform: scale(1);
+    z-index: 2;
+
+    @include breakpoint('medium') {
+      font-size: 1em;
+      height: 200px;
+      opacity: 0;
+      transform: scale(0.5);
+    }
 
     h2 {
       margin: 0;
@@ -319,15 +339,20 @@
   }
 
   .class__item .class__badge--wrapper {
-    width: 100%;
+    width: 50%;
     z-index: 1;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
     transform: scale(1);
     transition: opacity, transform 150ms ease-in-out;
     will-change: opacity, transform;
+
+    @include breakpoint('medium') {
+      width: 100%;
+    }
 
     .class__badge {
       width: 100%;

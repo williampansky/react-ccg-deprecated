@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { newDeck } from 'features/decks/decks.slice';
 import { selectClass } from 'features/filters/filters.slice';
 import CARDCLASS from 'enums/cardClass.enums';
 import exists from 'utils/element.exists';
+import { toggleSiteSidebar } from '@/features/site-sidebar/site-sidebar.slice';
 // import Filters from 'features/filters/Filters.container';
 
 export default function ChooseClass({ deckId }) {
@@ -13,6 +14,10 @@ export default function ChooseClass({ deckId }) {
   const dispatch = useDispatch();
   const { availableCardClasses } = useSelector(state => state.filters);
   const { selectedCardClass } = useSelector(state => state.filters);
+
+  useEffect(() => {
+    dispatch(toggleSiteSidebar());
+  }, [dispatch]);
 
   function handleClick(string, param = deckId) {
     dispatch(selectClass(string));
