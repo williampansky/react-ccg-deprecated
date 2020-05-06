@@ -6,6 +6,7 @@ import Sidebar from '@/components/collection/Sidebar';
 import DeckBuilder from '@/components/collection/DeckBuilderV3';
 import Filters from '@/features/filters/Filters.container';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
+import MobileFooter from '@/components/collection/MobileFooter';
 
 export default function Deck() {
   const router = useRouter();
@@ -22,6 +23,7 @@ export default function Deck() {
         <Filters />
         <DeckBuilder deckId={id} />
         <Sidebar deckId={id} />
+        <MobileFooter />
       </main>
       <TheSiteMobileMenu />
     </React.Fragment>

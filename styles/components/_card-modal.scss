@@ -8,12 +8,29 @@
   bottom: 0;
   left: 0;
   z-index: -1;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 50px 30px;
   background: rgba(0, 0, 0, 0.875);
   opacity: 0;
   transition: opacity 150ms linear;
   user-select: none;
+
+  @include breakpoint('medium') {
+    overflow-y: hidden;
+  }
+
+  .modal__close__button {
+    appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
   .modal__dialog {
     animation-duration: 400ms;
@@ -64,17 +81,22 @@
     animation-delay: 600ms;
     position: absolute;
     z-index: 0;
-    bottom: -4%;
-    left: -25%;
+    bottom: -2%;
+    left: -15%;
+
+    @include breakpoint('medium') {
+      bottom: -4%;
+      left: -25%;
+    }
 
     & > .card {
       transform: rotate(-10deg) scale(0.95);
 
-      @media (min-width: 960px) {
+      @include breakpoint('medium') {
         transform: rotate(-10deg) scale(1.2);
       }
 
-      @media (min-width: 1200px) {
+      @include breakpoint('large') {
         transform: rotate(-10deg) scale(1.475);
       }
     }
@@ -82,20 +104,21 @@
 
   .flex {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
 
-    @media (min-width: 960px) {
+    @include breakpoint('medium') {
+      flex-flow: row nowrap;
       margin-left: 100px;
     }
   }
 
   /* prettier-ignore */
   .flex > div:nth-child(2) {
-    margin-left: 50px;
-    @media (min-width: 960px) { margin-left: 100px; }
-    @media (min-width: 1200px) { margin-left: 150px; }
+    margin: 50px 0 0;
+    @include breakpoint('medium') { margin: 0 0 0 100px; }
+    @include breakpoint('large')  { margin: 0 0 0 150px; }
   }
 
   .info {

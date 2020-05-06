@@ -9,6 +9,7 @@ import exists from 'utils/element.exists';
 import getConstantDescription from 'utils/get-constant-description';
 import replaceConstant from 'utils/replace-constants';
 import useHover from 'react-use-hover';
+import { ReactSVG } from 'react-svg';
 
 export default function CardModal({
   cardText,
@@ -36,6 +37,9 @@ export default function CardModal({
       role="button"
       tabIndex={0}
     >
+      <button className="modal__close__button">
+        <ReactSVG src="/images/site/logo-uikit-close.svg" />
+      </button>
       {modalObject !== null ? (
         <React.Fragment>
           <div className="modal__dialog">

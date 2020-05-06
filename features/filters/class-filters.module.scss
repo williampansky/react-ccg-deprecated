@@ -1,12 +1,21 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+
 .component {
   align-items: flex-start;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  margin: 0 0 0 1em;
+  margin: 0;
+  padding: 0 15px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   height: 100%;
+
+  @include breakpoint('medium') {
+    margin: 0 0 0 1em;
+    padding: 0;
+  }
 }
 
 .flex {
@@ -23,7 +32,7 @@
   border: 0;
   margin: 0;
   padding: 0 10px;
-  font-size: 0.725em;
+  font-size: 1em;
   text-transform: uppercase;
   border-top-left-radius: calc(var(--site-border-radius) / 2);
   border-top-right-radius: calc(var(--site-border-radius) / 2);
@@ -47,15 +56,25 @@
     0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
     0 0 1px black;
 
-  @media (min-width: 1200px) {
+  // prettier-ignore
+  &:last-child {
+    margin: 0 15px 0 0;
+    @include breakpoint('medium') { margin: 0; }
+  }
+
+  @include breakpoint('small') {
+    font-size: 0.725em;
+  }
+
+  @include breakpoint('large') {
     font-size: 0.875em;
   }
 
-  @media (min-width: 1440px) {
+  @include breakpoint('xlarge') {
     font-size: 1em;
   }
 
-  @media (min-width: 1920px) {
+  @include breakpoint('hd') {
     font-size: 1.15em;
     padding: 0 20px;
   }

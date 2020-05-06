@@ -37,7 +37,7 @@ const Buttons = ({
           </div>
         </Route>
         <Route path={`/`}> */}
-      <div className="flex">
+      <div className={styles.flex}>
         {availableCardClasses
           .map(obj => {
             const { label, value } = obj;

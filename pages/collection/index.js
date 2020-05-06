@@ -5,6 +5,7 @@ import CardCollection from '@/components/collection/CardCollection';
 import Sidebar from '@/components/collection/Sidebar';
 import Filters from '@/features/filters/Filters.container';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
+import MobileFooter from '@/components/collection/MobileFooter';
 
 export default function Collection() {
   return (
@@ -18,6 +19,7 @@ export default function Collection() {
         <Filters />
         <CardCollection />
         <Sidebar />
+        <MobileFooter />
       </main>
       <TheSiteMobileMenu />
     </React.Fragment>

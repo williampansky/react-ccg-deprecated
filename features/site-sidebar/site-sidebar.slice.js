@@ -7,10 +7,10 @@ const siteSidebarSlice = createSlice({
   initialState,
   reducers: {
     setSiteSidebar(state, { payload }) {
-      state.sidebarActive = payload;
+      return payload;
     },
     toggleSiteSidebar(state) {
-      state.sidebarActive = state.sidebarActive === true ? false : true;
+      return state === true ? false : true;
     }
   }
 });

@@ -30,7 +30,7 @@
   width: 100%;
   transition: width 150ms var(--animation-transition-cubic);
   // height: 100%;
-  height: calc(100% - calc(80px + 60px));
+  height: calc(100% - calc(80px + 60px + 60px));
   margin: 60px auto 0 0;
 
   // background-image: url('/images/site/light-texture.jpg');
@@ -58,6 +58,7 @@
 
   @include breakpoint('medium') {
     max-width: calc(100vw - 300px);
+    height: calc(100% - calc(80px + 60px));
   }
 }
 
@@ -65,10 +66,16 @@
   background-color: #333;
   position: fixed;
   height: 60px;
-  overflow: hidden;
+  overflow-x: auto;
   left: 0;
   right: 0;
-  margin: 0 300px 0 0;
+  margin: 0;
+
+  @include breakpoint('medium') {
+    margin: 0 300px 0 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
 }
 
 .collection__sidebar {
@@ -208,19 +215,30 @@
   border-radius: 0;
   height: calc(100% - 80px);
   margin: 0 auto 0 0;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   &:before {
     content: none;
+  }
+
+  @include breakpoint('medium') {
+    overflow-x: hidden;
+    overflow-y: hidden;
   }
 }
 
 .choose__class {
   display: grid;
-  margin: 0 auto;
+  margin: 0 auto 60px;
   padding: 20px 0;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(50vw, 1fr));
+
+  @include breakpoint('medium') {
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+  }
 
   .class__item {
     cursor: pointer;

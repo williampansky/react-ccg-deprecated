@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { toggleMobileMenu } from '@/features/site-mobile-menu/site-mobile-menu.slice';
-import { ReactSVG } from '@/node_modules/react-svg/dist/index';
+import { ReactSVG } from 'react-svg';
 
 export default function TheSiteMobileMenu() {
   const router = useRouter();
