@@ -1,0 +1,211 @@
+.card__modal {
+  animation-duration: 600ms;
+  display: flex;
+  align-items: flex-start;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  overflow: hidden;
+  padding: 50px 30px;
+  background: rgba(0, 0, 0, 0.875);
+  opacity: 0;
+  transition: opacity 150ms linear;
+  user-select: none;
+
+  .modal__dialog {
+    animation-duration: 400ms;
+    position: relative;
+    box-sizing: border-box;
+    margin: auto;
+    width: 75vw;
+    max-width: 900px !important;
+    background: none;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: 500ms linear;
+    transition-property: opacity, transform;
+    padding: 30px 30px;
+    cursor: default;
+  }
+
+  &.open {
+    opacity: 1;
+    z-index: 9000;
+  }
+
+  &.open .modal__dialog {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card-wrapper {
+    animation-delay: 400ms;
+    position: relative;
+  }
+
+  .card-wrapper > .card {
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
+    transform: scale(1);
+    z-index: 1;
+
+    @media (min-width: 960px) {
+      transform: scale(1.25);
+    }
+
+    @media (min-width: 1200px) {
+      transform: scale(1.5);
+    }
+  }
+
+  .card-wrapper > .transformed-card {
+    animation-delay: 600ms;
+    position: absolute;
+    z-index: 0;
+    bottom: -4%;
+    left: -25%;
+
+    & > .card {
+      transform: rotate(-10deg) scale(0.95);
+
+      @media (min-width: 960px) {
+        transform: rotate(-10deg) scale(1.2);
+      }
+
+      @media (min-width: 1200px) {
+        transform: rotate(-10deg) scale(1.475);
+      }
+    }
+  }
+
+  .flex {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+
+    @media (min-width: 960px) {
+      margin-left: 100px;
+    }
+  }
+
+  /* prettier-ignore */
+  .flex > div:nth-child(2) {
+    margin-left: 50px;
+    @media (min-width: 960px) { margin-left: 100px; }
+    @media (min-width: 1200px) { margin-left: 150px; }
+  }
+
+  .info {
+    animation-delay: 50ms;
+    animation-duration: 600ms;
+  }
+
+  .info__list ul {
+    color: white;
+    font-family: sans-serif;
+    padding: 0 0 0 1.25em;
+    text-transform: capitalize;
+  }
+
+  .info__list li {
+    position: relative;
+  }
+
+  .info__list ul li + li {
+    margin-top: 0.465em;
+  }
+
+  .info__list strong {
+    color: #fff649;
+    margin: 0 0.25em 0 0;
+  }
+
+  .info__list strong + span {
+    text-transform: uppercase;
+  }
+
+  .name {
+    font-size: 1.875em;
+    margin: 0 0 0.625em;
+  }
+
+  .flavor {
+    font-size: 1.25em;
+    margin: 0 0 0.875em;
+    opacity: 0.75;
+  }
+
+  .mechanics__wrapper {
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .mechanics {
+    margin: 0 0 0.15em;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .mechanics img {
+    width: 5%;
+    margin-right: 10px;
+  }
+
+  .mechanics.mechanics__description {
+    margin: 0 0 0.875em;
+    max-width: 80%;
+    opacity: 0.75;
+  }
+
+  .artist {
+    margin-top: 1em;
+  }
+
+  .artist a,
+  .info__list a {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .description {
+    margin-top: 1em;
+  }
+
+  .description__text {
+    color: white;
+    font-family: sans-serif;
+    max-width: 80%;
+    opacity: 0.75;
+    margin: 0.25em 0 0;
+    font-size: 0.825em;
+    line-height: 1.35;
+  }
+
+  .card {
+    z-index: 1;
+  }
+
+  .entourage-card {
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    animation-duration: 200ms;
+
+    .card {
+      box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
+    }
+  }
+}

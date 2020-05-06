@@ -28,6 +28,6 @@ module.exports = {
     //     }
     //   }
     // ],
-    ['styled-components', { ssr: !dev, displayName: dev }]
+    ['styled-components', { ssr: !dev, displayName: dev, preprocess: false }]
   ]
 };

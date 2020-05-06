@@ -1,0 +1,107 @@
+.component {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  margin: 0 0 0 1em;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  height: 100%;
+}
+
+.flex {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.button {
+  background: #666;
+  cursor: pointer;
+  font-family: 'Carter One', sans-serif;
+  border: 0;
+  margin: 0;
+  padding: 0 10px;
+  font-size: 0.725em;
+  text-transform: uppercase;
+  border-top-left-radius: calc(var(--site-border-radius) / 2);
+  border-top-right-radius: calc(var(--site-border-radius) / 2);
+  line-height: 2;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  transition: 200ms var(--animation-transition-cubic);
+  color: white;
+  text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+    0 0 1px black;
+
+  @media (min-width: 1200px) {
+    font-size: 0.875em;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 1em;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 1.15em;
+    padding: 0 20px;
+  }
+}
+
+.button span {
+  position: relative;
+  bottom: -0.5px;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.button + .button {
+  margin-left: 8px;
+}
+
+.button.active {
+  background: #191919;
+  /* background: #1cbae5; */
+  // background-image: url('/images/site/light-texture.jpg');
+  // background-size: auto;
+  // background-position: top center;
+  // background-repeat: repeat;
+  // background-color: #e4e0da;
+}
+
+.button:hover span {
+  opacity: 0.875;
+}
+
+.button.active span {
+  opacity: 1;
+}
+
+.button,
+.button.active {
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+}
+
+.select {
+  width: 100%;
+}
+
+.select-wrapper {
+  width: 300px;
+}

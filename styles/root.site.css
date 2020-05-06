@@ -5,6 +5,7 @@
   --site-global-spacing:        15px;
   --site-global-spacing-small:  calc(var(--site-global-spacing) * 2);
   --site-global-spacing-medium: calc(var(--site-global-spacing-small) + 10px);
+  --site-border-radius:         20px;
 
   /* ================================ */
   /* header */

@@ -1,0 +1,312 @@
+.card__collection__wrapper {
+  background-color: #191919;
+  user-select: none;
+  width: 100%;
+  height: calc(100vh - 80px);
+  padding: 0 20px 20px;
+
+  // .footer {
+  //   position: fixed;
+  //   left: 0;
+  //   right: 0;
+  //   z-index: 2;
+  //   height: 80px;
+  //   width: calc(100vw);
+  //   transition: width 150ms var(--animation-transition-cubic);
+  // }
+}
+
+.grid__wrapper {
+  border-radius: var(--site-border-radius) 0 0 0;
+  background: #191919;
+  position: fixed;
+  // top: 80px;
+  left: 0;
+  padding: 20px;
+  max-width: calc(100vw - 300px);
+  right: 0;
+  // bottom: 80px;
+  overflow-y: scroll;
+  width: 100%;
+  transition: width 150ms var(--animation-transition-cubic);
+  // height: 100%;
+  height: calc(100% - calc(80px + 60px));
+  margin: 60px auto 0 0;
+
+  // background-image: url('/images/site/light-texture.jpg');
+  // background-size: auto;
+  // background-position: top center;
+  // background-repeat: repeat;
+  // background-color: #e4e0da;
+
+  &:before {
+    border-radius: var(--site-border-radius) 0 0 0;
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    top: 140px;
+    left: 0;
+    z-index: 200;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(25, 25, 25, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+}
+
+.card__collection__tabs {
+  background-color: #333;
+  position: fixed;
+  height: 60px;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  margin: 0 300px 0 0;
+}
+
+.collection__sidebar {
+  background: #1e1e1e;
+  position: fixed;
+  right: 0;
+  top: 80px;
+  width: 300px;
+  height: 100%;
+  z-index: 3;
+  transform: translateX(0);
+  transition: transform 150ms var(--animation-transition-cubic);
+
+  .background {
+    height: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    user-select: none;
+  }
+}
+
+.deck__collection {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px 20px 60px;
+  user-select: none;
+
+  & > h2 {
+    text-align: center;
+  }
+
+  .deck__slot {
+    color: rgba(255, 255, 255, 0.625);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    min-height: 60px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875em;
+    text-decoration: none;
+
+    &:active,
+    &:focus {
+      outline: 0;
+      text-decoration: none;
+    }
+
+    & + .deck__slot {
+      margin-top: 20px;
+    }
+
+    .plus {
+      font-size: 1.15em;
+      display: none;
+      text-transform: uppercase;
+    }
+
+    .text {
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 60px;
+      text-decoration: none;
+    }
+
+    .class__badge {
+      height: 60px;
+      &--wrapper {
+        margin-right: 20px;
+      }
+    }
+
+    /* prettier-ignore */
+    &:hover {
+      .text { border: 1px dashed rgba(255, 255, 255, 0.45); }
+      .plus { display: block; }
+      .index { display: none; }
+    }
+  }
+}
+
+.collection__sidebar > .deck__sidebar {
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px 10px 60px;
+  user-select: none;
+
+  & > h2 {
+    text-align: center;
+  }
+
+  input[type='text'] {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    top: 0;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    background: none;
+    outline: 0;
+    padding: 5px 20px 10px;
+
+    &:focus {
+      border-style: dashed;
+    }
+  }
+}
+
+.grid__wrapper.choose__class__wrapper {
+  border-radius: 0;
+  height: calc(100% - 80px);
+  margin: 0 auto 0 0;
+  overflow: hidden;
+
+  &:before {
+    content: none;
+  }
+}
+
+.choose__class {
+  display: grid;
+  margin: 0 auto;
+  padding: 20px 0;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+
+  .class__item {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+  }
+
+  /* prettier-ignore */
+  .class__item {
+    animation-duration: 400ms;
+    &:nth-child(1) { animation-delay: 0ms; }
+    &:nth-child(2) { animation-delay: 100ms; }
+    &:nth-child(3) { animation-delay: 200ms; }
+    &:nth-child(4) { animation-delay: 300ms; }
+    &:nth-child(5) { animation-delay: 400ms; }
+    &:nth-child(6) { animation-delay: 500ms; }
+    &:nth-child(7) { animation-delay: 600ms; }
+    &:nth-child(8) { animation-delay: 700ms; }
+    &:nth-child(9) { animation-delay: 800ms; }
+  }
+
+  .class__item .class__name {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition: opacity, transform 150ms ease-in-out;
+    will-change: opacity, transform;
+    margin: 0 auto;
+    border-radius: 50%;
+    transform: scale(0.5);
+    z-index: 1;
+
+    h2 {
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    &:after {
+      background: rgba(0, 0, 0, 0.45);
+      /* content: ''; */
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 150ms ease-in-out;
+      will-change: opacity;
+      border-radius: 50%;
+    }
+  }
+
+  .class__item .avatar {
+    height: 200px;
+    width: 200px;
+    max-width: 100%;
+    image-rendering: pixelated;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  .class__item .class__badge--wrapper {
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1);
+    transition: opacity, transform 150ms ease-in-out;
+    will-change: opacity, transform;
+
+    .class__badge {
+      width: 100%;
+      image-rendering: pixelated;
+    }
+  }
+
+  .class__item:hover {
+    .class__name {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .class__badge--wrapper {
+      opacity: 0.625;
+      transform: scale(0.925);
+    }
+  }
+}

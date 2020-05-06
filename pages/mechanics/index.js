@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import { useSelector } from 'react-redux';
+import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 
 export default function Mechanics() {
   const constants = useSelector(s => s.constants);

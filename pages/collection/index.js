@@ -1,6 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
+import CardCollection from '@/components/collection/CardCollection';
+import Sidebar from '@/components/collection/Sidebar';
+import Filters from '@/features/filters/Filters.container';
 
 export default function Collection() {
   return (
@@ -10,7 +13,11 @@ export default function Collection() {
         meta={[{ property: 'og:title', content: 'Collection' }]}
       />
       <TheSiteHeader />
-      <main className="site__wrapper">Collection</main>
+      <main className="site__wrapper">
+        <Filters />
+        <CardCollection />
+        <Sidebar />
+      </main>
     </React.Fragment>
   );
 }

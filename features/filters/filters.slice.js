@@ -7,7 +7,7 @@ import SET from 'enums/set.enums';
 import RARITY from 'enums/rarity.enums';
 
 let initialState = {
-  selectedCardClass: CARDCLASS[1],
+  selectedCardClass: CARDCLASS[0],
   selectedCardMechanics: [],
   selectedCardRace: null,
   selectedCardRarity: null,

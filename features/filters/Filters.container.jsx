@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  selectClass,
   selectEnergy,
   selectMechanic,
   selectRace,
@@ -10,17 +8,16 @@ import {
   selectRarity
 } from 'features/filters/filters.slice';
 import { setResults } from 'features/filtered-results.slice';
-import ClassFilters from 'features/filters/ClassFilters';
 import EnergyFilters from 'features/filters/EnergyFilters';
 import MechanicsFilters from 'features/filters/MechanicsFilters';
 import RaceFilters from 'features/filters/RaceFilters';
 import SetFilters from 'features/filters/SetFilters';
-import RarityFilters from './RarityFilters';
+import RarityFilters from 'features/filters/RarityFilters';
+import styles from 'features/filters/filters-container.module.scss';
 
 export default function Filters() {
   const dispatch = useDispatch();
   const {
-    availableCardClasses,
     availableCardMechanics,
     availableCardRaces,
     availableCardRarities,
@@ -69,14 +66,8 @@ export default function Filters() {
   ]);
 
   return (
-    <Component>
-      <ClassFilters
-        active={selectedCardClass}
-        data={availableCardClasses}
-        onClick={event => dispatch(selectClass(event.target.value))}
-        onChange={selectedOption => dispatch(selectClass(selectedOption))}
-      />
-      <RaceFilters
+    <div className={styles.component}>
+      {/* <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}
         onChange={selectedOption => dispatch(selectRace(selectedOption))}
@@ -100,17 +91,7 @@ export default function Filters() {
         active={selectedEnergyFilter}
         onClick={event => dispatch(selectEnergy(event.target.value))}
         onChange={selectedOption => dispatch(selectEnergy(selectedOption))}
-      />
-    </Component>
+      /> */}
+    </div>
   );
 }
-
-const Component = styled.div`
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  width: 100%;
-  position: relative;
-`;

@@ -48,7 +48,7 @@ export default function Card({
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `url(images/sets/${set}/${cardId}-CARD.jpg)`;
+      : `url(/images/sets/${set}/${cardId}-CARD.jpg)`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -125,7 +125,7 @@ export default function Card({
             <img
               alt=""
               className={`card__attack__badge`}
-              src={`images/card-assets/ic_sword.png`}
+              src={`/images/card-assets/ic_sword.png`}
             />
           </div>
           <div className={'card__health'} data-value={health}>
@@ -133,7 +133,7 @@ export default function Card({
             <img
               alt=""
               className={`card__health__badge`}
-              src={`images/card-assets/ic_shield.png`}
+              src={`/images/card-assets/ic_shield.png`}
             />
           </div>
         </React.Fragment>
@@ -142,7 +142,7 @@ export default function Card({
       <img
         alt=""
         className={`card__rarity__gem`}
-        src={`images/gems/Gem_Rarity_${replaceConstant(
+        src={`/images/gems/Gem_Rarity_${replaceConstant(
           rarity
         ).toUpperCase()}.png`}
       />
@@ -151,12 +151,12 @@ export default function Card({
         <img
           alt=""
           className={`card__type__image`}
-          src={`images/card-assets/Card_Type--${type.toUpperCase()}.png`}
+          src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
         />
         <img
           alt=""
           className={`card__type__image__badge`}
-          src={`images/card-assets/Card_Type_Board.png`}
+          src={`/images/card-assets/Card_Type_Board.png`}
         />
       </div>
 
@@ -178,13 +178,13 @@ export default function Card({
         <img
           alt=""
           className={`card__base__image`}
-          src={`images/cards/front/GOLDEN.png`}
+          src={`/images/cards/front/GOLDEN.png`}
         />
       ) : (
         <img
           alt=""
           className={`card__base__image`}
-          src={`images/cards/front/${replaceConstant(
+          src={`/images/cards/front/${replaceConstant(
             rarity
           ).toUpperCase()}.png`}
         />

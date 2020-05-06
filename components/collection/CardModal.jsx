@@ -29,9 +29,12 @@ export default function CardModal({
   }
 
   return (
-    <Modal
-      className={modalObject !== null ? 'open' : ''}
+    <div
+      className={modalObject !== null ? 'card__modal open' : 'card__modal'}
       onClick={() => handleTooltipClick(null)}
+      onKeyPress={() => handleTooltipClick(null)}
+      role="button"
+      tabIndex={0}
     >
       {modalObject !== null ? (
         <React.Fragment>
@@ -104,10 +107,10 @@ export default function CardModal({
                 ) : null}
               </div>
               <div className="info magictime vanishIn">
-                <div className="text__value">
+                <div className="text-value">
                   <h2 className="name">{modalObject.name}</h2>
                 </div>
-                <div className="text__value">
+                <div className="text-value">
                   <p
                     className="flavor"
                     dangerouslySetInnerHTML={createMarkup(
@@ -123,15 +126,15 @@ export default function CardModal({
                     {modalObject.mechanics.map((m, i) => {
                       return (
                         <div className="mechanic" key={i}>
-                          <div className="text__value mechanics">
-                            <img
+                          <div className="text-value mechanics">
+                            {/* <img
                               alt=""
                               className={`icon`}
                               src={`assets/icons/Mechanic-${m.replace(
                                 /%/g,
                                 ''
                               )}.png`}
-                            />
+                            /> */}
                             <span>{replaceConstant(m)}</span>
                           </div>
                           <p className="mechanics mechanics__description">
@@ -145,20 +148,24 @@ export default function CardModal({
                 <div className="info__list">
                   <ul>
                     <li>
-                      <strong className="text__value">Type:</strong>{' '}
+                      <strong className="text-value">ID:</strong>{' '}
+                      {modalObject.id}
+                    </li>
+                    <li>
+                      <strong className="text-value">Type:</strong>{' '}
                       {modalObject.type}
                     </li>
                     <li>
-                      <strong className="text__value">Set:</strong>{' '}
+                      <strong className="text-value">Set:</strong>{' '}
                       <span>{replaceConstant(modalObject.set)}</span>
                     </li>
                     <li>
-                      <strong className="text__value">Rarity:</strong>{' '}
+                      <strong className="text-value">Rarity:</strong>{' '}
                       <span>{replaceConstant(modalObject.rarity)}</span>
                     </li>
                     {modalObject.playRequirements && (
                       <li>
-                        <strong className="text__value">
+                        <strong className="text-value">
                           Play Requirements:
                         </strong>{' '}
                         {modalObject.playRequirements}
@@ -166,11 +173,11 @@ export default function CardModal({
                     )}
                     {modalObject.entourage && (
                       <li {...hoverProps} aria-describedby="overlay">
-                        <strong className="text__value">Entourage:</strong>{' '}
+                        <strong className="text-value">Entourage:</strong>{' '}
                         <span>{modalObject.entourage}</span>
                         {modalObject.entourage !== null ? (
                           database.find(o => o.id === modalObject.entourage) ? (
-                            <EntourageCardWrapper
+                            <div
                               className={[
                                 'entourage-card',
                                 isHovering
@@ -185,37 +192,37 @@ export default function CardModal({
                                   o => o.id === modalObject.entourage
                                 )}
                               />
-                            </EntourageCardWrapper>
+                            </div>
                           ) : null
                         ) : null}
                       </li>
                     )}
                     {modalObject.targetingArrowText && (
                       <li>
-                        <strong className="text__value">Targeting Text:</strong>{' '}
+                        <strong className="text-value">Targeting Text:</strong>{' '}
                         {replaceConstant(modalObject.targetingArrowText)}
                       </li>
                     )}
                     {modalObject.howToEarn && (
                       <li>
-                        <strong className="text__value">How to Earn:</strong>{' '}
+                        <strong className="text-value">How to Earn:</strong>{' '}
                         {modalObject.howToEarn}
                       </li>
                     )}
                     {modalObject.collectible && (
                       <li>
-                        <strong className="text__value">Collectible</strong>
+                        <strong className="text-value">Collectible</strong>
                       </li>
                     )}
                     {modalObject.elite && (
                       <li>
-                        <strong className="text__value">Elite</strong>
+                        <strong className="text-value">Elite</strong>
                       </li>
                     )}
                   </ul>
                   {modalObject.artist && (
                     <div className="artist">
-                      <strong className="text__value">Artist:</strong>{' '}
+                      <strong className="text-value">Artist:</strong>{' '}
                       <a
                         href={modalObject.artist}
                         target="_blank"
@@ -227,7 +234,7 @@ export default function CardModal({
                   )}
                   {modalObject.description && (
                     <div className="description">
-                      <strong className="text__value">Description</strong>{' '}
+                      <strong className="text-value">Description</strong>{' '}
                       <div
                         className="description__text"
                         dangerouslySetInnerHTML={createMarkup(
@@ -242,7 +249,7 @@ export default function CardModal({
           </div>
         </React.Fragment>
       ) : null}
-    </Modal>
+    </div>
   );
 }
 
@@ -251,212 +258,3 @@ CardModal.propTypes = {
   handleTooltipClick: PropTypes.func,
   modalObject: PropTypes.object
 };
-
-const Modal = styled.div`
-  animation-duration: 600ms;
-  display: flex;
-  align-items: flex-start;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  overflow: hidden;
-  padding: 50px 30px;
-  background: rgba(0, 0, 0, 0.875);
-  opacity: 0;
-  transition: opacity 150ms linear;
-  user-select: none;
-
-  .modal__dialog {
-    animation-duration: 400ms;
-    position: relative;
-    box-sizing: border-box;
-    margin: auto;
-    width: 75vw;
-    max-width: 900px !important;
-    background: none;
-    opacity: 0;
-    transform: translateY(-100px);
-    transition: 500ms linear;
-    transition-property: opacity, transform;
-    padding: 30px 30px;
-    cursor: default;
-  }
-
-  &.open {
-    opacity: 1;
-    z-index: 9000;
-  }
-
-  &.open .modal__dialog {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .card-wrapper {
-    animation-delay: 400ms;
-    position: relative;
-  }
-
-  .card-wrapper > .card__v3 {
-    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
-    transform: scale(1);
-    z-index: 1;
-
-    @media (min-width: 960px) {
-      transform: scale(1.25);
-    }
-
-    @media (min-width: 1200px) {
-      transform: scale(1.5);
-    }
-  }
-
-  .card-wrapper > .transformed-card {
-    animation-delay: 600ms;
-    position: absolute;
-    z-index: 0;
-    bottom: -4%;
-    left: -25%;
-
-    & > .card__v3 {
-      transform: rotate(-10deg) scale(0.95);
-
-      @media (min-width: 960px) {
-        transform: rotate(-10deg) scale(1.2);
-      }
-
-      @media (min-width: 1200px) {
-        transform: rotate(-10deg) scale(1.475);
-      }
-    }
-  }
-
-  .flex {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-
-    @media (min-width: 960px) {
-      margin-left: 100px;
-    }
-  }
-
-  /* prettier-ignore */
-  .flex > div:nth-child(2) {
-    margin-left: 50px;
-    @media (min-width: 960px) { margin-left: 100px; }
-    @media (min-width: 1200px) { margin-left: 150px; }
-  }
-
-  .info {
-    animation-delay: 50ms;
-    animation-duration: 600ms;
-  }
-
-  .info__list ul {
-    color: white;
-    font-family: sans-serif;
-    padding: 0 0 0 1.25em;
-    text-transform: capitalize;
-  }
-
-  .info__list li {
-    position: relative;
-  }
-
-  .info__list ul li + li {
-    margin-top: 0.465em;
-  }
-
-  .info__list strong {
-    color: #fff649;
-    margin: 0 0.25em 0 0;
-  }
-
-  .info__list strong + span {
-    text-transform: uppercase;
-  }
-
-  .name {
-    font-size: 1.875em;
-    margin: 0 0 0.625em;
-  }
-
-  .flavor {
-    font-size: 1.25em;
-    margin: 0 0 0.875em;
-    opacity: 0.75;
-  }
-
-  .mechanics__wrapper {
-    color: white;
-    font-family: sans-serif;
-  }
-
-  .mechanics {
-    margin: 0 0 0.15em;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .mechanics img {
-    width: 5%;
-    margin-right: 10px;
-  }
-
-  .mechanics.mechanics__description {
-    margin: 0 0 0.875em;
-    max-width: 80%;
-    opacity: 0.75;
-  }
-
-  .artist {
-    margin-top: 1em;
-  }
-
-  .artist a,
-  .info__list a {
-    color: white;
-    cursor: pointer;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
-  .description {
-    margin-top: 1em;
-  }
-
-  .description__text {
-    color: white;
-    font-family: sans-serif;
-    max-width: 80%;
-    opacity: 0.75;
-    margin: 0.25em 0 0;
-    font-size: 0.825em;
-    line-height: 1.35;
-  }
-`;
-
-const EntourageCardWrapper = styled.div`
-  /* visibility: ${p => (p.visible ? 'visible' : 'hidden')}; */
-  pointer-events: none;
-  position: absolute;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  animation-duration: 200ms;
-
-  .card__v3 {
-    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
-  }
-`;

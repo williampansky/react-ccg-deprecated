@@ -28,8 +28,7 @@ export default function TheSiteHeader() {
             <NavbarNav
               data={[
                 { path: '/account', name: 'Account' },
-                { path: '/collection', name: 'Collection' },
-                { path: '/decks', name: 'Decks' }
+                { path: '/collection', name: 'Collection' }
               ]}
             />
             <Link href="/play">

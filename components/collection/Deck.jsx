@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import exists from 'utils/element.exists';
 import replaceConstant from 'utils/replace-constants';
 import DeckItem from 'components/collection/DeckItem';
 
-export default function Deck({ data, length, onClick }) {
-  let { deckId } = useParams();
+export default function Deck({ data, deckId, length, onClick }) {
   const decks = useSelector(state => state.decks);
   const deck = decks[deckId];
   const deckClass = deck && deck.class;
@@ -16,13 +14,13 @@ export default function Deck({ data, length, onClick }) {
   function cardImage(cId, cSet) {
     if (!exists(cId)) return;
     const set = replaceConstant(cSet.replace(/(%)/g, ''));
-    return `url(assets/images/sets/${set}/${cId}-DECK.jpg)`;
+    return `url(/images/sets/${set}/${cId}-DECK.jpg)`;
   }
 
   function classBadge(string) {
     if (!exists(string)) return false;
     const str = string.replace(/(%)/g, '');
-    return `assets/images/classes/${str}/BADGE.png`;
+    return `/images/classes/${str}/BADGE.png`;
   }
 
   return (
@@ -35,7 +33,7 @@ export default function Deck({ data, length, onClick }) {
         ) : null}
         <div className="item">
           <div className="text__label">Deck</div>
-          <div className="text__value">{length}/30</div>
+          <div className="text-value">{length}/30</div>
         </div>
       </Stats>
 
@@ -123,7 +121,7 @@ const Stats = styled.div`
     letter-spacing: 0.03em;
   }
 
-  .text__value {
+  .text-value {
     font-size: 1.5em;
     margin: 4px 0 0;
   }

@@ -33,7 +33,7 @@ export default function EntourageCard({ data }) {
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `url(assets/images/sets/${set}/${cardId}-CARD.jpg)`;
+      : `url(images/sets/${set}/${cardId}-CARD.jpg)`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -49,7 +49,7 @@ export default function EntourageCard({ data }) {
   return (
     <div
       className={[
-        'card__v3',
+        'card',
         IS_MINION ? '--is-minion' : '',
         IS_SPELL ? '--is-spell' : '',
         IS_ITEM ? '--is-item' : '',
@@ -106,7 +106,7 @@ export default function EntourageCard({ data }) {
             <img
               alt=""
               className={`card__attack__badge`}
-              src={`assets/images/ic_sword.png`}
+              src={`images/card-assets/ic_sword.png`}
             />
           </div>
           <div className={'card__health'} data-value={health}>
@@ -114,7 +114,7 @@ export default function EntourageCard({ data }) {
             <img
               alt=""
               className={`card__health__badge`}
-              src={`assets/images/ic_shield.png`}
+              src={`images/card-assets/ic_shield.png`}
             />
           </div>
         </React.Fragment>
@@ -123,19 +123,21 @@ export default function EntourageCard({ data }) {
       <img
         alt=""
         className={`card__rarity__gem`}
-        src={`assets/images/gems/Gem_Rarity_${replaceConstant(rarity)}.png`}
+        src={`images/gems/Gem_Rarity_${replaceConstant(
+          rarity
+        ).toUpperCase()}.png`}
       />
 
       <div className={`card__type__image__wrapper`}>
         <img
           alt=""
           className={`card__type__image`}
-          src={`assets/icons/Card_Type--${type}.png`}
+          src={`images/card-assets/Card_Type--${type.toUpperCase()}.png`}
         />
         <img
           alt=""
           className={`card__type__image__badge`}
-          src={`assets/card-assets/Card_Type_Board.png`}
+          src={`images/card-assets/Card_Type_Board.png`}
         />
       </div>
 
@@ -143,13 +145,15 @@ export default function EntourageCard({ data }) {
         <img
           alt=""
           className={`card__base__image`}
-          src={`assets/images/cards/front/GOLDEN.png`}
+          src={`images/cards/front/GOLDEN.png`}
         />
       ) : (
         <img
           alt=""
           className={`card__base__image`}
-          src={`assets/images/cards/front/${replaceConstant(rarity)}.png`}
+          src={`images/cards/front/${replaceConstant(
+            rarity
+          ).toUpperCase()}.png`}
         />
       )}
     </div>
