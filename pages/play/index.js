@@ -5,6 +5,7 @@ import BoardTicTacToe from '../../components/board';
 import GameTicTacToe from '../../components/game';
 import { Helmet } from 'react-helmet';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 GameTicTacToe.minPlayers = 1;
 
@@ -30,6 +31,7 @@ const LobbyView = () => {
           gameComponents={[{ game: GameTicTacToe, board: BoardTicTacToe }]}
         />
       </main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 };

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import CardCollection from '@/components/collection/CardCollection';
 import Sidebar from '@/components/collection/Sidebar';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Decks() {
   return (
@@ -16,6 +17,7 @@ export default function Decks() {
         <CardCollection />
         <Sidebar />
       </main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 }

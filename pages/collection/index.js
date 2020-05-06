@@ -4,6 +4,7 @@ import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import CardCollection from '@/components/collection/CardCollection';
 import Sidebar from '@/components/collection/Sidebar';
 import Filters from '@/features/filters/Filters.container';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Collection() {
   return (
@@ -18,6 +19,7 @@ export default function Collection() {
         <CardCollection />
         <Sidebar />
       </main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 }

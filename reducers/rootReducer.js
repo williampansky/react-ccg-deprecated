@@ -6,7 +6,7 @@ import databaseSlice from '@/features/database.slice';
 import filtersSlice from '@/features/filters/filters.slice';
 import filteredResultsSlice from '@/features/filtered-results.slice';
 // import routesSlice from 'features/routes.slice';
-// import sidebarSlice from 'features/sidebar/sidebar.slice';
+import siteMobileMenuSlice from 'features/site-mobile-menu/site-mobile-menu.slice';
 import decksSlice from '@/features/decks/decks.slice';
 
 const rootReducer = combineReducers({
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   filteredResults: filteredResultsSlice,
   database: databaseSlice,
   constants: constantsSlice,
-  // sidebar: sidebarSlice,
+  siteMobileMenuActive: siteMobileMenuSlice,
   decks: decksSlice
 });
 

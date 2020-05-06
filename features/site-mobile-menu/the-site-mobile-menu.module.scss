@@ -1,0 +1,50 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/flex';
+
+.component {
+  border: 0;
+  background: black;
+  left: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  max-height: 0%;
+  overflow: hidden;
+  z-index: 500;
+  transition: 200ms ease-in-out;
+
+  a {
+    text-decoration: none;
+    @include display-flex(column nowrap, center, center);
+  }
+
+  &.active {
+    max-height: 100%;
+  }
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  align-items: center;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  justify-content: center;
+  min-height: 80px;
+  padding: 0 15px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}

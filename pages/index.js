@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import Hero from '@/components/site/hero/Hero';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import ThreeColumnCards from '@/components/site/three-column-cards/ThreeColumnCards';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Home({ Component, pageProps }) {
   return (
@@ -17,6 +18,7 @@ export default function Home({ Component, pageProps }) {
         <Hero />
         {/* <ThreeColumnCards /> */}
       </main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 }

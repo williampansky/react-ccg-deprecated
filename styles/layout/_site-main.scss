@@ -1,4 +1,5 @@
 .site__wrapper {
   margin: var(--site-header-height) auto 0;
   width: 100vw;
+  overflow-x: hidden;
 }

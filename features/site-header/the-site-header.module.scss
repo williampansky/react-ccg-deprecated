@@ -85,6 +85,13 @@ a.play__button {
 
 // prettier-ignore
 .offcanvas__toggle {
+  appearance: none;
+  border: 0;
+  background: none;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  height: var(--site-header-height);
   min-height: var(--site-header-height);
   padding: 0 var(--site-global-spacing);
   @include display-flex(column nowrap, center, center);

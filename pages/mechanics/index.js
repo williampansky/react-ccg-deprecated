@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Mechanics() {
   const constants = useSelector(s => s.constants);
@@ -36,6 +37,7 @@ export default function Mechanics() {
           </div>
         </div>
       </main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 }

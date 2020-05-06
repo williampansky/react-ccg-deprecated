@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
+import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Account() {
   return (
@@ -11,6 +12,7 @@ export default function Account() {
       />
       <TheSiteHeader />
       <main className="site__wrapper">Account</main>
+      <TheSiteMobileMenu />
     </React.Fragment>
   );
 }
