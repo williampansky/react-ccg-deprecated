@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 export default function CardGrid({
   addSelectedCardCallback,
-  database,
+  data,
   handleClass,
   handleTooltipClick
 }) {
@@ -14,9 +14,9 @@ export default function CardGrid({
 
   return (
     <div className="card__grid" deckid={query}>
-      {database.map((card, index) => {
+      {data.map(card => {
         return (
-          <div className={handleClass(card)} key={index}>
+          <div className={handleClass(card)} key={card.id}>
             <div
               className="tooltip"
               onClick={() => handleTooltipClick(card)}
@@ -66,14 +66,14 @@ export default function CardGrid({
 
 CardGrid.propTypes = {
   addSelectedCardCallback: PropTypes.func,
-  database: PropTypes.array,
+  data: PropTypes.array,
   handleClass: PropTypes.func,
   handleTooltipClick: PropTypes.func
 };
 
 CardGrid.defaultProps = {
   addSelectedCardCallback: () => {},
-  database: [],
+  data: [],
   handleClass: () => {},
   handleTooltipClick: () => {}
 };

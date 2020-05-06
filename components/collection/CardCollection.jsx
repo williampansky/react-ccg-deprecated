@@ -54,7 +54,7 @@ export default function CardCollection() {
         <div className="grid__wrapper _scrollable card-collection">
           {exists(database) ? (
             <CardGrid
-              database={filteredResults}
+              data={filteredResults}
               // handleClass={handleClass}
               handleTooltipClick={handleTooltipClick}
             />

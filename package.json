@@ -33,6 +33,7 @@
     "react-svg": "^11.0.21",
     "react-transition-group": "^4.3.0",
     "react-use-hover": "^1.0.0",
+    "react-virtualized": "^9.21.2",
     "styled-components": "^5.1.0",
     "superagent": "^5.2.2",
     "uuid": "^8.0.0"
