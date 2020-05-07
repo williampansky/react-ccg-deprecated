@@ -14,6 +14,7 @@ import RaceFilters from 'features/filters/RaceFilters';
 import SetFilters from 'features/filters/SetFilters';
 import RarityFilters from 'features/filters/RarityFilters';
 import styles from 'features/filters/filters-container.module.scss';
+import SearchModal from './SearchModal';
 
 export default function Filters() {
   const dispatch = useDispatch();
@@ -27,11 +28,20 @@ export default function Filters() {
     selectedCardRace,
     selectedCardRarity,
     selectedCardSet,
-    selectedEnergyFilter
+    selectedEnergyFilter,
+    searchValue
   } = useSelector(state => state.filters);
 
   const setDbCallback = useCallback(
-    (cardClass, cardMechanics, cardRace, cardRarity, cardSet, energyFilter) => {
+    (
+      cardClass,
+      cardMechanics,
+      cardRace,
+      cardRarity,
+      cardSet,
+      energyFilter,
+      searchName
+    ) => {
       dispatch(
         setResults({
           cardClass: cardClass,
@@ -39,7 +49,8 @@ export default function Filters() {
           race: cardRace,
           rarity: cardRarity,
           set: cardSet,
-          energyFilter: energyFilter
+          energyFilter: energyFilter,
+          searchName: searchName
         })
       );
     },
@@ -53,7 +64,8 @@ export default function Filters() {
       selectedCardRace,
       selectedCardRarity,
       selectedCardSet,
-      selectedEnergyFilter
+      selectedEnergyFilter,
+      searchValue
     );
   }, [
     selectedCardClass,
@@ -62,11 +74,13 @@ export default function Filters() {
     selectedCardRarity,
     selectedCardSet,
     selectedEnergyFilter,
+    searchValue,
     setDbCallback
   ]);
 
   return (
     <div className={styles.component}>
+      <SearchModal />
       {/* <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}

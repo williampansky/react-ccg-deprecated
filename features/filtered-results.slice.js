@@ -9,7 +9,16 @@ const filteredResultsSlice = createSlice({
   initialState,
   reducers: {
     setResults(state, { payload }) {
-      const { cardClass, mechanics, race, rarity, set, energyFilter } = payload;
+      const {
+        cardClass,
+        mechanics,
+        race,
+        rarity,
+        set,
+        energyFilter,
+        searchName
+      } = payload;
+
       return Object.keys(CARD_DATABASE)
         .map(i => CARD_DATABASE[i])
         .filter(item => !item.isEntourage)
@@ -18,6 +27,11 @@ const filteredResultsSlice = createSlice({
           if (energyFilter === -1) return item;
           else if (energyFilter === 10) return item.cost >= 10;
           else return item.cost === energyFilter;
+        })
+        .filter(item => {
+          if (searchName === null) return item;
+          else
+            return item.name.toLowerCase().includes(searchName.toLowerCase());
         })
         .filter(item => {
           if (set === null) return item;

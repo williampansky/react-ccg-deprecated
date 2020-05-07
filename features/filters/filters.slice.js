@@ -5,6 +5,7 @@ import RACE from 'enums/race.enums';
 import MECHANICS from 'enums/mechanics.enums';
 import SET from 'enums/set.enums';
 import RARITY from 'enums/rarity.enums';
+import exists from '@/utils/element.exists';
 
 let initialState = {
   selectedCardClass: CARDCLASS[0],
@@ -13,6 +14,8 @@ let initialState = {
   selectedCardRarity: null,
   selectedCardSet: null,
   selectedEnergyFilter: -1,
+  searchValue: null,
+  searchModalActive: false,
   availableCardClasses: [
     { _order: 0, label: replaceConstant(CARDCLASS[0]), value: CARDCLASS[0] },
     { _order: 1, label: replaceConstant(CARDCLASS[1]), value: CARDCLASS[1] },
@@ -89,6 +92,22 @@ const filtersSlice = createSlice({
     },
     selectSet(state, { payload }) {
       state.selectedCardSet = payload;
+    },
+    setSearchValue(state, { payload }) {
+      state.searchValue = payload;
+    },
+    setSearchModal(state, { payload }) {
+      state.searchModalActive = payload;
+    },
+    toggleSearchModal(state) {
+      if (exists(document))
+        state.searchModalActive === true
+          ? document.body.classList.remove('noscroll')
+          : document.body.classList.add('noscroll');
+
+      state.searchModalActive === true
+        ? (state.searchModalActive = false)
+        : (state.searchModalActive = true);
     }
   }
 });
@@ -99,6 +118,9 @@ export const {
   selectMechanic,
   selectRace,
   selectRarity,
-  selectSet
+  selectSet,
+  setSearchValue,
+  setSearchModal,
+  toggleSearchModal
 } = filtersSlice.actions;
 export default filtersSlice.reducer;

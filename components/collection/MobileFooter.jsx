@@ -1,12 +1,15 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { ReactSVG } from 'react-svg';
 import { toggleSiteSidebar } from '@/features/site-sidebar/site-sidebar.slice';
+import { toggleSearchModal } from '@/features/filters/filters.slice';
 
 export default function MobileFooter() {
   const dispatch = useDispatch();
   const router = useRouter();
+  const { searchModalActive } = useSelector(s => s.filters);
+  const sidebarActive = useSelector(s => s.siteSidebarActive);
 
   return (
     <React.Fragment>
@@ -15,19 +18,31 @@ export default function MobileFooter() {
           <div>
             <button onClick={() => router.back()}>
               <ReactSVG src="/images/site/icon-uikit-reply.svg" />
+              <span>Back</span>
             </button>
           </div>
           <div>
-            <button>2</button>
+            <button
+              className={searchModalActive ? 'active' : ''}
+              onClick={() => dispatch(toggleSearchModal())}
+            >
+              <ReactSVG src="/images/site/icon-uikit-search.svg" />
+              <span>Search</span>
+            </button>
           </div>
           <div>
             <button>
               <ReactSVG src="/images/site/icon-uikit-settings.svg" />
+              <span>Filters</span>
             </button>
           </div>
           <div>
-            <button onClick={() => dispatch(toggleSiteSidebar())}>
+            <button
+              className={sidebarActive ? 'active' : ''}
+              onClick={() => dispatch(toggleSiteSidebar())}
+            >
               <ReactSVG src="/images/site/icon-uikit-thumbnails.svg" />
+              <span>Sidebar</span>
             </button>
           </div>
         </div>

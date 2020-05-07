@@ -2,13 +2,14 @@
   display: grid;
   margin: 0 auto;
   padding: 30px 0 20px;
-  grid-gap: 40px 30px;
+  grid-gap: 20px 10px;
   grid-template-columns: repeat(
     auto-fill,
     minmax(calc(var(--card-height) / 1.4), 1fr)
   );
 
   @include breakpoint('medium') {
+    grid-gap: 40px 30px;
     padding: 10px 0 20px;
   }
 
@@ -17,6 +18,11 @@
     width: calc(var(--card-height) / 1.4);
     margin: 0 auto 0;
     outline: 0;
+    transform: scale(0.85);
+
+    @include breakpoint('medium') {
+      transform: scale(1);
+    }
   }
 
   & > div .card {

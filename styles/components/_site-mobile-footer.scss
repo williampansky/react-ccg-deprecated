@@ -8,8 +8,12 @@
   padding: 0 15px;
   z-index: 10;
 
+  @include breakpoint('medium') {
+    display: none;
+  }
+
   &:before {
-    border-radius: var(--site-border-radius) 0 0 0;
+    border-radius: 0;
     content: '';
     position: absolute;
     width: 100%;
@@ -38,7 +42,21 @@
     min-height: 60px;
     @include display-flex(column nowrap, center, center);
 
-    svg[data-svg='settings'],
-    svg[data-svg='reply'] { fill: white; }
+    span {
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 0.625em;
+      letter-spacing: 0.095em;
+      text-transform: uppercase;
+    }
+
+    svg { fill: rgba(255, 255, 255, 0.625); }
+    svg rect[stroke='#fff'],
+    svg circle[stroke='#fff'],
+    svg ellipse[stroke='#fff'] { stroke: rgba(255, 255, 255, 0.625); }
+  }
+
+  button.active {
+    background: #222;
   }
 }
