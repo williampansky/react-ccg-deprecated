@@ -21,6 +21,7 @@
   }
 
   .modal__close__button {
+    cursor: pointer;
     appearance: none;
     background: none;
     border: 0;
@@ -30,6 +31,10 @@
     position: absolute;
     right: 0;
     top: 0;
+
+    @include breakpoint('medium') {
+      padding: 40px;
+    }
   }
 
   .modal__dialog {
@@ -231,43 +236,65 @@
       box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
     }
   }
+}
 
-  .search__form {
-    input {
-      border: 0;
-      border-radius: 2px;
-      color: #111;
-      height: 41px;
-      font-family: 'Open Sans', sans-serif;
-      padding: 0 12px;
-      width: 100%;
-    }
+.card__modal .search__form {
+  input {
+    border: 0;
+    border-radius: 2px;
+    color: #111;
+    height: 41px;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0 12px;
+    width: 100%;
+  }
 
-    button {
-      background-color: var(--theme-primary);
-      border-radius: 2px;
-      border: 0;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 800;
-      height: 41px;
-      letter-spacing: 0.15em;
-      line-height: 41px;
-      margin: 0;
-      width: 100%;
-      outline: 0;
-      padding: 0 12px;
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      text-overflow: ellipsis;
-      text-transform: uppercase;
-      transition: background-color 300ms cubic-bezier(0.06, 0.81, 0, 0.98);
-      vertical-align: middle;
-    }
+  button {
+    background-color: var(--theme-primary);
+    border-radius: 2px;
+    border: 0;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 800;
+    height: 41px;
+    letter-spacing: 0.15em;
+    line-height: 41px;
+    margin: 0;
+    width: 100%;
+    outline: 0;
+    padding: 0 12px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    transition: background-color 300ms cubic-bezier(0.06, 0.81, 0, 0.98);
+    vertical-align: middle;
+  }
 
-    & > div {
-      margin: 20px 0;
-    }
+  & > div {
+    position: relative;
+    margin: 20px 0;
+  }
+
+  .search__clear__all {
+    border-radius: 0 2px 2px 0;
+    border-left: 1px solid #bbb;
+    background: #ddd;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 15px;
+    outline: 0;
+    @include display-flex(column nowrap, center, center);
+  }
+
+  .search__clear__all div {
+    height: 14px;
+  }
+
+  .search__clear__all svg line {
+    stroke: #111;
   }
 }
