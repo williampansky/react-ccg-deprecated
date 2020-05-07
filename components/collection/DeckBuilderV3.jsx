@@ -61,6 +61,14 @@ export default function DeckBuilder({ deckId }) {
     return _amount === 2 || elite === true ? 'locked' : '';
   }
 
+  function handleCount(card, db = selectedCards) {
+    const { id } = card;
+    const cardObj = db.find(o => o.id === id);
+    if (!exists(cardObj)) return;
+    const { _amount } = cardObj;
+    return _amount;
+  }
+
   function handleTooltipClick(obj) {
     return setModalObject(obj);
   }
@@ -99,6 +107,7 @@ export default function DeckBuilder({ deckId }) {
                 data={filteredResults}
                 handleClass={handleClass}
                 handleTooltipClick={handleTooltipClick}
+                itemCount={handleCount}
               />
             ) : null
           ) : (

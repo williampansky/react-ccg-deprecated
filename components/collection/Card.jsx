@@ -79,20 +79,21 @@ export default function Card({
         <div className={'text__value'}>{cost}</div>
       </div>
 
-      <div className={'card__image__wrapper'}>
+      {/* <div className={'card__image__wrapper'}>
         <div
           className={'card__image'}
           style={{
             backgroundImage: cardImage(id, set, isGolden, goldenImageSrc)
           }}
         />
-      </div>
+      </div> */}
 
       <div className={'card__name'}>
         <div className={'text__value'} style={fontSize}>
           {name}
         </div>
       </div>
+
       <div className={'card__text'}>
         <p
           className={'text__value'}
@@ -174,7 +175,13 @@ export default function Card({
         })}
       </div> */}
 
-      {isGolden ? (
+      <img
+        alt=""
+        className={`card__base__image`}
+        src={`/card-perf-test4.png`}
+      />
+
+      {/* {isGolden ? (
         <img
           alt=""
           className={`card__base__image`}
@@ -188,7 +195,7 @@ export default function Card({
             rarity
           ).toUpperCase()}.png`}
         />
-      )}
+      )} */}
     </div>
   );
 }
@@ -251,7 +258,7 @@ Card.defaultProps = {
   mechanics: [],
   name: '',
   playRequirements: [],
-  race: '',
+  race: 'MINION',
   rarity: 'FREE',
   set: '%SET_002%',
   sounds: {
@@ -262,7 +269,7 @@ Card.defaultProps = {
   spellDamage: 0,
   targetingArrowText: null,
   text: '',
-  type: null,
+  type: TYPE[1],
   onClick: () => {},
 
   // incoming transformative props

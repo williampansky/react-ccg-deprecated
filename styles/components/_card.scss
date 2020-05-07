@@ -2,7 +2,11 @@
   font-family: 'Carter One', sans-serif;
   position: relative;
   height: var(--card-height);
-  width: calc(var(--card-height) / 1.4);
+  // width: calc(var(--card-height) / 1.4);
+
+  &:focus {
+    outline: 0;
+  }
 
   * {
     user-select: none;
@@ -31,47 +35,79 @@
   }
 
   .card__cost {
-    font-size: 26px;
+    font-size: calc(var(--card-height) / 15.384615385);
     position: absolute;
-    top: 8px;
-    left: 8px;
-    height: 44px;
-    width: 44px;
+    top: calc(var(--card-height) / 50);
+    left: calc(var(--card-height) / 50);
+    height: calc(var(--card-height) / 9.090909091);
+    width: calc(var(--card-height) / 9.090909091);
     z-index: 2;
     @include display-flex(column nowrap, center, center);
+
+    .text__value {
+      top: 1.5px;
+    }
   }
 
   .card__name {
     position: absolute;
-    bottom: 30%;
-    left: 20%;
-    font-size: 14px;
-    width: 60%;
+    bottom: calc(var(--card-height) / 3.333333333);
+    left: calc(var(--card-height) / 7.002188184);
+    font-size: calc(var(--card-height) / 30);
+    width: calc(var(--card-height) / 2.333844834);
     text-align: center;
     z-index: 2;
     @include display-flex(column nowrap, center, center);
-    // prettier-ignore
-    .text__value { top: 0; }
+
+    .text__value {
+      line-height: 0.85;
+      top: -0.5px;
+      white-space: nowrap;
+    }
   }
 
   .card__text {
     position: absolute;
-    font-size: 16px;
+    font-size: calc(var(--card-height) / 25);
     bottom: 0;
     left: 0;
-    height: 130px;
+    height: calc(var(--card-height) / 3.076923077);
     text-align: center;
     width: 100%;
-    padding: 20px 38px 36px;
-    word-spacing: 0.125em;
+    padding: calc(var(--card-height) / 20)
+      calc(var(--card-height) / 8.695652174)
+      calc(var(--card-height) / 11.111111111);
+    word-spacing: calc(var(--card-height) / 200);
     z-index: 2;
     @include display-flex(column nowrap, center, center);
-    // prettier-ignore
-    .text__value { top: 0; }
+
+    .text__value {
+      color: #181403;
+      font-family: 'Arial', sans-serif;
+      font-weight: 600;
+      letter-spacing: calc(var(--card-height) / -833.333333333);
+      top: 0;
+      text-shadow: none;
+    }
   }
 
   .card__text strong {
-    color: #fff649;
+    color: yellow;
+    font-family: 'Carter One', sans-serif;
+    letter-spacing: normal;
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black,
+      0 0 1px black;
   }
 
   .card__text .text__value {
@@ -82,12 +118,12 @@
   .card__type {
     color: white;
     position: absolute;
-    top: 27px;
-    font-size: 12px;
-    left: 60px;
-    width: 58%;
+    top: calc(var(--card-height) / 14.814814815);
+    font-size: calc(var(--card-height) / 33.333333333);
+    left: calc(var(--card-height) / 6.666666667);
+    width: calc(var(--card-height) / 2.414409194);
     text-align: center;
-    letter-spacing: 0.03em;
+    letter-spacing: calc(var(--card-height) / 1111.111111111);
     text-transform: uppercase;
     line-height: 1;
     z-index: 2;
@@ -96,54 +132,54 @@
 
   .card__type__image {
     position: absolute;
-    height: 56%;
+    height: calc(var(--card-height) / 10);
     z-index: 2;
     image-rendering: pixelated;
 
     &__wrapper {
       position: absolute;
-      bottom: 100px;
-      left: -10px;
+      bottom: calc(var(--card-height) / 4.25);
+      left: calc(var(--card-height) / -30);
       z-index: 2;
       @include display-flex(column nowrap, center, center);
     }
 
     &__badge {
-      width: 72px;
+      width: calc(var(--card-height) / 5.55556);
       position: relative;
       image-rendering: pixelated;
-      top: 0.5px;
+      top: 1px;
     }
   }
 
   .card__attack {
-    font-size: 32px;
+    font-size: calc(var(--card-height) / 12.5);
     position: absolute;
-    bottom: -10px;
-    left: -18px;
-    height: 70px;
-    width: 70px;
+    bottom: calc(var(--card-height) / -50);
+    left: calc(var(--card-height) / -26.666666667);
+    height: calc(var(--card-height) / 5.714285714);
+    width: calc(var(--card-height) / 5.714285714);
     z-index: 2;
     @include display-flex(column nowrap, center, center);
 
     .text__value {
-      top: 7.5px;
-      left: 2px;
+      top: calc(var(--card-height) / 53.333333333);
+      left: calc(var(--card-height) / 200);
     }
 
     &__badge {
-      height: 70px;
+      height: calc(var(--card-height) / 5.714285714);
       position: absolute;
     }
   }
 
   .card__health {
-    font-size: 32px;
+    font-size: calc(var(--card-height) / 12.5);
     position: absolute;
-    bottom: -8px;
-    right: -14px;
-    height: 58px;
-    width: 58px;
+    bottom: calc(var(--card-height) / -50);
+    right: calc(var(--card-height) / -30);
+    height: calc(var(--card-height) / 6.896551724);
+    width: calc(var(--card-height) / 6.896551724);
     z-index: 2;
     @include display-flex(column nowrap, center, center);
 
@@ -153,16 +189,17 @@
     }
 
     &__badge {
-      height: 58px;
+      height: calc(var(--card-height) / 6.896551724);
       position: absolute;
     }
   }
 
   .card__rarity__gem {
     position: absolute;
-    height: 44px;
-    top: -11px;
-    left: 43.55%;
+    height: calc(var(--card-height) / 9.090909091);
+    top: calc(var(--card-height) / -36.363636364);
+    left: calc(var(--card-height) / 3.230806452);
+    image-rendering: pixelated;
     z-index: 2;
   }
 
@@ -189,7 +226,7 @@
 
   .card__base__image {
     height: var(--card-height);
-    width: calc(var(--card-height) / 1.4);
+    // width: calc(var(--card-height) / 1.4);
     image-rendering: pixelated;
     position: relative;
     z-index: 1;

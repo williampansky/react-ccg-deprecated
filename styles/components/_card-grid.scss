@@ -1,8 +1,14 @@
 .card__grid {
+  --card-height: 200px;
+
+  @include breakpoint('medium') {
+    --card-height: 400px;
+  }
+
   display: grid;
   margin: 0 auto;
   padding: 0;
-  grid-gap: 20px 10px;
+  grid-gap: 0;
   grid-template-columns: repeat(
     auto-fill,
     minmax(calc(var(--card-height) / 1.4), 1fr)
@@ -129,5 +135,31 @@
       transform: scale(1);
       opacity: 1;
     }
+  }
+
+  .card__item__count {
+    font-size: calc(var(--card-height) / 18.181818182);
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    pointer-events: none;
+    bottom: calc(var(--card-height) / -25);
+    z-index: 1;
+    @include display-flex(column nowrap, center, center);
+
+    // prettier-ignore
+    .text__value {
+      &[data-value='1'] { left: -1px; }
+      &[data-value='2'] { left: -0.5px; }
+    }
+  }
+
+  .card__item__count .card__item__count__border {
+    background: var(--theme-primary);
+    border-radius: 50%;
+    width: calc(var(--card-height) / 10);
+    height: calc(var(--card-height) / 10);
+    @include display-flex(column nowrap, center, center);
   }
 }

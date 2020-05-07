@@ -239,7 +239,7 @@
   margin: 0 auto 60px;
   padding: 20px 0;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill, minmax(40vw, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(35vw, 1fr));
 
   @include breakpoint('medium') {
     margin: 0 auto;
@@ -339,7 +339,7 @@
   }
 
   .class__item .class__badge--wrapper {
-    width: 50%;
+    width: 75%;
     z-index: 1;
     display: flex;
     flex-flow: column nowrap;

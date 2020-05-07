@@ -7,7 +7,8 @@ export default function CardGrid({
   addSelectedCardCallback,
   data,
   handleClass,
-  handleTooltipClick
+  handleTooltipClick,
+  itemCount
 }) {
   const router = useRouter();
   const {
@@ -59,6 +60,15 @@ export default function CardGrid({
               warcryNumber={card.warcryNumber}
               onClick={() => addSelectedCardCallback(card)}
             />
+            {itemCount(card) && (
+              <div className="card__item__count">
+                <div className="card__item__count__border">
+                  <span className="text__value" data-value={itemCount(card)}>
+                    {itemCount(card)}
+                  </span>
+                </div>
+              </div>
+            )}
           </div>
         );
       })}
@@ -71,6 +81,7 @@ CardGrid.propTypes = {
   data: PropTypes.array,
   handleClass: PropTypes.func,
   handleTooltipClick: PropTypes.func
+  // itemCount: PropTypes.number
 };
 
 CardGrid.defaultProps = {
@@ -78,4 +89,5 @@ CardGrid.defaultProps = {
   data: [],
   handleClass: () => {},
   handleTooltipClick: () => {}
+  // itemCount: 0
 };
