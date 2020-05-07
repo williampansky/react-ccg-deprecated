@@ -48,7 +48,7 @@ export default function Card({
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `/images/sets/${set}/${cardId}-CARD.png`;
+      : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -79,14 +79,19 @@ export default function Card({
         <div className={'text__value'}>{cost}</div>
       </div>
 
-      {/* <div className={'card__image__wrapper'}>
-        <div
+      <div className={'card__image__wrapper'}>
+        {/* <div
           className={'card__image'}
           style={{
             backgroundImage: cardImage(id, set, isGolden, goldenImageSrc)
           }}
+        /> */}
+        <img
+          alt={name}
+          className={'card__image'}
+          src={cardImage(id, set, isGolden, goldenImageSrc)}
         />
-      </div> */}
+      </div>
 
       <div className={'card__name'}>
         <div className={'text__value'} style={fontSize}>
@@ -188,18 +193,18 @@ export default function Card({
           src={`/images/cards/front/GOLDEN.png`}
         />
       ) : (
-        <img
-          alt=""
-          className={`card__base__image`}
-          src={cardImage(id, set, isGolden, goldenImageSrc)}
-        />
         // <img
         //   alt=""
         //   className={`card__base__image`}
-        //   src={`/images/cards/front/${replaceConstant(
-        //     rarity
-        //   ).toUpperCase()}.png`}
+        //   src={cardImage(id, set, isGolden, goldenImageSrc)}
         // />
+        <img
+          alt=""
+          className={`card__base__image`}
+          src={`/images/cards/front/${replaceConstant(
+            rarity
+          ).toUpperCase()}.png`}
+        />
       )}
     </div>
   );
