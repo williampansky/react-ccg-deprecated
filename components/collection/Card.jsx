@@ -48,7 +48,7 @@ export default function Card({
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `url(/images/sets/${set}/${cardId}-CARD.jpg)`;
+      : `/images/sets/${set}/${cardId}-CARD.png`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -175,13 +175,13 @@ export default function Card({
         })}
       </div> */}
 
-      <img
+      {/* <img
         alt=""
         className={`card__base__image`}
         src={`/card-perf-test4.png`}
-      />
+      /> */}
 
-      {/* {isGolden ? (
+      {isGolden ? (
         <img
           alt=""
           className={`card__base__image`}
@@ -191,11 +191,16 @@ export default function Card({
         <img
           alt=""
           className={`card__base__image`}
-          src={`/images/cards/front/${replaceConstant(
-            rarity
-          ).toUpperCase()}.png`}
+          src={cardImage(id, set, isGolden, goldenImageSrc)}
         />
-      )} */}
+        // <img
+        //   alt=""
+        //   className={`card__base__image`}
+        //   src={`/images/cards/front/${replaceConstant(
+        //     rarity
+        //   ).toUpperCase()}.png`}
+        // />
+      )}
     </div>
   );
 }

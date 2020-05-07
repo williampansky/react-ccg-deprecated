@@ -80,14 +80,14 @@ CardGrid.propTypes = {
   addSelectedCardCallback: PropTypes.func,
   data: PropTypes.array,
   handleClass: PropTypes.func,
-  handleTooltipClick: PropTypes.func
-  // itemCount: PropTypes.number
+  handleTooltipClick: PropTypes.func,
+  itemCount: PropTypes.func
 };
 
 CardGrid.defaultProps = {
   addSelectedCardCallback: () => {},
   data: [],
   handleClass: () => {},
-  handleTooltipClick: () => {}
-  // itemCount: 0
+  handleTooltipClick: () => {},
+  itemCount: () => {}
 };

@@ -82,7 +82,7 @@
     @include display-flex(column nowrap, center, center);
 
     .text__value {
-      color: #181403;
+      color: rgba(0, 0, 0, 0.75);
       font-family: 'Arial', sans-serif;
       font-weight: 600;
       letter-spacing: calc(var(--card-height) / -833.333333333);
