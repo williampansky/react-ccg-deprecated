@@ -37,7 +37,8 @@ export default function Card({
   type,
   warcryNumber,
   dynamicSpellDamageText,
-  onClick
+  onClick,
+  dev
 }) {
   const IS_MINION = type === TYPE[1] ? true : false;
   const IS_ITEM = type === TYPE[2] ? true : false;
@@ -65,6 +66,7 @@ export default function Card({
     <div
       className={[
         'card',
+        dev ? 'dev' : '',
         IS_MINION ? '--is-minion' : '',
         IS_SPELL ? '--is-spell' : '',
         IS_ITEM ? '--is-item' : '',
@@ -245,7 +247,8 @@ Card.propTypes = {
   type: PropTypes.string,
   warcryNumber: PropTypes.number,
   dynamicSpellDamageText: PropTypes.number,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  dev: PropTypes.bool
 };
 
 Card.defaultProps = {
@@ -281,6 +284,7 @@ Card.defaultProps = {
   text: '',
   type: TYPE[1],
   onClick: () => {},
+  dev: false,
 
   // incoming transformative props
   isGolden: false
