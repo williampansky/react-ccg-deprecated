@@ -193,24 +193,21 @@ export default function Card({
         src={`/card-perf-test4.png`}
       /> */}
 
-      {isGolden ? (
-        <img
-          alt=""
-          className={`card__base__image`}
-          src={`/images/cards/front/GOLDEN.png`}
-        />
-      ) : (
-        // <img
-        //   alt=""
-        //   className={`card__base__image`}
-        //   src={cardImage(id, set, isGolden, goldenImageSrc)}
-        // />
+      {IS_MINION || IS_WEAPON ? (
         <img
           alt=""
           className={`card__base__image`}
           src={`/images/cards/front/${replaceConstant(
             rarity
           ).toUpperCase()}.png`}
+        />
+      ) : (
+        <img
+          alt=""
+          className={`card__base__image`}
+          src={`/images/cards/front/${replaceConstant(
+            rarity
+          ).toUpperCase()}-ALT.png`}
         />
       )}
     </div>

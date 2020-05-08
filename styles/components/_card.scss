@@ -215,19 +215,28 @@
     position: absolute;
     width: calc(var(--card-height) / 1.628293223);
     height: calc(var(--card-height) / 1.739130435);
-    margin: calc(var(--card-height) / 11.111111111)
-      calc(var(--card-height) / 22.222222222) 0 calc(var(--card-height) / 20);
+    margin-top: calc(var(--card-height) / 11.111111111);
+    margin-right: calc(var(--card-height) / 22.222222222);
+    margin-left: calc(var(--card-height) / 20);
+    margin-bottom: 0;
+    // margin: calc(var(--card-height) / 11.111111111)
+    //   calc(var(--card-height) / 22.222222222) 0 calc(var(--card-height) / 20);
     overflow: hidden;
     z-index: 0;
   }
 
+  &.--is-item .card__image__wrapper,
+  &.--is-spell .card__image__wrapper {
+    width: calc(var(--card-height) / 1.505706628);
+    height: calc(var(--card-height) / 1.818181818);
+    margin-top: calc(var(--card-height) / 8.888888889);
+    margin-right: calc(var(--card-height) / 40);
+    margin-left: calc(var(--card-height) / 40);
+    margin-bottom: 0;
+  }
+
   .card__image {
     width: 100%;
-    // height: 100%;
-    // background-position: top center;
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // object-fit: cover;
     position: relative;
     image-rendering: pixelated;
   }
