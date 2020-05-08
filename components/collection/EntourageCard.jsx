@@ -6,6 +6,7 @@ import TYPE from 'enums/type.enums';
 import RACE from 'enums/race.enums';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 import replaceConstant from 'utils/replace-constants';
+import RARITY from '@/enums/rarity.enums';
 
 export default function EntourageCard({ data }) {
   const {
@@ -33,7 +34,7 @@ export default function EntourageCard({ data }) {
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
-      : `url(images/sets/${set}/${cardId}-CARD.jpg)`;
+      : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {
@@ -61,27 +62,33 @@ export default function EntourageCard({ data }) {
       </div>
 
       <div className={'card__image__wrapper'}>
-        <div
-          className={'card__image'}
-          style={{
-            backgroundImage: cardImage(id, set, isGolden, goldenImageSrc)
-          }}
-        />
+        {id && set ? (
+          <img
+            alt={name}
+            className={'card__image'}
+            src={cardImage(id, set, isGolden, goldenImageSrc)}
+          />
+        ) : null}
       </div>
 
-      <div className={'card__name'}>
-        <div className={'text__value'} style={fontSize}>
-          {name}
+      {name ? (
+        <div className={'card__name'}>
+          <div className={'text__value'} style={fontSize}>
+            {name}
+          </div>
         </div>
-      </div>
-      <div className={'card__text'}>
-        <p
-          className={'text__value'}
-          dangerouslySetInnerHTML={createMarkup(
-            cardText(text, dynamicSpellDamageText)
-          )}
-        />
-      </div>
+      ) : null}
+
+      {text ? (
+        <div className={'card__text'}>
+          <p
+            className={'text__value'}
+            dangerouslySetInnerHTML={createMarkup(
+              cardText(text, dynamicSpellDamageText)
+            )}
+          />
+        </div>
+      ) : null}
 
       {IS_MINION ? (
         race !== RACE[0] ? (
@@ -120,38 +127,47 @@ export default function EntourageCard({ data }) {
         </React.Fragment>
       )}
 
-      <img
-        alt=""
-        className={`card__rarity__gem`}
-        src={`images/gems/Gem_Rarity_${replaceConstant(
-          rarity
-        ).toUpperCase()}.png`}
-      />
+      {rarity !== RARITY[0] ? (
+        <img
+          alt=""
+          className={`card__rarity__gem`}
+          src={`/images/gems/Gem_Rarity_${replaceConstant(
+            rarity
+          ).toUpperCase()}.png`}
+        />
+      ) : null}
 
-      <div className={`card__type__image__wrapper`}>
-        <img
-          alt=""
-          className={`card__type__image`}
-          src={`images/card-assets/Card_Type--${type.toUpperCase()}.png`}
-        />
-        <img
-          alt=""
-          className={`card__type__image__badge`}
-          src={`images/card-assets/Card_Type_Board.png`}
-        />
-      </div>
+      {type ? (
+        <div className={`card__type__image__wrapper`}>
+          <img
+            alt=""
+            className={`card__type__image`}
+            src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
+          />
+          <img
+            alt=""
+            className={`card__type__image__badge`}
+            src={`/images/card-assets/Card_Type_Board.png`}
+          />
+        </div>
+      ) : null}
 
       {isGolden ? (
         <img
           alt=""
           className={`card__base__image`}
-          src={`images/cards/front/GOLDEN.png`}
+          src={`/images/cards/front/GOLDEN.png`}
         />
       ) : (
+        // <img
+        //   alt=""
+        //   className={`card__base__image`}
+        //   src={cardImage(id, set, isGolden, goldenImageSrc)}
+        // />
         <img
           alt=""
           className={`card__base__image`}
-          src={`images/cards/front/${replaceConstant(
+          src={`/images/cards/front/${replaceConstant(
             rarity
           ).toUpperCase()}.png`}
         />

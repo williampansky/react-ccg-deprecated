@@ -56,16 +56,19 @@ export default function CardDevelopment() {
       <div className="card__developer">
         <div className="flex">
           <section className="left">
-            {cardsArray.length !== 0 ? (
-              <Select
-                className={'selector'}
-                onChange={selectedOption =>
-                  setSelectedCard(selectedOption.value)
-                }
-                options={cardsArray}
-                width="100%"
-              />
-            ) : null}
+            <div className="margin">
+              <div className="label">Select Card</div>
+              {cardsArray.length !== 0 ? (
+                <Select
+                  className={'selector'}
+                  onChange={selectedOption =>
+                    setSelectedCard(selectedOption.value)
+                  }
+                  options={cardsArray}
+                  width="100%"
+                />
+              ) : null}
+            </div>
           </section>
           <section className="right">
             {CARD !== {} ? (

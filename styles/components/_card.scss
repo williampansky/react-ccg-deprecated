@@ -72,16 +72,19 @@
 
   .card__text {
     position: absolute;
-    font-size: calc(var(--card-height) / 25);
+    font-size: calc(var(--card-height) / 26.666666667);
     bottom: 0;
     left: 0;
     height: calc(var(--card-height) / 3.076923077);
     text-align: center;
+    // letter-spacing: calc(var(--card-height) / -833.333333333);
+    letter-spacing: normal;
     width: 100%;
     padding: calc(var(--card-height) / 20)
       calc(var(--card-height) / 8.695652174)
       calc(var(--card-height) / 11.111111111);
     word-spacing: calc(var(--card-height) / 200);
+    text-transform: none;
     z-index: 2;
     @include display-flex(column nowrap, center, center);
 

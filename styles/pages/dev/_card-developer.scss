@@ -9,16 +9,31 @@
 }
 
 .card__developer .left {
-  padding: 20px;
-  width: 50vw;
+  padding: 40px;
+  width: 35vw;
   min-height: 80vh;
   @include display-flex(column nowrap, center, flex-start);
 }
 
 .card__developer .right {
-  width: 50vw;
+  width: 65vw;
   min-height: 80vh;
   @include display-flex(column nowrap, center, center);
+}
+
+.card__developer .margin {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.card__developer .label {
+  color: white;
+  cursor: default;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  margin: 0 0 6px;
+  user-select: none;
 }
 
 .card__developer .selector {
