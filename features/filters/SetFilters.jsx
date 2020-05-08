@@ -9,10 +9,12 @@ export default function SetFilters({ active, data, onChange }) {
       {/* <div className="label">Sets</div> */}
       <Select
         className={styles.select}
+        id="SetFilters"
+        instanceId="SetFilters"
         isClearable
         isSearchable
         label="Set"
-        menuPlacement="top"
+        menuPlacement="auto"
         onChange={selectedOption =>
           selectedOption === null
             ? onChange(null)

@@ -9,9 +9,11 @@ export default function RaceFilters({ active, data, onChange }) {
       {/* <div className="label">Race</div> */}
       <Select
         className={styles.select}
+        id="RaceFilters"
+        instanceId="RaceFilters"
         isClearable
         isSearchable
-        menuPlacement="top"
+        menuPlacement="auto"
         onChange={selectedOption =>
           selectedOption === null
             ? onChange(null)

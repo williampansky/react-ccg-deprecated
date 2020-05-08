@@ -16,8 +16,10 @@ export default function MechanicsFilters({ active, data, onClick }) {
         closeMenuOnSelect={false}
         components={animatedComponents}
         defaultValue={[]}
+        id="MechanicsFilters"
+        instanceId="MechanicsFilters"
         isMulti
-        menuPlacement="top"
+        menuPlacement="auto"
         onChange={selectedOption => onClick(selectedOption)}
         options={data}
         placeholder="Mechanics"

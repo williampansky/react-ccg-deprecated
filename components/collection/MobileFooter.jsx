@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { ReactSVG } from 'react-svg';
 import { toggleSiteSidebar } from '@/features/site-sidebar/site-sidebar.slice';
-import { toggleSearchModal } from '@/features/filters/filters.slice';
+import {
+  toggleFiltersBar,
+  toggleSearchModal
+} from '@/features/filters/filters.slice';
 
 export default function MobileFooter() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { searchModalActive } = useSelector(s => s.filters);
+  const { filtersBarActive, searchModalActive } = useSelector(s => s.filters);
   const sidebarActive = useSelector(s => s.siteSidebarActive);
 
   return (
@@ -31,7 +34,10 @@ export default function MobileFooter() {
             </button>
           </div>
           <div>
-            <button>
+            <button
+              className={filtersBarActive ? 'active' : ''}
+              onClick={() => dispatch(toggleFiltersBar())}
+            >
               <ReactSVG src="/images/site/icon-uikit-settings.svg" />
               <span>Filters</span>
             </button>

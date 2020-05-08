@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '@/features/filters/energy-filters.module.scss';
 
 export default function EnergySlot({ active, number, value, onClick }) {
   return (
-    <button className={'energy-slot'} onClick={onClick} value={value}>
-      <div className={'text__value--wrapper'}>
+    <button className={styles.energy__slot} onClick={onClick} value={value}>
+      <div className={styles['text__value--wrapper']}>
         <div className={'text__value'} data-value={number}>
           {number === 10 ? `10+` : number}
         </div>
       </div>
 
       {active === -1 ? (
-        <img alt="" src="/images/ui/UI_EnergySlot-Available.png" />
+        <img
+          alt="Slot Available"
+          src="/images/ui/UI_EnergySlot-Available.png"
+        />
       ) : active === number ? (
-        <img alt="" src="/images/ui/UI_EnergySlot-Available.png" />
+        <img
+          alt="Slot Available"
+          src="/images/ui/UI_EnergySlot-Available.png"
+        />
       ) : (
-        <img alt="" src="/images/ui/UI_EnergySlot-Empty.png" />
+        <img alt="Slot Empty" src="/images/ui/UI_EnergySlot-Empty.png" />
       )}
     </button>
   );

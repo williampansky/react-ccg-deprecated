@@ -6,26 +6,38 @@
   border-top: 1px solid rgba(255, 255, 255, 0.165);
   background: #222;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
-  position: relative;
-  min-height: 100px;
-  transform: translateY(100px);
-  transition: transform 400ms var(--animation-transition-cubic);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // min-height: 100px;
+  padding: 20px;
+  // transform: translateY(100%);
+  height: 100%;
+  max-height: 0;
+  transition: 400ms var(--animation-transition-cubic);
+  transition-property: max-height, transform;
+  overflow: hidden;
+  pointer-events: none;
 
   @include breakpoint('medium') {
+    padding: 0;
     max-width: calc(100vw - (300px + 15px));
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    flex-flow: row nowrap;
   }
 
   &.active {
-    transform: translateY(-60px);
-    // z-index: 100;
+    pointer-events: auto;
+    max-height: calc(100% - 80px);
+
+    @include breakpoint('medium') {
+      max-height: 100px;
+      transform: translateY(-60px);
+    }
   }
 }
 
@@ -34,9 +46,13 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  margin: 0 10px;
+  margin: 10px 0;
   height: 40px;
   width: 100%;
+
+  @include breakpoint('medium') {
+    margin: 0 10px;
+  }
 
   .label {
     color: white;
