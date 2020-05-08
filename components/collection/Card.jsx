@@ -6,6 +6,7 @@ import TYPE from 'enums/type.enums';
 import RACE from 'enums/race.enums';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 import replaceConstant from 'utils/replace-constants';
+import RARITY from '@/enums/rarity.enums';
 
 export default function Card({
   artist,
@@ -82,33 +83,33 @@ export default function Card({
       </div>
 
       <div className={'card__image__wrapper'}>
-        {/* <div
-          className={'card__image'}
-          style={{
-            backgroundImage: cardImage(id, set, isGolden, goldenImageSrc)
-          }}
-        /> */}
-        <img
-          alt={name}
-          className={'card__image'}
-          src={cardImage(id, set, isGolden, goldenImageSrc)}
-        />
+        {id && set ? (
+          <img
+            alt={name}
+            className={'card__image'}
+            src={cardImage(id, set, isGolden, goldenImageSrc)}
+          />
+        ) : null}
       </div>
 
-      <div className={'card__name'}>
-        <div className={'text__value'} style={fontSize}>
-          {name}
+      {name ? (
+        <div className={'card__name'}>
+          <div className={'text__value'} style={fontSize}>
+            {name}
+          </div>
         </div>
-      </div>
+      ) : null}
 
-      <div className={'card__text'}>
-        <p
-          className={'text__value'}
-          dangerouslySetInnerHTML={createMarkup(
-            cardText(text, dynamicSpellDamageText)
-          )}
-        />
-      </div>
+      {text ? (
+        <div className={'card__text'}>
+          <p
+            className={'text__value'}
+            dangerouslySetInnerHTML={createMarkup(
+              cardText(text, dynamicSpellDamageText)
+            )}
+          />
+        </div>
+      ) : null}
 
       {IS_MINION ? (
         race !== RACE[0] ? (
@@ -147,26 +148,30 @@ export default function Card({
         </React.Fragment>
       )}
 
-      <img
-        alt=""
-        className={`card__rarity__gem`}
-        src={`/images/gems/Gem_Rarity_${replaceConstant(
-          rarity
-        ).toUpperCase()}.png`}
-      />
+      {rarity !== RARITY[0] ? (
+        <img
+          alt=""
+          className={`card__rarity__gem`}
+          src={`/images/gems/Gem_Rarity_${replaceConstant(
+            rarity
+          ).toUpperCase()}.png`}
+        />
+      ) : null}
 
-      <div className={`card__type__image__wrapper`}>
-        <img
-          alt=""
-          className={`card__type__image`}
-          src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
-        />
-        <img
-          alt=""
-          className={`card__type__image__badge`}
-          src={`/images/card-assets/Card_Type_Board.png`}
-        />
-      </div>
+      {type ? (
+        <div className={`card__type__image__wrapper`}>
+          <img
+            alt=""
+            className={`card__type__image`}
+            src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
+          />
+          <img
+            alt=""
+            className={`card__type__image__badge`}
+            src={`/images/card-assets/Card_Type_Board.png`}
+          />
+        </div>
+      ) : null}
 
       {/* <div className={`card__mechanics__wrapper`}>
         {mechanics.map(m => {
@@ -266,14 +271,14 @@ Card.defaultProps = {
   hideStats: false,
   howToEarn: null,
   howToEarnGolden: null,
-  id: 'CORE_001',
-  imageSrc: 'images/card-image-placeholder.jpg',
+  id: '',
+  imageSrc: '',
   mechanics: [],
   name: '',
   playRequirements: [],
-  race: 'MINION',
-  rarity: 'FREE',
-  set: '%SET_002%',
+  race: '',
+  rarity: RARITY[0],
+  set: '',
   sounds: {
     attackSound: null,
     deathSound: null,
@@ -282,7 +287,7 @@ Card.defaultProps = {
   spellDamage: 0,
   targetingArrowText: null,
   text: '',
-  type: TYPE[1],
+  type: '',
   onClick: () => {},
   dev: false,
 
