@@ -30,8 +30,11 @@ const filteredResultsSlice = createSlice({
         })
         .filter(item => {
           if (searchName === null) return item;
-          else
-            return item.name.toLowerCase().includes(searchName.toLowerCase());
+
+          const searchTerm = searchName.toLowerCase();
+          if (item.id.toLowerCase().includes(searchTerm))
+            return item.id.toLowerCase().includes(searchTerm);
+          else return item.name.toLowerCase().includes(searchTerm);
         })
         .filter(item => {
           if (set === null) return item;

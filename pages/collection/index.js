@@ -6,6 +6,8 @@ import Sidebar from '@/components/collection/Sidebar';
 import Filters from '@/features/filters/Filters.container';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import MobileFooter from '@/components/collection/MobileFooter';
+import DesktopFooter from '@/components/collection/DesktopFooter';
+import SearchModal from '@/features/filters/SearchModal';
 
 export default function Collection() {
   return (
@@ -16,12 +18,14 @@ export default function Collection() {
       />
       <TheSiteHeader />
       <main className="site__wrapper">
-        <Filters />
         <CardCollection />
         <Sidebar />
+        <Filters />
+        <DesktopFooter />
         <MobileFooter />
       </main>
       <TheSiteMobileMenu />
+      <SearchModal />
     </React.Fragment>
   );
 }

@@ -1,9 +1,53 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+@import 'styles/mixins/flex';
+
 .filters__container {
+  border-top: 1px solid rgba(255, 255, 255, 0.165);
+  background: #222;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
   width: 100%;
   position: relative;
+  min-height: 100px;
+  transform: translateY(100px);
+  transition: transform 400ms var(--animation-transition-cubic);
+
+  @include breakpoint('medium') {
+    max-width: calc(100vw - (300px + 15px));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &.active {
+    transform: translateY(-60px);
+    // z-index: 100;
+  }
+}
+
+.select__filter {
+  align-items: flex-start;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin: 0 10px;
+  height: 40px;
+  width: 100%;
+
+  .label {
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Verdana', monospace;
+    font-size: 10px;
+    margin: 0 0 4px;
+    text-align: left;
+  }
+}
+
+.select {
+  width: 100%;
 }

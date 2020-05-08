@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Select from 'react-select';
+import styles from 'features/filters/filters-container.module.scss';
 
 export default function SetFilters({ active, data, onChange }) {
-  return data ? (
-    <Component>
+  return data.length !== 0 ? (
+    <div className={styles.select__filter}>
       {/* <div className="label">Sets</div> */}
       <Select
-        className="select"
+        className={styles.select}
         isClearable
         isSearchable
         label="Set"
@@ -22,7 +22,7 @@ export default function SetFilters({ active, data, onChange }) {
         placeholder="Set"
         width="100%"
       />
-    </Component>
+    </div>
   ) : null;
 }
 
@@ -36,26 +36,3 @@ SetFilters.defaultTypes = {
   data: [],
   onChange: () => {}
 };
-
-const Component = styled.div`
-  align-items: flex-start;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  margin: 0 10px 0 0;
-  height: 40px;
-  width: 100%;
-
-  .label {
-    color: white;
-    text-transform: uppercase;
-    font-family: 'Verdana', monospace;
-    font-size: 10px;
-    margin: 0 0 4px;
-    text-align: left;
-  }
-
-  .select {
-    width: 100%;
-  }
-`;

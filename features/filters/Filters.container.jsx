@@ -14,11 +14,11 @@ import RaceFilters from 'features/filters/RaceFilters';
 import SetFilters from 'features/filters/SetFilters';
 import RarityFilters from 'features/filters/RarityFilters';
 import styles from 'features/filters/filters-container.module.scss';
-import SearchModal from './SearchModal';
 
 export default function Filters() {
   const dispatch = useDispatch();
   const {
+    filtersBarActive,
     availableCardMechanics,
     availableCardRaces,
     availableCardRarities,
@@ -79,9 +79,13 @@ export default function Filters() {
   ]);
 
   return (
-    <div className={styles.component}>
-      <SearchModal />
-      {/* <RaceFilters
+    <div
+      className={[
+        styles.filters__container,
+        filtersBarActive === true ? styles.active : ''
+      ].join(' ')}
+    >
+      <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}
         onChange={selectedOption => dispatch(selectRace(selectedOption))}
@@ -105,7 +109,7 @@ export default function Filters() {
         active={selectedEnergyFilter}
         onClick={event => dispatch(selectEnergy(event.target.value))}
         onChange={selectedOption => dispatch(selectEnergy(selectedOption))}
-      /> */}
+      />
     </div>
   );
 }

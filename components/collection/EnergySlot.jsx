@@ -11,11 +11,11 @@ export default function EnergySlot({ active, number, value, onClick }) {
       </div>
 
       {active === -1 ? (
-        <img alt="" src="assets/images/ui/UI_EnergySlot-Available.png" />
+        <img alt="" src="/images/ui/UI_EnergySlot-Available.png" />
       ) : active === number ? (
-        <img alt="" src="assets/images/ui/UI_EnergySlot-Available.png" />
+        <img alt="" src="/images/ui/UI_EnergySlot-Available.png" />
       ) : (
-        <img alt="" src="assets/images/ui/UI_EnergySlot-Empty.png" />
+        <img alt="" src="/images/ui/UI_EnergySlot-Empty.png" />
       )}
     </button>
   );

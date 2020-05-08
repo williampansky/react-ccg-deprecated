@@ -11,3 +11,8 @@
 @import 'components/!module';
 
 @import 'pages/!module';
+
+.mechanics__value-container {
+  max-height: 40px;
+  overflow-y: auto;
+}

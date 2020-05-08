@@ -8,6 +8,7 @@ import RARITY from 'enums/rarity.enums';
 import exists from '@/utils/element.exists';
 
 let initialState = {
+  filtersBarActive: false,
   selectedCardClass: CARDCLASS[0],
   selectedCardMechanics: [],
   selectedCardRace: null,
@@ -96,6 +97,14 @@ const filtersSlice = createSlice({
     setSearchValue(state, { payload }) {
       state.searchValue = payload;
     },
+    setFiltersBar(state, { payload }) {
+      state.filtersBarActive = payload;
+    },
+    toggleFiltersBar(state) {
+      state.filtersBarActive === true
+        ? (state.filtersBarActive = false)
+        : (state.filtersBarActive = true);
+    },
     setSearchModal(state, { payload }) {
       state.searchModalActive = payload;
     },
@@ -120,6 +129,8 @@ export const {
   selectRarity,
   selectSet,
   setSearchValue,
+  setFiltersBar,
+  toggleFiltersBar,
   setSearchModal,
   toggleSearchModal
 } = filtersSlice.actions;

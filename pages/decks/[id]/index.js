@@ -7,6 +7,8 @@ import DeckBuilder from '@/components/collection/DeckBuilderV3';
 import Filters from '@/features/filters/Filters.container';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import MobileFooter from '@/components/collection/MobileFooter';
+import DesktopFooter from '@/components/collection/DesktopFooter';
+import SearchModal from '@/features/filters/SearchModal';
 
 export default function Deck() {
   const router = useRouter();
@@ -23,9 +25,11 @@ export default function Deck() {
         <Filters />
         <DeckBuilder deckId={id} />
         <Sidebar deckId={id} />
+        <DesktopFooter />
         <MobileFooter />
       </main>
       <TheSiteMobileMenu />
+      <SearchModal />
     </React.Fragment>
   );
 }
