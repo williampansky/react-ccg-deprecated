@@ -3,9 +3,10 @@
     --card-height: 600px;
   }
 
+  border-radius: var(--card-border-radius);
   font-family: 'Carter One', sans-serif;
-  position: relative;
   height: var(--card-height);
+  position: relative;
   // width: calc(var(--card-height) / 1.4);
 
   &:focus {
@@ -212,6 +213,7 @@
 
   .card__image__wrapper {
     background-color: #191919;
+    border-radius: var(--card-border-radius);
     position: absolute;
     width: calc(var(--card-height) / 1.628293223);
     height: calc(var(--card-height) / 1.739130435);
@@ -235,13 +237,14 @@
     margin-bottom: 0;
   }
 
-  .card__image {
+  .card__image__wrapper .card__image {
     width: 100%;
     position: relative;
     image-rendering: pixelated;
   }
 
   .card__base__image {
+    border-radius: var(--card-border-radius);
     height: var(--card-height);
     // width: calc(var(--card-height) / 1.4);
     image-rendering: pixelated;
