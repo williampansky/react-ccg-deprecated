@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import styles from 'features/filters/filters-container.module.scss';
 
-export default function RaceFilters({ active, data, onChange }) {
+export default function RaceFilters({
+  active,
+  isDesktopOrLaptop,
+  data,
+  onChange
+}) {
   return data.length !== 0 ? (
     <div className={styles.select__filter}>
       {/* <div className="label">Race</div> */}
@@ -13,7 +18,7 @@ export default function RaceFilters({ active, data, onChange }) {
         instanceId="RaceFilters"
         isClearable
         isSearchable
-        menuPlacement="auto"
+        menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption =>
           selectedOption === null
             ? onChange(null)
@@ -30,6 +35,7 @@ export default function RaceFilters({ active, data, onChange }) {
 RaceFilters.propTypes = {
   active: PropTypes.string,
   data: PropTypes.array,
+  isDesktopOrLaptop: PropTypes.bool,
   onChange: PropTypes.func
 };
 

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import {
   selectEnergy,
   selectMechanic,
@@ -31,6 +32,8 @@ export default function Filters() {
     selectedEnergyFilter,
     searchValue
   } = useSelector(state => state.filters);
+
+  const isDesktopOrLaptop = useMediaQuery({ query: '(min-width: 1200px)' });
 
   const setDbCallback = useCallback(
     (
@@ -85,28 +88,36 @@ export default function Filters() {
         filtersBarActive === true ? styles.active : ''
       ].join(' ')}
     >
+      <h3 className={styles.title}>
+        <span className="text__value">Filters</span>
+      </h3>
       <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}
+        isDesktopOrLaptop={isDesktopOrLaptop}
         onChange={selectedOption => dispatch(selectRace(selectedOption))}
       />
       <MechanicsFilters
         active={selectedCardMechanics}
         data={availableCardMechanics}
+        isDesktopOrLaptop={isDesktopOrLaptop}
         onClick={selectedOption => dispatch(selectMechanic(selectedOption))}
       />
       <SetFilters
         active={selectedCardSet}
         data={availableCardSets}
+        isDesktopOrLaptop={isDesktopOrLaptop}
         onChange={selectedOption => dispatch(selectSet(selectedOption))}
       />
       <RarityFilters
         active={selectedCardRarity}
         data={availableCardRarities}
+        isDesktopOrLaptop={isDesktopOrLaptop}
         onChange={selectedOption => dispatch(selectRarity(selectedOption))}
       />
       <EnergyFilters
         active={selectedEnergyFilter}
+        isDesktopOrLaptop={isDesktopOrLaptop}
         onClick={event => dispatch(selectEnergy(event.target.value))}
         onChange={selectedOption => dispatch(selectEnergy(selectedOption))}
       />

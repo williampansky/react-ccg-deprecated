@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import { useMediaQuery } from 'react-responsive';
 import Select from 'react-select';
 import EnergySlot from '@/components/collection/EnergySlot';
-import styles from '@/features/filters/energy-filters.module.scss';
 
 export default function EnergyFilters({ active, onClick, onChange }) {
   const isBigScreen = useMediaQuery({ query: '(min-width: 1200px)' });
 
   return (
-    <div className={styles.component}>
+    <div className="energy__filters">
       {isBigScreen ? (
-        <div className={styles.flex}>
+        <div className="flex">
           <EnergySlot
             active={active}
             number={`All`}
@@ -32,9 +31,9 @@ export default function EnergyFilters({ active, onClick, onChange }) {
           })}
         </div>
       ) : (
-        <div className={styles.select__wrapper}>
+        <div className="select__wrapper">
           <Select
-            className={styles.select}
+            className="select"
             id="EnergyFilters"
             instanceId="EnergyFilters"
             isClearable

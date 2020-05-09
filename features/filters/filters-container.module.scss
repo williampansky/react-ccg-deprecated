@@ -33,12 +33,19 @@
   &.active {
     pointer-events: auto;
     max-height: calc(100% - 80px);
+    overflow: visible;
 
     @include breakpoint('medium') {
       max-height: 100px;
       transform: translateY(-60px);
     }
   }
+}
+
+// prettier-ignore
+.title {
+  display: block;
+  @include breakpoint('medium') { display: none; }
 }
 
 .select__filter {

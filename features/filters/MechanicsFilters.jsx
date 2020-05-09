@@ -4,7 +4,12 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import styles from 'features/filters/filters-container.module.scss';
 
-export default function MechanicsFilters({ active, data, onClick }) {
+export default function MechanicsFilters({
+  active,
+  isDesktopOrLaptop,
+  data,
+  onClick
+}) {
   const animatedComponents = makeAnimated();
 
   return data.length !== 0 ? (
@@ -19,7 +24,7 @@ export default function MechanicsFilters({ active, data, onClick }) {
         id="MechanicsFilters"
         instanceId="MechanicsFilters"
         isMulti
-        menuPlacement="auto"
+        menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption => onClick(selectedOption)}
         options={data}
         placeholder="Mechanics"
@@ -32,6 +37,7 @@ export default function MechanicsFilters({ active, data, onClick }) {
 MechanicsFilters.propTypes = {
   active: PropTypes.array,
   data: PropTypes.array,
+  isDesktopOrLaptop: PropTypes.bool,
   onClick: PropTypes.func
 };
 
