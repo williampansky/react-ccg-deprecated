@@ -40,7 +40,7 @@ export default function Heros() {
                   <a className="hero__item">
                     <span className="hero__image">
                       <Img
-                        alt={name}
+                        alt={`${name} by ${artist}`}
                         src={`/images/heros/${symbol.replace(
                           /(%)/g,
                           ''
