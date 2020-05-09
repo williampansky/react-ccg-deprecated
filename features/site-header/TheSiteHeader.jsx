@@ -21,13 +21,13 @@ export default function TheSiteHeader() {
             <Link href="/">
               <a className={styles.logo}>HSclone</a>
               {/* <a className={styles.logo}>
-                <img alt="HSclone" src="images/site/logo.png" />
+                <img alt="HSclone" src="/images/site/logo.png" />
               </a> */}
             </Link>
             <NavbarNav
               data={[
                 { path: '/about', name: 'About' },
-                { path: '/mechanics', name: 'Mechanics' },
+                { path: '/info', name: 'Game Info' },
                 { path: '/news', name: 'News' },
                 { path: '/store', name: 'Store' }
               ]}
@@ -37,6 +37,7 @@ export default function TheSiteHeader() {
             <NavbarNav
               data={[
                 { path: '/account', name: 'Account' },
+                { path: '/heros', name: 'Heros' },
                 { path: '/collection', name: 'Collection' }
               ]}
             />
