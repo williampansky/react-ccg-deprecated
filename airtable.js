@@ -37,6 +37,46 @@ base
     fs.writeFileSync('./enums/CONSTANTS.json', constants);
   });
 
+// HEROS
+base
+  .table('HEROS')
+  .list({
+    maxRecords: 200
+  })
+  .then(resp => {
+    const map = resp.records.map(item => {
+      const { fields } = item;
+      const {
+        name,
+        symbol,
+        archetype,
+        ability1,
+        ability2,
+        ability3,
+        lore,
+        artist,
+        slug
+      } = fields;
+
+      return {
+        [symbol]: {
+          name,
+          symbol,
+          archetype,
+          ability1,
+          ability2,
+          ability3,
+          lore,
+          artist,
+          slug
+        }
+      };
+    });
+
+    const heros = JSON.stringify(Object.assign({}, ...map));
+    fs.writeFileSync('./enums/HEROS.json', heros);
+  });
+
 // CORE
 base
   .table('GAME')

@@ -1,0 +1,23 @@
+/**
+ * A Facebook-style loading placeholder animation.
+ * 
+ * @mixin animation-swipe
+ * @see [CodePen]{@link https://codepen.io/pjosh/pen/kXwaWZ}
+ */
+ @mixin animation-swipe {
+  @keyframes placeHolderSwipe {
+      from { background-position: -1000px 0; }
+      to { background-position: 1000px 0; }
+  }
+
+    animation: placeHolderSwipe 4s infinite linear forwards;
+    background-repeat: no-repeat;
+    background: #ebebec;
+    background-image: linear-gradient(
+        to right,
+        #ebebec 0%,
+        #e0e0e2 20%,
+        #ebebec 40%,
+        #ebebec 100%
+    );
+}

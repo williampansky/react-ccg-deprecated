@@ -21,6 +21,8 @@
   }
 }
 
+// prettier-ignore
 .content__container {
-  background-color: #e4e0da;
+  background-color: none;
+  &.background--light { background-color: #e4e0da; }
 }

@@ -19,7 +19,7 @@ export default function Mechanics() {
           <h1 className="text__value">Mechanics</h1>
         </div>
         <div className="container">
-          <div className="content__container">
+          <div className="content__container background--light">
             <dl>
               {constants.map(obj => {
                 const { description, name, symbol, type } = obj;

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
+import Link from 'next/link';
+import Img from 'react-image';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
 export default function Heros() {
-  const constants = useSelector(s => s.constants);
+  const heros = useSelector(s => s.heros);
 
   return (
     <React.Fragment>
@@ -14,26 +16,45 @@ export default function Heros() {
         meta={[{ property: 'og:title', content: 'Heros' }]}
       />
       <TheSiteHeader />
-      <main className="site__wrapper page__mechanics">
+      <main className="site__wrapper page__heros">
         <div className="hero">
           <h1 className="text__value">Heros</h1>
         </div>
         <div className="container">
-          <div className="content__container">
-            <dl>
-              {constants.map(obj => {
-                const { description, name, symbol, type } = obj;
-                return type === 'HERO' ? (
-                  <section id={symbol} key={symbol}>
-                    <dt>
-                      <h3 className="text__value">{name}</h3>
-                      {/* <span>{type}</span> */}
-                    </dt>
-                    <dd>{description ? description : 'Coming soon...'}</dd>
-                  </section>
-                ) : null;
-              })}
-            </dl>
+          <div className="card__grid">
+            {heros.map(obj => {
+              const {
+                name,
+                symbol,
+                archetype,
+                ability1,
+                ability2,
+                ability3,
+                lore,
+                artist,
+                slug
+              } = obj;
+
+              return (
+                <Link key={symbol} href="heros/[slug]" as={`/heros/${slug}`}>
+                  <a className="hero__item">
+                    <span className="hero__image">
+                      <Img
+                        alt={name}
+                        src={`/images/heros/${symbol.replace(
+                          /(%)/g,
+                          ''
+                        )}/DEFAULT.jpg`}
+                        loader={<div className="hero__image__loader" />}
+                      />
+                    </span>
+                    <span className="hero__name">
+                      <span className="text__value">{name}</span>
+                    </span>
+                  </a>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </main>
