@@ -3,6 +3,7 @@
     "jsx": "react",
     "target": "es2017",
     "baseUrl": "./",
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["./*"],
       "components/*": ["./components/*"],
