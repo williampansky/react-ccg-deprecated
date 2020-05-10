@@ -37,7 +37,7 @@ export default function CardModal({
       tabIndex={0}
     >
       <button className="modal__close__button">
-        <ReactSVG src="/images/site/logo-uikit-close.svg" />
+        <ReactSVG src="/images/site/icon-uikit-close.svg" />
       </button>
       {modalObject !== null ? (
         <React.Fragment>

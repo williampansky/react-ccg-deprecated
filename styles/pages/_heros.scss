@@ -3,19 +3,27 @@
   min-height: calc(100vh - var(--site-header-height));
   padding: 0 0 100px;
   width: 100vw;
+}
 
-  .hero {
-    font-size: 1.65em;
-    padding: 2em 0;
-    text-align: center;
+.page__heros .card__grid {
+  grid-gap: 20px;
 
-    @include breakpoint('medium') {
-      font-size: 2.65em;
-    }
+  @include breakpoint('medium') {
+    grid-gap: 0;
+  }
+}
 
-    h1 {
-      margin: 0;
-    }
+.page__heros .hero {
+  font-size: 1.65em;
+  padding: 2em 0;
+  text-align: center;
+
+  @include breakpoint('medium') {
+    font-size: 2.65em;
+  }
+
+  h1 {
+    margin: 0;
   }
 }
 
@@ -33,7 +41,9 @@
   // prettier-ignore
   .hero__image,
   .hero__image__loader {
-    height: 360px;
+    height: 200px;
+    @include breakpoint('small') { height: 260px; }
+    @include breakpoint('medium') { height: 360px; }
     @include breakpoint('xlarge') { height: 420px; }
   }
 

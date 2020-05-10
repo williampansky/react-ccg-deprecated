@@ -34,7 +34,7 @@ export default function SearchModal() {
         className="modal__close__button"
         onClick={() => dispatch(toggleSearchModal())}
       >
-        <ReactSVG src="/images/site/logo-uikit-close.svg" />
+        <ReactSVG src="/images/site/icon-uikit-close.svg" />
       </button>
       <div className="modal__dialog">
         <form
@@ -49,7 +49,7 @@ export default function SearchModal() {
               role="button"
               tabIndex={0}
             >
-              <ReactSVG src="/images/site/logo-uikit-close.svg" />
+              <ReactSVG src="/images/site/icon-uikit-close.svg" />
             </div>
             <input
               onChange={event => setValue(event.target.value)}
