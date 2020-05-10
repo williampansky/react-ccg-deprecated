@@ -6,7 +6,6 @@
   justify-content: center;
   margin: 10px 0;
   user-select: none;
-  height: 40px;
   width: 100%;
 
   @include breakpoint('medium') {
@@ -22,8 +21,12 @@
 .energy__filters .flex {
   align-items: center;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: center;
+
+  @include breakpoint('medium') {
+    flex-flow: row nowrap;
+  }
 }
 
 .energy__filters .energy__slot {
@@ -39,20 +42,20 @@
   position: relative;
   transition: all 400ms cubic-bezier(0.19, 1, 0.22, 1);
   background: none;
-  padding: 0;
+  padding: 8px;
   margin: 0;
   border: 0;
 
-  * {
-    pointer-events: none;
+  @include breakpoint('small') {
+    padding: 0 2px;
   }
 
-  & + .energy__slot {
-    margin-left: 4px;
+  @include breakpoint('hd') {
+    padding: 0 8px;
+  }
 
-    @media (min-width: 1920px) {
-      margin-left: 6px;
-    }
+  * {
+    pointer-events: none;
   }
 
   &:active,
@@ -78,11 +81,16 @@
 }
 
 .energy__filters .energy__slot img {
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   z-index: 1;
 
-  @media (min-width: 1920px) {
+  @include breakpoint('small') {
+    height: 30px;
+    width: 30px;
+  }
+
+  @include breakpoint('hd') {
     height: 40px;
     width: 40px;
   }

@@ -5,13 +5,14 @@ import Select from 'react-select';
 import EnergySlot from '@/components/collection/EnergySlot';
 
 export default function EnergyFilters({ active, onClick, onChange }) {
+  const USE_SELECTS = false;
   const isBigScreen = useMediaQuery(
     { minDeviceWidth: 1200 },
     { deviceWidth: 1200 },
     { query: '(min-width: 1200px)' }
   );
 
-  return (
+  return USE_SELECTS ? (
     <div className="energy__filters">
       {isBigScreen ? (
         <div className="flex">
@@ -41,7 +42,7 @@ export default function EnergyFilters({ active, onClick, onChange }) {
             id="EnergyFilters"
             instanceId="EnergyFilters"
             isClearable
-            isSearchable
+            isSearchable={isBigScreen ? true : false}
             menuPlacement="top"
             onChange={selectedOption =>
               selectedOption === null
@@ -65,6 +66,29 @@ export default function EnergyFilters({ active, onClick, onChange }) {
           />
         </div>
       )}
+    </div>
+  ) : (
+    <div className="energy__filters">
+      <div className="flex">
+        <EnergySlot
+          active={active}
+          number={`All`}
+          onClick={e => onClick(e)}
+          value={-1}
+        />
+
+        {Array.from(Array(11)).map((_, index) => {
+          return (
+            <EnergySlot
+              active={active}
+              key={index}
+              number={index}
+              onClick={e => onClick(e)}
+              value={index}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

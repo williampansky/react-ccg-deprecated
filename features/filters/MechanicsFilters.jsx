@@ -24,6 +24,7 @@ export default function MechanicsFilters({
         id="MechanicsFilters"
         instanceId="MechanicsFilters"
         isMulti
+        isSearchable={isDesktopOrLaptop ? true : false}
         menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption => onClick(selectedOption)}
         options={data}

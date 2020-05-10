@@ -17,7 +17,7 @@ export default function SetFilters({
         id="SetFilters"
         instanceId="SetFilters"
         isClearable
-        isSearchable
+        isSearchable={isDesktopOrLaptop ? true : false}
         label="Set"
         menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption =>

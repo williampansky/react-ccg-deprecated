@@ -17,7 +17,7 @@ export default function RaceFilters({
         id="RaceFilters"
         instanceId="RaceFilters"
         isClearable
-        isSearchable
+        isSearchable={isDesktopOrLaptop ? true : false}
         menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption =>
           selectedOption === null

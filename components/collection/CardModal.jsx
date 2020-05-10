@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { ReactSVG } from 'react-svg';
 import useHover from 'react-use-hover';
+import ReactTooltip from 'react-tooltip';
 import Card from 'components/collection/Card';
 import createMarkup from 'utils/createMarkup';
 import EntourageCard from 'components/collection/EntourageCard';
@@ -129,20 +130,18 @@ export default function CardModal({
                     {modalObject.mechanics.map((m, i) => {
                       return (
                         <div className="mechanic" key={i}>
-                          <div className="text__value mechanics">
-                            {/* <img
-                              alt=""
-                              className={`icon`}
-                              src={`assets/icons/Mechanic-${m.replace(
-                                /%/g,
-                                ''
-                              )}.png`}
-                            /> */}
+                          <div
+                            className="text__value mechanics"
+                            data-for={m}
+                            data-tip
+                          >
                             <span>{replaceConstant(m)}</span>
                           </div>
-                          <p className="mechanics mechanics__description">
-                            <small>{getConstantDescription(m)}</small>
-                          </p>
+                          <ReactTooltip id={m} effect="solid" place="top">
+                            <p className="mechanics__description">
+                              {getConstantDescription(m)}
+                            </p>
+                          </ReactTooltip>
                         </div>
                       );
                     })}

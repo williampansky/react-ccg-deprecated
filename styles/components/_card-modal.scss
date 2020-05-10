@@ -171,14 +171,31 @@
   .mechanics__wrapper {
     color: white;
     font-family: sans-serif;
+    @include display-flex(row wrap, center, flex-start);
+  }
+
+  .mechanic {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background: #49b6fe;
+    padding: 4px 8px 4px 7px;
+    border-radius: 2px;
+    user-select: none;
+  }
+
+  .mechanic + .mechanic {
+    margin-left: 10px;
   }
 
   .mechanics {
-    margin: 0 0 0.15em;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     justify-content: flex-start;
+    top: 0;
+    text-align: center;
   }
 
   .mechanics img {
@@ -186,10 +203,28 @@
     margin-right: 10px;
   }
 
-  .mechanics.mechanics__description {
-    margin: 0 0 0.875em;
-    max-width: 80%;
-    opacity: 0.75;
+  .mechanics__wrapper [data-id='tooltip'] {
+    $bg: #49b6fe;
+    background: $bg;
+    color: mix(black, $bg, 70%);
+    width: 240px;
+    text-align: center;
+
+    &:after {
+      border-top-color: $bg;
+    }
+
+    &.show {
+      opacity: 1;
+      text-align: center;
+    }
+  }
+
+  .mechanics__description {
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    margin: 0;
   }
 
   .artist {
