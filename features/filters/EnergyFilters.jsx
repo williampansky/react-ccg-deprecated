@@ -5,7 +5,11 @@ import Select from 'react-select';
 import EnergySlot from '@/components/collection/EnergySlot';
 
 export default function EnergyFilters({ active, onClick, onChange }) {
-  const isBigScreen = useMediaQuery({ query: '(min-width: 1200px)' });
+  const isBigScreen = useMediaQuery(
+    { minDeviceWidth: 1200 },
+    { deviceWidth: 1200 },
+    { query: '(min-width: 1200px)' }
+  );
 
   return (
     <div className="energy__filters">

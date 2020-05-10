@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 export default function EnergySlot({ active, number, value, onClick }) {
   return (
-    <button className="energy__slot" onClick={onClick} value={value}>
+    <button
+      className="energy__slot"
+      id={`EnergySlot_${number}`}
+      onClick={onClick}
+      value={value}
+    >
       <div className="text__value--wrapper">
         <div className="text__value" data-value={number}>
           {number === 10 ? `10+` : number}
