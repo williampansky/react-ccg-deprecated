@@ -31,6 +31,7 @@ export default function Card({
   rarity,
   set,
   sounds,
+  spellContext,
   spellDamage,
   spellType,
   targetingArrowText,
@@ -167,11 +168,19 @@ export default function Card({
               type
             ).toUpperCase()}.png`}
           />
-          <img
-            alt=""
-            className={`card__type__image__badge`}
-            src={`/images/card-assets/Card_Type_Board.png`}
-          />
+          {IS_WEAPON || spellContext === 'ATTACK' ? (
+            <img
+              alt=""
+              className={`card__type__image__badge`}
+              src={`/images/card-assets/Card_Type_Board-Spiked.png`}
+            />
+          ) : (
+            <img
+              alt=""
+              className={`card__type__image__badge`}
+              src={`/images/card-assets/Card_Type_Board.png`}
+            />
+          )}
         </div>
       ) : null}
 
@@ -244,6 +253,7 @@ Card.propTypes = {
     deathSound: PropTypes.string,
     dropSound: PropTypes.string
   }),
+  spellContext: PropTypes.string,
   spellDamage: PropTypes.number,
   spellType: PropTypes.string,
   targetingArrowText: PropTypes.string,

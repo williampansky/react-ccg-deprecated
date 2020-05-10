@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "fetch": "^1.1.0",
+    "koa-static": "^5.0.0",
     "magic.css": "^1.4.5",
     "mathjs": "^6.6.4",
     "next": "latest",

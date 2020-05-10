@@ -68,6 +68,7 @@ export default function CardModal({
                   rarity={modalObject.rarity}
                   set={modalObject.set}
                   sounds={modalObject.sounds}
+                  spellContext={modalObject.spellContext}
                   spellDamage={modalObject.spellDamage}
                   spellType={modalObject.spellType}
                   targetingArrowText={modalObject.targetingArrowText}
@@ -100,6 +101,7 @@ export default function CardModal({
                       rarity={modalObject.rarity}
                       set={modalObject.set}
                       sounds={modalObject.sounds}
+                      spellContext={modalObject.spellContext}
                       spellDamage={modalObject.spellDamage}
                       spellType={modalObject.spellType}
                       targetingArrowText={modalObject.targetingArrowText}
@@ -155,7 +157,7 @@ export default function CardModal({
                     </li>
                     <li>
                       <strong className="text__value">Type:</strong>{' '}
-                      {modalObject.type}
+                      {replaceConstant(modalObject.type).toUpperCase()}
                     </li>
                     <li>
                       <strong className="text__value">Set:</strong>{' '}

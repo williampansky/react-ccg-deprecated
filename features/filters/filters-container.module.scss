@@ -23,10 +23,11 @@
   transition-property: max-height, transform;
   overflow: hidden;
   pointer-events: none;
+  z-index: 3;
 
   @include breakpoint('medium') {
     padding: 0;
-    max-width: calc(100vw - (300px + 15px));
+    // max-width: calc(100vw - 15px);
     flex-flow: row nowrap;
   }
 

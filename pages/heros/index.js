@@ -22,7 +22,7 @@ export default function Heros() {
         </div>
         <div className="container">
           <div className="card__grid">
-            {heros.map(obj => {
+            {heros.map((obj, idx) => {
               const {
                 name,
                 symbol,
@@ -37,7 +37,10 @@ export default function Heros() {
 
               return (
                 <Link key={symbol} href="heros/[slug]" as={`/heros/${slug}`}>
-                  <a className="hero__item">
+                  <a
+                    className="hero__item uk-animation-slide-bottom-small"
+                    style={{ animationDelay: `${idx}00ms` }}
+                  >
                     <span className="hero__image">
                       <Img
                         alt={`${name} by ${artist}`}

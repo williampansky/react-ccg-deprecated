@@ -22,7 +22,8 @@ export default function EntourageCard({ data }) {
     set,
     text,
     type,
-    warcryNumber
+    warcryNumber,
+    spellContext
   } = data;
   const dynamicSpellDamageText = 0;
   const IS_MINION = type === TYPE[1] ? true : false;
@@ -142,13 +143,23 @@ export default function EntourageCard({ data }) {
           <img
             alt=""
             className={`card__type__image`}
-            src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
+            src={`/images/card-assets/TYPE_${replaceConstant(
+              type
+            ).toUpperCase()}.png`}
           />
-          <img
-            alt=""
-            className={`card__type__image__badge`}
-            src={`/images/card-assets/Card_Type_Board.png`}
-          />
+          {IS_WEAPON || spellContext === 'ATTACK' ? (
+            <img
+              alt=""
+              className={`card__type__image__badge`}
+              src={`/images/card-assets/Card_Type_Board-Spiked.png`}
+            />
+          ) : (
+            <img
+              alt=""
+              className={`card__type__image__badge`}
+              src={`/images/card-assets/Card_Type_Board.png`}
+            />
+          )}
         </div>
       ) : null}
 

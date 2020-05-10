@@ -52,6 +52,7 @@ export default function CardGrid({
               rarity={card.rarity}
               set={card.set}
               sounds={card.sounds}
+              spellContext={card.spellContext}
               spellDamage={card.spellDamage}
               spellType={card.spellType}
               targetingArrowText={card.targetingArrowText}

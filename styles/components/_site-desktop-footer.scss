@@ -28,15 +28,15 @@
     background: linear-gradient(to top, #191919 0%, rgba(0, 0, 0, 0) 100%);
 
     @include breakpoint('medium') {
-      max-width: calc(100vw - 15px);
+      max-width: calc(100vw);
     }
   }
 
-  &.collection__sidebar--active:before {
-    @include breakpoint('medium') {
-      max-width: calc(100vw - (300px + 15px));
-    }
-  }
+  // &.collection__sidebar--active:before {
+  //   @include breakpoint('medium') {
+  //     max-width: calc(100vw - (300px + 15px));
+  //   }
+  // }
 
   .flex {
     min-height: 60px;
