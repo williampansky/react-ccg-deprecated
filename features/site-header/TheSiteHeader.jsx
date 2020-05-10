@@ -1,12 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReactSVG } from 'react-svg';
+import { toggleMobileMenu } from '@/features/site-mobile-menu/site-mobile-menu.slice';
 import NavbarNav from '@/features/site-header/components/NavbarNav';
 import styles from './the-site-header.module.scss';
-import { useDispatch } from 'react-redux';
-import { toggleMobileMenu } from '@/features/site-mobile-menu/site-mobile-menu.slice';
 
 export default function TheSiteHeader() {
   const dispatch = useDispatch();
+  const siteMobileMenuActive = useSelector(s => s.siteMobileMenuActive);
 
   function handleToggle(event) {
     event.target.blur();
@@ -51,17 +53,11 @@ export default function TheSiteHeader() {
               onClick={e => handleToggle(e)}
               onKeyPress={e => handleToggle(e)}
             >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-                data-svg="navbar-toggle-icon"
-              >
-                <rect y="9" width="20" height="2"></rect>
-                <rect y="3" width="20" height="2"></rect>
-                <rect y="15" width="20" height="2"></rect>
-              </svg>
+              {siteMobileMenuActive ? (
+                <ReactSVG src="/images/site/icon-uikit-close.svg" />
+              ) : (
+                <ReactSVG src="/images/site/icon-uikit-menu.svg" />
+              )}
             </button>
           </section>
         </nav>

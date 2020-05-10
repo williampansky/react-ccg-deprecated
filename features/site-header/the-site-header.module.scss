@@ -93,8 +93,9 @@ a.play__button {
   outline: none;
   height: var(--site-header-height);
   min-height: var(--site-header-height);
+  min-width: 75px;
   padding: 0 var(--site-global-spacing);
-  @include display-flex(column nowrap, center, center);
+  @include display-flex(column nowrap, flex-end, center);
 
   svg { fill: rgba(255, 255, 255, 0.8); }
   @media (min-width: map-get($breakpoints, 'medium')) { display: none; }

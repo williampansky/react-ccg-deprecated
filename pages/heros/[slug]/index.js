@@ -6,6 +6,7 @@ import Img from 'react-image';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import SearchModal from '@/features/filters/SearchModal';
+import replaceConstant from '@/utils/replace-constants';
 
 export default function Hero() {
   const router = useRouter();
@@ -37,9 +38,20 @@ export default function Hero() {
         <Img src={`/images/ui/UI_EnergySlot-Locked.png`} />
         <div>
           <h3>
-            {name} ({cost})
+            <span className="text__value ability__name">
+              {replaceConstant(name)}
+            </span>
+            <span className="cost__wrapper">
+              <span className="cost__value">
+                <span className="text__value">{cost}</span>
+              </span>
+              <img
+                alt="Cost Gem"
+                src="/images/ui/UI_EnergySlot-Available.png"
+              />
+            </span>
           </h3>
-          <p>{description}</p>
+          <p>{replaceConstant(description)}</p>
         </div>
       </React.Fragment>
     );

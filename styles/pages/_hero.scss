@@ -221,17 +221,49 @@
   .hero__ability {
     flex: 1;
     padding: 0 20px;
-    max-width: 325px;
     margin: 0 auto;
+    max-width: 85vw;
     min-height: 120px;
     position: relative;
     @include display-flex(column nowrap, center, center);
+
+    @include breakpoint('medium') {
+      max-width: 325px;
+    }
   }
 
   // prettier-ignore
   .hero__ability + .hero__ability {
-    margin-top: 20px;
+    margin-top: 40px;
     @include breakpoint('medium') { margin-top: 0; }
+  }
+
+  .hero__ability h3 {
+    @include display-flex(row nowrap, center, center);
+  }
+
+  .hero__ability .ability__name {
+    font-size: 1em;
+    letter-spacing: 0.065em;
+  }
+
+  .hero__ability .cost__wrapper {
+    height: 40px;
+    position: relative;
+    margin: 0 0 0 10px;
+    @include display-flex(row nowrap, center, center);
+  }
+
+  .hero__ability .cost__wrapper .cost__value {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    @include display-flex(row nowrap, center, center);
+  }
+
+  .hero__ability .cost__wrapper img {
+    height: 100%;
+    width: auto;
   }
 
   .hero__ability h3,

@@ -9,7 +9,7 @@
   grid-gap: 20px;
 
   @include breakpoint('medium') {
-    grid-gap: 0;
+    grid-gap: 40px 30px;
   }
 }
 
