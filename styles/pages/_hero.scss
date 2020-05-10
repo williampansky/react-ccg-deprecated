@@ -208,7 +208,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 1em;
     line-height: 1.45;
-    @include display-flex(column nowrap, center, center);
+    @include display-flex(column nowrap, flex-start, center);
 
     @include breakpoint('medium') {
       flex-flow: row nowrap;
@@ -221,11 +221,34 @@
     max-width: 325px;
     margin: 0 auto;
     min-height: 120px;
+    position: relative;
     @include display-flex(column nowrap, center, center);
+  }
+
+  // prettier-ignore
+  .hero__ability + .hero__ability {
+    margin-top: 20px;
+    @include breakpoint('medium') { margin-top: 0; }
   }
 
   .hero__ability h3,
   .hero__ability p {
     margin: 0;
+  }
+
+  .hero__ability > div {
+    margin: 10px auto 0;
+  }
+
+  .hero__ability img {
+    margin: 0 auto;
+    width: 150px;
+  }
+
+  .hero__ability .hero__ability__image {
+    position: absolute;
+    top: 17px;
+    border-radius: 50%;
+    width: calc(150px - 30px);
   }
 }

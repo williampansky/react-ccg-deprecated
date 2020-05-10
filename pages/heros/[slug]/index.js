@@ -33,12 +33,15 @@ export default function Hero() {
       .replace(')', '');
 
     return (
-      <div>
-        <h3>
-          {name} ({cost})
-        </h3>
-        <p>{description}</p>
-      </div>
+      <React.Fragment>
+        <Img src={`/images/ui/UI_EnergySlot-Locked.png`} />
+        <div>
+          <h3>
+            {name} ({cost})
+          </h3>
+          <p>{description}</p>
+        </div>
+      </React.Fragment>
     );
   }
 
@@ -87,12 +90,33 @@ export default function Hero() {
         <section className="section__wrapper">
           <div className="hero__abilities__wrapper">
             <div className="hero__ability hero__ability--one">
+              <Img
+                className="hero__ability__image"
+                src={`/images/heros/${hero.symbol.replace(
+                  /(%)/g,
+                  ''
+                )}/ABILITY_01.jpg`}
+              />
               {parseAbility(hero.ability1)}
             </div>
             <div className="hero__ability hero__ability--two">
+              <Img
+                className="hero__ability__image"
+                src={`/images/heros/${hero.symbol.replace(
+                  /(%)/g,
+                  ''
+                )}/ABILITY_02.jpg`}
+              />
               {parseAbility(hero.ability2)}
             </div>
             <div className="hero__ability hero__ability--three">
+              <Img
+                className="hero__ability__image"
+                src={`/images/heros/${hero.symbol.replace(
+                  /(%)/g,
+                  ''
+                )}/ABILITY_03.jpg`}
+              />
               {parseAbility(hero.ability3)}
             </div>
           </div>
