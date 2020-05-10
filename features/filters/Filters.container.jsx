@@ -6,7 +6,8 @@ import {
   selectMechanic,
   selectRace,
   selectSet,
-  selectRarity
+  selectRarity,
+  selectType
 } from 'features/filters/filters.slice';
 import { setResults } from 'features/filtered-results.slice';
 import EnergyFilters from 'features/filters/EnergyFilters';
@@ -15,6 +16,7 @@ import RaceFilters from 'features/filters/RaceFilters';
 import SetFilters from 'features/filters/SetFilters';
 import RarityFilters from 'features/filters/RarityFilters';
 import styles from 'features/filters/filters-container.module.scss';
+import TypeFilters from 'features/filters/TypeFilters';
 
 export default function Filters() {
   const dispatch = useDispatch();
@@ -24,11 +26,13 @@ export default function Filters() {
     availableCardRaces,
     availableCardRarities,
     availableCardSets,
+    availableCardTypes,
     selectedCardClass,
     selectedCardMechanics,
     selectedCardRace,
     selectedCardRarity,
     selectedCardSet,
+    selectedCardType,
     selectedEnergyFilter,
     searchValue
   } = useSelector(state => state.filters);
@@ -42,6 +46,7 @@ export default function Filters() {
       cardRace,
       cardRarity,
       cardSet,
+      cardType,
       energyFilter,
       searchName
     ) => {
@@ -52,6 +57,7 @@ export default function Filters() {
           race: cardRace,
           rarity: cardRarity,
           set: cardSet,
+          type: cardType,
           energyFilter: energyFilter,
           searchName: searchName
         })
@@ -67,6 +73,7 @@ export default function Filters() {
       selectedCardRace,
       selectedCardRarity,
       selectedCardSet,
+      selectedCardType,
       selectedEnergyFilter,
       searchValue
     );
@@ -76,6 +83,7 @@ export default function Filters() {
     selectedCardRace,
     selectedCardRarity,
     selectedCardSet,
+    selectedCardType,
     selectedEnergyFilter,
     searchValue,
     setDbCallback
@@ -91,6 +99,12 @@ export default function Filters() {
       <h3 className={styles.title}>
         <span className="text__value">Filters</span>
       </h3>
+      <TypeFilters
+        active={selectedCardType}
+        data={availableCardTypes}
+        isDesktopOrLaptop={isDesktopOrLaptop}
+        onChange={selectedOption => dispatch(selectType(selectedOption))}
+      />
       <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}

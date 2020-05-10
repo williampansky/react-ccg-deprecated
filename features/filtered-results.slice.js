@@ -10,6 +10,7 @@ const filteredResultsSlice = createSlice({
   reducers: {
     setResults(state, { payload }) {
       const {
+        type,
         cardClass,
         mechanics,
         race,
@@ -36,6 +37,10 @@ const filteredResultsSlice = createSlice({
             if (item.id.toLowerCase().includes(searchTerm))
               return item.id.toLowerCase().includes(searchTerm);
             else return item.name.toLowerCase().includes(searchTerm);
+          })
+          .filter(item => {
+            if (type === null) return item;
+            else return item.type === type;
           })
           .filter(item => {
             if (set === null) return item;

@@ -1,18 +1,23 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useRouter } from 'next/router';
 import { ReactSVG } from 'react-svg';
 import { toggleFiltersBar } from '@/features/filters/filters.slice';
+import { toggleSiteSidebar } from '@/features/site-sidebar/site-sidebar.slice';
 import DesktopSearchInput from '@/features/filters/DesktopSearchInput';
 
 export default function DesktopFooter() {
   const dispatch = useDispatch();
-  const router = useRouter();
   const { filtersBarActive } = useSelector(s => s.filters);
+  const sidebarActive = useSelector(s => s.siteSidebarActive);
 
   return (
     <React.Fragment>
-      <div className="site__desktop__footer">
+      <div
+        className={[
+          'site__desktop__footer',
+          sidebarActive ? 'collection__sidebar--active' : ''
+        ].join(' ')}
+      >
         <div className="flex">
           <div className="flex-grow">
             <DesktopSearchInput />
@@ -24,6 +29,15 @@ export default function DesktopFooter() {
             >
               <ReactSVG src="/images/site/icon-uikit-settings.svg" />
               <span>Filters</span>
+            </button>
+          </div>
+          <div>
+            <button
+              className={sidebarActive ? 'active' : ''}
+              onClick={() => dispatch(toggleSiteSidebar())}
+            >
+              <ReactSVG src="/images/site/icon-uikit-thumbnails.svg" />
+              <span>Sidebar</span>
             </button>
           </div>
         </div>

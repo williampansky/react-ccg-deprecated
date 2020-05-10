@@ -6,6 +6,7 @@ import MECHANICS from 'enums/mechanics.enums';
 import SET from 'enums/set.enums';
 import RARITY from 'enums/rarity.enums';
 import exists from '@/utils/element.exists';
+import TYPE from '@/enums/type.enums';
 
 let initialState = {
   filtersBarActive: false,
@@ -14,6 +15,7 @@ let initialState = {
   selectedCardRace: null,
   selectedCardRarity: null,
   selectedCardSet: null,
+  selectedCardType: null,
   selectedEnergyFilter: -1,
   searchValue: null,
   searchModalActive: false,
@@ -61,6 +63,12 @@ let initialState = {
   availableCardSets: [
     { _order: 2, label: replaceConstant(SET[1]), value: SET[1] },
     { _order: 3, label: replaceConstant(SET[2]), value: SET[2] }
+  ],
+  availableCardTypes: [
+    { _order: 1, label: replaceConstant(TYPE[1]), value: TYPE[1] },
+    { _order: 2, label: replaceConstant(TYPE[2]), value: TYPE[2] },
+    { _order: 3, label: replaceConstant(TYPE[3]), value: TYPE[3] },
+    { _order: 4, label: replaceConstant(TYPE[4]), value: TYPE[4] }
   ]
 };
 
@@ -93,6 +101,9 @@ const filtersSlice = createSlice({
     },
     selectSet(state, { payload }) {
       state.selectedCardSet = payload;
+    },
+    selectType(state, { payload }) {
+      state.selectedCardType = payload;
     },
     setSearchValue(state, { payload }) {
       state.searchValue = payload;
@@ -128,6 +139,7 @@ export const {
   selectRace,
   selectRarity,
   selectSet,
+  selectType,
   setSearchValue,
   setFiltersBar,
   toggleFiltersBar,

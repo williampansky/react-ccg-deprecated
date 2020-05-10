@@ -9,6 +9,7 @@ import replaceConstant from 'utils/replace-constants';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 
 export default function CardCollection() {
+  const siteSidebarActive = useSelector(s => s.siteSidebarActive);
   const filteredResults = useSelector(state => state.filteredResults);
   const database = useSelector(state => state.database);
   const [modalObject, setModalObject] = useState(null);
@@ -32,7 +33,14 @@ export default function CardCollection() {
   return (
     <React.Fragment>
       <div className="card__collection__wrapper">
-        <div className="grid__wrapper _scrollable card-collection">
+        <div
+          className={[
+            'grid__wrapper',
+            '_scrollable',
+            'card-collection',
+            siteSidebarActive ? 'collection__sidebar--active' : ''
+          ].join(' ')}
+        >
           {exists(database) ? (
             <CardGrid
               data={filteredResults}

@@ -20,6 +20,5 @@ export default function Sidebar({ deckId }) {
 }
 
 Sidebar.propTypes = {
-  active: PropTypes.bool,
-  selectedCardClass: PropTypes.string
+  deckId: PropTypes.string
 };

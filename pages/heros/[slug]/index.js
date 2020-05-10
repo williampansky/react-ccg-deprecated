@@ -24,6 +24,10 @@ export default function Hero() {
       .match(/cost\((.*?)\)/g)[0]
       .replace('cost(', '')
       .replace(')', '');
+    const cooldown = string
+      .match(/cooldown\((.*?)\)/g)[0]
+      .replace('cooldown(', '')
+      .replace(')', '');
     const name = string
       .match(/name\((.*?)\)/g)[0]
       .replace('name(', '')
@@ -51,6 +55,13 @@ export default function Hero() {
               />
             </span>
           </h3>
+          <p>
+            <small>
+              {cooldown === '-1'
+                ? `Once per match`
+                : `Cooldown: ${cooldown} turns`}
+            </small>
+          </p>
           <p>{replaceConstant(description)}</p>
         </div>
       </React.Fragment>

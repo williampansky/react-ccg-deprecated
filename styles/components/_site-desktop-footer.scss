@@ -9,7 +9,7 @@
   padding: 0 15px;
   z-index: 10;
   width: 100%;
-  max-width: calc(100vw - 300px);
+  max-width: calc(100vw);
 
   @include breakpoint('medium') {
     display: block;
@@ -27,6 +27,12 @@
     pointer-events: none;
     background: linear-gradient(to top, #191919 0%, rgba(0, 0, 0, 0) 100%);
 
+    @include breakpoint('medium') {
+      max-width: calc(100vw - 15px);
+    }
+  }
+
+  &.collection__sidebar--active:before {
     @include breakpoint('medium') {
       max-width: calc(100vw - (300px + 15px));
     }

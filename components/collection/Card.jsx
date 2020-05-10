@@ -163,7 +163,9 @@ export default function Card({
           <img
             alt=""
             className={`card__type__image`}
-            src={`/images/card-assets/Card_Type--${type.toUpperCase()}.png`}
+            src={`/images/card-assets/TYPE_${replaceConstant(
+              type
+            ).toUpperCase()}.png`}
           />
           <img
             alt=""
