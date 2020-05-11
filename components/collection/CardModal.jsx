@@ -242,7 +242,7 @@ export default function CardModal({
                       <div
                         className="description__text"
                         dangerouslySetInnerHTML={createMarkup(
-                          modalObject.description
+                          replaceConstant(modalObject.description)
                         )}
                       />
                     </div>
