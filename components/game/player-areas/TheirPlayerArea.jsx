@@ -2,8 +2,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import TheirAvatar from 'components/avatars/TheirAvatar';
-import PlayerWeapon from 'components/player-weapon/PlayerWeapon';
+import TheirAvatar from 'components/game/avatars/TheirAvatar';
+import PlayerWeapon from 'components/game/player-weapon/PlayerWeapon';
 
 export default function TheirPlayerArea({
   G,

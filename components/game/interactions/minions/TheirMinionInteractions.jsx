@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CanBeAttackedByMinion from 'components/interactions/minions/CanBeAttackedByMinion';
-import CanBeAttackedByPlayer from 'components/interactions/minions/CanBeAttackedByPlayer';
-import CanBeAttackedBySpell from 'components/interactions/minions/CanBeAttackedBySpell';
-import CanBeAttackedByWarcry from 'components/interactions/minions/CanBeAttackedByWarcry';
-import CanBeExpired from 'components/interactions/minions/CanBeExpired';
-import CanBeReturned from 'components/interactions/minions/CanBeReturned';
-import CanBeDebuffed from 'components/interactions/minions/CanBeDebuffed';
+import CanBeAttackedByMinion from 'components/game/interactions/minions/CanBeAttackedByMinion';
+import CanBeAttackedByPlayer from 'components/game/interactions/minions/CanBeAttackedByPlayer';
+import CanBeAttackedBySpell from 'components/game/interactions/minions/CanBeAttackedBySpell';
+import CanBeAttackedByWarcry from 'components/game/interactions/minions/CanBeAttackedByWarcry';
+import CanBeExpired from 'components/game/interactions/minions/CanBeExpired';
+import CanBeReturned from 'components/game/interactions/minions/CanBeReturned';
+import CanBeDebuffed from 'components/game/interactions/minions/CanBeDebuffed';
 
 export default function TheirMinionInteractions({
   G,

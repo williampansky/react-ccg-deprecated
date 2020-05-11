@@ -4,7 +4,6 @@ import { fontSizeBasedOnCharacterLength } from 'utils/text';
 import createMarkup from 'utils/createMarkup';
 import TYPE from 'enums/type.enums';
 import RACE from 'enums/race.enums';
-import placeholdersArray from 'placeholders-array';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 import replaceConstant from 'utils/replace-constants';
 
@@ -45,12 +44,9 @@ export default function Card({
   const IS_WEAPON = type === TYPE[4] ? true : false;
 
   function cardImage(cardId, cardSet, isGold, goldSrc) {
-    if (placeholdersArray.includes(cardId))
-      return `url(assets/images/sets/PLACEHOLDER.jpg)`;
-
     return isGold
       ? `url(${goldSrc})`
-      : `url(assets/images/sets/${cardSet}/${cardId}-CARD.jpg)`;
+      : `url(/images/sets/${cardSet}/${cardId}-CARD.jpg)`;
   }
 
   function cardText(string, spellDmg = warcryNumber) {

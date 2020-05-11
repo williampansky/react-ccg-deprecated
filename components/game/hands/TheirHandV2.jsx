@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import CardBack from 'components/cards/CardBack';
-import GameMenuTrigger from 'components/game-menu/GameMenuTrigger';
-import PlayerEnergy from 'components/player-energy/PlayerEnergy';
+import CardBack from 'components/game/cards/CardBack';
+import GameMenuTrigger from 'components/game/game-menu/GameMenuTrigger';
+import PlayerEnergy from 'components/game/player-energy/PlayerEnergy';
 // import limitNumberWithinRange from 'lib/utils/range-limit';
 import styled from 'styled-components';
 

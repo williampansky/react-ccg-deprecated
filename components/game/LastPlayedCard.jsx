@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Card from 'components/cards/CardV3';
-import usePrevious from 'components/hooks/usePrevious';
+import Card from 'components/game/cards/CardV3';
+import usePrevious from 'components/game/hooks/usePrevious';
 import getCardByID from 'lib/utils/get-card-by-id';
 
 export default function LastPlayedCard({ G, ctx, array }) {

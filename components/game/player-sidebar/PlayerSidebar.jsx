@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import createMarkup from 'utils/createMarkup';
 import RARITY from 'enums/rarity.enums';
-import EndTurnButton from 'components/end-turn/EndTurn';
-import Deck from 'components/decks/DeckV3';
+import EndTurnButton from 'components/game/end-turn/EndTurn';
+import Deck from 'components/game/decks/DeckV3';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import MatchStats from './MatchStats';
 

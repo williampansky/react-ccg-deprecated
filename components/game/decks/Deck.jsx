@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CardBack from 'components/cards/CardBack';
+import CardBack from 'components/game/cards/CardBack';
 import limitNumberWithinRange from 'lib/utils/range-limit';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 

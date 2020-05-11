@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TheirMinionInteractions from 'components/interactions/minions/TheirMinionInteractions';
-import YourMinionInteractions from 'components/interactions/minions/YourMinionInteractions';
+import TheirMinionInteractions from 'components/game/interactions/minions/TheirMinionInteractions';
+import YourMinionInteractions from 'components/game/interactions/minions/YourMinionInteractions';
 
 export default function MinionInteraction({
   G,

@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import EndTurnButton from 'components/end-turn/EndTurn';
-import TheirBoard from 'components/boards/TheirBoard';
-import YourBoard from 'components/boards/YourBoard';
-// import LightningStrike from 'components/animations/targeted/LightningStrike';
-import GlobalAnimations from 'components/animations/global/GlobalAnimations';
-import YourAvatar from 'components/avatars/YourAvatar';
-import TheirAvatar from 'components/avatars/TheirAvatar';
-import YourBoardPlayArea from 'components/board-play-areas/YourBoardPlayArea';
-import TheirBoardPlayerArea from 'components/board-play-areas/TheirBoardPlayArea';
+import EndTurnButton from 'components/game/end-turn/EndTurn';
+import TheirBoard from 'components/game/boards/TheirBoard';
+import YourBoard from 'components/game/boards/YourBoard';
+// import LightningStrike from 'components/game/animations/targeted/LightningStrike';
+import GlobalAnimations from 'components/game/animations/global/GlobalAnimations';
+import YourAvatar from 'components/game/avatars/YourAvatar';
+import TheirAvatar from 'components/game/avatars/TheirAvatar';
+import YourBoardPlayArea from 'components/game/board-play-areas/YourBoardPlayArea';
+import TheirBoardPlayerArea from 'components/game/board-play-areas/TheirBoardPlayArea';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
-import Deck from 'components/decks/Deck';
-import SpellSlot from 'components/board-slots/SpellSlot';
-import WeaponSlot from 'components/board-slots/WeaponSlot';
+import Deck from 'components/game/decks/Deck';
+import SpellSlot from 'components/game/board-slots/SpellSlot';
+import WeaponSlot from 'components/game/board-slots/WeaponSlot';
 import SPELLTYPE from 'enums/spellType.enums';
 import TYPE from 'enums/type.enums';
-import SpellObject from 'components/spells/SpellObject';
-import WarcryObject from 'components/warcrys/WarcryObjectV2';
-import ItemSlot from 'components/board-slots/ItemSlot';
+import SpellObject from 'components/game/spells/SpellObject';
+import WarcryObject from 'components/game/warcrys/WarcryObjectV2';
+import ItemSlot from 'components/game/board-slots/ItemSlot';
 
 export default function Board({
   G,

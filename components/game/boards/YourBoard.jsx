@@ -7,12 +7,12 @@ import SPELLTYPE from 'enums/spellType.enums';
 import TYPE from 'enums/type.enums';
 
 // child components
-import Deck from 'components/decks/Deck';
-import SpellSlot from 'components/board-slots/SpellSlot';
-import WeaponSlot from 'components/board-slots/WeaponSlot';
-import YourBoardPlayArea from 'components/board-play-areas/YourBoardPlayArea';
-import YourPlayerArea from 'components/player-areas/YourPlayerArea';
-import ItemSlot from 'components/board-slots/ItemSlot';
+import Deck from 'components/game/decks/Deck';
+import SpellSlot from 'components/game/board-slots/SpellSlot';
+import WeaponSlot from 'components/game/board-slots/WeaponSlot';
+import YourBoardPlayArea from 'components/game/board-play-areas/YourBoardPlayArea';
+import YourPlayerArea from 'components/game/player-areas/YourPlayerArea';
+import ItemSlot from 'components/game/board-slots/ItemSlot';
 
 export default function YourBoard({ G, ctx, moves, isActive, yourID }) {
   const {

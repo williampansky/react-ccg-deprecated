@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PlayerShield from 'components/player-health/PlayerShieldV2';
+import PlayerShield from 'components/game/player-health/PlayerShieldV2';
 
 export default function PlayerHealth({
   health,

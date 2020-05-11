@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import PlayerShield from 'components/player-health/PlayerShieldV2';
-import usePrevious from 'components/hooks/usePrevious';
+import PlayerShield from 'components/game/player-health/PlayerShieldV2';
+import usePrevious from 'components/game/hooks/usePrevious';
 
 // https://codepen.io/junebug12851/pen/mJZNqN
 export default function PlayerHealth({

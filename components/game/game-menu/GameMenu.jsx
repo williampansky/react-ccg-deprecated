@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GameMenuTrigger from 'components/game-menu/GameMenuTrigger';
-import ForfeitGameButton from 'components/game-menu/ForfeitGameButton';
+import GameMenuTrigger from 'components/game/game-menu/GameMenuTrigger';
+import ForfeitGameButton from 'components/game/game-menu/ForfeitGameButton';
 
 export default function GameMenu({
   G,

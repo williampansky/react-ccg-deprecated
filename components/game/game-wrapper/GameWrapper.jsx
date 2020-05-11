@@ -2,18 +2,17 @@ import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import Board from 'components/boards/Board';
-import GameBackground from 'components/game-wrapper/GameBackground';
-import GameMenu from 'components/game-menu/GameMenu';
-import GameOver from 'components/game-over/GameOver';
-import TheirHand from 'components/hands/TheirHandV3';
-import YourHand from 'components/hands/YourHandV3';
-import ResizeObserver from 'components/game-wrapper/ResizeObserver';
-import MatchHistory from 'components/match-history/MatchHistory';
-import PlayerSidebar from 'components/player-sidebar/PlayerSidebar';
-import SidebarBackground from './SidebarBackground';
-import LastPlayedCard from 'components/LastPlayedCard';
-import YourCardSelection from 'components/card-selection/YourCardSelection';
+import Board from 'components/game/boards/Board';
+import GameBackground from 'components/game/game-wrapper/GameBackground';
+import GameMenu from 'components/game/game-menu/GameMenu';
+import GameOver from 'components/game/game-over/GameOver';
+import TheirHand from 'components/game/hands/TheirHandV3';
+import YourHand from 'components/game/hands/YourHandV3';
+import ResizeObserver from 'components/game/game-wrapper/ResizeObserver';
+import MatchHistory from 'components/game/match-history/MatchHistory';
+import PlayerSidebar from 'components/game/player-sidebar/PlayerSidebar';
+import LastPlayedCard from 'components/game/LastPlayedCard';
+import YourCardSelection from 'components/game/card-selection/YourCardSelection';
 
 export default function GameWrapper(props) {
   // global state manipulations

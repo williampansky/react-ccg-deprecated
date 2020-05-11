@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { ReactSVG } from 'react-svg';
 import svg from 'assets/svgs/sphere.svg';
-import PlayerShield from 'components/player-health/PlayerShield';
+import PlayerShield from 'components/game/player-health/PlayerShield';
 
 export default function PlayerHealth({ health, player, shieldPoints }) {
   const [animation, setAnimation] = useState(false);

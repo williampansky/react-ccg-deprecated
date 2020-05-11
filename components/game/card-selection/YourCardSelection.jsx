@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Card from 'components/cards/CardV3';
+import Card from 'components/game/cards/CardV3';
 
 export default function YourCardSelection({
   G,

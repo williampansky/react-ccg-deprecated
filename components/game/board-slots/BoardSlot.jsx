@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HasBoon from 'components/mechanics/HasBoon';
-import HasEnergyShield from 'components/mechanics/HasEnergyShield';
-import HasGuardBackground from 'components/mechanics/HasGuardBackground';
-import HasGuardForeground from 'components/mechanics/HasGuardForeground';
-import HasOnslaught from 'components/mechanics/HasOnslaught';
-import IsConcealed from 'components/mechanics/IsConcealed';
-import IsDeadPoof from 'components/animations/minions/IsDeadPoof';
-import IsDisabled from 'components/mechanics/IsDisabled';
-import Minion from 'components/minion/MinionV2';
-import MinionInteraction from 'components/interactions/minions/MinionInteraction';
+import HasBoon from 'components/game/mechanics/HasBoon';
+import HasEnergyShield from 'components/game/mechanics/HasEnergyShield';
+import HasGuardBackground from 'components/game/mechanics/HasGuardBackground';
+import HasGuardForeground from 'components/game/mechanics/HasGuardForeground';
+import HasOnslaught from 'components/game/mechanics/HasOnslaught';
+import IsConcealed from 'components/game/mechanics/IsConcealed';
+import IsDeadPoof from 'components/game/animations/minions/IsDeadPoof';
+import IsDisabled from 'components/game/mechanics/IsDisabled';
+import Minion from 'components/game/minion/MinionV2';
+import MinionInteraction from 'components/game/interactions/minions/MinionInteraction';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import SPELLTYPE from 'enums/spellType.enums';
-import usePrevious from 'components/hooks/usePrevious';
-import WillExpire from 'components/mechanics/WillExpire';
+import usePrevious from 'components/game/hooks/usePrevious';
+import WillExpire from 'components/game/mechanics/WillExpire';
 
 export default function BoardSlot({
   G,
@@ -133,6 +133,9 @@ export default function BoardSlot({
           : ''
       ].join(' ')}
       onClick={onClick}
+      onKeyPress={onClick}
+      role="button"
+      tabIndex={0}
     >
       {/* interactions layer */}
       {minionData && (

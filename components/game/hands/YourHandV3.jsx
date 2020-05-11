@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import PlayerEnergy from 'components/player-energy/PlayerEnergyV2';
-import CardInteraction from 'components/interactions/cards/CardInteraction';
-import SpellObject from 'components/spells/SpellObjectV2';
+import PlayerEnergy from 'components/game/player-energy/PlayerEnergyV2';
+import CardInteraction from 'components/game/interactions/cards/CardInteraction';
+import SpellObject from 'components/game/spells/SpellObjectV2';
 import styled from 'styled-components';
-import ClassSkillButton from 'components/class-skill/ClassSkillButtonV3';
+import ClassSkillButton from 'components/game/class-skill/ClassSkillButtonV3';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
-import PlayerHealth from 'components/player-health/PlayerHealthV5';
-import Deck from 'components/decks/Deck';
-import WarcryObject from 'components/warcrys/WarcryObjectV2';
+import PlayerHealth from 'components/game/player-health/PlayerHealthV5';
+import Deck from 'components/game/decks/Deck';
+import WarcryObject from 'components/game/warcrys/WarcryObjectV2';
 
 export default function YourHand({
   G,

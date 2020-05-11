@@ -5,7 +5,6 @@ import RACE from 'enums/race.enums';
 import RARITY from 'enums/rarity.enums';
 import SET from 'enums/set.enums';
 import TYPE from 'enums/type.enums';
-import placeholdersArray from 'placeholders-array';
 // import useHover from 'react-use-hover';
 
 export default function Minion({
@@ -19,12 +18,9 @@ export default function Minion({
   const goldenImageSrc = '';
 
   function minionImage() {
-    if (placeholdersArray.includes(id))
-      return `url(assets/images/sets/PLACEHOLDER.jpg)`;
-
     return isGolden
       ? `url(${goldenImageSrc})`
-      : `url(assets/images/sets/${set}/${id}-CARD.jpg)`;
+      : `url(/images/sets/${set}/${id}-CARD.jpg)`;
   }
 
   return (

@@ -4,13 +4,13 @@ import useHover from 'react-use-hover';
 import limitNumberWithinRange from 'lib/utils/range-limit';
 
 // child components
-import Card from 'components/cards/CardV3';
-import CardIsPlayable from 'components/interactions/cards/CardIsPlayable';
-import CardIsPlayableEffect from 'components/interactions/cards/CardIsPlayableEffect';
-import CardIsSelected from 'components/interactions/cards/CardIsSelected';
-import CardIsSelectedEffect from 'components/interactions/cards/CardIsSelectedEffect';
+import Card from 'components/game/cards/CardV3';
+import CardIsPlayable from 'components/game/interactions/cards/CardIsPlayable';
+import CardIsPlayableEffect from 'components/game/interactions/cards/CardIsPlayableEffect';
+import CardIsSelected from 'components/game/interactions/cards/CardIsSelected';
+import CardIsSelectedEffect from 'components/game/interactions/cards/CardIsSelectedEffect';
 import GAME_CONFIG from 'config/game.config';
-import usePrevious from 'components/hooks/usePrevious';
+import usePrevious from 'components/game/hooks/usePrevious';
 
 export default function CardInteraction({
   G,

@@ -1,15 +1,14 @@
 import React from 'react';
-import { hot } from 'react-hot-loader';
 import { Client } from 'boardgame.io/react';
 import { SocketIO } from 'boardgame.io/multiplayer';
-import { HSclone } from './lib/game';
-import GameWrapper from './components/game-wrapper/GameWrapper';
-import GameLoading from 'components/loading/GameLoading';
-import './index.css';
-import './styles/game.scss';
+import { HSclone } from 'lib/game';
+import GameWrapper from 'components/game/game-wrapper/GameWrapper';
+import GameLoading from 'components/game/loading/GameLoading';
 
 const REDUX_DEVTOOLS =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+  typeof window !== 'undefined' &&
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__();
 
 const HScloneClient = Client({
   game: HSclone,
@@ -69,4 +68,4 @@ class App extends React.Component {
   }
 }
 
-export default hot(module)(App);
+export default App;

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import CardBack from 'components/cards/CardBack';
+import CardBack from 'components/game/cards/CardBack';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import styled from 'styled-components';
-import placeholdersArray from 'placeholders-array';
 
 export default function DeckItem({
   amount,

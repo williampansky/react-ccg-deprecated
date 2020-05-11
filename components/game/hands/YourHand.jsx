@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import PlayerEnergy from 'components/player-energy/PlayerEnergy';
-import CardInteraction from 'components/interactions/cards/CardInteraction';
-import SpellObject from 'components/spells/SpellObject';
-import WarcryObject from 'components/warcrys/WarcryObject';
+import PlayerEnergy from 'components/game/player-energy/PlayerEnergy';
+import CardInteraction from 'components/game/interactions/cards/CardInteraction';
+import SpellObject from 'components/game/spells/SpellObject';
+import WarcryObject from 'components/game/warcrys/WarcryObject';
 
 export default function YourHand({ G, ctx, moves, isActive, yourID }) {
   const {

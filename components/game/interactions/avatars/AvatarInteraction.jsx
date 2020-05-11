@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import AvatarCanAttack from 'components/interactions/avatars/AvatarCanAttack';
-import AvatarCanBeAttackedByMinion from 'components/interactions/avatars/AvatarCanBeAttackedByMinion';
-import AvatarCanBeAttackedByPlayer from 'components/interactions/avatars/AvatarCanBeAttackedByPlayer';
-import AvatarCanBeAttackedBySpell from 'components/interactions/avatars/AvatarCanBeAttackedBySpell';
-import AvatarCanBeAttackedByWarcry from 'components/interactions/avatars/AvatarCanBeAttackedByWarcry';
-import AvatarCanBeHealed from 'components/interactions/avatars/AvatarCanBeHealed';
-import AvatarIsAttacking from 'components/interactions/avatars/AvatarIsAttacking';
+import AvatarCanAttack from 'components/game/interactions/avatars/AvatarCanAttack';
+import AvatarCanBeAttackedByMinion from 'components/game/interactions/avatars/AvatarCanBeAttackedByMinion';
+import AvatarCanBeAttackedByPlayer from 'components/game/interactions/avatars/AvatarCanBeAttackedByPlayer';
+import AvatarCanBeAttackedBySpell from 'components/game/interactions/avatars/AvatarCanBeAttackedBySpell';
+import AvatarCanBeAttackedByWarcry from 'components/game/interactions/avatars/AvatarCanBeAttackedByWarcry';
+import AvatarCanBeHealed from 'components/game/interactions/avatars/AvatarCanBeHealed';
+import AvatarIsAttacking from 'components/game/interactions/avatars/AvatarIsAttacking';
 
 export default function AvatarInteraction({
   G,

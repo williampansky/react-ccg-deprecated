@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlayerHealth from 'components/player-health/PlayerHealthV2';
-import AvatarAnimation from 'components/animations/avatars/AvatarAnimation';
-import AvatarInteraction from 'components/interactions/avatars/AvatarInteraction';
+import PlayerHealth from 'components/game/player-health/PlayerHealthV2';
+import AvatarAnimation from 'components/game/animations/avatars/AvatarAnimation';
+import AvatarInteraction from 'components/game/interactions/avatars/AvatarInteraction';
 import CARDCLASS from 'enums/cardClass.enums';
-import ClassSkillButton from 'components/class-skill/ClassSkillButtonV2';
+import ClassSkillButton from 'components/game/class-skill/ClassSkillButtonV2';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
-import usePrevious from 'components/hooks/usePrevious';
-import PlayerWeapon from 'components/player-weapon/PlayerWeaponV2';
+import usePrevious from 'components/game/hooks/usePrevious';
+import PlayerWeapon from 'components/game/player-weapon/PlayerWeaponV2';
 
 export default function TheirAvatar({
   G,
@@ -111,12 +111,12 @@ export default function TheirAvatar({
         playerCanBeHealed={playerCanBeHealed[theirID]}
       />
 
-      <AvatarAnimation
+      {/* <AvatarAnimation
         G={G}
         moves={moves}
         youUsedClassSkill={playerUsedClassSkill[yourID]}
         theyUsedClassSkill={playerUsedClassSkill[theirID]}
-      />
+      /> */}
     </div>
   );
 }

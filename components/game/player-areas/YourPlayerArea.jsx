@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // children
-import ClassSkillButtonV2 from 'components/class-skill/ClassSkillButtonV2';
-import PlayerWeapon from 'components/player-weapon/PlayerWeapon';
-import YourAvatar from 'components/avatars/YourAvatar';
+import ClassSkillButtonV2 from 'components/game/class-skill/ClassSkillButtonV2';
+import PlayerWeapon from 'components/game/player-weapon/PlayerWeapon';
+import YourAvatar from 'components/game/avatars/YourAvatar';
 
 export default function YourPlayerArea({
   G,

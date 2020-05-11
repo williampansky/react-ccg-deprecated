@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // child components
-import BoardDropArea from 'components/board-drop-areas/BoardDropArea';
-import BoardSlot from 'components/board-slots/BoardSlot';
+import BoardDropArea from 'components/game/board-drop-areas/BoardDropArea';
+import BoardSlot from 'components/game/board-slots/BoardSlot';
 
 export default function YourBoardPlayerArea({
   G,

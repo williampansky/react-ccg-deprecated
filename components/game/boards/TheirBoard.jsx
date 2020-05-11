@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 
 // child components
-import Deck from 'components/decks/Deck';
-import TheirBoardPlayerArea from 'components/board-play-areas/TheirBoardPlayArea';
-import TheirPlayerArea from 'components/player-areas/TheirPlayerArea';
+import Deck from 'components/game/decks/Deck';
+import TheirBoardPlayerArea from 'components/game/board-play-areas/TheirBoardPlayArea';
+import TheirPlayerArea from 'components/game/player-areas/TheirPlayerArea';
 
 export default function TheirBoard({
   G,

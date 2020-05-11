@@ -1,5 +1,5 @@
 import React from 'react';
-import BoardSlot from 'components/board-slots/BoardSlot';
+import BoardSlot from 'components/game/board-slots/BoardSlot';
 
 export default function TheirBoardPlayerArea({
   G,

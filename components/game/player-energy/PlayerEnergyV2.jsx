@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EnergySlot from 'components/player-energy/EnergySlotV2';
+import EnergySlot from 'components/game/player-energy/EnergySlotV2';
 import styled from 'styled-components';
 
 export default function PlayerEnergy({ energy, selectedCost }) {

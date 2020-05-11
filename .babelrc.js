@@ -3,31 +3,24 @@ module.exports = {
   presets: [
     [
       // '@babel/preset-env',
-      'next/babel'
-      // {
-      //   targets: {
-      //     node: 'current'
-      //   }
-      // }
+      'next/babel',
+      {
+        targets: {
+          node: 'current'
+        }
+      }
     ]
   ],
   plugins: [
-    // [
-    //   'module-resolver',
-    //   {
-    //     root: ['./src'],
-    //     alias: {
-    //       components: './src/components',
-    //       config: './src/config',
-    //       data: './src/data',
-    //       enums: './src/enums',
-    //       lib: './src/lib',
-    //       moves: './src/lib/moves',
-    //       styles: './src/styles',
-    //       utils: './src/utils'
-    //     }
-    //   }
-    // ],
+    [
+      'module-resolver',
+      {
+        root: ['./'],
+        alias: {
+          lib: './lib'
+        }
+      }
+    ],
     ['styled-components', { ssr: !dev, displayName: dev, preprocess: false }]
   ]
 };

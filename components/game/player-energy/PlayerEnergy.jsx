@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EnergySlot from 'components/player-energy/EnergySlot';
+import EnergySlot from 'components/game/player-energy/EnergySlot';
 
 export default function PlayerEnergy({ energy, selectedCost }) {
   const { current, total } = energy;

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import CardBack from 'components/cards/CardBack';
-import DeckItem from 'components/decks/DeckItem';
+import CardBack from 'components/game/cards/CardBack';
+import DeckItem from 'components/game/decks/DeckItem';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import styled from 'styled-components';
-import placeholdersArray from 'placeholders-array';
 
 export default function Deck({
   board,
@@ -14,10 +13,7 @@ export default function Deck({
   playedCards
 }) {
   function cardImage(id, set) {
-    if (placeholdersArray.includes(id))
-      return `url(assets/images/sets/PLACEHOLDER.jpg)`;
-
-    return `url(assets/images/sets/${set}/${id}-DECK.jpg)`;
+    return `url(/images/sets/${set}/${id}-DECK.jpg)`;
   }
 
   return (
