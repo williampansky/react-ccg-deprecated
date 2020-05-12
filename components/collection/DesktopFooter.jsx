@@ -22,23 +22,25 @@ export default function DesktopFooter() {
           <div className="flex-grow">
             <DesktopSearchInput />
           </div>
-          <div>
-            <button
-              className={filtersBarActive ? 'active' : ''}
-              onClick={() => dispatch(toggleFiltersBar())}
-            >
-              <ReactSVG src="/images/site/icon-uikit-settings.svg" />
-              <span>Filters</span>
-            </button>
-          </div>
-          <div>
-            <button
-              className={sidebarActive ? 'active' : ''}
-              onClick={() => dispatch(toggleSiteSidebar())}
-            >
-              <ReactSVG src="/images/site/icon-uikit-thumbnails.svg" />
-              <span>Sidebar</span>
-            </button>
+          <div className="flex">
+            <div>
+              <button
+                className={filtersBarActive ? 'active' : ''}
+                onClick={() => dispatch(toggleFiltersBar())}
+              >
+                <ReactSVG src="/images/site/icon-uikit-settings.svg" />
+                <span>Filters</span>
+              </button>
+            </div>
+            <div>
+              <button
+                className={sidebarActive ? 'active' : ''}
+                onClick={() => dispatch(toggleSiteSidebar())}
+              >
+                <ReactSVG src="/images/site/icon-uikit-thumbnails.svg" />
+                <span>Sidebar</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

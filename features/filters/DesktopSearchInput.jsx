@@ -26,13 +26,24 @@ export default function DesktopSearchInput() {
       onSubmit={event => handleSubmit(event, value)}
     >
       <div>
-        <input
-          onChange={event => setValue(event.target.value)}
-          ref={ref}
-          type="text"
-        />
+        <div className="search__wrapper">
+          <input
+            onChange={event => setValue(event.target.value)}
+            onKeyPress={event => setValue(event.target.value)}
+            ref={ref}
+            type="text"
+            tabIndex={0}
+          />
+          {/* <button
+            className="clear__button"
+            onClick={event => clearValue(event)}
+            tabIndex={0}
+          >
+            <ReactSVG src="/images/site/icon-uikit-close.svg" />
+          </button> */}
+        </div>
       </div>
-      <div>
+      <div className="buttons__wrapper">
         <div>
           <button className="submit">Search</button>
         </div>

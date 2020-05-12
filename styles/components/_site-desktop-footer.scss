@@ -45,6 +45,7 @@
 
   .flex-grow {
     flex-grow: 1;
+    max-width: 1200px;
   }
 
   // prettier-ignore
@@ -117,6 +118,7 @@
     line-height: 41px;
     margin: 0;
     width: 100%;
+    max-width: 200px;
     outline: 0;
     padding: 0 12px;
     position: relative;
@@ -128,11 +130,49 @@
     vertical-align: middle;
   }
 
+  .buttons__wrapper {
+    @include display-flex(row nowrap, center, flex-start);
+
+    & > div {
+      width: auto;
+    }
+  }
+
   .submit {
     background-color: var(--theme-primary);
   }
 
   .clear {
     background-color: #ddd;
+  }
+
+  .search__wrapper {
+    position: relative;
+  }
+
+  .clear__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    min-width: 0;
+
+    * {
+      pointer-events: none;
+    }
+  }
+
+  .clear__button div {
+    @include display-flex(column nowrap, center, center);
+  }
+
+  .clear__button svg line {
+    stroke: #999;
+  }
+
+  .clear__button:hover svg line,
+  .clear__button:focus svg line {
+    stroke: black;
   }
 }
