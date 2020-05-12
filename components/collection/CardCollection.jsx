@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
 import CARDCLASS from 'enums/cardClass.enums';
 import CardGrid from 'components/collection/CardGrid';
 import CardModal from 'components/collection/CardModal';
@@ -9,6 +10,8 @@ import replaceConstant from 'utils/replace-constants';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 
 export default function CardCollection() {
+  const router = useRouter();
+  const { query } = router;
   const siteSidebarActive = useSelector(s => s.siteSidebarActive);
   const filteredResults = useSelector(state => state.filteredResults);
   const database = useSelector(state => state.database);
@@ -20,15 +23,40 @@ export default function CardCollection() {
   //   if (!exists(owned)) return 'locked';
   // }
 
-  function handleTooltipClick(obj) {
-    return setModalObject(obj);
-  }
+  const handleTooltipClick = useCallback(
+    (obj, path = '/collection') => {
+      if (obj === null) {
+        router.push(path);
+        return setModalObject(null);
+      }
+
+      const { id } = obj;
+      router.push(path, { query: { id: id }, shallow: true });
+      return setModalObject(obj);
+    },
+    [router]
+  );
 
   function cardText(string, spellDmg) {
     const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
     const replacedSymbols = replaceConstant(replacedDynamicDmg);
     return replacedSymbols;
   }
+
+  const handleQueryMountingCallback = useCallback(
+    obj => {
+      if (!obj || obj === {} || (obj && !obj.id)) return;
+      const { id } = obj;
+      const databaseObj = database.find(item => item.id === id);
+      if (!databaseObj) return;
+      return handleTooltipClick(databaseObj);
+    },
+    [database, handleTooltipClick]
+  );
+
+  useEffect(() => {
+    query !== {} && handleQueryMountingCallback(query);
+  }, [query, handleQueryMountingCallback]);
 
   return (
     <React.Fragment>
@@ -54,7 +82,7 @@ export default function CardCollection() {
       <CardModal
         modalObject={modalObject}
         cardText={cardText}
-        handleTooltipClick={() => handleTooltipClick(null)}
+        handleTooltipClick={() => handleTooltipClick(null, '/collection')}
       />
     </React.Fragment>
   );

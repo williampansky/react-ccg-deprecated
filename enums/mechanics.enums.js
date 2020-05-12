@@ -35,7 +35,7 @@ const MECHANICS = [
   '%SPELL_DAMAGE%',
   '%STEAL%',
   '%SUMMON%',
-  '%TARGETED_SPELL%',
+  '%TARGET%',
   '%TRANSFORM%',
 ];
 

@@ -171,6 +171,7 @@
   .mechanics__wrapper {
     color: white;
     font-family: sans-serif;
+    margin: 0 -10px;
     @include display-flex(row wrap, center, flex-start);
   }
 
