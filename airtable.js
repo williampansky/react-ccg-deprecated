@@ -37,6 +37,31 @@ base
     fs.writeFileSync('./enums/CONSTANTS.json', constants);
   });
 
+// MECHANICS
+base
+  .table('MECHANICS')
+  .list({
+    maxRecords: 200
+  })
+  .then(resp => {
+    const map = resp.records.map(item => {
+      const { fields } = item;
+      const { name, symbol, description } = fields;
+
+      return {
+        [symbol]: {
+          name,
+          symbol,
+          type: 'MECHANIC',
+          description
+        }
+      };
+    });
+
+    const mechanics = JSON.stringify(Object.assign({}, ...map));
+    fs.writeFileSync('./enums/MECHANICS.json', mechanics);
+  });
+
 // HEROS
 base
   .table('HEROS')

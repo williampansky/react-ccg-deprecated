@@ -6,6 +6,7 @@ import databaseSlice from '@/features/database.slice';
 import filtersSlice from '@/features/filters/filters.slice';
 import filteredResultsSlice from '@/features/filtered-results.slice';
 import herosSlice from '@/features/heros.slice';
+import mechanicsSlice from '@/features/mechanics.slice';
 // import routesSlice from 'features/routes.slice';
 import siteMobileMenuSlice from 'features/site-mobile-menu/site-mobile-menu.slice';
 import siteSidebarSlice from 'features/site-sidebar/site-sidebar.slice';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   database: databaseSlice,
   constants: constantsSlice,
   heros: herosSlice,
+  mechanics: mechanicsSlice,
   siteMobileMenuActive: siteMobileMenuSlice,
   siteSidebarActive: siteSidebarSlice,
   decks: decksSlice

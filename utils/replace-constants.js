@@ -1,4 +1,5 @@
-import CONSTANTS from 'enums/CONSTANTS.json';
+import CONSTANTS from '@/enums/CONSTANTS.json';
+import MECHANICS from '@/enums/MECHANICS.json';
 import exists from './element.exists';
 
 /**
@@ -6,7 +7,13 @@ import exists from './element.exists';
  * @param {String} string HTML string to parse
  * @param {String} symbol Symbol to target and replace
  */
-export default function replaceConstant(string, json = CONSTANTS) {
+export default function replaceConstant(string) {
   if (!exists(string)) return;
+
+  const json = {
+    ...CONSTANTS,
+    ...MECHANICS
+  };
+
   return string.replace(/%(.*?)%/g, m => json[m] && json[m].name);
 }

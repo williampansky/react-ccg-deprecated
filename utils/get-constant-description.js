@@ -1,4 +1,5 @@
-import CONSTANTS from 'enums/CONSTANTS.json';
+import CONSTANTS from '@/enums/CONSTANTS.json';
+import MECHANICS from '@/enums/MECHANICS.json';
 import exists from './element.exists';
 
 /**
@@ -6,7 +7,15 @@ import exists from './element.exists';
  * @param {String} symbol Symbol to match
  * @param {String} json CONSTANTS.json
  */
-export default function getConstantDescription(symbol, json = CONSTANTS) {
-  if (!exists(symbol) || !exists(json[symbol])) return symbol;
+export default function getConstantDescription(symbol) {
+  if (!exists(symbol)) return;
+
+  const json = {
+    ...CONSTANTS,
+    ...MECHANICS
+  };
+
+  if (!exists(json[symbol])) return;
+
   return json[symbol].description;
 }

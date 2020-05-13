@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import CARDCLASS from 'enums/cardClass.enums';
 import replaceConstant from 'utils/replace-constants';
 import RACE from 'enums/race.enums';
-import MECHANICS from 'enums/mechanics.enums';
+import MECHANICS from '@/enums/MECHANICS.json';
 import SET from 'enums/set.enums';
 import RARITY from 'enums/rarity.enums';
 import exists from '@/utils/element.exists';
@@ -31,16 +31,20 @@ let initialState = {
     { _order: 8, label: replaceConstant(CARDCLASS[8]), value: CARDCLASS[8] },
     { _order: 9, label: replaceConstant(CARDCLASS[9]), value: CARDCLASS[9] }
   ],
-  availableCardMechanics: MECHANICS.map(m => {
-    return {
-      label: replaceConstant(m),
-      value: m
-    };
-  }).sort((a, b) => {
-    if (a.label > b.label) return 1;
-    if (a.label < b.label) return -1;
-    return 1;
-  }),
+  availableCardMechanics: Object.keys(MECHANICS)
+    .map(i => MECHANICS[i])
+    .map(obj => {
+      const { name, symbol } = obj;
+      return {
+        label: name,
+        value: symbol
+      };
+    })
+    .sort((a, b) => {
+      if (a.label > b.label) return 1;
+      if (a.label < b.label) return -1;
+      return 0;
+    }),
   availableCardRaces: [
     { _order: 1, label: replaceConstant(RACE[0]), value: RACE[0] },
     { _order: 2, label: replaceConstant(RACE[1]), value: RACE[1] },
