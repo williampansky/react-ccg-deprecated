@@ -9,6 +9,7 @@ import replaceConstant from 'utils/replace-constants';
 import RARITY from '@/enums/rarity.enums';
 
 export default function Card({
+  active,
   artist,
   attack,
   cardClass,
@@ -226,6 +227,7 @@ export default function Card({
 }
 
 Card.propTypes = {
+  active: PropTypes.bool,
   artist: PropTypes.string,
   attack: PropTypes.number,
   cardClass: PropTypes.string,
@@ -266,6 +268,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+  active: false,
   // card object props
   artist: '',
   attack: 0,

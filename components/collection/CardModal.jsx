@@ -42,7 +42,7 @@ export default function CardModal({
       </button>
       {modalObject !== null ? (
         <React.Fragment>
-          <div className="modal__dialog">
+          <article className="modal__dialog">
             <div className="flex">
               <div className="card-wrapper uk-animation-slide-bottom-small">
                 <Card
@@ -114,7 +114,10 @@ export default function CardModal({
               </div>
               <div className="info magictime vanishIn">
                 <div className="text__value">
-                  <h2 className="name">{modalObject.name}</h2>
+                  {!modalObject.active && (
+                    <span className="inactive__label">Inactive Card</span>
+                  )}
+                  <h1 className="name">{modalObject.name}</h1>
                 </div>
                 <div className="text__value">
                   <p
@@ -157,7 +160,18 @@ export default function CardModal({
                     </li>
                     <li>
                       <strong className="text__value">Type:</strong>{' '}
-                      {replaceConstant(modalObject.type).toUpperCase()}
+                      <span className="icon__wrapper">
+                        <img
+                          alt=""
+                          className="card__type__image"
+                          src={`/images/card-assets/TYPE_${replaceConstant(
+                            modalObject.type
+                          ).toUpperCase()}.png`}
+                        />
+                        <span>
+                          {replaceConstant(modalObject.type).toUpperCase()}
+                        </span>
+                      </span>
                     </li>
                     <li>
                       <strong className="text__value">Set:</strong>{' '}
@@ -165,7 +179,16 @@ export default function CardModal({
                     </li>
                     <li>
                       <strong className="text__value">Rarity:</strong>{' '}
-                      <span>{replaceConstant(modalObject.rarity)}</span>
+                      <span className="icon__wrapper">
+                        <img
+                          alt=""
+                          className="card__rarity__gem"
+                          src={`/images/gems/Gem_Rarity_${replaceConstant(
+                            modalObject.rarity
+                          ).toUpperCase()}.png`}
+                        />
+                        <span>{replaceConstant(modalObject.rarity)}</span>
+                      </span>
                     </li>
                     {modalObject.playRequirements && (
                       <li>
@@ -250,7 +273,7 @@ export default function CardModal({
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </React.Fragment>
       ) : null}
     </div>

@@ -30,6 +30,7 @@ export default function CardGrid({
               <img alt="" src="/images/ui/UI_Tooltip.png" role="presentation" />
             </div>
             <Card
+              active={card.active}
               artist={card.artist}
               attack={card.attack}
               cardClass={card.cardClass}

@@ -157,6 +157,16 @@
     text-transform: uppercase;
   }
 
+  .inactive__label {
+    color: #fff649;
+    display: block;
+    font-family: sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin: 0 0 0.25em;
+    text-transform: uppercase;
+  }
+
   .name {
     font-size: 1.875em;
     margin: 0 0 0.625em;
@@ -166,6 +176,29 @@
     font-size: 1.25em;
     margin: 0 0 0.875em;
     opacity: 0.75;
+  }
+
+  .icon__wrapper {
+    position: relative;
+
+    & > span {
+      margin-left: 26px;
+    }
+
+    & > .card__type__image {
+      height: 22px;
+      position: absolute;
+      bottom: -1px;
+      image-rendering: pixelated;
+    }
+
+    & > .card__rarity__gem {
+      height: 28px;
+      position: absolute;
+      bottom: -3px;
+      left: -1px;
+      image-rendering: pixelated;
+    }
   }
 
   .mechanics__wrapper {

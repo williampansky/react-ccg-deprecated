@@ -1,93 +1,48 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import CARD_DATABASE from 'lib/utils/card-databse';
+import { addCard } from 'features/decks/decks.slice';
+import { selectClass } from 'features/filters/filters.slice';
+import { useSelector, useDispatch } from 'react-redux';
 import CARDCLASS from 'enums/cardClass.enums';
 import CardGrid from 'components/collection/CardGrid';
 import CardModal from 'components/collection/CardModal';
-import Deck from 'components/collection/Deck';
+import ChooseClass from './ChooseClass';
+// import DeleteDeckButton from './DeleteDeckButton';
 import exists from 'utils/element.exists';
-import PlayerEnergy from 'features/filters/EnergyFilters';
 import replaceConstant from 'utils/replace-constants';
 import replaceDynamicText from 'utils/replace-dynamic-text';
+import ClassFilters from '@/features/filters/ClassFilters';
 
-export default function DeckBuilder({ selectedCardClass }) {
-  const [database, setDatabase] = useState(null);
-  const [cardClass, setCardClass] = useState(selectedCardClass);
-  const [selectedCards, setSelectedCards] = useState([]);
-  const [energyFilter, setEnergyFilter] = useState(-1);
+export default function DeckBuilder({ deckId }) {
+  const dispatch = useDispatch();
+
   const [modalObject, setModalObject] = useState(null);
+  const filteredResults = useSelector(state => state.filteredResults);
+  const database = useSelector(state => state.database);
+  const decks = useSelector(state => state.decks);
+  const { availableCardClasses, selectedCardClass } = useSelector(
+    state => state.filters
+  );
 
-  const setDbCallback = useCallback((cardClass, energyFilter) => {
-    const databaseArray = Object.keys(CARD_DATABASE).map(i => CARD_DATABASE[i]);
-    setDatabase(
-      databaseArray
-        .filter(item => {
-          if (energyFilter === -1) {
-            return item.cardClass === cardClass;
-          } else if (energyFilter === 10) {
-            return item.cardClass === cardClass && item.cost >= 10;
-          } else {
-            return item.cardClass === cardClass && item.cost === energyFilter;
-          }
-        })
-        .sort((a, b) => a.cost - b.cost)
-    );
-  }, []);
-
-  useEffect(() => {
-    setDbCallback(cardClass, energyFilter);
-    // setDatabase(CARD_DATABASE);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cardClass, energyFilter]);
-
-  function sortArray(arr) {
-    // eslint-disable-next-line array-callback-return
-    return arr.sort((a, b) => {
-      if (a.cost > b.cost) return 1;
-      if (a.cost < b.cost) return -1;
-      if (a.name > b.name) return 1;
-      if (a.name < b.name) return -1;
-    });
-  }
+  const deck = decks[deckId];
+  const selectedCards = deck && deck.cards;
+  const deckClass = deck && deck.class;
 
   const addSelectedCardCallback = useCallback(
-    incomingCard => {
-      if (calculateDeckLength(selectedCards) === 30) return;
-      const { id } = incomingCard;
-      if (selectedCards.find(o => o.id === id && o.elite === true)) {
-        return;
-      } else if (selectedCards.find(o => o.id === id && o._amount === 2)) {
-        return;
-      } else if (selectedCards.find(o => o.id === id)) {
-        const cardObj = selectedCards.find(o => o.id === id);
-        const newCardObj = { ...cardObj, _amount: 2 };
-        const newArray = selectedCards.filter(o => o.id !== id);
-        setSelectedCards(sortArray([...newArray, newCardObj]));
-      } else {
-        setSelectedCards(previousData =>
-          sortArray([...previousData, { ...incomingCard, _amount: 1 }])
-        );
-      }
+    (incomingCard, deckID = deckId) => {
+      dispatch(
+        addCard({
+          deckId: deckID,
+          card: incomingCard
+        })
+      );
     },
-    [selectedCards]
+    [dispatch, deckId]
   );
 
-  const removeSelectedCardsCallback = useCallback(
-    event => {
-      const id = event.target.getAttribute('data-id');
-      if (selectedCards.find(o => o.id === id && o._amount === 1)) {
-        const newArray = selectedCards.filter(o => o.id !== id);
-        setSelectedCards(sortArray([...newArray]));
-      } else {
-        const cardObj = selectedCards.find(o => o.id === id);
-        const newCardObj = { ...cardObj, _amount: 1 };
-        const newArray = selectedCards.filter(o => o.id !== id);
-        setSelectedCards(sortArray([...newArray, newCardObj]));
-      }
-    },
-    [selectedCards]
-  );
+  useEffect(() => {
+    dispatch(selectClass(deckClass));
+  }, [dispatch, deckClass]);
 
   function calculateDeckLength(array) {
     let amount = 0;
@@ -106,14 +61,12 @@ export default function DeckBuilder({ selectedCardClass }) {
     return _amount === 2 || elite === true ? 'locked' : '';
   }
 
-  function changeCardClass(event) {
-    return setCardClass(event.target.value);
-  }
-
-  function filterDatabaseByEnergy(event) {
-    if (energyFilter === parseInt(event.target.value))
-      return setEnergyFilter(-1);
-    return setEnergyFilter(parseInt(event.target.value));
+  function handleCount(card, db = selectedCards) {
+    const { id } = card;
+    const cardObj = db.find(o => o.id === id);
+    if (!exists(cardObj)) return;
+    const { _amount } = cardObj;
+    return _amount;
   }
 
   function handleTooltipClick(obj) {
@@ -128,47 +81,40 @@ export default function DeckBuilder({ selectedCardClass }) {
 
   return (
     <React.Fragment>
-      <Wrapper>
-        <Header>
-          <button onClick={e => changeCardClass(e)} value={selectedCardClass}>
-            {replaceConstant(selectedCardClass)}
-          </button>
-          <button onClick={e => changeCardClass(e)} value={CARDCLASS[0]}>
-            {CARDCLASS[0]}
-          </button>
-        </Header>
-
-        <Sidebar>
-          <Deck
-            data={selectedCards}
-            length={calculateDeckLength(selectedCards)}
-            onClick={event => removeSelectedCardsCallback(event)}
+      <div className="card__collection__wrapper">
+        <div className="card__collection__tabs">
+          <ClassFilters
+            active={selectedCardClass}
+            data={availableCardClasses.filter(
+              obj => obj.value === deckClass || obj.value === CARDCLASS[0]
+            )}
+            onClick={event => dispatch(selectClass(event.target.value))}
+            onChange={selectedOption => dispatch(selectClass(selectedOption))}
           />
-          <img
-            alt=""
-            className="background"
-            src="assets/images/ui/UI_Sidebar.png"
-          />
-        </Sidebar>
-
-        <GridWrapper>
-          {exists(database) ? (
-            <CardGrid
-              addSelectedCardCallback={addSelectedCardCallback}
-              database={database}
-              handleClass={handleClass}
-              handleTooltipClick={handleTooltipClick}
-            />
-          ) : null}
-        </GridWrapper>
-
-        <Footer>
-          <PlayerEnergy
-            active={energyFilter}
-            onClick={e => filterDatabaseByEnergy(e)}
-          />
-        </Footer>
-      </Wrapper>
+        </div>
+        <div
+          className={[
+            'grid__wrapper',
+            '_scrollable',
+            'card-collection',
+            !deckClass ? 'choose__class__wrapper' : ''
+          ].join(' ')}
+        >
+          {deckClass ? (
+            exists(database) ? (
+              <CardGrid
+                addSelectedCardCallback={addSelectedCardCallback}
+                data={filteredResults}
+                handleClass={handleClass}
+                handleTooltipClick={handleTooltipClick}
+                itemCount={handleCount}
+              />
+            ) : null
+          ) : (
+            <ChooseClass deckId={deckId} />
+          )}
+        </div>
+      </div>
 
       <CardModal
         modalObject={modalObject}
@@ -184,57 +130,5 @@ DeckBuilder.propTypes = {
 };
 
 DeckBuilder.defaultProps = {
-  selectedCardClass: CARDCLASS[5]
+  // selectedCardClass: CARDCLASS[1]
 };
-
-const Header = styled.header`
-  background: #444;
-  top: 0;
-`;
-
-const Footer = styled.footer`
-  background: #444;
-  bottom: 0;
-`;
-
-const Sidebar = styled.aside`
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  z-index: 3;
-
-  .background {
-    height: 100%;
-    position: absolute;
-    pointer-events: none;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    user-select: none;
-  }
-`;
-
-const Wrapper = styled.main`
-  ${Header},
-  ${Footer} {
-    position: fixed;
-    width: calc(100vw - 272px);
-    left: 0;
-    right: 0;
-    z-index: 2;
-    height: 50px;
-  }
-`;
-
-const GridWrapper = styled.div`
-  background: #292928;
-  position: fixed;
-  top: 50px;
-  padding: 20px;
-  bottom: 50px;
-  overflow-y: auto;
-  width: calc(100vw - 272px);
-`;
