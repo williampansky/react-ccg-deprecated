@@ -6,6 +6,8 @@
   border-radius: var(--card-border-radius);
   font-family: 'Carter One', sans-serif;
   height: var(--card-height);
+  width: max-content;
+  margin: 0 auto;
   position: relative;
   // width: calc(var(--card-height) / 1.4);
 

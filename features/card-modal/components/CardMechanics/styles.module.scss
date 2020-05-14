@@ -1,0 +1,49 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/flex';
+
+// prettier-ignore
+.component {
+  color: white;
+  font-family: sans-serif;
+  margin: 0 -10px;
+  @include display-flex(row wrap, center, flex-start);
+}
+
+.item {
+  background: #49b6fe;
+  border-radius: 2px;
+  margin: 6px 10px;
+  padding: 4px 8px 4px 7px;
+  user-select: none;
+  @include display-flex(column wrap, center, center);
+}
+
+.item > [data-id='tooltip'] {
+  $bg: #49b6fe;
+  background: $bg;
+  color: mix(black, $bg, 70%);
+  text-align: center;
+  width: 240px;
+
+  &:after {
+    border-top-color: $bg !important;
+  }
+}
+
+.mechanic {
+  text-align: center;
+  top: 0;
+  @include display-flex(row wrap, center, flex-start);
+
+  img {
+    margin-right: 10px;
+    width: 5%;
+  }
+}
+
+.description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0;
+}

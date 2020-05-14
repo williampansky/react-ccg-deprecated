@@ -65,50 +65,6 @@
     transform: translateY(0);
   }
 
-  .card-wrapper {
-    animation-delay: 400ms;
-    position: relative;
-  }
-
-  .card-wrapper > .card {
-    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
-    transform: scale(1);
-    z-index: 1;
-
-    @media (min-width: 960px) {
-      transform: scale(1.25);
-    }
-
-    @media (min-width: 1200px) {
-      transform: scale(1.5);
-    }
-  }
-
-  .card-wrapper > .transformed-card {
-    animation-delay: 600ms;
-    position: absolute;
-    z-index: 0;
-    bottom: -2%;
-    left: -15%;
-
-    @include breakpoint('medium') {
-      bottom: -4%;
-      left: -25%;
-    }
-
-    & > .card {
-      transform: rotate(-10deg) scale(0.95);
-
-      @include breakpoint('medium') {
-        transform: rotate(-10deg) scale(1.2);
-      }
-
-      @include breakpoint('large') {
-        transform: rotate(-10deg) scale(1.475);
-      }
-    }
-  }
-
   .flex {
     display: flex;
     flex-flow: column nowrap;
@@ -133,146 +89,6 @@
     animation-duration: 600ms;
   }
 
-  .info__list ul {
-    color: white;
-    font-family: sans-serif;
-    padding: 0 0 0 1.25em;
-    text-transform: capitalize;
-  }
-
-  .info__list li {
-    position: relative;
-  }
-
-  .info__list ul li + li {
-    margin-top: 0.465em;
-  }
-
-  .info__list strong {
-    color: #fff649;
-    margin: 0 0.25em 0 0;
-  }
-
-  .info__list strong + span {
-    text-transform: uppercase;
-  }
-
-  .inactive__label {
-    color: #fff649;
-    display: block;
-    font-family: sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    margin: 0 0 0.25em;
-    text-transform: uppercase;
-  }
-
-  .name {
-    font-size: 1.875em;
-    margin: 0 0 0.625em;
-  }
-
-  .flavor {
-    font-size: 1.25em;
-    margin: 0 0 0.875em;
-    opacity: 0.75;
-  }
-
-  .icon__wrapper {
-    position: relative;
-
-    & > span {
-      margin-left: 26px;
-    }
-
-    & > .card__type__image {
-      height: 22px;
-      position: absolute;
-      bottom: -1px;
-      image-rendering: pixelated;
-    }
-
-    & > .card__rarity__gem {
-      height: 28px;
-      position: absolute;
-      bottom: -3px;
-      left: -1px;
-      image-rendering: pixelated;
-    }
-  }
-
-  .mechanics__wrapper {
-    color: white;
-    font-family: sans-serif;
-    margin: 0 -10px;
-    @include display-flex(row wrap, center, flex-start);
-  }
-
-  .mechanic {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    background: #49b6fe;
-    padding: 4px 8px 4px 7px;
-    margin: 6px 10px;
-    border-radius: 2px;
-    user-select: none;
-  }
-
-  .mechanics {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: flex-start;
-    top: 0;
-    text-align: center;
-  }
-
-  .mechanics img {
-    width: 5%;
-    margin-right: 10px;
-  }
-
-  .mechanics__wrapper [data-id='tooltip'] {
-    $bg: #49b6fe;
-    background: $bg;
-    color: mix(black, $bg, 70%);
-    width: 240px;
-    text-align: center;
-
-    &:after {
-      border-top-color: $bg;
-    }
-
-    &.show {
-      opacity: 1;
-      text-align: center;
-    }
-  }
-
-  .mechanics__description {
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .artist {
-    margin-top: 1em;
-  }
-
-  .artist a,
-  .info__list a {
-    color: white;
-    cursor: pointer;
-    text-decoration: underline;
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
-
   .description {
     margin-top: 1em;
   }
@@ -290,19 +106,26 @@
   .card {
     z-index: 1;
   }
+}
 
-  .entourage-card {
-    pointer-events: none;
-    position: absolute;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    animation-duration: 200ms;
+[data-file='CardModal'] [data-id='tooltip'] {
+  $bg: #49b6fe;
+  background: $bg;
+  color: mix(black, $bg, 70%);
+  width: 240px;
+  text-align: center;
 
-    .card {
-      box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
-    }
+  &.place-top:after {
+    border-top-color: $bg;
+  }
+
+  &.place-right:after {
+    border-right-color: $bg;
+  }
+
+  &.show {
+    opacity: 1;
+    text-align: center;
   }
 }
 

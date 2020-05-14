@@ -1,0 +1,21 @@
+@import 'styles/utils/breakpoints';
+
+// prettier-ignore
+.component {
+  animation-delay: 600ms;
+  bottom: -2%;
+  left: -15%;
+  position: absolute;
+  z-index: 0;
+
+  @include breakpoint('medium') {
+    bottom: -4%;
+    left: -25%;
+  }
+
+  & > div {
+    transform: rotate(-10deg) scale(0.95);
+    @include breakpoint('medium') { transform: rotate(-10deg) scale(1.2); }
+    @include breakpoint('large')  { transform: rotate(-10deg) scale(1.475); }
+  }
+}

@@ -1,0 +1,16 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+
+// prettier-ignore
+.component {
+  animation-delay: 400ms;
+  position: relative;
+
+  &  > div:nth-child(1) {
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
+    transform: scale(1);
+    @include breakpoint('medium') { transform: scale(1.25); }
+    @include breakpoint('large')  { transform: scale(1.5); }
+    z-index: 1;
+  }
+}

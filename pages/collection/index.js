@@ -8,6 +8,7 @@ import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import MobileFooter from '@/components/collection/MobileFooter';
 import DesktopFooter from '@/components/collection/DesktopFooter';
 import SearchModal from '@/features/filters/SearchModal';
+import CardModalContainer from '@/features/card-modal/CardModal.container';
 
 export default function Collection() {
   return (
@@ -26,6 +27,7 @@ export default function Collection() {
       </main>
       <TheSiteMobileMenu />
       <SearchModal />
+      <CardModalContainer />
     </React.Fragment>
   );
 }

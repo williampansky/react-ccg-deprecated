@@ -1,0 +1,9 @@
+@import 'styles/utils/breakpoints';
+
+// prettier-ignore
+.component {
+  font-size: 1em;
+  @include breakpoint('medium') { font-size: 1.25em; }
+  margin: 0 0 0.875em;
+  opacity: 0.75;
+}

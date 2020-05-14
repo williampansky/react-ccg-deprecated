@@ -1,0 +1,38 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+
+// prettier-ignore
+.component {
+  animation-duration: 400ms;
+  background: none;
+  box-sizing: border-box;
+  cursor: default;
+  margin: auto;
+  max-width: 900px !important;
+  opacity: 0;
+  padding: 30px 15px;
+  @include breakpoint('medium') { padding: 30px; }
+  position: relative;
+  transform: translateY(-100px);
+  transition: opacity, transform 500ms linear;
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint('medium') {
+    flex-flow: row nowrap;
+    margin-left: 100px;
+  }
+
+  // prettier-ignore
+  & > div:nth-child(2) {
+    margin: 50px 0 0;
+    @include breakpoint('medium') { margin: 0 0 0 100px; }
+    @include breakpoint('large')  { margin: 0 0 0 150px; }
+  }
+}

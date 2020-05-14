@@ -1,21 +1,17 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useSelector } from 'react-redux';
-import CARDCLASS from 'enums/cardClass.enums';
-import CardGrid from 'components/collection/CardGrid';
-import CardModal from 'components/collection/CardModal';
-import exists from 'utils/element.exists';
-import replaceConstant from 'utils/replace-constants';
-import replaceDynamicText from 'utils/replace-dynamic-text';
+import { useSelector, useDispatch } from 'react-redux';
+import { setData as setCardModalData } from '@/features/card-modal/card-modal.slice';
+import exists from '@/utils/element.exists';
+import CardGrid from '@/components/collection/CardGrid';
 
 export default function CardCollection() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { query } = router;
   const siteSidebarActive = useSelector(s => s.siteSidebarActive);
   const filteredResults = useSelector(state => state.filteredResults);
   const database = useSelector(state => state.database);
-  const [modalObject, setModalObject] = useState(null);
 
   // function handleClass(card, db = ownedCards) {
   //   const { id } = card;
@@ -25,23 +21,12 @@ export default function CardCollection() {
 
   const handleTooltipClick = useCallback(
     (obj, path = '/collection') => {
-      if (obj === null) {
-        router.push(path);
-        return setModalObject(null);
-      }
-
       const { id } = obj;
       router.push(path, { query: { id: id }, shallow: true });
-      return setModalObject(obj);
+      return dispatch(setCardModalData(obj));
     },
-    [router]
+    [dispatch, router]
   );
-
-  function cardText(string, spellDmg) {
-    const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
-    const replacedSymbols = replaceConstant(replacedDynamicDmg);
-    return replacedSymbols;
-  }
 
   const handleQueryMountingCallback = useCallback(
     obj => {
@@ -78,20 +63,6 @@ export default function CardCollection() {
           ) : null}
         </div>
       </div>
-
-      <CardModal
-        modalObject={modalObject}
-        cardText={cardText}
-        handleTooltipClick={() => handleTooltipClick(null, '/collection')}
-      />
     </React.Fragment>
   );
 }
-
-CardCollection.propTypes = {
-  selectedCardClass: PropTypes.string
-};
-
-CardCollection.defaultProps = {
-  selectedCardClass: CARDCLASS[0]
-};

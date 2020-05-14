@@ -1,0 +1,17 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+
+// prettier-ignore
+.component {
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  padding: 20px;
+  @include breakpoint('medium') { padding: 40px; }
+  position: absolute;
+  right: 0;
+  top: 0;
+}

@@ -1,6 +1,6 @@
 import CONSTANTS from '@/enums/CONSTANTS.json';
 import MECHANICS from '@/enums/MECHANICS.json';
-import exists from './element.exists';
+import exists from '@/utils/element.exists';
 
 /**
  * Parses string and replaces the symbol with the relative constant.

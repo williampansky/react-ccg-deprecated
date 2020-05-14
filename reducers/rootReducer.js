@@ -1,5 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
+import cardModalSlice from '@/features/card-modal/card-modal.slice';
 import configSlice from '@/features/config.slice';
 import constantsSlice from '@/features/constants.slice';
 import databaseSlice from '@/features/database.slice';
@@ -13,6 +14,7 @@ import siteSidebarSlice from 'features/site-sidebar/site-sidebar.slice';
 import decksSlice from '@/features/decks/decks.slice';
 
 const rootReducer = combineReducers({
+  cardModal: cardModalSlice,
   config: configSlice,
   // routes: routesSlice,
   filters: filtersSlice,

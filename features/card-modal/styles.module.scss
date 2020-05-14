@@ -1,0 +1,39 @@
+@import 'styles/abstracts/breakpoints';
+@import 'styles/mixins/breakpoint';
+
+.component {
+  align-items: flex-start;
+  animation-duration: 600ms;
+  background: rgba(0, 0, 0, 0.875);
+  bottom: 0;
+  display: flex;
+  left: 0;
+  max-width: 100vw;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 50px 30px;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 150ms linear;
+  user-select: none;
+  width: 100vw;
+  z-index: -1;
+
+  @include breakpoint('medium') {
+    overflow-y: hidden;
+  }
+
+  &.open {
+    opacity: 1;
+    z-index: 9000;
+    pointer-events: auto;
+  }
+
+  &.open > article {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

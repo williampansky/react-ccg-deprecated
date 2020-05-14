@@ -7,6 +7,7 @@ import RACE from 'enums/race.enums';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 import replaceConstant from 'utils/replace-constants';
 import RARITY from '@/enums/rarity.enums';
+import formatCardText from '@/utils/format-card-text';
 
 export default function Card({
   active,
@@ -47,18 +48,13 @@ export default function Card({
   const IS_ITEM = type === TYPE[2] ? true : false;
   const IS_SPELL = type === TYPE[3] ? true : false;
   const IS_WEAPON = type === TYPE[4] ? true : false;
+  const SPELL_DMG = warcryNumber || dynamicSpellDamageText;
 
   function cardImage(cardId, cardSet, isGold, goldSrc) {
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
       ? `url(${goldSrc})`
       : `/images/sets/${set}/${cardId}-CARD.jpg`;
-  }
-
-  function cardText(string, spellDmg = warcryNumber) {
-    const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
-    const replacedSymbols = replaceConstant(replacedDynamicDmg);
-    return replacedSymbols;
   }
 
   const fontSize = {
@@ -107,7 +103,7 @@ export default function Card({
           <p
             className={'text__value'}
             dangerouslySetInnerHTML={createMarkup(
-              cardText(text, dynamicSpellDamageText)
+              formatCardText(text, SPELL_DMG)
             )}
           />
         </div>
