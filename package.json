@@ -44,6 +44,7 @@
     "react-virtualized": "^9.21.2",
     "styled-components": "^5.1.0",
     "superagent": "^5.2.2",
+    "swr": "^0.2.0",
     "uuid": "^8.0.0"
   },
   "devDependencies": {

@@ -1,12 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import useSwr from 'swr';
 import Hero from '@/components/site/hero/Hero';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import ThreeColumnCards from '@/components/site/three-column-cards/ThreeColumnCards';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 
+const fetcher = url => fetch(url).then(res => res.json());
+
 export default function Home({ Component, pageProps }) {
+  const { data, error } = useSwr(`/api/card/battlemage`, fetcher);
+
+  if (error) return <div>Failed to load users</div>;
+  if (!data) return <div>Loading...</div>;
+
+  console.log(data);
+
   return (
     <React.Fragment>
       <Helmet
