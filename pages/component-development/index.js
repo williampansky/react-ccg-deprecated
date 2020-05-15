@@ -1,5 +1,5 @@
 import React from 'react';
-import Component from '@/components/collection/Card';
+import Component from '@/components/collection/CardPlaceholder/CardPlaceholder';
 
 export default function ComponentDeveloper() {
   const styles = {

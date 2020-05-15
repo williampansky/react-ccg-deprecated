@@ -6,18 +6,17 @@
  */
  @mixin animation-swipe {
   @keyframes placeHolderSwipe {
-      from { background-position: -1000px 0; }
-      to { background-position: 1000px 0; }
+    0%    { background-position: -600px 0; }
+    100%  { background-position: 600px 0; }
   }
 
-    animation: placeHolderSwipe 4s infinite linear forwards;
-    background-repeat: no-repeat;
-    background: #ebebec;
-    background-image: linear-gradient(
-        to right,
-        #ebebec 0%,
-        #e0e0e2 20%,
-        #ebebec 40%,
-        #ebebec 100%
-    );
+  animation: placeHolderSwipe 1s infinite linear forwards;
+  background: #ebebec;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right,
+    #ebebec 0%,
+    #e0e0e2 20%,
+    #ebebec 40%,
+    #ebebec 100%
+  );
 }
