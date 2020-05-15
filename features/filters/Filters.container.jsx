@@ -9,7 +9,7 @@ import {
   selectRarity,
   selectType
 } from 'features/filters/filters.slice';
-import { setResults } from 'features/filtered-results.slice';
+import { fetchResults } from 'features/filtered-results.slice';
 import EnergyFilters from 'features/filters/EnergyFilters';
 import MechanicsFilters from 'features/filters/MechanicsFilters';
 import RaceFilters from 'features/filters/RaceFilters';
@@ -51,7 +51,7 @@ export default function Filters() {
       searchName
     ) => {
       dispatch(
-        setResults({
+        fetchResults({
           cardClass: cardClass,
           mechanics: cardMechanics,
           race: cardRace,

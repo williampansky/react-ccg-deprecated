@@ -162,4 +162,12 @@
     height: calc(var(--card-height) / 10);
     @include display-flex(column nowrap, center, center);
   }
+
+  // prettier-ignore
+  .card__item__wrapper {
+    // border-radius: var(--card-border-radius);
+    transition: opacity 200ms ease-in-out;
+    &[data-isLoading='true'] { opacity: 0; }
+    &[data-isLoading='false'] { opacity: 1; }
+  }
 }

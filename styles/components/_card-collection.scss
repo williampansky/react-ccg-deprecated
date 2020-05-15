@@ -45,7 +45,6 @@
   // background-color: #e4e0da;
 
   &:before {
-    border-radius: var(--site-border-radius) 0 0 0;
     content: '';
     position: fixed;
     width: 100%;
@@ -61,7 +60,10 @@
     );
 
     @include breakpoint('medium') {
-      max-width: calc(100vw - 300px);
+      max-width: calc(100vw);
+      &.collection__sidebar--active {
+        max-width: calc(100vw - 300px);
+      }
     }
   }
 }

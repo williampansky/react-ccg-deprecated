@@ -10,8 +10,10 @@ export default function CardCollection() {
   const router = useRouter();
   const { query } = router;
   const siteSidebarActive = useSelector(s => s.siteSidebarActive);
-  const filteredResults = useSelector(state => state.filteredResults);
   const database = useSelector(state => state.database);
+  const { data, error, isLoading } = useSelector(
+    state => state.filteredResults
+  );
 
   // function handleClass(card, db = ownedCards) {
   //   const { id } = card;
@@ -56,9 +58,11 @@ export default function CardCollection() {
         >
           {exists(database) ? (
             <CardGrid
-              data={filteredResults}
+              data={data}
+              error={error}
               // handleClass={handleClass}
               handleTooltipClick={handleTooltipClick}
+              isLoading={isLoading}
             />
           ) : null}
         </div>
