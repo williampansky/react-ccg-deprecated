@@ -164,10 +164,19 @@
   }
 
   // prettier-ignore
-  .card__item__wrapper {
+  &[class*='uk-animation-'] {
     // border-radius: var(--card-border-radius);
-    transition: opacity 200ms ease-in-out;
-    &[data-isLoading='true'] { opacity: 0; }
-    &[data-isLoading='false'] { opacity: 1; }
+    // transition: opacity 200ms ease-in-out 2000ms;
+    animation-delay: 800ms;
+    // &[data-is-loading='true'] { opacity: 0; }
+    // &[data-is-loading='false'] { opacity: 1; }
   }
+}
+
+.grid__spinner {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  width: 100%;
 }

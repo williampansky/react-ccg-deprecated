@@ -121,9 +121,7 @@ export const fetchResults = activeFilters => async dispatch => {
   try {
     dispatch(getResultsStart());
     const results = await fetchResultsFromDatabase(activeFilters);
-    setTimeout(() => {
-      dispatch(getResultsSuccess(results));
-    }, 600);
+    dispatch(getResultsSuccess(results));
   } catch (error) {
     const errorString = error.toString();
     dispatch(getResultsFailure(errorString));

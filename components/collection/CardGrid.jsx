@@ -19,14 +19,13 @@ export default function CardGrid({
   } = router;
 
   return (
-    <div className="card__grid" data-deckid={id}>
+    <div className="card__grid uk-animation-fade" data-deckid={id}>
       {data.map((card, index) => {
         return (
           <div
             className={['card__item__wrapper', handleClass(card)].join(' ')}
-            data-isLoading={isLoading}
             key={card.id}
-            style={{ transitionDelay: `${index}0ms` }}
+            // style={{ transitionDelay: `${index}0ms` }}
           >
             <div
               className="tooltip"
@@ -41,8 +40,7 @@ export default function CardGrid({
                 src="/images/ui/UI_Tooltip.png"
               />
             </div>
-            <div className="card__wrapper">
-              {/* {isLoading && <CardPlaceholder />} */}
+            <div className="card__wrapper" data-is-loading={isLoading}>
               <Card
                 active={card.active}
                 artist={card.artist}
