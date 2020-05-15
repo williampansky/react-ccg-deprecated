@@ -146,10 +146,11 @@ export default function Card({
         </React.Fragment>
       )}
 
-      {rarity !== RARITY[0] ? (
+      {rarity !== RARITY[0] && rarity !== RARITY[1] ? (
         <img
           alt=""
           className={`card__rarity__gem`}
+          data-rarity={rarity.toUpperCase()}
           src={`/images/gems/Gem_Rarity_${replaceConstant(
             rarity
           ).toUpperCase()}.png`}

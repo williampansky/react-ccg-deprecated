@@ -204,13 +204,18 @@
     }
   }
 
+  // prettier-ignore
   .card__rarity__gem {
     position: absolute;
     height: calc(var(--card-height) / 9.090909091);
-    top: calc(var(--card-height) / -36.363636364);
-    left: calc(var(--card-height) / 3.230806452);
+    top: calc(var(--card-height) / -30.363636364);
+    left: calc(var(--card-height) / 3.30806452);
     image-rendering: pixelated;
     z-index: 2;
+
+    &[data-rarity='%RARITY_COMMON%'] { top: calc(var(--card-height) / -26.363636364); }
+    &[data-rarity='%RARITY_SUPERIOR%'] { top: calc(var(--card-height) / -26.363636364); }
+    &[data-rarity='%RARITY_MYTHIC%'] { top: calc(var(--card-height) / -24.363636364); }
   }
 
   .card__image__wrapper {
