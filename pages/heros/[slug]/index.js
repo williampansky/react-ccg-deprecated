@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import Img from 'react-image';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
-import SearchModal from '@/features/filters/SearchModal';
+import SearchModal from '@/features/filters/components/SearchModal/SearchModal';
 import replaceConstant from '@/utils/replace-constants';
 
 export default function Hero() {

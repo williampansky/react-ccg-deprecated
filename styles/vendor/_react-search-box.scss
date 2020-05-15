@@ -1,0 +1,11 @@
+[data-file='SearchModal'] .react-search-box-dropdown {
+  position: absolute;
+  overflow: auto;
+  margin: 44px 0 50px;
+  width: 100%;
+  z-index: 1;
+
+  & > ul {
+    overflow: auto;
+  }
+}

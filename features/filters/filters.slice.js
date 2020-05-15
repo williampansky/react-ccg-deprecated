@@ -121,6 +121,13 @@ const filtersSlice = createSlice({
         : (state.filtersBarActive = true);
     },
     setSearchModal(state, { payload }) {
+      if (exists(document)) {
+        if (!document.body.classList.contains('noscroll') && payload === true)
+          document.body.classList.add('noscroll');
+        if (document.body.classList.contains('noscroll') && payload === false)
+          document.body.classList.remove('noscroll');
+      }
+
       state.searchModalActive = payload;
     },
     toggleSearchModal(state) {

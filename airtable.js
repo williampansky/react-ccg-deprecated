@@ -28,7 +28,9 @@ base
           name,
           symbol,
           type,
-          description
+          description,
+          key: symbol,
+          value: name
         }
       };
     });
@@ -53,7 +55,9 @@ base
           name,
           symbol,
           type: 'MECHANIC',
-          description
+          description,
+          key: symbol,
+          value: name
         }
       };
     });
@@ -93,7 +97,9 @@ base
           ability3,
           lore,
           artist,
-          slug
+          slug,
+          key: symbol,
+          value: name
         }
       };
     });
@@ -126,7 +132,9 @@ base
               : []
             : '',
           name: name,
-          text: GAME_CONFIG.debugData.enableText ? text : ''
+          text: GAME_CONFIG.debugData.enableText ? text : '',
+          key: id,
+          value: name
         }
       };
     });
@@ -167,7 +175,9 @@ base
               : []
             : '',
           name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : ''
+          text: GAME_CONFIG.debugData.enableText ? text : '',
+          key: id,
+          value: name
         }
       };
     });
@@ -208,7 +218,9 @@ base
               : []
             : '',
           name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : ''
+          text: GAME_CONFIG.debugData.enableText ? text : '',
+          key: id,
+          value: name
         }
       };
     });
@@ -249,7 +261,9 @@ base
               : []
             : '',
           name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : ''
+          text: GAME_CONFIG.debugData.enableText ? text : '',
+          key: id,
+          value: name
         }
       };
     });

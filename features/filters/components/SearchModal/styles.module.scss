@@ -1,0 +1,166 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/flex';
+
+.component {
+  animation-duration: 600ms;
+  background: rgba(0, 0, 0, 0.875);
+  bottom: 0;
+  display: block;
+  left: 0;
+  height: 100%;
+  max-width: 100vw;
+  opacity: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 50px 30px 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: opacity 150ms linear;
+  user-select: none;
+  width: 100vw;
+  z-index: -1;
+
+  @include breakpoint('medium') {
+    overflow-y: hidden;
+  }
+
+  &.open {
+    opacity: 1;
+    z-index: 9000;
+    pointer-events: auto;
+  }
+
+  &.open > div {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  input {
+    border-radius: 2px;
+  }
+
+  &:after {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 30px;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, #191919 0%, rgba(0, 0, 0, 0) 100%);
+  }
+
+  span {
+    top: 0;
+    pointer-events: none;
+  }
+}
+
+.flex {
+  @include display-flex(column nowrap, center, center);
+
+  @include breakpoint('small') {
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+
+  & > div {
+    width: 100%;
+  }
+
+  // prettier-ignore
+  & > div:nth-child(2),
+  & > div:nth-child(3) {
+    margin: 20px 0 0;
+    @include breakpoint('small') { margin: 0 0 0 20px; }
+  }
+}
+
+// prettier-ignore
+.modal__close__button {
+  appearance: none;
+  background: none !important;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  outline: 0;
+  padding: 20px;
+  @include breakpoint('medium') { padding: 40px; }
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+// prettier-ignore
+.modal__dialog {
+  animation-duration: 400ms;
+  background: none;
+  box-sizing: border-box;
+  cursor: default;
+  margin: auto;
+  max-width: 900px !important;
+  opacity: 0;
+  padding: 30px 15px;
+  @include breakpoint('medium') { padding: 30px; }
+  position: relative;
+  transform: translateY(-100px);
+  transition: opacity, transform 500ms linear;
+  width: 100%;
+}
+
+.search__form > div:nth-child(1) {
+  position: relative;
+  margin: 0 0 20px;
+}
+
+.search__clear__all {
+  border-radius: 0 2px 2px 0;
+  border-left: 1px solid #bbb;
+  background: #ddd;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 15px;
+  outline: 0;
+  @include display-flex(column nowrap, center, center);
+}
+
+.search__clear__all div {
+  height: 14px;
+}
+
+.search__clear__all svg line {
+  stroke: #111;
+}
+
+.submit__button,
+.clear__button {
+  background-color: var(--theme-primary);
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+  height: 41px;
+  letter-spacing: 0.15em;
+  line-height: 41px;
+  margin: 0;
+  width: 100%;
+  outline: 0;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  transition: background-color 300ms cubic-bezier(0.06, 0.81, 0, 0.98);
+  vertical-align: middle;
+  width: 100%;
+}
+
+.clear__button {
+  background: whitesmoke;
+}

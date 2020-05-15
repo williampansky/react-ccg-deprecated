@@ -8,7 +8,7 @@ import Filters from '@/features/filters/Filters.container';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import MobileFooter from '@/components/collection/MobileFooter';
 import DesktopFooter from '@/components/collection/DesktopFooter';
-import SearchModal from '@/features/filters/SearchModal';
+import SearchModal from '@/features/filters/components/SearchModal/SearchModal';
 
 export default function Deck() {
   const router = useRouter();
