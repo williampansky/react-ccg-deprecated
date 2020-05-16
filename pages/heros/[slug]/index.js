@@ -7,6 +7,7 @@ import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import SearchModal from '@/features/filters/components/SearchModal/SearchModal';
 import replaceConstant from '@/utils/replace-constants';
+import createMarkup from '@/utils/createMarkup';
 
 export default function Hero() {
   const router = useRouter();
@@ -105,7 +106,10 @@ export default function Hero() {
               </h1>
             </div>
             <div className="hero__lore__wrapper">
-              <p className="hero__lore">{hero.lore}</p>
+              <div
+                className="hero__lore"
+                dangerouslySetInnerHTML={createMarkup(hero.lore)}
+              />
             </div>
           </div>
         </section>
