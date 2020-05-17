@@ -1,0 +1,188 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/flex';
+
+// prettier-ignore
+.component {
+  padding: 0 0 3.75rem;
+  @include breakpoint('medium') { padding: 75px 0 15rem; }
+  position: relative;
+}
+
+.content__wrapper {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+// prettier-ignore
+.content__inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  flex-wrap: wrap;
+  max-width: 2040px;
+  padding: 0 20px;
+  @include breakpoint('medium') { padding: 0 60px 0 0; }
+  position: relative;
+  z-index: 1;
+}
+
+.content__inner {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  width: 100%;
+
+  @include breakpoint('small') {
+    flex: 1 1 auto;
+    padding: 20px 3.75rem;
+  }
+
+  @include breakpoint('medium') {
+    flex: 2 1 120%;
+    padding-top: 5.625rem;
+  }
+}
+
+.ability__selector {
+  margin: 0 0 60px;
+
+  h2 {
+    color: rgb(255, 255, 255);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin: 0 auto 20px;
+    text-transform: uppercase;
+
+    @include breakpoint('medium') {
+      font-size: 3.15rem;
+      margin: 0 auto 40px;
+    }
+  }
+
+  // prettier-ignore
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    @include display-flex(row nowrap, center, center);
+    @include breakpoint('medium') { justify-content: space-between; }
+  }
+
+  // prettier-ignore
+  li + li {
+    margin-left: 10vw;
+    @include breakpoint('medium') { margin: 0; }
+  }
+
+  button {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: transparent;
+    color: rgb(57, 64, 72);
+    flex: 1 1 auto;
+    padding: 0;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+  }
+
+  button img {
+    height: 60px;
+    pointer-events: none;
+    width: 60px;
+
+    @include breakpoint('medium') {
+      height: 160px;
+      width: 160px;
+    }
+  }
+}
+
+.selected__ability {
+  color: white;
+  min-height: 100px;
+  position: relative;
+}
+
+.ability__type {
+  margin-top: 0px;
+  font-size: 0.625rem;
+  line-height: 1;
+  font-weight: normal;
+  letter-spacing: 0.15em;
+  color: rgb(126, 126, 126);
+  text-transform: uppercase;
+  position: absolute;
+  top: -8px;
+}
+
+.ability__name {
+  position: relative;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.ability__cost {
+  height: 40px;
+  position: relative;
+  top: 0;
+  margin: 0 0 0 15px;
+  @include display-flex(row nowrap, center, center);
+
+  & > span {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    @include display-flex(row nowrap, center, center);
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.ability__cooldown {
+  position: absolute;
+  right: -25px;
+  top: -15px;
+  @include display-flex(column nowrap, center, center);
+
+  & > span {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    @include display-flex(column nowrap, center, center);
+  }
+
+  & > span > span {
+    bottom: -2px;
+    display: block;
+    font-size: 0.525em;
+    line-height: 1;
+    position: relative;
+    top: auto;
+  }
+
+  div,
+  svg {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+// prettier-ignore
+.ability__description {
+  min-height: 60px;
+  p { margin: 0; }
+}

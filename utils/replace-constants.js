@@ -1,4 +1,5 @@
 import CONSTANTS from '@/enums/CONSTANTS.json';
+import HEROS from '@/enums/HEROS.json';
 import MECHANICS from '@/enums/MECHANICS.json';
 import exists from '@/utils/element.exists';
 
@@ -12,6 +13,7 @@ export default function replaceConstant(string) {
 
   const json = {
     ...CONSTANTS,
+    ...HEROS,
     ...MECHANICS
   };
 

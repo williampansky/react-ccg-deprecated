@@ -1,0 +1,56 @@
+@import 'styles/utils/breakpoints';
+
+// prettier-ignore
+.component {
+  margin: -15.375rem auto 0;
+  @include breakpoint('medium') { margin: -15.625rem auto 0; }
+  max-width: 900px;
+  position: relative;
+}
+
+.name__wrapper {
+  position: relative;
+}
+
+// prettier-ignore
+.name {
+  color: rgb(255, 255, 255);
+  cursor: default;
+  font-size: 2em;
+  @include breakpoint('medium') { font-size: 4em; }
+  @include breakpoint('xlarge') { font-size: 6em; }
+  letter-spacing: 0.153em;
+  margin: 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 1;
+
+  & > * {
+    display: inline-block;
+    position: relative;
+  }
+
+  & > :before,
+  & > :after {
+    background: #999;
+    content: '';
+    height: calc(0.2px + 0.005em);
+    position: absolute;
+    top: calc(50% - (calc(0.2px + 0.05em) / 2));
+    width: 75px;
+    @include breakpoint('medium') { width: 250px; }
+  }
+
+  & > :before {
+    background: linear-gradient(to left, #999 0%, rgba(0, 0, 0, 0) 100%);
+    margin-right: calc(5px + 0.3em);
+    right: 100%;
+  }
+
+  & > :after {
+    background: linear-gradient(to right, #999 0%, rgba(0, 0, 0, 0) 100%);
+    left: 100%;
+    margin-left: calc(5px + 0.3em);
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import Hero from '@/components/site/hero/Hero';
+import HomepageHero from '@/components/site/homepage-hero/HomepageHero';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import ThreeColumnCards from '@/components/site/three-column-cards/ThreeColumnCards';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
@@ -15,7 +15,7 @@ export default function Home({ Component, pageProps }) {
       />
       <TheSiteHeader />
       <main className="site__wrapper page__homepage">
-        <Hero />
+        <HomepageHero />
         <ThreeColumnCards />
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras

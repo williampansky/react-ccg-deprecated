@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { ReactSVG } from 'react-svg';
 import Card from '@/components/collection/Card';
 import SET from '@/enums/set.enums';
-import styles from './hero.module.scss';
+import styles from './styles.module.scss';
 
 const Hero = () => {
   const database = useSelector(s => s.database);

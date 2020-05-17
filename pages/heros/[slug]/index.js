@@ -6,14 +6,25 @@ import Img from 'react-image';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import SearchModal from '@/features/filters/components/SearchModal/SearchModal';
-import replaceConstant from '@/utils/replace-constants';
 import createMarkup from '@/utils/createMarkup';
+import formatHeroAbility from '@/utils/format-hero-ability';
+import replaceConstant from '@/utils/replace-constants';
+import HeroImage from '@/components/site/hero/HeroImage/HeroImage';
+import HeroName from '@/components/site/hero/HeroName/HeroName';
+import HeroLore from '@/components/site/hero/HeroLore/HeroLore';
+import HeroAbilities from '@/components/site/hero/HeroAbilities/HeroAbilities';
 
 export default function Hero() {
   const router = useRouter();
   const { slug } = router.query;
-  const [hero, setHero] = useState(null);
   const heros = useSelector(s => s.heros);
+  const [hero, setHero] = useState(null);
+  const ability1 = hero && hero.ability1 ? hero.ability1 : '';
+  const ability2 = hero && hero.ability2 ? hero.ability2 : '';
+  const ability3 = hero && hero.ability3 ? hero.ability3 : '';
+  const name = hero && hero.name ? replaceConstant(hero.name) : '';
+  const lore = hero && hero.lore ? hero.lore : '';
+  const symbol = hero && hero.symbol ? hero.symbol.replace(/(%)/g, '') : '';
 
   useEffect(() => {
     const found = heros.find(obj => obj.slug === slug);
@@ -21,34 +32,19 @@ export default function Hero() {
   }, [heros, slug]);
 
   function parseAbility(string) {
-    const cost = string
-      .match(/cost\((.*?)\)/g)[0]
-      .replace('cost(', '')
-      .replace(')', '');
-    const cooldown = string
-      .match(/cooldown\((.*?)\)/g)[0]
-      .replace('cooldown(', '')
-      .replace(')', '');
-    const name = string
-      .match(/name\((.*?)\)/g)[0]
-      .replace('name(', '')
-      .replace(')', '');
-    const description = string
-      .match(/description\((.*?)\)/g)[0]
-      .replace('description(', '')
-      .replace(')', '');
-
     return (
       <React.Fragment>
         <Img src={`/images/ui/UI_EnergySlot-Locked.png`} />
         <div>
           <h3>
             <span className="text__value ability__name">
-              {replaceConstant(name)}
+              {formatHeroAbility(string, 'name')}
             </span>
             <span className="cost__wrapper">
               <span className="cost__value">
-                <span className="text__value">{cost}</span>
+                <span className="text__value">
+                  {formatHeroAbility(string, 'cost')}
+                </span>
               </span>
               <img
                 alt="Cost Gem"
@@ -58,12 +54,12 @@ export default function Hero() {
           </h3>
           <p>
             <small>
-              {cooldown === '-1'
+              {formatHeroAbility(string, 'cooldown') === '-1'
                 ? `Once per match`
-                : `Cooldown: ${cooldown} turns`}
+                : `Cooldown: ${formatHeroAbility(string, 'cooldown')} turns`}
             </small>
           </p>
-          <p>{replaceConstant(description)}</p>
+          <p>{formatHeroAbility(string, 'description')}</p>
         </div>
       </React.Fragment>
     );
@@ -72,82 +68,45 @@ export default function Hero() {
   return hero !== null ? (
     <React.Fragment>
       <Helmet
-        title={`Hero ${hero.name} | HSclone`}
-        meta={[{ property: 'og:title', content: `Hero ${hero.name}` }]}
+        title={`Hero ${name} | HSclone`}
+        meta={[{ property: 'og:title', content: `Hero ${name}` }]}
       />
       <TheSiteHeader />
 
       <main className="site__wrapper page__hero">
-        <section className="section__wrapper">
-          <div className="background__image__wrapper">
-            <div className="background__image">
-              <Img
-                src={`/images/heros/${hero.symbol.replace(
-                  /(%)/g,
-                  ''
-                )}/LAYOUT.jpg`}
-              />
-            </div>
-          </div>
-          <div className="hero__image__inner">
-            <div className="hero__image">
-              <Img
-                src={`/images/heros/${hero.symbol.replace(
-                  /(%)/g,
-                  ''
-                )}/LAYOUT.jpg`}
-              />
-            </div>
-          </div>
-          <div className="hero__intro__wrapper">
-            <div className="hero__name__wrapper">
-              <h1 className="hero__name">
-                <span className="text__value">{hero.name}</span>
-              </h1>
-            </div>
-            <div className="hero__lore__wrapper">
-              <div
-                className="hero__lore"
-                dangerouslySetInnerHTML={createMarkup(hero.lore)}
-              />
-            </div>
-          </div>
-        </section>
+        <HeroImage symbol={symbol} />
+        <HeroName name={name} />
+        <HeroLore lore={lore} />
+        <HeroAbilities
+          abilities={[ability1, ability2, ability3]}
+          symbol={symbol}
+        />
 
-        <section className="section__wrapper">
+        {/* <section className="section__wrapper">
           <div className="hero__abilities__wrapper">
             <div className="hero__ability hero__ability--one">
               <Img
                 className="hero__ability__image"
-                src={`/images/heros/${hero.symbol.replace(
-                  /(%)/g,
-                  ''
-                )}/ABILITY_01.jpg`}
+                src={`/images/heros/${symbol}/ABILITY_01.jpg`}
               />
-              {parseAbility(hero.ability1)}
+              {parseAbility(ability1)}
             </div>
             <div className="hero__ability hero__ability--two">
               <Img
                 className="hero__ability__image"
-                src={`/images/heros/${hero.symbol.replace(
-                  /(%)/g,
-                  ''
-                )}/ABILITY_02.jpg`}
+                src={`/images/heros/${symbol}/ABILITY_02.jpg`}
               />
-              {parseAbility(hero.ability2)}
+              {parseAbility(ability2)}
             </div>
             <div className="hero__ability hero__ability--three">
               <Img
                 className="hero__ability__image"
-                src={`/images/heros/${hero.symbol.replace(
-                  /(%)/g,
-                  ''
-                )}/ABILITY_03.jpg`}
+                src={`/images/heros/${symbol}/ABILITY_03.jpg`}
               />
-              {parseAbility(hero.ability3)}
+              {parseAbility(ability3)}
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <TheSiteMobileMenu />
