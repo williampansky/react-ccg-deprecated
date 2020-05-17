@@ -7,15 +7,17 @@ import styles from './styles.module.scss';
 
 export default function HeroAbilities({ abilities, symbol }) {
   const [selectedAbility, setSelectedAbility] = useState(null);
+  const abilityIndex = selectedAbility && selectedAbility.index;
   const abilityType = selectedAbility && selectedAbility.type;
   const abilityName = selectedAbility && selectedAbility.name;
   const abilityCost = selectedAbility && selectedAbility.cost;
   const abilityCooldown = selectedAbility && selectedAbility.cooldown;
   const abilityDescription = selectedAbility && selectedAbility.description;
 
-  const handleClick = useCallback((event, string) => {
+  const handleClick = useCallback((event, index, string) => {
     event !== null && event.target.blur();
     return setSelectedAbility({
+      index,
       type: formatHeroAbility(string, 'type'),
       name: formatHeroAbility(string, 'name'),
       cost: formatHeroAbility(string, 'cost'),
@@ -25,11 +27,18 @@ export default function HeroAbilities({ abilities, symbol }) {
   }, []);
 
   useEffect(() => {
-    abilities.length !== 0 && handleClick(null, abilities[0]);
+    abilities.length !== 0 && handleClick(null, 1, abilities[0]);
   }, [abilities, handleClick]);
 
   return (
-    <section className={styles.component}>
+    <section
+      className={styles.component}
+      style={{
+        backgroundImage:
+          abilityIndex &&
+          `url(/images/heros/${symbol}/ABILITY_0${abilityIndex}.jpg)`
+      }}
+    >
       <div className={styles.content__wrapper}>
         <div className={styles.content__inner}>
           <div className={styles.ability__selector}>
@@ -38,8 +47,11 @@ export default function HeroAbilities({ abilities, symbol }) {
               {abilities.map((str, idx) => {
                 idx = idx + 1;
                 return (
-                  <li key={idx}>
-                    <button onClick={e => handleClick(e, str)}>
+                  <li
+                    className={idx === abilityIndex ? styles.active : ''}
+                    key={idx}
+                  >
+                    <button onClick={e => handleClick(e, idx, str)}>
                       <Img
                         alt={formatHeroAbility(str, 'name')}
                         src={`/images/heros/${symbol}/ABILITY_0${idx}.jpg`}

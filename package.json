@@ -42,6 +42,7 @@
     "react-transition-group": "^4.3.0",
     "react-use-hover": "^1.0.0",
     "react-virtualized": "^9.21.2",
+    "react-visibility-sensor": "^5.1.1",
     "styled-components": "^5.1.0",
     "superagent": "^5.2.2",
     "swr": "^0.2.0",

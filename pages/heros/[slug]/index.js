@@ -31,40 +31,6 @@ export default function Hero() {
     found ? setHero(found) : setHero(null);
   }, [heros, slug]);
 
-  function parseAbility(string) {
-    return (
-      <React.Fragment>
-        <Img src={`/images/ui/UI_EnergySlot-Locked.png`} />
-        <div>
-          <h3>
-            <span className="text__value ability__name">
-              {formatHeroAbility(string, 'name')}
-            </span>
-            <span className="cost__wrapper">
-              <span className="cost__value">
-                <span className="text__value">
-                  {formatHeroAbility(string, 'cost')}
-                </span>
-              </span>
-              <img
-                alt="Cost Gem"
-                src="/images/ui/UI_EnergySlot-Available.png"
-              />
-            </span>
-          </h3>
-          <p>
-            <small>
-              {formatHeroAbility(string, 'cooldown') === '-1'
-                ? `Once per match`
-                : `Cooldown: ${formatHeroAbility(string, 'cooldown')} turns`}
-            </small>
-          </p>
-          <p>{formatHeroAbility(string, 'description')}</p>
-        </div>
-      </React.Fragment>
-    );
-  }
-
   return hero !== null ? (
     <React.Fragment>
       <Helmet

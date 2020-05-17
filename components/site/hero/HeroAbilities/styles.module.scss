@@ -6,6 +6,20 @@
   padding: 0 0 3.75rem;
   @include breakpoint('medium') { padding: 75px 0 15rem; }
   position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #000913;
+  background-blend-mode: soft-light;
+
+  &:before {
+    background: linear-gradient(to top, transparent, #000913 100%);
+    content: '';
+    height: 25vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+  }
 }
 
 .content__wrapper {
@@ -79,18 +93,15 @@
   }
 
   button {
+    align-items: stretch;
+    background: transparent;
+    border: 1px solid transparent;
+    color: rgb(57, 64, 72);
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    background-color: transparent;
-    color: rgb(57, 64, 72);
     flex: 1 1 auto;
     padding: 0;
-    border-width: 0px;
-    border-style: initial;
-    border-color: initial;
-    border-image: initial;
   }
 
   button img {
@@ -103,6 +114,10 @@
       width: 160px;
     }
   }
+
+  .active > button {
+    border-color: var(--theme-primary);
+  }
 }
 
 .selected__ability {
@@ -113,14 +128,18 @@
 
 .ability__type {
   margin-top: 0px;
-  font-size: 0.625rem;
+  font-size: 0.825rem;
   line-height: 1;
   font-weight: normal;
   letter-spacing: 0.15em;
   color: rgb(126, 126, 126);
   text-transform: uppercase;
   position: absolute;
-  top: -8px;
+  top: -10px;
+
+  @include breakpoint('medium') {
+    top: -16px;
+  }
 }
 
 .ability__name {
@@ -129,7 +148,13 @@
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
-  margin: 0;
+  margin: 0 0 0.45em;
+
+  // prettier-ignore
+  & > span:nth-child(1) {
+    font-size: 1em;
+    @include breakpoint('medium') { font-size: 1.5em; }
+  }
 }
 
 .ability__cost {
@@ -154,7 +179,7 @@
 
 .ability__cooldown {
   position: absolute;
-  right: -25px;
+  right: -27.5px;
   top: -15px;
   @include display-flex(column nowrap, center, center);
 
@@ -166,7 +191,7 @@
   }
 
   & > span > span {
-    bottom: -2px;
+    bottom: -3px;
     display: block;
     font-size: 0.525em;
     line-height: 1;
@@ -183,6 +208,7 @@
 
 // prettier-ignore
 .ability__description {
+  font-size: 1.25em;
   min-height: 60px;
   p { margin: 0; }
 }

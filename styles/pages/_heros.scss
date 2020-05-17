@@ -1,8 +1,45 @@
 .page__heros {
   background: repeat url(/images/site/binding_dark.jpg) 0 0;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
   min-height: calc(100vh - var(--site-header-height));
   padding: 0 0 100px;
   width: 100vw;
+
+  h1 {
+    text-transform: uppercase;
+  }
+
+  // prettier-ignore
+  h1 > span:nth-child(1) {
+    display: block;
+    font-size: 1rem;
+    @include breakpoint('medium') { font-size: 1.25rem; }
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.45em;
+  }
+
+  // prettier-ignore
+  h1 > span:nth-child(2) {
+    display: block;
+    font-size: calc(22.24px + 10.3vw);
+    @include breakpoint('medium') { font-size: calc(61.82px + 6.03vw); }
+    line-height: 0.85;
+    letter-spacing: 0.03em;
+  }
+
+  p {
+    box-sizing: content-box;
+    font-size: 0.875rem;
+    letter-spacing: 0.015em;
+    line-height: 1.6;
+    margin: 12px auto 0px;
+    max-width: 460px;
+    padding: 0px 10%;
+    text-align: center;
+  }
 }
 
 .page__heros .card__grid {
