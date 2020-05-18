@@ -7,6 +7,8 @@ import formatUrlString from '@/utils/format-url-string';
 import EntourageCard from '@/components/collection/EntourageCard';
 import RARITY from '@/enums/rarity.enums';
 import exists from '@/utils/element.exists';
+import RACE from '@/enums/race.enums';
+import removeSymbols from '@/utils/remove-symbols';
 
 export default function CardInfoList({ data, database }) {
   const {
@@ -18,6 +20,7 @@ export default function CardInfoList({ data, database }) {
     howToEarn,
     id,
     playRequirements,
+    race,
     rarity,
     set,
     targetingArrowText,
@@ -25,6 +28,8 @@ export default function CardInfoList({ data, database }) {
   } = data;
 
   const CARD_TYPE = replaceConstant(type).toUpperCase();
+  const CARD_SUBTYPE = exists(race) && removeSymbols(race).toUpperCase();
+  const CARD_RACE = exists(race) && replaceConstant(race).toUpperCase();
   const CARD_SET = replaceConstant(set).toUpperCase();
   const CARD_RARITY = replaceConstant(rarity).toUpperCase();
   const CARD_DESCRIPTION = createMarkup(replaceConstant(description));
@@ -48,6 +53,19 @@ export default function CardInfoList({ data, database }) {
             <span className={styles.uppercase}>{CARD_TYPE}</span>
           </span>
         </li>
+        {exists(race) && race !== RACE[0] && (
+          <li>
+            <strong className="text__value">Race:</strong>{' '}
+            <span className={styles.icon__wrapper}>
+              <img
+                alt=""
+                className={styles.card__type__image}
+                src={`/images/card-assets/SUBTYPE_${CARD_SUBTYPE}.png`}
+              />
+              <span className={styles.uppercase}>{CARD_RACE}</span>
+            </span>
+          </li>
+        )}
         <li>
           <strong className="text__value">Set:</strong>{' '}
           <span className={styles.uppercase}>{CARD_SET}</span>

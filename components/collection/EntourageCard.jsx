@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'react-image';
 import { fontSizeBasedOnCharacterLength } from 'utils/text';
 import createMarkup from 'utils/createMarkup';
 import TYPE from 'enums/type.enums';
@@ -7,6 +8,8 @@ import RACE from 'enums/race.enums';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 import replaceConstant from 'utils/replace-constants';
 import RARITY from '@/enums/rarity.enums';
+import exists from '@/utils/element.exists';
+import removeSymbols from '@/utils/remove-symbols';
 
 export default function EntourageCard({ data }) {
   const {
@@ -64,10 +67,12 @@ export default function EntourageCard({ data }) {
 
       <div className={'card__image__wrapper'}>
         {id && set ? (
-          <img
+          <Img
             alt={name}
             className={'card__image'}
+            decode={false}
             src={cardImage(id, set, isGolden, goldenImageSrc)}
+            unloader={<img alt="" src="/images/sets/PLACEHOLDER.jpg" />}
           />
         ) : null}
       </div>
@@ -128,7 +133,7 @@ export default function EntourageCard({ data }) {
         </React.Fragment>
       )}
 
-      {rarity !== RARITY[0] ? (
+      {rarity !== RARITY[0] && rarity !== RARITY[1] ? (
         <img
           alt=""
           className={`card__rarity__gem`}
@@ -140,13 +145,15 @@ export default function EntourageCard({ data }) {
 
       {type ? (
         <div className={`card__type__image__wrapper`}>
-          <img
-            alt=""
-            className={`card__type__image`}
-            src={`/images/card-assets/TYPE_${replaceConstant(
-              type
-            ).toUpperCase()}.png`}
-          />
+          <div className={`card__type__image__icon__wrapper`}>
+            <img
+              alt=""
+              className={`card__type__image`}
+              src={`/images/card-assets/TYPE_${replaceConstant(
+                type
+              ).toUpperCase()}.png`}
+            />
+          </div>
           {IS_WEAPON || spellContext === 'ATTACK' ? (
             <img
               alt=""
@@ -157,6 +164,33 @@ export default function EntourageCard({ data }) {
             <img
               alt=""
               className={`card__type__image__badge`}
+              src={`/images/card-assets/Card_Type_Board.png`}
+            />
+          )}
+        </div>
+      ) : null}
+
+      {exists(race) && race !== RACE[0] && IS_MINION ? (
+        <div className={`card__subtype__image__wrapper`}>
+          <div className={`card__subtype__image__icon__wrapper`}>
+            <img
+              alt=""
+              className={`card__subtype__image`}
+              src={`/images/card-assets/SUBTYPE_${removeSymbols(
+                race
+              ).toUpperCase()}.png`}
+            />
+          </div>
+          {IS_WEAPON || spellContext === 'ATTACK' ? (
+            <img
+              alt=""
+              className={`card__subtype__image__badge`}
+              src={`/images/card-assets/Card_Type_Board.png`}
+            />
+          ) : (
+            <img
+              alt=""
+              className={`card__subtype__image__badge`}
               src={`/images/card-assets/Card_Type_Board.png`}
             />
           )}

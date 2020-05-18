@@ -141,15 +141,55 @@
   }
 
   .card__type__image {
-    position: absolute;
-    height: calc(var(--card-height) / 10);
+    height: calc(var(--card-height) / 10.25);
     z-index: 2;
     image-rendering: pixelated;
+
+    &__icon__wrapper {
+      position: absolute;
+      left: calc(var(--card-height) / 350);
+      top: calc(var(--card-height) / -600);
+      height: calc(var(--card-height) / 5.55556);
+      width: calc(var(--card-height) / 5.55556);
+      z-index: 2;
+      @include display-flex(column nowrap, center, center);
+    }
 
     &__wrapper {
       position: absolute;
       bottom: calc(var(--card-height) / 4.25);
       left: calc(var(--card-height) / -30);
+      z-index: 2;
+      @include display-flex(column nowrap, center, center);
+    }
+
+    &__badge {
+      width: calc(var(--card-height) / 5.55556);
+      position: relative;
+      image-rendering: pixelated;
+      top: 1px;
+    }
+  }
+
+  .card__subtype__image {
+    height: calc(var(--card-height) / 10.25);
+    z-index: 2;
+    image-rendering: pixelated;
+
+    &__icon__wrapper {
+      position: absolute;
+      left: calc(var(--card-height) / 350);
+      top: calc(var(--card-height) / -600);
+      height: calc(var(--card-height) / 5.55556);
+      width: calc(var(--card-height) / 5.55556);
+      z-index: 2;
+      @include display-flex(column nowrap, center, center);
+    }
+
+    &__wrapper {
+      position: absolute;
+      bottom: calc(var(--card-height) / 4.25);
+      right: calc(var(--card-height) / -30);
       z-index: 2;
       @include display-flex(column nowrap, center, center);
     }
