@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'react-image';
 import { fontSizeBasedOnCharacterLength } from 'utils/text';
 import createMarkup from 'utils/createMarkup';
 import TYPE from 'enums/type.enums';
@@ -82,9 +83,10 @@ export default function Card({
 
       <div className={'card__image__wrapper'}>
         {id && set ? (
-          <img
+          <Img
             alt={name}
             className={'card__image'}
+            decode={false}
             src={cardImage(id, set, isGolden, goldenImageSrc)}
           />
         ) : null}
@@ -195,12 +197,6 @@ export default function Card({
           );
         })}
       </div> */}
-
-      {/* <img
-        alt=""
-        className={`card__base__image`}
-        src={`/card-perf-test4.png`}
-      /> */}
 
       {IS_MINION || IS_WEAPON ? (
         <img
