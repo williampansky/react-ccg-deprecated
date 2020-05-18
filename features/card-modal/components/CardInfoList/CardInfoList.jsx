@@ -5,6 +5,8 @@ import createMarkup from '@/utils/createMarkup';
 import replaceConstant from '@/utils/replace-constants';
 import formatUrlString from '@/utils/format-url-string';
 import EntourageCard from '@/components/collection/EntourageCard';
+import RARITY from '@/enums/rarity.enums';
+import exists from '@/utils/element.exists';
 
 export default function CardInfoList({ data, database }) {
   const {
@@ -22,10 +24,12 @@ export default function CardInfoList({ data, database }) {
     type
   } = data;
 
-  const TYPE = replaceConstant(type).toUpperCase();
-  const SET = replaceConstant(set).toUpperCase();
-  const RARITY = replaceConstant(rarity).toUpperCase();
-  const DESCRIPTION = createMarkup(replaceConstant(description));
+  const CARD_TYPE = replaceConstant(type).toUpperCase();
+  const CARD_SET = replaceConstant(set).toUpperCase();
+  const CARD_RARITY = replaceConstant(rarity).toUpperCase();
+  const CARD_DESCRIPTION = createMarkup(replaceConstant(description));
+  const ENTOURAGE_LENGTH =
+    exists(entourage) && entourage.match(/([A-Z])\w+/).length;
 
   return (
     <div className={styles.component}>
@@ -39,55 +43,65 @@ export default function CardInfoList({ data, database }) {
             <img
               alt=""
               className={styles.card__type__image}
-              src={`/images/card-assets/TYPE_${TYPE}.png`}
+              src={`/images/card-assets/TYPE_${CARD_TYPE}.png`}
             />
-            <span className={styles.uppercase}>{TYPE}</span>
+            <span className={styles.uppercase}>{CARD_TYPE}</span>
           </span>
         </li>
         <li>
           <strong className="text__value">Set:</strong>{' '}
-          <span className={styles.uppercase}>{SET}</span>
+          <span className={styles.uppercase}>{CARD_SET}</span>
         </li>
         <li>
           <strong className="text__value">Rarity:</strong>{' '}
-          <span className={styles.icon__wrapper}>
-            <img
-              alt=""
-              className={styles.card__rarity__gem}
-              src={`/images/gems/Gem_Rarity_${RARITY}.png`}
-            />
-            <span className={styles.uppercase}>{RARITY}</span>
-          </span>
+          {rarity !== RARITY[0] && rarity !== RARITY[1] ? (
+            <span className={styles.icon__wrapper}>
+              <img
+                alt=""
+                className={styles.card__rarity__gem}
+                src={`/images/gems/Gem_Rarity_${CARD_RARITY}.png`}
+              />
+              <span className={styles.uppercase}>{CARD_RARITY}</span>
+            </span>
+          ) : (
+            <span className={styles.uppercase}>{CARD_RARITY}</span>
+          )}
         </li>
+
         {playRequirements && (
           <li>
             <strong className="text__value">Play Requirements:</strong>{' '}
             <span>{playRequirements}</span>
           </li>
         )}
+
         {targetingArrowText && (
           <li>
             <strong className="text__value">Targeting Text:</strong>{' '}
             <span>{replaceConstant(targetingArrowText)}</span>
           </li>
         )}
+
         {howToEarn && (
           <li>
             <strong className="text__value">How to Earn:</strong>{' '}
             <span>{howToEarn}</span>
           </li>
         )}
+
         {collectible && (
           <li>
             <strong className="text__value">Collectible</strong>
           </li>
         )}
+
         {elite && (
           <li>
             <strong className="text__value">Elite</strong>
           </li>
         )}
       </ul>
+
       {artist && (
         <div className="artist">
           <strong className="text__value">Artist:</strong>{' '}
@@ -96,25 +110,36 @@ export default function CardInfoList({ data, database }) {
           </a>
         </div>
       )}
+
       {description && (
         <div className="description">
           <strong className="text__value">Description</strong>{' '}
           <div
             className="description__text"
-            dangerouslySetInnerHTML={DESCRIPTION}
+            dangerouslySetInnerHTML={CARD_DESCRIPTION}
           />
         </div>
       )}
-      {entourage !== null ? (
-        database.find(o => o.id === entourage) ? (
-          <div className={styles.entourage__card}>
-            <p className={styles.entourage__info}>
-              <strong className="text__value">Entourage:</strong>{' '}
-              <span>{entourage}</span>
-            </p>
-            <EntourageCard data={database.find(o => o.id === entourage)} />
+
+      {exists(entourage) ? (
+        <React.Fragment>
+          <p className={styles.entourage__info}>
+            <strong className="text__value">Entourage:</strong>{' '}
+            <span>{entourage}</span>
+          </p>
+          <div className={styles.entourage__card__wrapper}>
+            {Array.from(Array(ENTOURAGE_LENGTH)).map((_, index) => {
+              index = index + 1;
+              const eId = `${id}${(index + 9).toString(36)}`;
+              const card = database.find(o => o.id === eId);
+              return exists(card) ? (
+                <div className={styles.entourage__card} key={eId}>
+                  <EntourageCard data={card} />
+                </div>
+              ) : null;
+            })}
           </div>
-        ) : null
+        </React.Fragment>
       ) : null}
     </div>
   );

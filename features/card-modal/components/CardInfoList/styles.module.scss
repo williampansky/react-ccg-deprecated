@@ -1,4 +1,5 @@
 @import 'styles/utils/breakpoints';
+@import 'styles/mixins/flex';
 
 // prettier-ignore
 .component {
@@ -60,10 +61,21 @@
   image-rendering: pixelated;
 }
 
-.entourage__card {
+// prettier-ignore
+.entourage__card__wrapper {
   margin: 1.25em auto 0;
+  width: 100%;
+  @include display-flex(column nowrap, center, flex-start);
+  @include breakpoint('large') { flex-flow: row nowrap; }
+}
 
-  // prettier-ignore
+// prettier-ignore
+.entourage__card {
+  & + .entourage__card {
+    margin: 20px auto 0;
+    @include breakpoint('large') { margin: 0 0 0 20px; }
+  }
+
   & > div {
     --card-height: 300px;
     @include breakpoint('xsmall') { --card-height: 340px; }

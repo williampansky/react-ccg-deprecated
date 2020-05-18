@@ -24,8 +24,8 @@
   // prettier-ignore
   h1 > span:nth-child(2) {
     display: block;
-    font-size: calc(22.24px + 10.3vw);
-    @include breakpoint('medium') { font-size: calc(61.82px + 6.03vw); }
+    font-size: 64px;
+    @include breakpoint('medium') { font-size: 140px; }
     line-height: 0.85;
     letter-spacing: 0.03em;
   }

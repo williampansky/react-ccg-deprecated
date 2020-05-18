@@ -23,10 +23,7 @@ export default function Heros() {
             <span>Choose your</span>
             <span className="text__value">Hero</span>
           </h1>
-          <p>
-            With more than 140 champions, you’ll find the perfect match for your
-            playstyle. Master one, or master them all.
-          </p>
+          <p>Find the perfect match for your playstyle.</p>
         </div>
         <div className="container">
           <div className="card__grid">
@@ -43,7 +40,7 @@ export default function Heros() {
                 slug
               } = obj;
 
-              const path = ` /images/heros/${symbol.replace(/(%)/g, '')}`;
+              const path = `/images/heros/${symbol.replace(/(%)/g, '')}`;
 
               return (
                 <Link key={symbol} href="heros/[slug]" as={`/heros/${slug}`}>
