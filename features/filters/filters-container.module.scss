@@ -34,7 +34,7 @@
   &.active {
     pointer-events: auto;
     max-height: calc(100% - 80px);
-    overflow: visible;
+    overflow-y: auto;
 
     @include breakpoint('medium') {
       max-height: 100px;
@@ -57,6 +57,10 @@
   margin: 10px 0;
   height: 40px;
   width: 100%;
+
+  &:first-child {
+    margin-top: 0;
+  }
 
   @include breakpoint('medium') {
     margin: 0 10px;

@@ -11,7 +11,8 @@ export default function Sidebar({ deckId }) {
     <div
       className={[
         'collection__sidebar',
-        active ? 'collection__sidebar--active' : ''
+        active ? 'collection__sidebar--active' : '',
+        'uk-animation-fade'
       ].join(' ')}
     >
       {deckId ? <DeckSidebar deckId={deckId} /> : <DeckCollection />}

@@ -18,7 +18,7 @@ export default function RarityFilters({
         instanceId="RarityFilters"
         isClearable
         isSearchable={isDesktopOrLaptop ? true : false}
-        menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
+        menuPlacement={'top'}
         onChange={selectedOption =>
           selectedOption === null
             ? onChange(null)

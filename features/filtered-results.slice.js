@@ -4,6 +4,7 @@ import SET from '@/enums/set.enums';
 
 let initialState = {
   data: [],
+  numberOfResults: 0,
   error: null,
   isLoading: false
 };
@@ -32,7 +33,7 @@ const filteredResultsSlice = createSlice({
         searchName
       } = payload;
 
-      state.data = Object.keys(CARD_DATABASE)
+      const array = Object.keys(CARD_DATABASE)
         .map(i => CARD_DATABASE[i])
         .filter(item => !item.isEntourage)
         .filter(item => item.active)
@@ -87,6 +88,9 @@ const filteredResultsSlice = createSlice({
           if (a.name < b.name) return -1;
           return 1;
         });
+
+      state.data = array;
+      state.numberOfResults = array.length;
     }
   }
 });

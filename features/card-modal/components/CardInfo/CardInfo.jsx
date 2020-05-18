@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import styles from './styles.module.scss';
 
 // direct child components
@@ -9,7 +10,11 @@ import CardMechanics from '../CardMechanics/CardMechanics';
 import CardInfoList from '../CardInfoList/CardInfoList';
 
 export default function CardInfo({ data, database }) {
-  const animation = 'magictime vanishIn';
+  const { numberOfResults } = useSelector(s => s.filteredResults);
+  const animation =
+    numberOfResults <= 35
+      ? 'magictime vanishIn'
+      : 'uk-animation-fade uk-animation-delay';
 
   const { active, name, flavor, dynamicSpellDamageText, mechanics } = data;
 

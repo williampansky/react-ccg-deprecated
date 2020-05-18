@@ -5,8 +5,10 @@
   font-weight: bold;
   justify-content: center;
   margin: 10px 0;
+  position: relative;
   user-select: none;
   width: 100%;
+  z-index: 0;
 
   @include breakpoint('medium') {
     height: 100%;

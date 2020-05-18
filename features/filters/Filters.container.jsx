@@ -96,9 +96,9 @@ export default function Filters() {
         filtersBarActive === true ? styles.active : ''
       ].join(' ')}
     >
-      <h3 className={styles.title}>
+      {/* <h3 className={styles.title}>
         <span className="text__value">Filters</span>
-      </h3>
+      </h3> */}
       <TypeFilters
         active={selectedCardType}
         data={availableCardTypes}
