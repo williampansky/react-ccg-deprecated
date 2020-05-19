@@ -132,21 +132,49 @@ export default function Card({
 
       {(IS_MINION || IS_WEAPON) && (
         <React.Fragment>
-          <div className={'card__attack'} data-value={attack}>
+          <div
+            className={[
+              'card__attack',
+              elite ? 'card__attack__elite' : ''
+            ].join(' ')}
+            data-value={attack}
+          >
             <div className={'text__value'}>{attack}</div>
-            <img
-              alt=""
-              className={`card__attack__badge`}
-              src={`/images/card-assets/ic_sword.png`}
-            />
+            {elite ? (
+              <img
+                alt=""
+                className={`card__attack__badge__elite`}
+                src={`/images/card-assets/ic_sword-alt.png`}
+              />
+            ) : (
+              <img
+                alt=""
+                className={`card__attack__badge`}
+                src={`/images/card-assets/ic_sword.png`}
+              />
+            )}
           </div>
-          <div className={'card__health'} data-value={health}>
+          <div
+            className={[
+              'card__health',
+              elite ? 'card__health__elite' : ''
+            ].join(' ')}
+            data-value={health}
+          >
             <div className={'text__value'}>{health}</div>
-            <img
-              alt=""
-              className={`card__health__badge`}
-              src={`/images/card-assets/ic_shield.png`}
-            />
+            {elite ? (
+              <img
+                alt=""
+                className={`card__health__badge__elite`}
+                src={`/images/card-assets/ic_shield-alt.png`}
+              />
+            ) : (
+              <img
+                alt=""
+                className={`card__health__badge`}
+                src={`/images/card-assets/ic_shield.png`}
+              />
+            )}
           </div>
         </React.Fragment>
       )}

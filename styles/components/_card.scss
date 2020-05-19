@@ -221,6 +221,20 @@
       height: calc(var(--card-height) / 5.714285714);
       position: absolute;
     }
+
+    // prettier-ignore
+    &.card__attack__elite {
+      left: calc(var(--card-height) / -56.666666667);
+      height: calc(var(--card-height) / 4.896551724);
+      width: calc(var(--card-height) / 6.639004149);
+      // .text__value { left: -3.5px; }
+    }
+
+    &__badge__elite {
+      height: calc(var(--card-height) / 4.896551724);
+      position: absolute;
+      image-rendering: pixelated;
+    }
   }
 
   .card__health {
@@ -241,6 +255,20 @@
     &__badge {
       height: calc(var(--card-height) / 6.896551724);
       position: absolute;
+    }
+
+    // prettier-ignore
+    &.card__health__elite {
+      right: calc(var(--card-height) / -24);
+      height: calc(var(--card-height) / 5.896551724);
+      width: calc(var(--card-height) / 6.368159204);
+      .text__value { left: -3.5px; }
+    }
+
+    &__badge__elite {
+      height: calc(var(--card-height) / 5.896551724);
+      position: absolute;
+      image-rendering: pixelated;
     }
   }
 
