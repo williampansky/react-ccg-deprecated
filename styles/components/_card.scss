@@ -213,8 +213,8 @@
     @include display-flex(column nowrap, center, center);
 
     .text__value {
-      top: calc(var(--card-height) / 53.333333333);
       left: calc(var(--card-height) / 200);
+      top: calc(var(--card-height) / 53.333333333);
     }
 
     &__badge {
@@ -235,6 +235,26 @@
       position: absolute;
       image-rendering: pixelated;
     }
+  }
+
+  // various text placements
+  // ========================================================================
+  // prettier-ignore
+  .card__attack .text__value {
+    &[data-value='3'] {
+      left: calc(var(--card-height)/120);
+      top: calc(var(--card-height)/54.33333);
+    }
+  }
+
+  // prettier-ignore
+  .card__attack.card__attack__elite .text__value {
+    &[data-value='1'] { left: calc(var(--card-height) / 500); }
+    &[data-value='3'] { left: calc(var(--card-height) / 250); }
+    &[data-value='4'] { left: calc(var(--card-height) / 800); }
+    &[data-value='5'] { left: calc(var(--card-height) / 260); }
+    &[data-value='6'] { left: calc(var(--card-height) / 260); }
+    &[data-value='8'] { left: calc(var(--card-height) / 260); }
   }
 
   .card__health {

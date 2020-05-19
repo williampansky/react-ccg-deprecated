@@ -139,7 +139,9 @@ export default function Card({
             ].join(' ')}
             data-value={attack}
           >
-            <div className={'text__value'}>{attack}</div>
+            <div className={'text__value'} data-value={attack}>
+              {attack}
+            </div>
             {elite ? (
               <img
                 alt=""
@@ -161,7 +163,9 @@ export default function Card({
             ].join(' ')}
             data-value={health}
           >
-            <div className={'text__value'}>{health}</div>
+            <div className={'text__value'} data-value={health}>
+              {health}
+            </div>
             {elite ? (
               <img
                 alt=""
