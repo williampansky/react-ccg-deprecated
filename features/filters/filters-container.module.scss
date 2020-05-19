@@ -33,11 +33,14 @@
 
   &.active {
     pointer-events: auto;
-    max-height: calc(100% - 80px);
+    max-height: calc(100% - calc(80px + 60px));
     overflow-y: auto;
+    top: 80px;
 
     @include breakpoint('medium') {
+      overflow: visible;
       max-height: 100px;
+      top: auto;
       transform: translateY(-60px);
     }
   }
