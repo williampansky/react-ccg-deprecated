@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 let decksObj = {
-  1: {},
+  1: null || {},
   2: {},
   3: {},
   4: {},
@@ -25,7 +25,7 @@ function sortArray(arr) {
   });
 }
 
-function calculateDeckLength(array) {
+function calculateDeckLength(array = []) {
   let amount = 0;
   array.forEach(obj => {
     amount = Math.abs(amount + obj._amount);
@@ -64,10 +64,9 @@ const decksSlice = createSlice({
       state[deckId].name = name;
     },
     newDeck(state, { payload }) {
-      const { deckId, name, cardClass } = payload;
+      const { deckId, name } = payload;
       state[deckId] = {
         name,
-        class: cardClass,
         cards: []
       };
     },
