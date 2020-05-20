@@ -16,7 +16,7 @@ let initialState = {
   selectedCardRarity: null,
   selectedCardSet: null,
   selectedCardType: null,
-  selectedEnergyFilter: 0,
+  selectedEnergyFilter: -1,
   searchValue: null,
   searchModalActive: false,
   availableCardClasses: [

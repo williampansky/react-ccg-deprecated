@@ -336,14 +336,28 @@
     width: 100%;
     position: relative;
     image-rendering: pixelated;
+
+    animation-name: img-fade;
+    animation-duration: 0.5s;
+    // animation-timing-function: ease-out;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+
+    @keyframes img-fade {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
   }
 
-  .card__image__wrapper .load {
+  .card__image__wrapper .loader {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+    @include animation-swipe-card-image;
   }
 
   .card__base__image {

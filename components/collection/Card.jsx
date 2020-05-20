@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'react-image';
-import { fontSizeBasedOnCharacterLength } from 'utils/text';
-import createMarkup from 'utils/createMarkup';
-import TYPE from 'enums/type.enums';
-import RACE from 'enums/race.enums';
-import replaceDynamicText from 'utils/replace-dynamic-text';
-import replaceConstant from 'utils/replace-constants';
-import RARITY from '@/enums/rarity.enums';
-import formatCardText from '@/utils/format-card-text';
+import createMarkup from '@/utils/createMarkup';
 import exists from '@/utils/element.exists';
+import formatCardText from '@/utils/format-card-text';
 import removeSymbols from '@/utils/remove-symbols';
-import ProgressiveImage from 'react-progressive-graceful-image';
+import replaceConstant from '@/utils/replace-constants';
+import { fontSizeBasedOnCharacterLength } from '@/utils/text';
+import RACE from '@/enums/race.enums';
+import RARITY from '@/enums/rarity.enums';
+import TYPE from '@/enums/type.enums';
 
 export default function Card({
   active,
@@ -68,11 +66,6 @@ export default function Card({
     };
   }
 
-  function cardLoader2(cardId, cardSet) {
-    const set = replaceConstant(cardSet.replace(/(%)/g, ''));
-    return `/images/sets/${set}/${cardId}-CARD-LOADER.jpg`;
-  }
-
   const fontSize = {
     fontSize: `${fontSizeBasedOnCharacterLength(name)}em`
   };
@@ -98,23 +91,14 @@ export default function Card({
 
       <div className={'card__image__wrapper'}>
         {id && set ? (
-          <React.Fragment>
-            <ProgressiveImage
-              // delay={3000}
-              src={cardImage(id, set, isGolden, goldenImageSrc)}
-              placeholder={cardLoader2(id, set)}
-            >
-              {src => <img className={'card__image'} src={src} alt="an img" />}
-            </ProgressiveImage>
-            {/* <Img
+          <Img
             alt={name}
             className={'card__image'}
             decode={false}
             src={cardImage(id, set, isGolden, goldenImageSrc)}
-            loader={<div className="load" style={cardLoader(id, set)} />}
+            loader={<div className="loader" />}
             unloader={<img alt="" src="/images/sets/PLACEHOLDER.jpg" />}
-          /> */}
-          </React.Fragment>
+          />
         ) : null}
       </div>
 
