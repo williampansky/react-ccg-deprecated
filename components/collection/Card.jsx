@@ -11,6 +11,7 @@ import RARITY from '@/enums/rarity.enums';
 import formatCardText from '@/utils/format-card-text';
 import exists from '@/utils/element.exists';
 import removeSymbols from '@/utils/remove-symbols';
+import ProgressiveImage from 'react-progressive-graceful-image';
 
 export default function Card({
   active,
@@ -60,6 +61,18 @@ export default function Card({
       : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
 
+  function cardLoader(cardId, cardSet) {
+    const set = replaceConstant(cardSet.replace(/(%)/g, ''));
+    return {
+      backgroundImage: `url(/images/sets/${set}/${cardId}-CARD-LOADER.jpg)`
+    };
+  }
+
+  function cardLoader2(cardId, cardSet) {
+    const set = replaceConstant(cardSet.replace(/(%)/g, ''));
+    return `/images/sets/${set}/${cardId}-CARD-LOADER.jpg`;
+  }
+
   const fontSize = {
     fontSize: `${fontSizeBasedOnCharacterLength(name)}em`
   };
@@ -85,13 +98,23 @@ export default function Card({
 
       <div className={'card__image__wrapper'}>
         {id && set ? (
-          <Img
+          <React.Fragment>
+            <ProgressiveImage
+              // delay={3000}
+              src={cardImage(id, set, isGolden, goldenImageSrc)}
+              placeholder={cardLoader2(id, set)}
+            >
+              {src => <img className={'card__image'} src={src} alt="an img" />}
+            </ProgressiveImage>
+            {/* <Img
             alt={name}
             className={'card__image'}
             decode={false}
             src={cardImage(id, set, isGolden, goldenImageSrc)}
+            loader={<div className="load" style={cardLoader(id, set)} />}
             unloader={<img alt="" src="/images/sets/PLACEHOLDER.jpg" />}
-          />
+          /> */}
+          </React.Fragment>
         ) : null}
       </div>
 
