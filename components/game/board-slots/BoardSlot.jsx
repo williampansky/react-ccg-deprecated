@@ -8,7 +8,7 @@ import HasOnslaught from 'components/game/mechanics/HasOnslaught';
 import IsConcealed from 'components/game/mechanics/IsConcealed';
 import IsDeadPoof from 'components/game/animations/minions/IsDeadPoof';
 import IsDisabled from 'components/game/mechanics/IsDisabled';
-import Minion from 'components/game/minion/MinionV2';
+import Minion from 'components/game/minion/Minion';
 import MinionInteraction from 'components/game/interactions/minions/MinionInteraction';
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import SPELLTYPE from 'enums/spellType.enums';
@@ -30,7 +30,11 @@ export default function BoardSlot({
   theirID
 }) {
   const [wasAttacked, setWasAttacked] = React.useState(false);
-  const { selectedMinionIndex, attackedMinionIndex } = G;
+  const { selectedCardObject } = G;
+  const yourCelectedCardObject =
+    selectedCardObject && selectedCardObject[yourID];
+  const yourCardSpellType =
+    selectedCardObject[yourID] && selectedCardObject[yourID].spellType;
   const { killMinion } = moves;
   const {
     canAttack,
@@ -121,8 +125,7 @@ export default function BoardSlot({
         data === null && !canDrop ? 'cannot-drop-minion' : '',
         isDead ? 'is-dead' : '',
         hasGuard ? 'has-guard' : '',
-        G.selectedCardObject[yourID] !== null &&
-        G.selectedCardObject[yourID].spellType !== SPELLTYPE[2]
+        yourCelectedCardObject !== null && yourCardSpellType !== SPELLTYPE[2]
           ? 'cannot-drop-minion'
           : '',
         wasAttacked ? '--was-attacked' : '',
@@ -217,35 +220,26 @@ BoardSlot.propTypes = {
   onClick: PropTypes.func,
   theirID: PropTypes.string,
   yourID: PropTypes.string,
-  data: PropTypes.object,
-  canAttack: PropTypes.bool,
-  canBeAttackedByMinion: PropTypes.bool,
-  canBeAttackedByPlayer: PropTypes.bool,
-  canBeAttackedBySpell: PropTypes.bool,
-  canBeAttackedByWarcry: PropTypes.bool,
-  canBeBuffed: PropTypes.bool,
-  canBeHealed: PropTypes.bool,
-  canBeDebuffed: PropTypes.bool,
-  canBeExpired: PropTypes.bool,
-  canBeReturned: PropTypes.bool,
-  canBeSacrificed: PropTypes.bool,
-  canBeStolen: PropTypes.bool,
-  canReceiveEnergyShield: PropTypes.bool,
-  canReceiveOnslaught: PropTypes.bool,
-  hasBoon: PropTypes.bool,
-  hasEnergyShield: PropTypes.bool,
-  hasGuard: PropTypes.bool,
-  isAttacking: PropTypes.bool,
-  isConcealed: PropTypes.bool,
-  isCursed: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  hasOnslaught: PropTypes.bool,
-  totalAttack: PropTypes.bool,
-  totalHealth: PropTypes.bool,
-  willExpire: PropTypes.bool
+  data: PropTypes.object
 };
 
 BoardSlot.defaultProps = {
+  G: {
+    selectedCardObject: {
+      spellType: SPELLTYPE[2]
+    }
+  },
+  moves: {
+    killMinion: () => {}
+  },
+  isActive: false,
+  index: 0,
+  render: false,
+  board: PLAYER_BOARDS[1],
+  canDrop: false,
+  onClick: () => {},
+  theirID: '0',
+  yourID: '0',
   data: {
     canAttack: false,
     canBeAttackedByMinion: false,
@@ -257,6 +251,6 @@ BoardSlot.defaultProps = {
     hasGuard: false,
     minionData: null,
     totalAttack: 0,
-    totalHealth: 0
+    totalHealth: 1
   }
 };

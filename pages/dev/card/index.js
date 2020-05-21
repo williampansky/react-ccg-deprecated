@@ -1,15 +1,26 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { Helmet } from 'react-helmet';
-import Select from 'react-select';
+import AsyncSelect from 'react-select/async';
 import exists from '@/utils/element.exists';
 import Card from '@/components/collection/Card';
 
 export default function CardDevelopment() {
+  const router = useRouter();
+  const { query } = router;
   const database = useSelector(s => s.database);
   const [cardsArray, setCardsArray] = useState([]);
   const [selectedCard, setSelectedCard] = useState();
   const [CARD, SETCARD] = useState({});
+
+  const handleOnChange = useCallback(
+    string => {
+      router.push(router.pathname, { query: { id: string } });
+      return setSelectedCard(string);
+    },
+    [router, setSelectedCard]
+  );
 
   const handleCardsArray = useCallback(array => {
     return setCardsArray(
@@ -46,6 +57,19 @@ export default function CardDevelopment() {
     handleSetCard(selectedCard);
   }, [handleSetCard, selectedCard]);
 
+  const handleQueryParam = useCallback(
+    obj => {
+      if (!obj || (obj && !obj.id)) return;
+      const { id } = obj;
+      setSelectedCard(id.toUpperCase());
+    },
+    [setSelectedCard]
+  );
+
+  useEffect(() => {
+    typeof query !== 'undefined' && handleQueryParam(query);
+  }, [handleQueryParam, query]);
+
   return (
     <React.Fragment>
       <Helmet
@@ -59,12 +83,15 @@ export default function CardDevelopment() {
             <div className="margin">
               <div className="label">Select Card</div>
               {cardsArray.length !== 0 ? (
-                <Select
+                <AsyncSelect
+                  cacheOptions
                   className={'selector'}
+                  defaultInputValue={query && query.id}
+                  defaultOptions={cardsArray}
+                  loadOptions={cardsArray}
                   onChange={selectedOption =>
-                    setSelectedCard(selectedOption.value)
+                    handleOnChange(selectedOption.value)
                   }
-                  options={cardsArray}
                   width="100%"
                 />
               ) : null}

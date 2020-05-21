@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TheirMinionInteractions from 'components/game/interactions/minions/TheirMinionInteractions';
 import YourMinionInteractions from 'components/game/interactions/minions/YourMinionInteractions';
+import PLAYER_BOARDS from '@/enums/playerBoards.enums';
 
 export default function MinionInteraction({
   G,
@@ -155,4 +156,43 @@ MinionInteraction.propTypes = {
   totalAttack: PropTypes.number,
   totalHealth: PropTypes.number,
   willExpire: PropTypes.bool
+};
+
+MinionInteraction.defaultProps = {
+  G: {},
+  ctx: {},
+  moves: {},
+  isActive: false,
+  index: 0,
+  render: true,
+  yourID: '0',
+  theirID: '0',
+  board: PLAYER_BOARDS[1],
+  data: {},
+  canAttack: false,
+  canBeAttackedByMinion: false,
+  canBeAttackedByPlayer: false,
+  canBeAttackedBySpell: false,
+  canBeAttackedByWarcry: false,
+  canBeBuffed: false,
+  canBeHealed: false,
+  canBeDebuffed: false,
+  canBeExpired: false,
+  canBeReturned: false,
+  canBeSacrificed: false,
+  canBeStolen: false,
+  canReceiveEnergyShield: false,
+  canReceiveGuard: false,
+  canReceiveOnslaught: false,
+  hasBoon: false,
+  hasEnergyShield: false,
+  hasGuard: false,
+  isAttacking: false,
+  isConcealed: false,
+  isCursed: false,
+  isDisabled: false,
+  hasOnslaught: false,
+  totalAttack: 0,
+  totalHealth: 1,
+  willExpire: false
 };

@@ -5,7 +5,7 @@
 
 .card__developer .flex {
   height: 100%;
-  @include display-flex(row nowrap, center, space-between);
+  @include display-flex(row-reverse nowrap, center, space-between);
 }
 
 .card__developer .left {

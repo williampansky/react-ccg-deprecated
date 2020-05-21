@@ -1,0 +1,159 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
+import { Helmet } from 'react-helmet';
+import Select from 'react-select';
+import exists from '@/utils/element.exists';
+import Minion from '@/components/game/minion/Minion';
+import YourMinionInteractions from '@/components/game/interactions/minions/YourMinionInteractions';
+import TYPE from '@/enums/type.enums';
+import PLAYER_BOARDS from '@/enums/playerBoards.enums';
+import BoardSlot from '@/components/game/board-slots/BoardSlot';
+
+export default function CardDevelopment() {
+  const router = useRouter();
+  const { query } = router;
+  const database = useSelector(s => s.database);
+  const [cardsArray, setCardsArray] = useState([]);
+  const [selectedCard, setSelectedCard] = useState();
+  const [CARD, SETCARD] = useState({});
+
+  const handleOnChange = useCallback(
+    string => {
+      router.push(router.pathname, { query: { id: string } });
+      return setSelectedCard(string);
+    },
+    [router, setSelectedCard]
+  );
+
+  const handleCardsArray = useCallback(array => {
+    return setCardsArray(
+      array
+        .filter(obj => obj.type === TYPE[1])
+        .map(obj => {
+          const { id } = obj;
+          return {
+            label: id,
+            value: id
+          };
+        })
+        .sort((a, b) => {
+          if (a.label > b.label) return 1;
+          if (a.label < b.label) return -1;
+          return 0;
+        })
+    );
+  }, []);
+
+  useEffect(() => {
+    database.length && handleCardsArray(database);
+  }, [handleCardsArray, database]);
+
+  const handleSetCard = useCallback(
+    string => {
+      const card = database.find(obj => obj.id === string);
+      if (!exists(card)) return;
+      return SETCARD(card);
+    },
+    [database]
+  );
+
+  useEffect(() => {
+    handleSetCard(selectedCard);
+  }, [handleSetCard, selectedCard]);
+
+  const handleQueryParam = useCallback(
+    obj => {
+      if (!obj || (obj && !obj.id)) return;
+      const { id } = obj;
+      setSelectedCard(id);
+    },
+    [setSelectedCard]
+  );
+
+  useEffect(() => {
+    typeof query !== 'undefined' && handleQueryParam(query);
+  }, [handleQueryParam, query]);
+
+  return (
+    <React.Fragment>
+      <Helmet
+        title="Minion | Dev | HSclone"
+        meta={[{ property: 'og:title', content: 'Minion Dev' }]}
+      />
+
+      <div className="card__developer">
+        <div className="flex">
+          <section className="right">
+            {exists(CARD) && CARD !== {} ? (
+              <div>
+                <BoardSlot
+                  canDrop={false}
+                  dev={true}
+                  data={{
+                    minionData: CARD,
+                    canAttack: false,
+                    canBeAttackedByMinion: false,
+                    canBeAttackedByPlayer: false,
+                    canBeAttackedBySpell: false,
+                    canBeAttackedByWarcry: false,
+                    canBeBuffed: false,
+                    canBeDebuffed: false,
+                    canBeExpired: false,
+                    canBeHealed: false,
+                    canBeReturned: false,
+                    canBeSacrificed: false,
+                    canBeStolen: false,
+                    canReceiveEnergyShield: false,
+                    canReceiveGuard: false,
+                    canReceiveOnslaught: false,
+                    currentAttack: CARD.attack,
+                    currentHealth: CARD.health,
+                    hasBoon: false,
+                    hasEnergyShield: false,
+                    hasGuard: false,
+                    hasOnslaught: false,
+                    isAttacking: false,
+                    isAttackingMinionIndex: false,
+                    isAttackingPlayer: false,
+                    isConcealed: false,
+                    isCursed: false,
+                    isDisabled: false,
+                    isDead: false,
+                    totalAttack: CARD.attack,
+                    totalHealth: CARD.health,
+                    willExpire: false,
+                    willExpireIn: false
+                  }}
+                  board={PLAYER_BOARDS[1]}
+                  render={true}
+                  index={0}
+                  isActive={true}
+                  onClick={e => e.target.blur()}
+                  yourID={'0'}
+                />
+              </div>
+            ) : null}
+          </section>
+          <section className="left">
+            <div className="margin">
+              <div className="label">Select Card</div>
+              {cardsArray.length !== 0 ? (
+                <Select
+                  cacheOptions
+                  className={'selector'}
+                  defaultInputValue={query && query.id}
+                  options={cardsArray}
+                  onChange={selectedOption =>
+                    handleOnChange(selectedOption.value)
+                  }
+                  width="100%"
+                />
+              ) : null}
+            </div>
+          </section>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}

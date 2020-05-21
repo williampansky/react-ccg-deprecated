@@ -12,7 +12,7 @@ import CanBeReturned from 'components/game/interactions/minions/CanBeReturned';
 import CanBeStolen from 'components/game/interactions/minions/CanBeStolen';
 import CanReceiveEnergyShield from 'components/game/interactions/minions/CanReceiveEnergyShield';
 import CanReceiveOnslaught from 'components/game/interactions/minions/CanReceiveOnslaught';
-import CanReceiveGuard from './CanReceiveGuard';
+import CanReceiveGuard from 'components/game/interactions/minions/CanReceiveGuard';
 
 export default function YourMinionInteractions({
   G,
