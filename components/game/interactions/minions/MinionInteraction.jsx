@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TheirMinionInteractions from 'components/game/interactions/minions/TheirMinionInteractions';
-import YourMinionInteractions from 'components/game/interactions/minions/YourMinionInteractions';
 import PLAYER_BOARDS from '@/enums/playerBoards.enums';
+
+// child components
+import TheirMinionInteractions from '@/components/game/interactions/minions/TheirMinionInteractions';
+import YourMinionInteractions from '@/components/game/interactions/minions/YourMinionInteractions';
 
 export default function MinionInteraction({
   G,

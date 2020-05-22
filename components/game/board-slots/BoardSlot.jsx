@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HasBoon from 'components/game/mechanics/HasBoon';
-import HasEnergyShield from 'components/game/mechanics/HasEnergyShield';
-import HasGuardBackground from 'components/game/mechanics/HasGuardBackground';
-import HasGuardForeground from 'components/game/mechanics/HasGuardForeground';
-import HasOnslaught from 'components/game/mechanics/HasOnslaught';
-import IsConcealed from 'components/game/mechanics/IsConcealed';
-import IsDeadPoof from 'components/game/animations/minions/IsDeadPoof';
-import IsDisabled from 'components/game/mechanics/IsDisabled';
-import Minion from 'components/game/minion/Minion';
-import MinionInteraction from 'components/game/interactions/minions/MinionInteraction';
-import PLAYER_BOARDS from 'enums/playerBoards.enums';
-import SPELLTYPE from 'enums/spellType.enums';
-import usePrevious from 'components/game/hooks/usePrevious';
-import WillExpire from 'components/game/mechanics/WillExpire';
+import PLAYER_BOARDS from '@/enums/playerBoards.enums';
+import SPELLTYPE from '@/enums/spellType.enums';
+
+// child components
+import HasBoon from '@/components/game/mechanics/HasBoon';
+import HasEnergyShield from '@/components/game/mechanics/HasEnergyShield';
+import HasGuardBackground from '@/components/game/mechanics/HasGuardBackground';
+import HasGuardForeground from '@/components/game/mechanics/HasGuardForeground';
+import HasOnslaught from '@/components/game/mechanics/HasOnslaught';
+import IsConcealed from '@/components/game/mechanics/IsConcealed';
+import IsDeadPoof from '@/components/game/animations/minions/IsDeadPoof';
+import IsDisabled from '@/components/game/mechanics/IsDisabled';
+import Minion from '@/components/game/minion/Minion';
+import MinionInteraction from '@/components/game/interactions/minions/MinionInteraction';
+import usePrevious from '@/components/game/hooks/usePrevious';
+import WillExpire from '@/components/game/mechanics/WillExpire';
+import HasCurse from '@/components/game/mechanics/HasCurse';
 
 export default function BoardSlot({
   G,
@@ -55,6 +58,7 @@ export default function BoardSlot({
     currentAttack,
     currentHealth,
     hasBoon,
+    hasCurse,
     hasEnergyShield,
     hasGuard,
     hasOnslaught,
@@ -66,6 +70,38 @@ export default function BoardSlot({
     isDisabled,
     isDead,
     minionData,
+    minionData: {
+      active,
+      artist,
+      attack,
+      cardClass,
+      collectible,
+      cost,
+      elite,
+      entourage,
+      flavor,
+      goldenImageSrc,
+      health,
+      hideStats,
+      howToEarn,
+      howToEarnGolden,
+      id,
+      isGolden,
+      mechanics,
+      name,
+      playRequirements,
+      race,
+      rarity,
+      set,
+      sounds,
+      spellContext,
+      spellDamage,
+      spellType,
+      targetingArrowText,
+      text,
+      type,
+      warcryNumber
+    },
     totalAttack,
     totalHealth,
     willExpire,
@@ -184,6 +220,7 @@ export default function BoardSlot({
 
       {/* mechanics */}
       {minionData && hasBoon && <HasBoon />}
+      {minionData && hasCurse && <HasCurse />}
       {minionData && hasEnergyShield && <HasEnergyShield />}
       {minionData && hasGuard && <HasGuardForeground />}
       {minionData && hasOnslaught && <HasOnslaught />}
@@ -196,9 +233,38 @@ export default function BoardSlot({
         <Minion
           currentAttack={currentAttack}
           currentHealth={currentHealth}
-          data={minionData}
           slot={index}
           totalHealth={totalHealth}
+          active={active}
+          artist={artist}
+          attack={attack}
+          cardClass={cardClass}
+          collectible={collectible}
+          cost={cost}
+          elite={elite}
+          entourage={entourage}
+          flavor={flavor}
+          goldenImageSrc={goldenImageSrc}
+          health={health}
+          hideStats={hideStats}
+          howToEarn={howToEarn}
+          howToEarnGolden={howToEarnGolden}
+          id={id}
+          isGolden={isGolden}
+          mechanics={mechanics}
+          name={name}
+          playRequirements={playRequirements}
+          race={race}
+          rarity={rarity}
+          set={set}
+          sounds={sounds}
+          spellContext={spellContext}
+          spellDamage={spellDamage}
+          spellType={spellType}
+          targetingArrowText={targetingArrowText}
+          text={text}
+          type={type}
+          warcryNumber={warcryNumber}
         />
       )}
 
@@ -246,11 +312,33 @@ BoardSlot.defaultProps = {
     canBeAttackedByPlayer: false,
     canBeAttackedBySpell: false,
     canBeAttackedByWarcry: false,
+    canBeBuffed: false,
+    canBeDebuffed: false,
+    canBeExpired: false,
+    canBeHealed: false,
+    canBeReturned: false,
+    canBeSacrificed: false,
+    canBeStolen: false,
+    canReceiveEnergyShield: false,
+    canReceiveGuard: false,
+    canReceiveOnslaught: false,
     currentAttack: 0,
-    currentHealth: 0,
+    currentHealth: 1,
+    hasBoon: false,
+    hasCurse: false,
+    hasEnergyShield: false,
     hasGuard: false,
-    minionData: null,
+    hasOnslaught: false,
+    isAttacking: false,
+    isAttackingMinionIndex: false,
+    isAttackingPlayer: false,
+    isConcealed: false,
+    isCursed: false,
+    isDisabled: false,
+    isDead: false,
     totalAttack: 0,
-    totalHealth: 1
+    totalHealth: 1,
+    willExpire: false,
+    willExpireIn: false
   }
 };

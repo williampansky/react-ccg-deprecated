@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CanAttack from 'components/game/interactions/minions/CanAttack';
-import CanBeBuffed from 'components/game/interactions/minions/CanBeBuffed';
-import CanBeDebuffed from 'components/game/interactions/minions/CanBeDebuffed';
-import CanBeHealed from 'components/game/interactions/minions/CanBeHealed';
-import CanBeSacrificed from 'components/game/interactions/minions/CanBeSacrificed';
-import CanBeExpired from 'components/game/interactions/minions/CanBeExpired';
-import IsAttacking from 'components/game/interactions/minions/IsAttacking';
-import CanBeReturned from 'components/game/interactions/minions/CanBeReturned';
-import CanBeStolen from 'components/game/interactions/minions/CanBeStolen';
-import CanReceiveEnergyShield from 'components/game/interactions/minions/CanReceiveEnergyShield';
-import CanReceiveOnslaught from 'components/game/interactions/minions/CanReceiveOnslaught';
-import CanReceiveGuard from 'components/game/interactions/minions/CanReceiveGuard';
+// child components
+import CanAttack from '@/components/game/interactions/minions/CanAttack';
+import CanBeBuffed from '@/components/game/interactions/minions/CanBeBuffed';
+import CanBeDebuffed from '@/components/game/interactions/minions/CanBeDebuffed';
+import CanBeHealed from '@/components/game/interactions/minions/CanBeHealed';
+import CanBeSacrificed from '@/components/game/interactions/minions/CanBeSacrificed';
+import CanBeExpired from '@/components/game/interactions/minions/CanBeExpired';
+import IsAttacking from '@/components/game/interactions/minions/IsAttacking';
+import CanBeReturned from '@/components/game/interactions/minions/CanBeReturned';
+import CanBeStolen from '@/components/game/interactions/minions/CanBeStolen';
+import CanReceiveEnergyShield from '@/components/game/interactions/minions/CanReceiveEnergyShield';
+import CanReceiveOnslaught from '@/components/game/interactions/minions/CanReceiveOnslaught';
+import CanReceiveGuard from '@/components/game/interactions/minions/CanReceiveGuard';
 
 export default function YourMinionInteractions({
   G,

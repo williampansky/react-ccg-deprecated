@@ -169,6 +169,7 @@
     // height: calc(var(--minion-height) / 3.5);
     // width: calc(var(--minion-height) / 3.5);
     height: calc(var(--minion-height) / 3.15);
+    image-rendering: pixelated;
     @include position-absolute(0, 0, 0, 0, 0);
     top: -4px;
     left: -2px;
@@ -200,6 +201,7 @@
     border-radius: 50%;
     height: calc(var(--minion-height) / 3.5);
     width: calc(var(--minion-height) / 3.5);
+    image-rendering: pixelated;
     @include position-absolute(0, 0, 0, 0, 0);
   }
 

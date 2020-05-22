@@ -7,6 +7,7 @@ import exists from '@/utils/element.exists';
 import Minion from '@/components/game/minion/Minion';
 import YourMinionInteractions from '@/components/game/interactions/minions/YourMinionInteractions';
 import TYPE from '@/enums/type.enums';
+// import MECHANICS from '@/enums/MECHANICS.json';
 import PLAYER_BOARDS from '@/enums/playerBoards.enums';
 import BoardSlot from '@/components/game/board-slots/BoardSlot';
 
@@ -14,6 +15,7 @@ export default function CardDevelopment() {
   const router = useRouter();
   const { query } = router;
   const database = useSelector(s => s.database);
+  const mechanics = useSelector(s => s.mechanics);
   const [cardsArray, setCardsArray] = useState([]);
   const [selectedCard, setSelectedCard] = useState();
   const [CARD, SETCARD] = useState({});
@@ -75,6 +77,22 @@ export default function CardDevelopment() {
     typeof query !== 'undefined' && handleQueryParam(query);
   }, [handleQueryParam, query]);
 
+  const initCardMechanics = useCallback((card, key) => {
+    if (!exists(card)) return;
+    const { mechanics } = card;
+    if (!exists(mechanics)) return;
+
+    // prettier-ignore
+    switch (key) {
+      case 'hasBoon':         return mechanics.includes('%BOON%');
+      case 'hasCurse':        return mechanics.includes('%ON_DEATH%');
+      case 'hasEnergyShield': return mechanics.includes('%BUBBLE%');
+      case 'hasGuard':        return mechanics.includes('%BULWARK%');
+      case 'hasOnslaught':    return mechanics.includes('%DOUBLE_ATTACK%');
+      default:                return false;
+    }
+  }, []);
+
   return (
     <React.Fragment>
       <Helmet
@@ -109,12 +127,13 @@ export default function CardDevelopment() {
                     canReceiveOnslaught: false,
                     currentAttack: CARD.attack,
                     currentHealth: CARD.health,
-                    hasBoon: false,
-                    hasEnergyShield: false,
-                    hasGuard: false,
-                    hasOnslaught: false,
+                    hasBoon: initCardMechanics(CARD, 'hasBoon'),
+                    hasCurse: initCardMechanics(CARD, 'hasCurse'),
+                    hasEnergyShield: initCardMechanics(CARD, 'hasEnergyShield'),
+                    hasGuard: initCardMechanics(CARD, 'hasGuard'),
+                    hasOnslaught: initCardMechanics(CARD, 'hasOnslaught'),
                     isAttacking: false,
-                    isAttackingMinionIndex: false,
+                    isAttackingMinionIndex: null,
                     isAttackingPlayer: false,
                     isConcealed: false,
                     isCursed: false,
