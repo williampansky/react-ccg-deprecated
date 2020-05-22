@@ -11,6 +11,7 @@
   box-sizing: border-box;
   font-size: calc(var(--minion-height) / 8);
   pointer-events: none;
+  position: relative;
   user-select: none;
   z-index: 1;
   font-family: 'Carter One', sans-serif;
@@ -192,7 +193,8 @@
     height: calc(var(--minion-height) / 3.5);
     line-height: 1;
     position: absolute;
-    right: var(--minion-stat-offset);
+    // right: var(--minion-stat-offset);
+    right: calc(var(--minion-height) * -0.025);
     width: calc(var(--minion-height) / 3.5);
     z-index: 5;
   }

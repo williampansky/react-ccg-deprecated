@@ -1,6 +1,12 @@
 .card__developer {
   width: 100vw;
   min-height: 100vh;
+
+  &.minion__developer .right {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
 }
 
 .card__developer .flex {

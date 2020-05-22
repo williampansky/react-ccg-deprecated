@@ -89,6 +89,7 @@ export default function CardDevelopment() {
       case 'hasEnergyShield': return mechanics.includes('%BUBBLE%');
       case 'hasGuard':        return mechanics.includes('%BULWARK%');
       case 'hasOnslaught':    return mechanics.includes('%DOUBLE_ATTACK%');
+      case 'isConcealed':     return mechanics.includes('%HIDDEN%');
       default:                return false;
     }
   }, []);
@@ -100,9 +101,14 @@ export default function CardDevelopment() {
         meta={[{ property: 'og:title', content: 'Minion Dev' }]}
       />
 
-      <div className="card__developer">
+      <div className="card__developer minion__developer">
         <div className="flex">
-          <section className="right">
+          <section
+            className="right"
+            style={{
+              backgroundImage: 'url(/images/boards/BOARD_FLOOR.jpg)'
+            }}
+          >
             {exists(CARD) && CARD !== {} ? (
               <div>
                 <BoardSlot
@@ -135,7 +141,7 @@ export default function CardDevelopment() {
                     isAttacking: false,
                     isAttackingMinionIndex: null,
                     isAttackingPlayer: false,
-                    isConcealed: false,
+                    isConcealed: initCardMechanics(CARD, 'isConcealed'),
                     isCursed: false,
                     isDisabled: false,
                     isDead: false,

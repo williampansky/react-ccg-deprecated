@@ -1,0 +1,13 @@
+.minion--is-concealed {
+  pointer-events: none;
+}
+
+.minion--is-concealed ~ .minion {
+  .image-wrapper {
+    background: #333;
+  }
+
+  .image-wrapper > img {
+    opacity: 0.25;
+  }
+}

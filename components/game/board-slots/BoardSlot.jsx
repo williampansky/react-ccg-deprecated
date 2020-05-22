@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PLAYER_BOARDS from '@/enums/playerBoards.enums';
 import SPELLTYPE from '@/enums/spellType.enums';
+import useHover from 'react-use-hover';
 
 // child components
 import HasBoon from '@/components/game/mechanics/HasBoon';
@@ -17,6 +18,11 @@ import MinionInteraction from '@/components/game/interactions/minions/MinionInte
 import usePrevious from '@/components/game/hooks/usePrevious';
 import WillExpire from '@/components/game/mechanics/WillExpire';
 import HasCurse from '@/components/game/mechanics/HasCurse';
+import IsElite from '../mechanics/IsElite';
+import ReactTooltip from 'react-tooltip';
+import Card from '@/components/collection/Card';
+import replaceConstant from '@/utils/replace-constants';
+import getMechanicShortDescription from '@/utils/get-mechanic-short-description';
 
 export default function BoardSlot({
   G,
@@ -111,6 +117,11 @@ export default function BoardSlot({
   const playerID = board === PLAYER_BOARDS[1] ? yourID : theirID;
   const previousCurrentHealth = usePrevious(currentHealth);
 
+  const [isHovering, hoverProps] = useHover({
+    mouseEnterDelayMS: 1400,
+    mouseLeaveDelayMS: 0
+  });
+
   const animateWasAttacked = React.useCallback(
     currentHealth => {
       if (isActive && board === PLAYER_BOARDS[2]) {
@@ -154,6 +165,8 @@ export default function BoardSlot({
       data-file="board-slots/BoardSlot"
       data-slot={index}
       data-render={render}
+      data-for={`${id}--${index}`}
+      data-tip={true}
       className={[
         'board-slot',
         data === null ? 'is-empty' : '',
@@ -175,6 +188,7 @@ export default function BoardSlot({
       onKeyPress={onClick}
       role="button"
       tabIndex={0}
+      {...hoverProps}
     >
       {/* interactions layer */}
       {minionData && (
@@ -228,6 +242,9 @@ export default function BoardSlot({
       {minionData && isDisabled && <IsDisabled />}
       {minionData && willExpire && <WillExpire count={willExpireIn} />}
 
+      {/* elite */}
+      {minionData && elite && <IsElite />}
+
       {/* visible minion component */}
       {minionData && (
         <Minion
@@ -267,6 +284,66 @@ export default function BoardSlot({
           warcryNumber={warcryNumber}
         />
       )}
+
+      {/* visible minion component */}
+      {minionData ? (
+        // <ReactTooltip id={`${id}--${index}`} effect="solid" place={'top'}>
+        <div
+          className={[
+            'board-slot-card-tooltip',
+            isHovering
+              ? 'uk-animation-scale-up uk-transform-origin-bottom-left'
+              : ''
+          ].join(' ')}
+        >
+          <Card
+            artist={artist}
+            attack={attack}
+            cardClass={cardClass}
+            collectible={collectible}
+            cost={cost}
+            elite={elite}
+            entourage={entourage}
+            flavor={flavor}
+            goldenImageSrc={goldenImageSrc}
+            health={health}
+            hideStats={hideStats}
+            howToEarn={howToEarn}
+            howToEarnGolden={howToEarnGolden}
+            id={id}
+            isGolden={isGolden}
+            mechanics={mechanics}
+            name={name}
+            playRequirements={playRequirements}
+            race={race}
+            rarity={rarity}
+            set={set}
+            sounds={sounds}
+            spellDamage={spellDamage}
+            spellType={spellType}
+            targetingArrowText={targetingArrowText}
+            text={text}
+            type={type}
+            warcryNumber={warcryNumber}
+          />
+          {mechanics && mechanics.length ? (
+            <div className="tooltip__mechanics__wrapper">
+              {mechanics.map((m, i) => {
+                return (
+                  <div className="mechanic__item" key={m}>
+                    <div className="mechanic__item-title">
+                      {replaceConstant(m)}
+                    </div>
+                    <div className="mechanic__item-description">
+                      {getMechanicShortDescription(m)}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
       {minionData && hasGuard && <HasGuardBackground />}
       {isDead && <IsDeadPoof />}

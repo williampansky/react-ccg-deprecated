@@ -83,3 +83,55 @@
 .board-slot.is-dead {
   min-width: 0;
 }
+
+.board-slot-card-tooltip {
+  --card-height: 350px;
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  animation-duration: 200ms;
+  top: calc(var(--card-height) * -0.8);
+  right: calc(var(--card-height) * -0.6);
+  z-index: 10;
+  @include display-flex(column nowrap, flex-start, flex-start);
+}
+
+.board-slot-card-tooltip .tooltip__mechanics__wrapper {
+  margin: calc(var(--card-height) / 40) 0 0 calc(var(--card-height) / 1.315);
+  max-width: calc(var(--card-height) / 2.500263249);
+  // max-width: calc(var(--card-height) / 1.400263249);
+  position: absolute;
+  width: 100%;
+}
+
+.board-slot-card-tooltip .tooltip__mechanics__wrapper .mechanic__item {
+  $bg: #a3a2a0;
+  border: 2px solid mix(black, $bg, 80%);
+  border-radius: 4px;
+  padding: 8px 10px 10px;
+  background: $bg;
+  font-size: 12px;
+
+  & + .mechanic__item {
+    margin-top: calc(var(--card-height) / 55);
+  }
+
+  .mechanic__item-title {
+    color: mix(black, $bg, 70%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.75em;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 0.25em;
+    text-transform: uppercase;
+  }
+
+  .mechanic__item-description {
+    color: mix(black, $bg, 80%);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+}

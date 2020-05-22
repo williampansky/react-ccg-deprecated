@@ -409,9 +409,12 @@
 }
 
 // prettier-ignore
-.card__v3 {
+.card {
   .card__health[data-value='2'] .text__value { left: -1px; }
   .card__health[data-value='3'] .text__value { left: -1px; }
   .card__health[data-value='5'] .text__value { top: 1px; left: -1px; }
   .card__health[data-value='7'] .text__value { left: -1px; }
+
+  // elite values
+  .card__health__elite.card__health[data-value='14'] .text__value { left: -1px; }
 }

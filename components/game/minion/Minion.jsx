@@ -14,6 +14,7 @@ export default function Minion({
   currentAttack,
   currentHealth,
   totalHealth,
+  slot,
   active,
   artist,
   attack,
@@ -149,6 +150,7 @@ Minion.propTypes = {
   dynamicSpellDamageText: PropTypes.number,
   onClick: PropTypes.func,
   dev: PropTypes.bool,
+  slot: PropTypes.number,
   currentAttack: PropTypes.number,
   currentHealth: PropTypes.number,
   totalHealth: PropTypes.number
@@ -189,6 +191,7 @@ Minion.defaultProps = {
   type: '',
   onClick: () => {},
   dev: false,
+  slot: 0,
   currentAttack: 0,
   currentHealth: 1,
   totalHealth: 1,

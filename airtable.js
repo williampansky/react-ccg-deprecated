@@ -48,7 +48,7 @@ base
   .then(resp => {
     const map = resp.records.map(item => {
       const { fields } = item;
-      const { name, symbol, description } = fields;
+      const { name, symbol, description, shortDescription } = fields;
 
       return {
         [symbol]: {
@@ -56,6 +56,7 @@ base
           symbol,
           type: 'MECHANIC',
           description,
+          shortDescription,
           key: symbol,
           value: name
         }
