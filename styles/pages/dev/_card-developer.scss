@@ -7,6 +7,10 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  button {
+    cursor: pointer;
+  }
 }
 
 .card__developer .flex {
@@ -30,6 +34,10 @@
 .card__developer .margin {
   margin: 20px 0;
   width: 100%;
+
+  &-small {
+    margin: 10px 0;
+  }
 }
 
 .card__developer .label {

@@ -1,22 +1,11 @@
-.minion--is-elite {
-  position: absolute;
-  width: 140%;
-  /* height: 100%; */
-  top: -28px;
-  right: 0;
-  bottom: 0;
-  left: -25px;
-  z-index: 1;
+.minion__mechanics {
+  transform: scale(1);
   transition: transform 400ms var(--animation-transition-cubic);
   transition-property: transform;
   will-change: transform;
 
-  & > img {
-    width: 100%;
-  }
-
   .--is-attacking & {
-    transform: scale(1.15);
+    transform: scale(1.15) translateY(calc(var(--minion-height) / 15));
     transition-duration: 100ms;
   }
 

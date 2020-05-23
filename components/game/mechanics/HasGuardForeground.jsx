@@ -13,7 +13,7 @@ export default function HasGuardForeground() {
   return (
     <div
       className={[
-        'minion--has-guard-foreground uk-animation-scale-up'
+        'minion--has-guard-foreground'
         // isAnimating ? '--is-animating' : ''
       ].join(' ')}
       data-file="mechanics/HasGuardForeground"

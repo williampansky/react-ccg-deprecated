@@ -1,0 +1,43 @@
+@import 'styles/mixins/flex';
+@import 'styles/mixins/position';
+
+.component {
+  border-radius: 50%;
+  bottom: var(--minion-stat-offset);
+  font-size: 1em;
+  font-weight: 600;
+  height: calc(var(--minion-height) / 3.5);
+  line-height: 1;
+  position: absolute;
+  right: calc(var(--minion-height) * -0.025);
+  width: calc(var(--minion-height) / 3.5);
+  z-index: 5;
+}
+
+.text {
+  height: calc(var(--minion-height) / 3.5);
+  width: calc(var(--minion-height) / 3.5);
+  @include display-flex(column nowrap, center, center);
+  @include position-absolute(auto, 0, -1px, 0, 1);
+
+  &[data--is-damaged='true'] {
+    color: #ff4800;
+  }
+
+  & > div {
+    color: inherit;
+    top: 0;
+  }
+}
+
+.badge {
+  border-radius: 50%;
+  height: calc(var(--minion-height) / 3.5);
+  image-rendering: pixelated;
+  width: calc(var(--minion-height) / 3.5);
+  @include position-absolute(0, 0, 0, 0, 0);
+}
+
+.badge.elite {
+  left: 1px;
+}

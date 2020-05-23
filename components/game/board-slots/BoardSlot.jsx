@@ -13,7 +13,7 @@ import HasOnslaught from '@/components/game/mechanics/HasOnslaught';
 import IsConcealed from '@/components/game/mechanics/IsConcealed';
 import IsDeadPoof from '@/components/game/animations/minions/IsDeadPoof';
 import IsDisabled from '@/components/game/mechanics/IsDisabled';
-import Minion from '@/components/game/minion/Minion';
+import Minion from '@/components/game/minion';
 import MinionInteraction from '@/components/game/interactions/minions/MinionInteraction';
 import usePrevious from '@/components/game/hooks/usePrevious';
 import WillExpire from '@/components/game/mechanics/WillExpire';
@@ -23,6 +23,7 @@ import ReactTooltip from 'react-tooltip';
 import Card from '@/components/collection/Card';
 import replaceConstant from '@/utils/replace-constants';
 import getMechanicShortDescription from '@/utils/get-mechanic-short-description';
+import HasPoison from '../mechanics/HasPoison';
 
 export default function BoardSlot({
   G,
@@ -36,7 +37,8 @@ export default function BoardSlot({
   onClick,
   render,
   yourID,
-  theirID
+  theirID,
+  isEntering
 }) {
   const [wasAttacked, setWasAttacked] = React.useState(false);
   const { selectedCardObject } = G;
@@ -68,6 +70,7 @@ export default function BoardSlot({
     hasEnergyShield,
     hasGuard,
     hasOnslaught,
+    hasPoison,
     isAttacking,
     isAttackingMinionIndex,
     isAttackingPlayer,
@@ -160,6 +163,13 @@ export default function BoardSlot({
     if (bool) return '--animate-attack';
   }
 
+  function handleIsEnteringClass(bool) {
+    if (bool) return 'minion__animation--is-entering';
+    return setTimeout(() => {
+      return '';
+    }, 400);
+  }
+
   return (
     <div
       data-file="board-slots/BoardSlot"
@@ -172,6 +182,8 @@ export default function BoardSlot({
         data === null ? 'is-empty' : '',
         data !== null ? 'has-minion' : '',
         data === null && !canDrop ? 'cannot-drop-minion' : '',
+        isEntering ? handleIsEnteringClass(isEntering) : '',
+        // isEntering ? 'minion__animation--is-entering' : '',
         isDead ? 'is-dead' : '',
         hasGuard ? 'has-guard' : '',
         yourCelectedCardObject !== null && yourCardSpellType !== SPELLTYPE[2]
@@ -234,10 +246,11 @@ export default function BoardSlot({
 
       {/* mechanics */}
       {minionData && hasBoon && <HasBoon />}
-      {minionData && hasCurse && <HasCurse />}
+      {/* {minionData && hasCurse && <HasCurse />} */}
+      {/* {minionData && hasPoison && <HasPoison />} */}
       {minionData && hasEnergyShield && <HasEnergyShield />}
       {minionData && hasGuard && <HasGuardForeground />}
-      {minionData && hasOnslaught && <HasOnslaught />}
+      {/* {minionData && hasOnslaught && <HasOnslaught />} */}
       {minionData && isConcealed && <IsConcealed />}
       {minionData && isDisabled && <IsDisabled />}
       {minionData && willExpire && <WillExpire count={willExpireIn} />}
@@ -282,6 +295,9 @@ export default function BoardSlot({
           text={text}
           type={type}
           warcryNumber={warcryNumber}
+          hasCurse={hasCurse}
+          hasPoison={hasPoison}
+          hasOnslaught={hasOnslaught}
         />
       )}
 
@@ -345,7 +361,7 @@ export default function BoardSlot({
         </div>
       ) : null}
 
-      {minionData && hasGuard && <HasGuardBackground />}
+      {minionData && hasGuard && <HasGuardBackground race={race} />}
       {isDead && <IsDeadPoof />}
     </div>
   );

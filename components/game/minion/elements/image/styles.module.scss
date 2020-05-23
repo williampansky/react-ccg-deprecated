@@ -1,0 +1,55 @@
+@import 'styles/mixins/animations';
+@import 'styles/mixins/flex';
+@import 'styles/mixins/position';
+
+.component {
+  border-top-left-radius: var(--minion-border-radius);
+  border-top-right-radius: var(--minion-border-radius);
+  border-bottom-left-radius: var(--minion-border-radius);
+  border-bottom-right-radius: var(--minion-border-radius);
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.875);
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+  @include display-flex(column nowrap, center, flex-start);
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    border-radius: var(--avatar-border-radius);
+    box-shadow: inset 0px 0px 0px 2px rgba(190, 190, 190, 0.265);
+    @include position-absolute(0, 0, 0, 0, 0);
+  }
+}
+
+.image {
+  animation-duration: 250ms;
+  animation-fill-mode: both;
+  animation-name: minion-img-fade;
+  animation-timing-function: linear;
+  height: 100%;
+  image-rendering: pixelated;
+  object-fit: cover;
+  pointer-events: none;
+  width: 100%;
+
+  // prettier-ignore
+  @keyframes minion-img-fade {
+    0%    { opacity: 0; }
+    100%  { opacity: 1; }
+  }
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  @include animation-swipe-card-image;
+}

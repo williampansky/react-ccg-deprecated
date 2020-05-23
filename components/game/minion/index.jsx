@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Img from 'react-image';
-import CARDCLASS from '@/enums/cardClass.enums';
-import RACE from '@/enums/race.enums';
 import RARITY from '@/enums/rarity.enums';
-import SET from '@/enums/set.enums';
-import TYPE from '@/enums/type.enums';
 import replaceConstant from '@/utils/replace-constants';
-import exists from '@/utils/element.exists';
-// import useHover from 'react-use-hover';
+import styles from './styles.module.scss';
 
-export default function Minion({
+// child components
+import MechanicIcon from './elements/mechanic-icon';
+import Attack from './elements/attack';
+import Health from './elements/health';
+import Image from './elements/image';
+
+const Minion = ({
   currentAttack,
   currentHealth,
   totalHealth,
@@ -44,72 +44,43 @@ export default function Minion({
   targetingArrowText,
   text,
   type,
-  warcryNumber
-}) {
-  function cardImage(cardId, cardSet, isGold, goldSrc) {
-    const set = replaceConstant(cardSet.replace(/(%)/g, ''));
-    return isGold
-      ? `url(${goldSrc})`
-      : `/images/sets/${set}/${cardId}-MINION.jpg`;
+  warcryNumber,
+  hasCurse,
+  hasPoison,
+  hasOnslaught
+}) => {
+  /**
+   * Returns minion race in lower case format
+   * @param {string} race
+   */
+  function getMinionRaceClass(race) {
+    return `minion__race--${replaceConstant(race).toLowerCase()}`;
   }
 
   return (
     <div
       className={[
-        'minion',
-        `minion__race--${replaceConstant(race).toLowerCase()}`,
-        currentHealth < totalHealth ? '--is-damaged' : '',
-        currentHealth === 0 ? '--is-dead' : ''
+        styles.component,
+        styles[getMinionRaceClass(race)],
+        currentHealth < totalHealth ? styles['--is-damaged'] : '',
+        currentHealth === 0 ? styles['--is-dead'] : ''
       ].join(' ')}
     >
-      {/* <div className={'info-trigger'} {...hoverProps} /> */}
-      <div className={'image-wrapper'}>
-        {id && set ? (
-          <Img
-            alt={name}
-            className={'card__image'}
-            decode={false}
-            src={cardImage(id, set, isGolden, goldenImageSrc)}
-            loader={<div className="loader" />}
-            unloader={<img alt="" src="/images/sets/PLACEHOLDER.jpg" />}
-          />
-        ) : null}
-      </div>
-      <div className={'attack-wrapper'} data-value={currentAttack}>
-        <div className={'text__value'}>{currentAttack}</div>
-        {elite ? (
-          <img
-            alt=""
-            className={`minion__attack__badge__elite`}
-            src={`/images/card-assets/ic_sword-alt.png`}
-          />
-        ) : (
-          <img
-            alt=""
-            className={`minion__attack__badge`}
-            src={`/images/card-assets/ic_sword.png`}
-          />
-        )}
-      </div>
-      <div className={'health-wrapper'} data-value={currentHealth}>
-        <div className={'text__value'}>{currentHealth}</div>
-        {elite ? (
-          <img
-            alt=""
-            className={`minion__health__badge__elite`}
-            src={`/images/card-assets/ic_shield-alt.png`}
-          />
-        ) : (
-          <img
-            alt=""
-            className={`minion__health__badge`}
-            src={`/images/card-assets/ic_shield.png`}
-          />
-        )}
-      </div>
+      <Image isGolden={isGolden} id={id} name={name} set={set} />
+      <Attack currentAttack={currentAttack} elite={elite} />
+      <Health
+        currentHealth={currentHealth}
+        elite={elite}
+        isDamaged={currentHealth < totalHealth}
+      />
+      <MechanicIcon
+        hasCurse={hasCurse}
+        hasPoison={hasPoison}
+        hasOnslaught={hasOnslaught}
+      />
     </div>
   );
-}
+};
 
 Minion.propTypes = {
   active: PropTypes.bool,
@@ -199,3 +170,5 @@ Minion.defaultProps = {
   // incoming transformative props
   isGolden: false
 };
+
+export default Minion;

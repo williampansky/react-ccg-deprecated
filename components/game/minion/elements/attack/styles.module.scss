@@ -1,0 +1,32 @@
+@import 'styles/mixins/flex';
+@import 'styles/mixins/position';
+
+.component {
+  border-radius: 50%;
+  bottom: var(--minion-stat-offset);
+  font-size: 1em;
+  font-weight: 600;
+  height: calc(var(--minion-height) / 3.5);
+  left: var(--minion-stat-offset);
+  line-height: 1;
+  position: absolute;
+  width: calc(var(--minion-height) / 3.5);
+  z-index: 5;
+}
+
+.text {
+  height: calc(var(--minion-height) / 4);
+  width: calc(var(--minion-height) / 3.85);
+  @include display-flex(column nowrap, center, center);
+  @include position-absolute(auto, 0, -1px, 0, 1);
+
+  & > div {
+    top: 0;
+  }
+}
+
+.badge {
+  height: calc(var(--minion-height) / 3.15);
+  image-rendering: pixelated;
+  @include position-absolute(-4px, 0, 0, -2px, 0);
+}

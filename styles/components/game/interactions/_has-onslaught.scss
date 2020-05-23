@@ -10,7 +10,7 @@
   height: calc(var(--minion-height) / #{$divide});
   width: calc(var(--minion-height) / #{$divide});
 
-  img {
+  & > img {
     width: 100%;
     image-rendering: pixelated;
   }
