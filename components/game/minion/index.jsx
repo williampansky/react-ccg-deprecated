@@ -46,6 +46,7 @@ const Minion = ({
   type,
   warcryNumber,
   hasCurse,
+  hasEnergyShield,
   hasPoison,
   hasOnslaught,
   isAttacking,
@@ -64,6 +65,7 @@ const Minion = ({
       className={[
         styles.component,
         styles[getMinionRaceClass(race)],
+        hasEnergyShield ? styles['--has-energy-shield'] : '',
         isAttacking ? styles['--is-attacking'] : '',
         wasAttacked ? styles['--was-attacked'] : '',
         currentHealth < totalHealth ? styles['--is-damaged'] : '',

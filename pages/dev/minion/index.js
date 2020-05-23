@@ -35,6 +35,12 @@ export default function CardDevelopment() {
   const [canReceiveEnergyShield, setCanReceiveEnergyShield] = useState(false);
   const [canReceiveGuard, setCanReceiveGuard] = useState(false);
   const [canReceiveOnslaught, setCanReceiveOnslaught] = useState(false);
+  const [hasBoon, setHasBoon] = useState(false);
+  const [hasCurse, setHasCurse] = useState(false);
+  const [hasEnergyShield, setHasEnergyShield] = useState(false);
+  const [hasGuard, setHasGuard] = useState(false);
+  const [hasOnslaught, setHasOnslaught] = useState(false);
+  const [hasPoison, setHasPoison] = useState(false);
   const [isAttacking, setIsAttacking] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
@@ -136,6 +142,15 @@ export default function CardDevelopment() {
             {exists(CARD) && CARD !== {} ? (
               <div>
                 <BoardSlot
+                  G={{
+                    selectedCardObject: {
+                      '0': null
+                    }
+                  }}
+                  moves={{
+                    deselectMinion: () => setIsAttacking(false),
+                    selectMinion: () => setIsAttacking(true)
+                  }}
                   canDrop={false}
                   dev={true}
                   data={{
@@ -157,12 +172,24 @@ export default function CardDevelopment() {
                     canReceiveOnslaught: canReceiveOnslaught,
                     currentAttack: CARD.attack,
                     currentHealth: CARD.health,
-                    hasBoon: initCardMechanics(CARD, 'hasBoon'),
-                    hasCurse: initCardMechanics(CARD, 'hasCurse'),
-                    hasEnergyShield: initCardMechanics(CARD, 'hasEnergyShield'),
-                    hasGuard: initCardMechanics(CARD, 'hasGuard'),
-                    hasOnslaught: initCardMechanics(CARD, 'hasOnslaught'),
-                    hasPoison: initCardMechanics(CARD, 'hasPoison'),
+                    hasBoon: !hasBoon
+                      ? initCardMechanics(CARD, 'hasBoon')
+                      : hasBoon,
+                    hasCurse: !hasCurse
+                      ? initCardMechanics(CARD, 'hasCurse')
+                      : hasCurse,
+                    hasEnergyShield: !hasEnergyShield
+                      ? initCardMechanics(CARD, 'hasEnergyShield')
+                      : hasEnergyShield,
+                    hasGuard: !hasGuard
+                      ? initCardMechanics(CARD, 'hasGuard')
+                      : hasGuard,
+                    hasOnslaught: !hasOnslaught
+                      ? initCardMechanics(CARD, 'hasOnslaught')
+                      : hasOnslaught,
+                    hasPoison: !hasPoison
+                      ? initCardMechanics(CARD, 'hasPoison')
+                      : hasPoison,
                     isAttacking: isAttacking,
                     isAttackingMinionIndex: null,
                     isAttackingPlayer: false,
@@ -330,8 +357,7 @@ export default function CardDevelopment() {
                     )
                   }
                 >
-                  canReceiveEnergyShield:{' '}
-                  {!canReceiveEnergyShield ? 'false' : 'true'}
+                  canReceiveEnergyShield
                 </button>
               </div>
               <div className="margin-small">
@@ -352,6 +378,56 @@ export default function CardDevelopment() {
                   }
                 >
                   canReceiveOnslaught
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasBoon}
+                  onClick={() => setHasBoon(!hasBoon ? true : false)}
+                >
+                  hasBoon
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasCurse}
+                  onClick={() => setHasCurse(!hasCurse ? true : false)}
+                >
+                  hasCurse
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasEnergyShield}
+                  onClick={() =>
+                    setHasEnergyShield(!hasEnergyShield ? true : false)
+                  }
+                >
+                  hasEnergyShield
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasGuard}
+                  onClick={() => setHasGuard(!hasGuard ? true : false)}
+                >
+                  hasGuard
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasOnslaught}
+                  onClick={() => setHasOnslaught(!hasOnslaught ? true : false)}
+                >
+                  hasOnslaught
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasPoison}
+                  onClick={() => setHasPoison(!hasPoison ? true : false)}
+                >
+                  hasPoison
                 </button>
               </div>
               <div className="margin-small">

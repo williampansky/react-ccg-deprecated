@@ -25,6 +25,7 @@
 
 .minion-interaction-layer.minion--can_attack {
   cursor: pointer;
+  outline: 0;
 
   & + div:before {
     box-shadow: 0px 0px 15px 5px rgba(0, 196, 105, 0.465);

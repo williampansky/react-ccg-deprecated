@@ -174,6 +174,7 @@ export default function BoardSlot({
   function determineIfCardHover() {
     let bool = false;
     if (isHovering) bool = true;
+    if (isAttacking) bool = false;
     if (canBeAttackedByMinion) bool = false;
     if (canBeAttackedByPlayer) bool = false;
     if (canBeAttackedBySpell) bool = false;
@@ -318,6 +319,7 @@ export default function BoardSlot({
           type={type}
           warcryNumber={warcryNumber}
           hasCurse={hasCurse}
+          hasEnergyShield={hasEnergyShield}
           hasPoison={hasPoison}
           hasOnslaught={hasOnslaught}
           isAttacking={isAttacking}

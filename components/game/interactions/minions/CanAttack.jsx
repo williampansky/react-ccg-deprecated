@@ -8,6 +8,9 @@ export default function CanAttack({ moves, data, index }) {
       className="can-be-selected"
       data-file="interactions/minions/CanAttack"
       onClick={() => selectMinion(data, index)}
+      onKeyPress={() => selectMinion(data, index)}
+      role="button"
+      tabIndex={0}
     />
   );
 }

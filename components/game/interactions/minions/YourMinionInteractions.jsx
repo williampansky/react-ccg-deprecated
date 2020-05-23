@@ -44,6 +44,8 @@ export default function YourMinionInteractions({
   isDisabled,
   willExpire
 }) {
+  const { selectedCardObject } = G;
+
   if (canBeHealed) {
     return (
       <CanBeHealed G={G} ctx={ctx} moves={moves} index={index} board={board} />
@@ -86,7 +88,7 @@ export default function YourMinionInteractions({
     return <CanReceiveOnslaught G={G} ctx={ctx} moves={moves} index={index} />;
   }
 
-  if (canAttack && !isAttacking && G.selectedCardObject[yourID] === null) {
+  if (canAttack && !isAttacking && selectedCardObject[yourID] === null) {
     return <CanAttack data={data} moves={moves} index={index} />;
   }
 

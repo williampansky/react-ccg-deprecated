@@ -9,6 +9,9 @@ export default function IsAttacking({ moves }) {
       className="is-selected"
       data-file="interactions/minions/IsAttacking"
       onClick={() => deselectMinion()}
+      onKeyPress={() => deselectMinion()}
+      role="button"
+      tabIndex={0}
     />
   );
 }
