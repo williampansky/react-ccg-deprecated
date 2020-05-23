@@ -39,6 +39,7 @@ export default function CardDevelopment() {
   const [isDisabled, setIsDisabled] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
   const [isDead, setIsDead] = useState(false);
+  const [wasAttacked, setWasAttacked] = useState(false);
   const [willExpire, setWillExpire] = useState(false);
   const [willExpireIn, setWillExpireIn] = useState(2);
 
@@ -170,6 +171,7 @@ export default function CardDevelopment() {
                     isDead: isDead,
                     totalAttack: CARD.attack,
                     totalHealth: CARD.health,
+                    wasAttacked: wasAttacked,
                     willExpire: willExpire,
                     willExpireIn: willExpireIn
                   }}
@@ -202,115 +204,126 @@ export default function CardDevelopment() {
             </div>
             <div className="margin">
               <div className="margin-small">
-                <button onClick={() => setCanAttack(!canAttack ? true : false)}>
-                  canAttack: {!canAttack ? 'false' : 'true'}
+                <button
+                  data-active={canAttack}
+                  onClick={() => setCanAttack(!canAttack ? true : false)}
+                >
+                  canAttack
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeAttackedByMinion}
                   onClick={() =>
                     setCanBeAttackedByMinion(
                       !canBeAttackedByMinion ? true : false
                     )
                   }
                 >
-                  canBeAttackedByMinion:{' '}
-                  {!canBeAttackedByMinion ? 'false' : 'true'}
+                  canBeAttackedByMinion
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeAttackedByPlayer}
                   onClick={() =>
                     setCanBeAttackedByPlayer(
                       !canBeAttackedByPlayer ? true : false
                     )
                   }
                 >
-                  canBeAttackedByPlayer:{' '}
-                  {!canBeAttackedByPlayer ? 'false' : 'true'}
+                  canBeAttackedByPlayer
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeAttackedBySpell}
                   onClick={() =>
                     setCanBeAttackedBySpell(
                       !canBeAttackedBySpell ? true : false
                     )
                   }
                 >
-                  canBeAttackedBySpell:{' '}
-                  {!canBeAttackedBySpell ? 'false' : 'true'}
+                  canBeAttackedBySpell
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeAttackedByWarcry}
                   onClick={() =>
                     setCanBeAttackedByWarcry(
                       !canBeAttackedByWarcry ? true : false
                     )
                   }
                 >
-                  canBeAttackedByWarcry:{' '}
-                  {!canBeAttackedByWarcry ? 'false' : 'true'}
+                  canBeAttackedByWarcry
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeBuffed}
                   onClick={() => setCanBeBuffed(!canBeBuffed ? true : false)}
                 >
-                  canBeBuffed: {!canBeBuffed ? 'false' : 'true'}
+                  canBeBuffed
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeDebuffed}
                   onClick={() =>
                     setCanBeDebuffed(!canBeDebuffed ? true : false)
                   }
                 >
-                  canBeDebuffed: {!canBeDebuffed ? 'false' : 'true'}
+                  canBeDebuffed
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeExpired}
                   onClick={() => setCanBeExpired(!canBeExpired ? true : false)}
                 >
-                  canBeExpired: {!canBeExpired ? 'false' : 'true'}
+                  canBeExpired
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeHealed}
                   onClick={() => setCanBeHealed(!canBeHealed ? true : false)}
                 >
-                  canBeHealed: {!canBeHealed ? 'false' : 'true'}
+                  canBeHealed
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeReturned}
                   onClick={() =>
                     setCanBeReturned(!canBeReturned ? true : false)
                   }
                 >
-                  canBeReturned: {!canBeReturned ? 'false' : 'true'}
+                  canBeReturned
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeSacrificed}
                   onClick={() =>
                     setCanBeSacrificed(!canBeSacrificed ? true : false)
                   }
                 >
-                  canBeSacrificed: {!canBeSacrificed ? 'false' : 'true'}
+                  canBeSacrificed
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canBeStolen}
                   onClick={() => setCanBeStolen(!canBeStolen ? true : false)}
                 >
-                  canBeStolen: {!canBeStolen ? 'false' : 'true'}
+                  canBeStolen
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canReceiveEnergyShield}
                   onClick={() =>
                     setCanReceiveEnergyShield(
                       !canReceiveEnergyShield ? true : false
@@ -323,53 +336,80 @@ export default function CardDevelopment() {
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canReceiveGuard}
                   onClick={() =>
                     setCanReceiveGuard(!canReceiveGuard ? true : false)
                   }
                 >
-                  canReceiveGuard: {!canReceiveGuard ? 'false' : 'true'}
+                  canReceiveGuard
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={canReceiveOnslaught}
                   onClick={() =>
                     setCanReceiveOnslaught(!canReceiveOnslaught ? true : false)
                   }
                 >
-                  canReceiveOnslaught: {!canReceiveOnslaught ? 'false' : 'true'}
+                  canReceiveOnslaught
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={isAttacking}
                   onClick={() => setIsAttacking(!isAttacking ? true : false)}
                 >
-                  isAttacking: {!isAttacking ? 'false' : 'true'}
+                  isAttacking
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={isDisabled}
                   onClick={() => setIsDisabled(!isDisabled ? true : false)}
                 >
-                  isDisabled: {!isDisabled ? 'false' : 'true'}
+                  isDisabled
                 </button>
               </div>
               <div className="margin-small">
                 <button
-                  onClick={() => setIsEntering(!isEntering ? true : false)}
+                  data-active={isEntering}
+                  onClick={() => {
+                    setIsEntering(true);
+                    setTimeout(() => {
+                      setIsEntering(false);
+                    }, 400);
+                  }}
                 >
-                  isEntering: {!isEntering ? 'false' : 'true'}
-                </button>
-              </div>
-              <div className="margin-small">
-                <button onClick={() => setIsDead(!isDead ? true : false)}>
-                  isDead: {!isDead ? 'false' : 'true'}
+                  isEntering
                 </button>
               </div>
               <div className="margin-small">
                 <button
+                  data-active={isDead}
+                  onClick={() => setIsDead(!isDead ? true : false)}
+                >
+                  isDead
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={wasAttacked}
+                  onClick={() => {
+                    setWasAttacked(true);
+                    setTimeout(() => {
+                      setWasAttacked(false);
+                    }, 500);
+                  }}
+                >
+                  wasAttacked
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={willExpire}
                   onClick={() => setWillExpire(!willExpire ? true : false)}
                 >
-                  willExpire: {!willExpire ? 'false' : 'true'}
+                  willExpire
                 </button>
               </div>
               <div className="margin-small">

@@ -47,7 +47,9 @@ const Minion = ({
   warcryNumber,
   hasCurse,
   hasPoison,
-  hasOnslaught
+  hasOnslaught,
+  isAttacking,
+  wasAttacked
 }) => {
   /**
    * Returns minion race in lower case format
@@ -62,6 +64,8 @@ const Minion = ({
       className={[
         styles.component,
         styles[getMinionRaceClass(race)],
+        isAttacking ? styles['--is-attacking'] : '',
+        wasAttacked ? styles['--was-attacked'] : '',
         currentHealth < totalHealth ? styles['--is-damaged'] : '',
         currentHealth === 0 ? styles['--is-dead'] : ''
       ].join(' ')}

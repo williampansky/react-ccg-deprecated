@@ -40,7 +40,7 @@ export default function BoardSlot({
   theirID,
   isEntering
 }) {
-  const [wasAttacked, setWasAttacked] = React.useState(false);
+  const [wasAttackedState, setWasAttackedState] = React.useState(false);
   const { selectedCardObject } = G;
   const yourCelectedCardObject =
     selectedCardObject && selectedCardObject[yourID];
@@ -113,6 +113,7 @@ export default function BoardSlot({
     },
     totalAttack,
     totalHealth,
+    wasAttacked,
     willExpire,
     willExpireIn
   } = data;
@@ -128,14 +129,14 @@ export default function BoardSlot({
   const animateWasAttacked = React.useCallback(
     currentHealth => {
       if (isActive && board === PLAYER_BOARDS[2]) {
-        currentHealth < previousCurrentHealth && setWasAttacked(true);
+        currentHealth < previousCurrentHealth && setWasAttackedState(true);
         return setTimeout(() => {
-          setWasAttacked(false);
+          setWasAttackedState(false);
         }, 510);
       } else if (!isActive && board === PLAYER_BOARDS[1]) {
-        currentHealth < previousCurrentHealth && setWasAttacked(true);
+        currentHealth < previousCurrentHealth && setWasAttackedState(true);
         return setTimeout(() => {
-          setWasAttacked(false);
+          setWasAttackedState(false);
         }, 510);
       }
     },
@@ -170,6 +171,26 @@ export default function BoardSlot({
     }, 400);
   }
 
+  function determineIfCardHover() {
+    let bool = false;
+    if (isHovering) bool = true;
+    if (canBeAttackedByMinion) bool = false;
+    if (canBeAttackedByPlayer) bool = false;
+    if (canBeAttackedBySpell) bool = false;
+    if (canBeAttackedByWarcry) bool = false;
+    if (canBeBuffed) bool = false;
+    if (canBeDebuffed) bool = false;
+    if (canBeExpired) bool = false;
+    if (canBeHealed) bool = false;
+    if (canBeReturned) bool = false;
+    if (canBeSacrificed) bool = false;
+    if (canBeStolen) bool = false;
+    if (canReceiveEnergyShield) bool = false;
+    if (canReceiveGuard) bool = false;
+    if (canReceiveOnslaught) bool = false;
+    return bool;
+  }
+
   return (
     <div
       data-file="board-slots/BoardSlot"
@@ -189,7 +210,7 @@ export default function BoardSlot({
         yourCelectedCardObject !== null && yourCardSpellType !== SPELLTYPE[2]
           ? 'cannot-drop-minion'
           : '',
-        wasAttacked ? '--was-attacked' : '',
+        wasAttackedState ? '--was-attacked' : '',
         isAttacking ? '--is-attacking' : '',
         isAttackingPlayer === true ? `target__other_player` : '',
         isAttackingMinionIndex !== null
@@ -240,6 +261,7 @@ export default function BoardSlot({
           isDisabled={isDisabled}
           totalAttack={totalAttack}
           totalHealth={totalHealth}
+          wasAttacked={wasAttacked}
           willExpire={willExpire}
         />
       )}
@@ -298,16 +320,17 @@ export default function BoardSlot({
           hasCurse={hasCurse}
           hasPoison={hasPoison}
           hasOnslaught={hasOnslaught}
+          isAttacking={isAttacking}
+          wasAttacked={wasAttacked}
         />
       )}
 
       {/* visible minion component */}
       {minionData ? (
-        // <ReactTooltip id={`${id}--${index}`} effect="solid" place={'top'}>
         <div
           className={[
             'board-slot-card-tooltip',
-            isHovering
+            determineIfCardHover()
               ? 'uk-animation-scale-up uk-transform-origin-bottom-left'
               : ''
           ].join(' ')}

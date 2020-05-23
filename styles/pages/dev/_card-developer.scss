@@ -8,8 +8,15 @@
     background-repeat: no-repeat;
   }
 
+  // prettier-ignore
   button {
+    appearance: none;
+    background: #999;
+    &[data-active='true'] { background: #fff; }
+    border: 0;
     cursor: pointer;
+    font-size: 14px;
+    outline: 0;
   }
 }
 
