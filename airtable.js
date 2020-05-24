@@ -12,6 +12,13 @@ function parseCardClass(string) {
   return string.replace(/([0-9] )/g, '');
 }
 
+function createArtistLink(name, url) {
+  if (!name || !url) return null;
+  if (!name && url) return url;
+  if (name && !url) return name;
+  return `<a href="${url}" rel="noopener noreferrer" target="_blank">${name}</a>`;
+}
+
 // CONSTANTS
 base
   .table('CONSTANTS')
@@ -197,7 +204,8 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
-        artist,
+        artistName,
+        artistUrl,
         cardClass,
         id,
         inspiration,
@@ -211,7 +219,7 @@ base
       return {
         [id]: {
           ...fields,
-          artist: artist ? artist : null,
+          artist: createArtistLink(artistName, artistUrl),
           cardClass: parseCardClass(cardClass),
           mechanics: GAME_CONFIG.debugData.enableMechanics
             ? mechanics
@@ -240,7 +248,8 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
-        artist,
+        artistName,
+        artistUrl,
         cardClass,
         id,
         inspiration,
@@ -254,7 +263,7 @@ base
       return {
         [id]: {
           ...fields,
-          artist: artist ? artist : null,
+          artist: createArtistLink(artistName, artistUrl),
           cardClass: parseCardClass(cardClass),
           mechanics: GAME_CONFIG.debugData.enableMechanics
             ? mechanics

@@ -105,19 +105,23 @@
 }
 
 .board-slot-card-tooltip .tooltip__mechanics__wrapper .mechanic__item {
-  $bg: #a3a2a0;
-  border: 2px solid mix(black, $bg, 80%);
+  $bg: #333;
+  background-color: $bg;
+  background-image: url('/images/card-assets/binding_dark.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   border-radius: 4px;
-  padding: 8px 10px 10px;
-  background: $bg;
+  border: 2px solid mix(white, $bg, 20%);
   font-size: 12px;
+  padding: 8px 10px 10px;
 
   & + .mechanic__item {
     margin-top: calc(var(--card-height) / 55);
   }
 
   .mechanic__item-title {
-    color: mix(black, $bg, 70%);
+    color: mix(white, $bg, 80%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.75em;
     font-weight: 900;
@@ -127,7 +131,7 @@
   }
 
   .mechanic__item-description {
-    color: mix(black, $bg, 80%);
+    color: mix(white, $bg, 100%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1em;
     font-weight: normal;

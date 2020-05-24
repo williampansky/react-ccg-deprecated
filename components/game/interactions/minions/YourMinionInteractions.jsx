@@ -14,6 +14,10 @@ import CanBeStolen from '@/components/game/interactions/minions/CanBeStolen';
 import CanReceiveEnergyShield from '@/components/game/interactions/minions/CanReceiveEnergyShield';
 import CanReceiveOnslaught from '@/components/game/interactions/minions/CanReceiveOnslaught';
 import CanReceiveGuard from '@/components/game/interactions/minions/CanReceiveGuard';
+import CanBeAttackedBySpell from './CanBeAttackedBySpell';
+import CanBeAttackedByWarcry from './CanBeAttackedByWarcry';
+import CanBeAttackedByMinion from './CanBeAttackedByMinion';
+import CanBeAttackedByPlayer from './CanBeAttackedByPlayer';
 
 export default function YourMinionInteractions({
   G,
@@ -24,6 +28,10 @@ export default function YourMinionInteractions({
   board,
   yourID,
   canAttack,
+  canBeAttackedByMinion,
+  canBeAttackedByPlayer,
+  canBeAttackedBySpell,
+  canBeAttackedByWarcry,
   canBeBuffed,
   canBeHealed,
   canBeDebuffed,
@@ -42,9 +50,28 @@ export default function YourMinionInteractions({
   isConcealed,
   isCursed,
   isDisabled,
-  willExpire
+  willExpire,
+  dev
 }) {
   const { selectedCardObject } = G;
+
+  if (dev && canBeAttackedBySpell) {
+    return <CanBeAttackedBySpell moves={moves} index={index} />;
+  }
+
+  if (dev && canBeAttackedByWarcry) {
+    return <CanBeAttackedByWarcry moves={moves} index={index} />;
+  }
+
+  if (dev && canBeAttackedByMinion) {
+    return (
+      <CanBeAttackedByMinion G={G} ctx={ctx} moves={moves} index={index} />
+    );
+  }
+
+  if (dev && canBeAttackedByPlayer) {
+    return <CanBeAttackedByPlayer moves={moves} index={index} />;
+  }
 
   if (canBeHealed) {
     return (
@@ -130,5 +157,14 @@ YourMinionInteractions.propTypes = {
   isConcealed: PropTypes.bool,
   isCursed: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  willExpire: PropTypes.bool
+  willExpire: PropTypes.bool,
+  dev: PropTypes.bool
+};
+
+YourMinionInteractions.defaultProps = {
+  canBeAttackedByMinion: false,
+  canBeAttackedByPlayer: false,
+  canBeAttackedBySpell: false,
+  canBeAttackedByWarcry: false,
+  dev: false
 };

@@ -38,13 +38,17 @@ export default function CardDevelopment() {
   const [hasBoon, setHasBoon] = useState(false);
   const [hasCurse, setHasCurse] = useState(false);
   const [hasEnergyShield, setHasEnergyShield] = useState(false);
+  const [hasEventListener, setHasEventListener] = useState(false);
   const [hasGuard, setHasGuard] = useState(false);
   const [hasOnslaught, setHasOnslaught] = useState(false);
   const [hasPoison, setHasPoison] = useState(false);
   const [isAttacking, setIsAttacking] = useState(false);
+  const [isConcealed, setIsConcealed] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
+  const [isElite, setIsElite] = useState(false);
   const [isDead, setIsDead] = useState(false);
+  const [isImmune, setIsImmune] = useState(false);
   const [wasAttacked, setWasAttacked] = useState(false);
   const [willExpire, setWillExpire] = useState(false);
   const [willExpireIn, setWillExpireIn] = useState(2);
@@ -113,14 +117,15 @@ export default function CardDevelopment() {
 
     // prettier-ignore
     switch (key) {
-      case 'hasBoon':         return mechanics.includes('%BOON%');
-      case 'hasCurse':        return mechanics.includes('%ON_DEATH%');
-      case 'hasEnergyShield': return mechanics.includes('%BUBBLE%');
-      case 'hasGuard':        return mechanics.includes('%BULWARK%');
-      case 'hasOnslaught':    return mechanics.includes('%DOUBLE_ATTACK%');
-      case 'hasPoison':       return mechanics.includes('%POISON%');
-      case 'isConcealed':     return mechanics.includes('%HIDDEN%');
-      default:                return false;
+      case 'hasBoon':           return mechanics.includes('%BOON%');
+      case 'hasCurse':          return mechanics.includes('%ON_DEATH%');
+      case 'hasEnergyShield':   return mechanics.includes('%BUBBLE%');
+      case 'hasEventListener':  return mechanics.includes('%EVENT%');
+      case 'hasGuard':          return mechanics.includes('%BULWARK%');
+      case 'hasOnslaught':      return mechanics.includes('%DOUBLE_ATTACK%');
+      case 'hasPoison':         return mechanics.includes('%POISON%');
+      case 'isConcealed':       return mechanics.includes('%HIDDEN%');
+      default:                  return false;
     }
   }, []);
 
@@ -154,7 +159,10 @@ export default function CardDevelopment() {
                   canDrop={false}
                   dev={true}
                   data={{
-                    minionData: CARD,
+                    minionData: {
+                      ...CARD,
+                      elite: !isElite ? CARD.elite : isElite
+                    },
                     canAttack: canAttack,
                     canBeAttackedByMinion: canBeAttackedByMinion,
                     canBeAttackedByPlayer: canBeAttackedByPlayer,
@@ -178,6 +186,9 @@ export default function CardDevelopment() {
                     hasCurse: !hasCurse
                       ? initCardMechanics(CARD, 'hasCurse')
                       : hasCurse,
+                    hasEventListener: !hasEventListener
+                      ? initCardMechanics(CARD, 'hasEventListener')
+                      : hasEventListener,
                     hasEnergyShield: !hasEnergyShield
                       ? initCardMechanics(CARD, 'hasEnergyShield')
                       : hasEnergyShield,
@@ -193,9 +204,14 @@ export default function CardDevelopment() {
                     isAttacking: isAttacking,
                     isAttackingMinionIndex: null,
                     isAttackingPlayer: false,
-                    isConcealed: initCardMechanics(CARD, 'isConcealed'),
+                    isConcealed: !isConcealed
+                      ? initCardMechanics(CARD, 'isConcealed')
+                      : isConcealed,
                     isDisabled: isDisabled,
                     isDead: isDead,
+                    isImmune: !isImmune
+                      ? initCardMechanics(CARD, 'isImmune')
+                      : isImmune,
                     totalAttack: CARD.attack,
                     totalHealth: CARD.health,
                     wasAttacked: wasAttacked,
@@ -382,6 +398,14 @@ export default function CardDevelopment() {
               </div>
               <div className="margin-small">
                 <button
+                  data-active={isElite}
+                  onClick={() => setIsElite(!isElite ? true : false)}
+                >
+                  isElite
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
                   data-active={hasBoon}
                   onClick={() => setHasBoon(!hasBoon ? true : false)}
                 >
@@ -404,6 +428,16 @@ export default function CardDevelopment() {
                   }
                 >
                   hasEnergyShield
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={hasEventListener}
+                  onClick={() =>
+                    setHasEventListener(!hasEventListener ? true : false)
+                  }
+                >
+                  hasEventListener
                 </button>
               </div>
               <div className="margin-small">
@@ -440,6 +474,22 @@ export default function CardDevelopment() {
               </div>
               <div className="margin-small">
                 <button
+                  data-active={isConcealed}
+                  onClick={() => setIsConcealed(!isConcealed ? true : false)}
+                >
+                  isConcealed
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
+                  data-active={isDead}
+                  onClick={() => setIsDead(!isDead ? true : false)}
+                >
+                  isDead
+                </button>
+              </div>
+              <div className="margin-small">
+                <button
                   data-active={isDisabled}
                   onClick={() => setIsDisabled(!isDisabled ? true : false)}
                 >
@@ -461,10 +511,10 @@ export default function CardDevelopment() {
               </div>
               <div className="margin-small">
                 <button
-                  data-active={isDead}
-                  onClick={() => setIsDead(!isDead ? true : false)}
+                  data-active={isImmune}
+                  onClick={() => setIsImmune(!isImmune ? true : false)}
                 >
-                  isDead
+                  isImmune
                 </button>
               </div>
               <div className="margin-small">

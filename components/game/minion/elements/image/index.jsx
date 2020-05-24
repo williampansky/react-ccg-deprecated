@@ -20,7 +20,8 @@ const Image = ({ id, isGolden, name, set }) => {
   }
 
   return (
-    <div className={styles.component}>
+    <div className={styles.component} data-file="Minion/image">
+      <div className="concealed__clouds" style={{ display: 'none' }} />
       <Img
         alt={name}
         className={styles.image}

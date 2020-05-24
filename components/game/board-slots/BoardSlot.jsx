@@ -38,7 +38,8 @@ export default function BoardSlot({
   render,
   yourID,
   theirID,
-  isEntering
+  isEntering,
+  dev
 }) {
   const [wasAttackedState, setWasAttackedState] = React.useState(false);
   const { selectedCardObject } = G;
@@ -68,6 +69,7 @@ export default function BoardSlot({
     hasBoon,
     hasCurse,
     hasEnergyShield,
+    hasEventListener,
     hasGuard,
     hasOnslaught,
     hasPoison,
@@ -78,6 +80,7 @@ export default function BoardSlot({
     isCursed,
     isDisabled,
     isDead,
+    isImmune,
     minionData,
     minionData: {
       active,
@@ -121,8 +124,16 @@ export default function BoardSlot({
   const playerID = board === PLAYER_BOARDS[1] ? yourID : theirID;
   const previousCurrentHealth = usePrevious(currentHealth);
 
+  const hoveringTimer =
+    canBeAttackedByMinion ||
+    canBeAttackedByPlayer ||
+    canBeAttackedBySpell ||
+    canBeAttackedByWarcry
+      ? 3000
+      : 1400;
+
   const [isHovering, hoverProps] = useHover({
-    mouseEnterDelayMS: 1400,
+    mouseEnterDelayMS: hoveringTimer,
     mouseLeaveDelayMS: 0
   });
 
@@ -175,10 +186,10 @@ export default function BoardSlot({
     let bool = false;
     if (isHovering) bool = true;
     if (isAttacking) bool = false;
-    if (canBeAttackedByMinion) bool = false;
-    if (canBeAttackedByPlayer) bool = false;
-    if (canBeAttackedBySpell) bool = false;
-    if (canBeAttackedByWarcry) bool = false;
+    if (isHovering && canBeAttackedByMinion) bool = true;
+    if (isHovering && canBeAttackedByPlayer) bool = true;
+    if (isHovering && canBeAttackedBySpell) bool = true;
+    if (isHovering && canBeAttackedByWarcry) bool = true;
     if (canBeBuffed) bool = false;
     if (canBeDebuffed) bool = false;
     if (canBeExpired) bool = false;
@@ -224,6 +235,9 @@ export default function BoardSlot({
       tabIndex={0}
       {...hoverProps}
     >
+      {/* elite */}
+      {minionData && elite && <IsElite />}
+
       {/* interactions layer */}
       {minionData && (
         <MinionInteraction
@@ -254,16 +268,19 @@ export default function BoardSlot({
           canReceiveOnslaught={canReceiveOnslaught}
           hasBoon={hasBoon}
           hasEnergyShield={hasEnergyShield}
+          hasEventListener={hasEventListener}
           hasGuard={hasGuard}
           hasOnslaught={hasOnslaught}
           isAttacking={isAttacking}
           isConcealed={isConcealed}
           isCursed={isCursed}
           isDisabled={isDisabled}
+          isImmune={isImmune}
           totalAttack={totalAttack}
           totalHealth={totalHealth}
           wasAttacked={wasAttacked}
           willExpire={willExpire}
+          dev={dev}
         />
       )}
 
@@ -272,14 +289,12 @@ export default function BoardSlot({
       {/* {minionData && hasCurse && <HasCurse />} */}
       {/* {minionData && hasPoison && <HasPoison />} */}
       {minionData && hasEnergyShield && <HasEnergyShield />}
+      {minionData && isImmune && <HasEnergyShield />}
       {minionData && hasGuard && <HasGuardForeground />}
       {/* {minionData && hasOnslaught && <HasOnslaught />} */}
       {minionData && isConcealed && <IsConcealed />}
       {minionData && isDisabled && <IsDisabled />}
       {minionData && willExpire && <WillExpire count={willExpireIn} />}
-
-      {/* elite */}
-      {minionData && elite && <IsElite />}
 
       {/* visible minion component */}
       {minionData && (
@@ -320,6 +335,7 @@ export default function BoardSlot({
           warcryNumber={warcryNumber}
           hasCurse={hasCurse}
           hasEnergyShield={hasEnergyShield}
+          hasEventListener={hasEventListener}
           hasPoison={hasPoison}
           hasOnslaught={hasOnslaught}
           isAttacking={isAttacking}

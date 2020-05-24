@@ -123,9 +123,7 @@ export default function CardInfoList({ data, database }) {
       {artist && (
         <div className="artist">
           <strong className="text__value">Artist:</strong>{' '}
-          <a href={artist} target="_blank" rel="noopener noreferrer">
-            {formatUrlString(artist)}
-          </a>
+          <span dangerouslySetInnerHTML={createMarkup(artist)} />
         </div>
       )}
 

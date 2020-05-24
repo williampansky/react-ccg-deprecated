@@ -47,6 +47,7 @@ const Minion = ({
   warcryNumber,
   hasCurse,
   hasEnergyShield,
+  hasEventListener,
   hasPoison,
   hasOnslaught,
   isAttacking,
@@ -71,6 +72,7 @@ const Minion = ({
         currentHealth < totalHealth ? styles['--is-damaged'] : '',
         currentHealth === 0 ? styles['--is-dead'] : ''
       ].join(' ')}
+      data-file="Minion"
     >
       <Image isGolden={isGolden} id={id} name={name} set={set} />
       <Attack currentAttack={currentAttack} elite={elite} />
@@ -81,8 +83,9 @@ const Minion = ({
       />
       <MechanicIcon
         hasCurse={hasCurse}
-        hasPoison={hasPoison}
+        hasEventListener={hasEventListener}
         hasOnslaught={hasOnslaught}
+        hasPoison={hasPoison}
       />
     </div>
   );

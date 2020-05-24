@@ -12,7 +12,7 @@ const Attack = ({ currentAttack, elite }) => {
       {elite ? (
         <img
           alt="ic_sword-alt"
-          className={[styles.badge, styles.elite].join}
+          className={[styles.badge, styles.elite].join(' ')}
           src={`/images/card-assets/ic_sword-alt.png`}
         />
       ) : (

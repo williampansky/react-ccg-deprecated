@@ -41,7 +41,8 @@ export default function MinionInteraction({
   isDisabled,
   totalAttack,
   totalHealth,
-  willExpire
+  willExpire,
+  dev
 }) {
   switch (board) {
     case 'TheirBoard':
@@ -78,6 +79,7 @@ export default function MinionInteraction({
           isCursed={isCursed}
           isDisabled={isDisabled}
           willExpire={willExpire}
+          dev={dev}
         />
       );
 
@@ -116,6 +118,7 @@ export default function MinionInteraction({
           isCursed={isCursed}
           isDisabled={isDisabled}
           willExpire={willExpire}
+          dev={dev}
         />
       );
   }

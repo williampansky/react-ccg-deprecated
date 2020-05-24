@@ -16,6 +16,10 @@
     to    { opacity: 1; }
   }
 
+  [data-file='mechanics/IsElite'] ~ & {
+    transform: scale(1.05);
+  }
+
   .has-guard & {
     border-top-left-radius: 15px !important;
     border-top-right-radius: 15px !important;
