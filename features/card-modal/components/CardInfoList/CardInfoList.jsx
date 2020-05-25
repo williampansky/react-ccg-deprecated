@@ -133,7 +133,7 @@ export default function CardInfoList({ data, database }) {
       )}
 
       {description && (
-        <div className="description">
+        <div className={styles.description}>
           <strong className="text__value">Description</strong>{' '}
           <div
             className="description__text"
