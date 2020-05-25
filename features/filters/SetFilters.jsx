@@ -21,9 +21,7 @@ export default function SetFilters({
         label="Set"
         menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption =>
-          selectedOption === null
-            ? onChange(null)
-            : onChange(selectedOption.value)
+          selectedOption === null ? onChange(null) : onChange(selectedOption)
         }
         options={data}
         placeholder="Set"

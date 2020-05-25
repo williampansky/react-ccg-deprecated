@@ -237,7 +237,7 @@
     }
   }
 
-  // various text placements
+  // various attack placements
   // ========================================================================
   // prettier-ignore
   .card__attack .text__value {
@@ -289,6 +289,15 @@
       height: calc(var(--card-height) / 5.896551724);
       position: absolute;
       image-rendering: pixelated;
+    }
+  }
+
+  // various health placements
+  // ========================================================================
+  // prettier-ignore
+  .card__health.card__health__elite .text__value {
+    &[data-value='7'] {
+      left: calc(var(--card-height) / -100);
     }
   }
 

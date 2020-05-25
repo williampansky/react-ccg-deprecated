@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 import createMarkup from '@/utils/createMarkup';
 import replaceConstant from '@/utils/replace-constants';
-import formatUrlString from '@/utils/format-url-string';
 import EntourageCard from '@/components/collection/EntourageCard';
 import RARITY from '@/enums/rarity.enums';
 import exists from '@/utils/element.exists';
 import RACE from '@/enums/race.enums';
 import removeSymbols from '@/utils/remove-symbols';
+import replaceDynamicText from '@/utils/replace-dynamic-text';
 
 export default function CardInfoList({ data, database }) {
   const {
@@ -24,7 +24,8 @@ export default function CardInfoList({ data, database }) {
     rarity,
     set,
     targetingArrowText,
-    type
+    type,
+    warcryNumber
   } = data;
 
   const CARD_TYPE = replaceConstant(type).toUpperCase();
@@ -96,7 +97,11 @@ export default function CardInfoList({ data, database }) {
         {targetingArrowText && (
           <li>
             <strong className="text__value">Targeting Text:</strong>{' '}
-            <span>{replaceConstant(targetingArrowText)}</span>
+            <span>
+              {replaceConstant(
+                replaceDynamicText(targetingArrowText, warcryNumber)
+              )}
+            </span>
           </li>
         )}
 

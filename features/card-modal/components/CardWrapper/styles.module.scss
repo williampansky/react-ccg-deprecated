@@ -7,10 +7,24 @@
   position: relative;
 
   &  > div:nth-child(1) {
+    --card-height: 400px;
     box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.625);
-    transform: scale(1);
-    @include breakpoint('medium') { transform: scale(1.25); }
-    @include breakpoint('large')  { transform: scale(1.5); }
     z-index: 1;
+
+    @include breakpoint('small') {
+      --card-height: 500px;
+    }
+
+    @include breakpoint('medium') {
+      --card-height: 550px;
+    }
+
+    @include breakpoint('large')  {
+      --card-height: 600px;
+    }
+
+    @include breakpoint('xlarge')  {
+      --card-height: 650px;
+    }
   }
 }

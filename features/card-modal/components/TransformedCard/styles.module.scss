@@ -8,14 +8,28 @@
   position: absolute;
   z-index: 0;
 
-  @include breakpoint('medium') {
-    bottom: -4%;
-    left: -25%;
-  }
-
   & > div {
-    transform: rotate(-10deg) scale(0.95);
-    @include breakpoint('medium') { transform: rotate(-10deg) scale(1.2); }
-    @include breakpoint('large')  { transform: rotate(-10deg) scale(1.475); }
+    --card-height: 400px;
+    transform: rotate(-10deg) translate(10%, 0);
+    
+    @include breakpoint('small') {
+      --card-height: 500px;
+      transform: rotate(-10deg) translate(-2%, 2%);
+    }
+    
+    @include breakpoint('medium') {
+      --card-height: 550px;
+      transform: rotate(-10deg) translate(0%, 2%);
+    }
+
+    @include breakpoint('large')  {
+      --card-height: 580px;
+      transform: rotate(-10deg) translate(0%, 2%);
+    }
+
+    @include breakpoint('xlarge')  {
+      --card-height: 640px;
+      transform: rotate(-10deg) translate(0%, 2%);
+    }
   }
 }

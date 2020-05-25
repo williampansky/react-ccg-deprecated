@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import { useMediaQuery } from 'react-responsive';
 import {
   selectEnergy,
@@ -19,6 +20,8 @@ import styles from 'features/filters/filters-container.module.scss';
 import TypeFilters from 'features/filters/TypeFilters';
 
 export default function Filters() {
+  const router = useRouter();
+  const { query } = router;
   const dispatch = useDispatch();
   const {
     filtersBarActive,
@@ -89,6 +92,81 @@ export default function Filters() {
     setDbCallback
   ]);
 
+  const handleFilter = useCallback(
+    (key, obj, path = '/collection') => {
+      const useQuery = false;
+      const label = obj && obj.label;
+      const value = obj && obj.value;
+
+      switch (key) {
+        case 'type':
+          if (useQuery)
+            router.push(path, {
+              query: { type: label },
+              shallow: true
+            });
+          return dispatch(selectType(value));
+
+        case 'race':
+          if (useQuery)
+            router.push(path, {
+              query: { race: label },
+              shallow: true
+            });
+          return dispatch(selectRace(value));
+
+        case 'mechanics':
+          if (useQuery)
+            router.push(path, {
+              query: { mechanics: label },
+              shallow: true
+            });
+          return dispatch(selectMechanic(obj));
+
+        case 'set':
+          if (useQuery)
+            router.push(path, {
+              query: { set: label },
+              shallow: true
+            });
+          return dispatch(selectSet(value));
+
+        case 'rarity':
+          if (useQuery)
+            router.push(path, {
+              query: { rarity: label },
+              shallow: true
+            });
+          return dispatch(selectRarity(value));
+
+        case 'energy':
+          if (useQuery)
+            router.push(path, {
+              query: { energy: label },
+              shallow: true
+            });
+          return dispatch(selectEnergy(value));
+
+        default:
+          break;
+      }
+    },
+    [dispatch, router]
+  );
+
+  // const handleQueryMountingCallback = useCallback(
+  //   obj => {
+  //     if (!obj || obj === {}) return;
+  //     const type = obj && obj.type;
+  //     dispatch(selectType(type));
+  //   },
+  //   [dispatch]
+  // );
+
+  // useEffect(() => {
+  //   query !== {} && handleQueryMountingCallback(query);
+  // }, [query, handleQueryMountingCallback]);
+
   return (
     <div
       className={[
@@ -103,37 +181,37 @@ export default function Filters() {
         active={selectedCardType}
         data={availableCardTypes}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onChange={selectedOption => dispatch(selectType(selectedOption))}
+        onChange={selectedOption => handleFilter('type', selectedOption)}
       />
       <RaceFilters
         active={selectedCardRace}
         data={availableCardRaces}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onChange={selectedOption => dispatch(selectRace(selectedOption))}
+        onChange={selectedOption => handleFilter('race', selectedOption)}
       />
       <MechanicsFilters
         active={selectedCardMechanics}
         data={availableCardMechanics}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onClick={selectedOption => dispatch(selectMechanic(selectedOption))}
+        onClick={selectedOption => handleFilter('mechanics', selectedOption)}
       />
       <SetFilters
         active={selectedCardSet}
         data={availableCardSets}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onChange={selectedOption => dispatch(selectSet(selectedOption))}
+        onChange={selectedOption => handleFilter('set', selectedOption)}
       />
       <RarityFilters
         active={selectedCardRarity}
         data={availableCardRarities}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onChange={selectedOption => dispatch(selectRarity(selectedOption))}
+        onChange={selectedOption => handleFilter('rarity', selectedOption)}
       />
       <EnergyFilters
         active={selectedEnergyFilter}
         isDesktopOrLaptop={isDesktopOrLaptop}
-        onClick={event => dispatch(selectEnergy(event.target.value))}
-        onChange={selectedOption => dispatch(selectEnergy(selectedOption))}
+        onClick={event => handleFilter('energy', event.target.value)}
+        onChange={selectedOption => handleFilter('energy', selectedOption)}
       />
     </div>
   );

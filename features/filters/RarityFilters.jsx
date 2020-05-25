@@ -20,9 +20,7 @@ export default function RarityFilters({
         isSearchable={isDesktopOrLaptop ? true : false}
         menuPlacement={'top'}
         onChange={selectedOption =>
-          selectedOption === null
-            ? onChange(null)
-            : onChange(selectedOption.value)
+          selectedOption === null ? onChange(null) : onChange(selectedOption)
         }
         options={data}
         placeholder="Rarity"
