@@ -12,6 +12,13 @@ function parseCardClass(string) {
   return string.replace(/([0-9] )/g, '');
 }
 
+function parseCardEntourage(string) {
+  if (!string || typeof string === 'undefined') return [];
+  const noWhiteSpace = string.replace(/\s/g, '');
+  const array = noWhiteSpace.split(',');
+  return array;
+}
+
 function createArtistLink(name, url) {
   if (!name || !url) return null;
   if (!name && url) return url;
@@ -163,6 +170,7 @@ base
       const {
         artist,
         cardClass,
+        entourage,
         id,
         inspiration,
         mechanics,
@@ -177,6 +185,7 @@ base
           ...fields,
           artist: artist ? artist : null,
           cardClass: parseCardClass(cardClass),
+          entourage: parseCardEntourage(entourage),
           mechanics: GAME_CONFIG.debugData.enableMechanics
             ? mechanics
               ? mechanics
@@ -207,6 +216,7 @@ base
         artistName,
         artistUrl,
         cardClass,
+        entourage,
         id,
         inspiration,
         mechanics,
@@ -221,6 +231,7 @@ base
           ...fields,
           artist: createArtistLink(artistName, artistUrl),
           cardClass: parseCardClass(cardClass),
+          entourage: parseCardEntourage(entourage),
           mechanics: GAME_CONFIG.debugData.enableMechanics
             ? mechanics
               ? mechanics

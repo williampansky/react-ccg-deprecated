@@ -34,8 +34,6 @@ export default function CardInfoList({ data, database }) {
   const CARD_SET = replaceConstant(set).toUpperCase();
   const CARD_RARITY = replaceConstant(rarity).toUpperCase();
   const CARD_DESCRIPTION = createMarkup(replaceConstant(description));
-  const ENTOURAGE_LENGTH =
-    exists(entourage) && entourage.match(/([A-Z])\w+/).length;
 
   return (
     <div className={styles.component}>
@@ -146,15 +144,13 @@ export default function CardInfoList({ data, database }) {
         <React.Fragment>
           <p className={styles.entourage__info}>
             <strong className="text__value">Entourage:</strong>{' '}
-            <span>{entourage}</span>
+            <span>{entourage.join(', ')}</span>
           </p>
           <div className={styles.entourage__card__wrapper}>
-            {Array.from(Array(ENTOURAGE_LENGTH)).map((_, index) => {
-              index = index + 1;
-              const eId = `${id}${(index + 9).toString(36)}`;
-              const card = database.find(o => o.id === eId);
+            {entourage.map(string => {
+              const card = database.find(o => o.id === string);
               return exists(card) ? (
-                <div className={styles.entourage__card} key={eId}>
+                <div className={styles.entourage__card} key={string}>
                   <EntourageCard data={card} />
                 </div>
               ) : null;
