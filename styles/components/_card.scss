@@ -125,6 +125,11 @@
     margin: 0;
   }
 
+  .card__text small {
+    display: inline-block;
+    line-height: 1.1;
+  }
+
   .card__type {
     color: white;
     position: absolute;
