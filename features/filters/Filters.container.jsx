@@ -142,10 +142,10 @@ export default function Filters() {
         case 'energy':
           if (useQuery)
             router.push(path, {
-              query: { energy: label },
+              query: { energy: obj },
               shallow: true
             });
-          return dispatch(selectEnergy(value));
+          return dispatch(selectEnergy(obj));
 
         default:
           break;
