@@ -1,12 +1,6 @@
 .card__developer {
   width: 100vw;
-  min-height: 100vh;
-
-  &.minion__developer .right {
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
+  min-height: 90vh;
 
   // prettier-ignore
   button {
@@ -22,14 +16,17 @@
 
 .card__developer .flex {
   height: 100%;
-  @include display-flex(row-reverse nowrap, center, space-between);
+  width: 100%;
+  @include display-flex(row-reverse nowrap, flex-start, space-between);
 }
 
+// prettier-ignore
 .card__developer .left {
-  padding: 40px;
+  padding: 6px 10px;
+  @include breakpoint('medium') { padding: 40px; }
   width: 35vw;
   min-height: 80vh;
-  max-height: 100vh;
+  max-height: 80vh;
   overflow-y: auto;
   @include display-flex(column nowrap, center, flex-start);
 }
@@ -61,4 +58,29 @@
 
 .card__developer .selector {
   width: 100%;
+}
+
+// MINIONS
+.card__developer.minion__developer {
+  .id__selector {
+    padding: 0 20px;
+  }
+
+  // prettier-ignore
+  .board-slot-card-tooltip {
+    display: none;
+    @include breakpoint('medium') { display: flex; }
+  }
+
+  .selector > div:nth-of-type(2) {
+    z-index: 100;
+  }
+}
+
+// prettier-ignore
+.card__developer.minion__developer .right {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @include breakpoint('medium') { background-size: contain; }
 }

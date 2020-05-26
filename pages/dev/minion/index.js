@@ -9,6 +9,7 @@ import TYPE from '@/enums/type.enums';
 // import MECHANICS from '@/enums/MECHANICS.json';
 import PLAYER_BOARDS from '@/enums/playerBoards.enums';
 import BoardSlot from '@/components/game/board-slots/BoardSlot';
+import { useMediaQuery } from 'react-responsive';
 
 export default function CardDevelopment() {
   const router = useRouter();
@@ -52,6 +53,12 @@ export default function CardDevelopment() {
   const [wasAttacked, setWasAttacked] = useState(false);
   const [willExpire, setWillExpire] = useState(false);
   const [willExpireIn, setWillExpireIn] = useState(2);
+
+  const isBigScreen = useMediaQuery(
+    { minDeviceWidth: 1200 },
+    { deviceWidth: 1200 },
+    { query: '(min-width: 1200px)' }
+  );
 
   const handleOnChange = useCallback(
     string => {
@@ -137,6 +144,19 @@ export default function CardDevelopment() {
       />
 
       <div className="card__developer minion__developer">
+        <div className="margin id__selector">
+          <div className="label">Select Card</div>
+          {cardsArray.length !== 0 ? (
+            <Select
+              className={'selector'}
+              defaultInputValue={query && query.id}
+              isSearchable={isBigScreen ? true : false}
+              options={cardsArray}
+              onChange={selectedOption => handleOnChange(selectedOption.value)}
+              width="100%"
+            />
+          ) : null}
+        </div>
         <div className="flex">
           <section
             className="right"
@@ -230,21 +250,6 @@ export default function CardDevelopment() {
             ) : null}
           </section>
           <section className="left">
-            <div className="margin">
-              <div className="label">Select Card</div>
-              {cardsArray.length !== 0 ? (
-                <Select
-                  cacheOptions
-                  className={'selector'}
-                  defaultInputValue={query && query.id}
-                  options={cardsArray}
-                  onChange={selectedOption =>
-                    handleOnChange(selectedOption.value)
-                  }
-                  width="100%"
-                />
-              ) : null}
-            </div>
             <div className="margin">
               <div className="margin-small">
                 <button
