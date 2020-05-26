@@ -16,7 +16,7 @@ let initialState = {
   selectedCardRarity: null,
   selectedCardSet: null,
   selectedCardType: null,
-  selectedEnergyFilter: -1,
+  selectedCostFilter: -1,
   searchValue: null,
   searchModalActive: false,
   availableCardClasses: [
@@ -87,11 +87,11 @@ const filtersSlice = createSlice({
     selectClass(state, { payload }) {
       state.selectedCardClass = payload;
     },
-    selectEnergy(state, { payload }) {
+    selectCost(state, { payload }) {
       const incomingValue = parseInt(payload);
-      state.selectedEnergyFilter === incomingValue
-        ? (state.selectedEnergyFilter = -1)
-        : (state.selectedEnergyFilter = incomingValue);
+      state.selectedCostFilter === incomingValue
+        ? (state.selectedCostFilter = -1)
+        : (state.selectedCostFilter = incomingValue);
     },
     selectMechanic(state, { payload }) {
       if (!payload) state.selectedCardMechanics = [];
@@ -145,7 +145,7 @@ const filtersSlice = createSlice({
 
 export const {
   selectClass,
-  selectEnergy,
+  selectCost,
   selectMechanic,
   selectRace,
   selectRarity,

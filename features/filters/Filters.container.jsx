@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useMediaQuery } from 'react-responsive';
 import {
-  selectEnergy,
+  selectCost,
   selectMechanic,
   selectRace,
   selectSet,
@@ -36,7 +36,7 @@ export default function Filters() {
     selectedCardRarity,
     selectedCardSet,
     selectedCardType,
-    selectedEnergyFilter,
+    selectedCostFilter,
     searchValue
   } = useSelector(state => state.filters);
 
@@ -77,7 +77,7 @@ export default function Filters() {
       selectedCardRarity,
       selectedCardSet,
       selectedCardType,
-      selectedEnergyFilter,
+      selectedCostFilter,
       searchValue
     );
   }, [
@@ -87,7 +87,7 @@ export default function Filters() {
     selectedCardRarity,
     selectedCardSet,
     selectedCardType,
-    selectedEnergyFilter,
+    selectedCostFilter,
     searchValue,
     setDbCallback
   ]);
@@ -145,7 +145,7 @@ export default function Filters() {
               query: { energy: obj },
               shallow: true
             });
-          return dispatch(selectEnergy(obj));
+          return dispatch(selectCost(obj));
 
         default:
           break;
@@ -208,7 +208,7 @@ export default function Filters() {
         onChange={selectedOption => handleFilter('rarity', selectedOption)}
       />
       <EnergyFilters
-        active={selectedEnergyFilter}
+        active={selectedCostFilter}
         isDesktopOrLaptop={isDesktopOrLaptop}
         onClick={event => handleFilter('energy', event.target.value)}
         onChange={selectedOption => handleFilter('energy', selectedOption)}
