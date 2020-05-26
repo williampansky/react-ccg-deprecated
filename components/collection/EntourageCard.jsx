@@ -10,11 +10,13 @@ import replaceConstant from 'utils/replace-constants';
 import RARITY from '@/enums/rarity.enums';
 import exists from '@/utils/element.exists';
 import removeSymbols from '@/utils/remove-symbols';
+import formatCardText from '@/utils/format-card-text';
 
 export default function EntourageCard({ data }) {
   const {
     attack,
     cost,
+    elite,
     goldenImageSrc,
     health,
     id,
@@ -40,16 +42,6 @@ export default function EntourageCard({ data }) {
       ? `url(${goldSrc})`
       : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
-
-  function cardText(string, spellDmg = warcryNumber) {
-    const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
-    const replacedSymbols = replaceConstant(replacedDynamicDmg);
-    return replacedSymbols;
-  }
-
-  const fontSize = {
-    fontSize: `${fontSizeBasedOnCharacterLength(name)}em`
-  };
 
   return (
     <div
@@ -79,7 +71,10 @@ export default function EntourageCard({ data }) {
 
       {name ? (
         <div className={'card__name'}>
-          <div className={'text__value'} style={fontSize}>
+          <div
+            className={'text__value'}
+            style={{ fontSize: `${fontSizeBasedOnCharacterLength(name)}em` }}
+          >
             {name}
           </div>
         </div>
@@ -90,7 +85,7 @@ export default function EntourageCard({ data }) {
           <p
             className={'text__value'}
             dangerouslySetInnerHTML={createMarkup(
-              cardText(text, dynamicSpellDamageText)
+              formatCardText(text, dynamicSpellDamageText)
             )}
           />
         </div>
@@ -114,21 +109,53 @@ export default function EntourageCard({ data }) {
 
       {(IS_MINION || IS_WEAPON) && (
         <React.Fragment>
-          <div className={'card__attack'} data-value={attack}>
-            <div className={'text__value'}>{attack}</div>
-            <img
-              alt=""
-              className={`card__attack__badge`}
-              src={`images/card-assets/ic_sword.png`}
-            />
+          <div
+            className={[
+              'card__attack',
+              elite ? 'card__attack__elite' : ''
+            ].join(' ')}
+            data-value={attack}
+          >
+            <div className={'text__value'} data-value={attack}>
+              {attack}
+            </div>
+            {elite ? (
+              <img
+                alt=""
+                className={`card__attack__badge__elite`}
+                src={`/images/card-assets/ic_sword-alt.png`}
+              />
+            ) : (
+              <img
+                alt=""
+                className={`card__attack__badge`}
+                src={`/images/card-assets/ic_sword.png`}
+              />
+            )}
           </div>
-          <div className={'card__health'} data-value={health}>
-            <div className={'text__value'}>{health}</div>
-            <img
-              alt=""
-              className={`card__health__badge`}
-              src={`images/card-assets/ic_shield.png`}
-            />
+          <div
+            className={[
+              'card__health',
+              elite ? 'card__health__elite' : ''
+            ].join(' ')}
+            data-value={health}
+          >
+            <div className={'text__value'} data-value={health}>
+              {health}
+            </div>
+            {elite ? (
+              <img
+                alt=""
+                className={`card__health__badge__elite`}
+                src={`/images/card-assets/ic_shield-alt.png`}
+              />
+            ) : (
+              <img
+                alt=""
+                className={`card__health__badge`}
+                src={`/images/card-assets/ic_shield.png`}
+              />
+            )}
           </div>
         </React.Fragment>
       )}
@@ -158,7 +185,7 @@ export default function EntourageCard({ data }) {
             <img
               alt=""
               className={`card__type__image__badge`}
-              src={`/images/card-assets/Card_Type_Board-Spiked.png`}
+              src={`/images/card-assets/Card_Type_Board.png`}
             />
           ) : (
             <img
@@ -197,24 +224,21 @@ export default function EntourageCard({ data }) {
         </div>
       ) : null}
 
-      {isGolden ? (
-        <img
-          alt=""
-          className={`card__base__image`}
-          src={`/images/cards/front/GOLDEN.png`}
-        />
-      ) : (
-        // <img
-        //   alt=""
-        //   className={`card__base__image`}
-        //   src={cardImage(id, set, isGolden, goldenImageSrc)}
-        // />
+      {IS_MINION || IS_WEAPON ? (
         <img
           alt=""
           className={`card__base__image`}
           src={`/images/cards/front/${replaceConstant(
             rarity
           ).toUpperCase()}.png`}
+        />
+      ) : (
+        <img
+          alt=""
+          className={`card__base__image`}
+          src={`/images/cards/front/${replaceConstant(
+            rarity
+          ).toUpperCase()}-ALT.png`}
         />
       )}
     </div>

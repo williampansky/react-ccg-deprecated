@@ -59,17 +59,6 @@ export default function Card({
       : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
 
-  function cardLoader(cardId, cardSet) {
-    const set = replaceConstant(cardSet.replace(/(%)/g, ''));
-    return {
-      backgroundImage: `url(/images/sets/${set}/${cardId}-CARD-LOADER.jpg)`
-    };
-  }
-
-  const fontSize = {
-    fontSize: `${fontSizeBasedOnCharacterLength(name)}em`
-  };
-
   return (
     <div
       className={[
@@ -104,7 +93,10 @@ export default function Card({
 
       {name ? (
         <div className={'card__name'}>
-          <div className={'text__value'} style={fontSize}>
+          <div
+            className={'text__value'}
+            style={{ fontSize: `${fontSizeBasedOnCharacterLength(name)}em` }}
+          >
             {name}
           </div>
         </div>
@@ -254,20 +246,6 @@ export default function Card({
           )}
         </div>
       ) : null}
-
-      {/* <div className={`card__mechanics__wrapper`}>
-        {mechanics.map(m => {
-          return (
-            <div className="card__mechanic" key={m}>
-              <img
-                alt=""
-                className={`card__mechanic__image`}
-                src={`icons/Mechanic-${m.replace(/%/g, '')}.png`}
-              />
-            </div>
-          );
-        })}
-      </div> */}
 
       {IS_MINION || IS_WEAPON ? (
         <img
