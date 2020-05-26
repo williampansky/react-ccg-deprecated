@@ -64,7 +64,13 @@ export default function EntourageCard({ data }) {
             className={'card__image'}
             decode={false}
             src={cardImage(id, set, isGolden, goldenImageSrc)}
-            unloader={<img alt="" src="/images/sets/PLACEHOLDER.jpg" />}
+            unloader={
+              <img
+                alt=""
+                className={'card__image'}
+                src="/images/sets/PLACEHOLDER.jpg"
+              />
+            }
           />
         ) : null}
       </div>
