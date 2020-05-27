@@ -4,12 +4,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReactSVG } from 'react-svg';
 import { setData as setCardModalData } from '@/features/card-modal/card-modal.slice';
 import exists from '@/utils/element.exists';
-import CardGrid from '@/components/collection/CardGrid';
+import CardGrid from '@/components/collection/CardGridWindow';
 
 export default function CardCollection() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { query } = router;
+  const {
+    query,
+    query: { id }
+  } = router;
   const siteSidebarActive = useSelector(s => s.siteSidebarActive);
   const database = useSelector(state => state.database);
   const { data, error, isLoading } = useSelector(
@@ -52,10 +55,11 @@ export default function CardCollection() {
         <div
           className={[
             'grid__wrapper',
-            '_scrollable',
+            // '_scrollable',
             'card-collection',
             siteSidebarActive ? 'collection__sidebar--active' : ''
           ].join(' ')}
+          data-deckid={id}
         >
           {/* {isLoading && (
             <div className="grid__spinner">

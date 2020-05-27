@@ -5,49 +5,53 @@
     --card-height: 400px;
   }
 
-  display: grid;
+  color: white;
+  outline: none;
   margin: 0 auto;
   padding: 0;
-  grid-gap: 0;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(calc(var(--card-height) / 1.4), 1fr)
-  );
+  // height: 100%;
+  // display: grid;
+  // grid-gap: 0;
+  // grid-template-columns: repeat(
+  //   auto-fill,
+  //   minmax(calc(var(--card-height) / 1.4), 1fr)
+  // );
 
-  @include breakpoint('medium') {
-    grid-gap: 40px 30px;
-    padding: 10px 0 20px;
+  .card__grid-row {
+    padding: 0 20px;
+    box-sizing: border-box;
+    @include display-flex(row nowrap, center, space-around);
   }
 
-  & > div {
+  .card__item__wrapper {
     position: relative;
-    width: calc(var(--card-height) / 1.4);
+    // width: calc(var(--card-height) / 1.4);
     margin: 0 auto 0;
     outline: 0;
-    transform: scale(0.85);
+    // transform: scale(0.85);
 
     @include breakpoint('medium') {
       transform: scale(1);
     }
   }
 
-  & > div .card {
+  .card__item__wrapper .card {
     cursor: default;
     margin: 0 auto;
     pointer-events: none;
   }
 
-  &[data-deckid] > div .card {
+  &[data-deckid] .card__item__wrapper .card {
     cursor: pointer;
     pointer-events: auto;
   }
 
-  & > div .card {
+  .card__item__wrapper .card {
     transition: opacity 200ms ease-in-out;
   }
 
-  & > div .card:before,
-  & > div .card:after {
+  .card__item__wrapper .card:before,
+  .card__item__wrapper .card:after {
     /* content: ''; */
     border-radius: 12px;
     position: absolute;
@@ -63,15 +67,15 @@
     will-change: opacity;
   }
 
-  & > div .card:before {
+  .card__item__wrapper .card:before {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.625);
   }
 
-  & > div .card:after {
+  .card__item__wrapper .card:after {
     box-shadow: 0 0 10px 10px rgba(255, 255, 0, 0.825);
   }
 
-  & > div .card:hover {
+  .card__item__wrapper .card:hover {
     &:before {
       opacity: 0;
     }
@@ -81,7 +85,7 @@
     }
   }
 
-  & > div.locked .card {
+  .card__item__wrapper.locked .card {
     cursor: not-allowed;
     opacity: 0.45;
 
@@ -127,8 +131,8 @@
     width: 40px;
   }
 
-  & > div:hover,
-  & > div:focus {
+  .card__item__wrapper:hover,
+  .card__item__wrapper:focus {
     z-index: 100;
 
     .tooltip {

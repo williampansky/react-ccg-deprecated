@@ -93,6 +93,9 @@
   }
 }
 
+// prettier-ignore
 .entourage__info {
   color: white;
+  @include display-flex(row nowrap, baseline, flex-start);
+  & > span { margin: 0 0 0 0.25em; }
 }

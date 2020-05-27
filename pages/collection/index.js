@@ -17,7 +17,6 @@ export default function Collection() {
         title="Collection | HSclone"
         meta={[{ property: 'og:title', content: 'Collection' }]}
       />
-      <TheSiteHeader />
       <main className="site__wrapper">
         <CardCollection />
         <Sidebar />
@@ -25,6 +24,7 @@ export default function Collection() {
         <DesktopFooter />
         <MobileFooter />
       </main>
+      <TheSiteHeader />
       <TheSiteMobileMenu />
       <SearchModal />
       <CardModalContainer />
