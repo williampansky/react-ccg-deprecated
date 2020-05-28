@@ -140,7 +140,7 @@ export default function CardInfoList({ data, database }) {
         </div>
       )}
 
-      {exists(entourage) ? (
+      {exists(entourage) && entourage.length ? (
         <React.Fragment>
           <p className={styles.entourage__info}>
             <strong className="text__value">Entourage:</strong>{' '}

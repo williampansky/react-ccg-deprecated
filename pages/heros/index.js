@@ -6,6 +6,7 @@ import Img from 'react-image';
 import VisibilitySensor from 'react-visibility-sensor';
 import TheSiteHeader from '@/features/site-header/TheSiteHeader';
 import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
+import HerosGridVirtualized from '@/components/site/heros-grid/HerosGridVirtualized';
 
 export default function Heros() {
   const heros = useSelector(s => s.heros);
@@ -16,7 +17,6 @@ export default function Heros() {
         title="Heros | HSclone"
         meta={[{ property: 'og:title', content: 'Heros' }]}
       />
-      <TheSiteHeader />
       <main className="site__wrapper page__heros">
         <div className="hero">
           <h1>
@@ -25,52 +25,9 @@ export default function Heros() {
           </h1>
           <p>Find the perfect match for your playstyle.</p>
         </div>
-        <div className="container">
-          <div className="card__grid">
-            {heros.map((obj, idx) => {
-              const {
-                name,
-                symbol,
-                archetype,
-                ability1,
-                ability2,
-                ability3,
-                lore,
-                artist,
-                slug
-              } = obj;
-
-              const path = `/images/heros/${symbol.replace(/(%)/g, '')}`;
-
-              return (
-                <Link key={symbol} href="heros/[slug]" as={`/heros/${slug}`}>
-                  <a
-                    className="hero__item uk-animation-slide-bottom-small"
-                    style={{ animationDelay: `${idx}00ms` }}
-                  >
-                    <span className="hero__image">
-                      <VisibilitySensor>
-                        <Img
-                          alt={`${name} by ${artist}`}
-                          decode={false}
-                          src={[`${path}/default.jpg`, `${path}/default2x.jpg`]}
-                          loader={<div className="hero__image__loader" />}
-                          unloader={
-                            <img alt="" src="/images/sets/PLACEHOLDER.jpg" />
-                          }
-                        />
-                      </VisibilitySensor>
-                    </span>
-                    <span className="hero__name">
-                      <span className="text__value">{name}</span>
-                    </span>
-                  </a>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+        <HerosGridVirtualized data={heros} />
       </main>
+      <TheSiteHeader />
       <TheSiteMobileMenu />
     </React.Fragment>
   );

@@ -98,7 +98,8 @@ base
         ability2,
         ability3,
         lore,
-        artist,
+        artistName,
+        artistUrl,
         slug
       } = fields;
 
@@ -111,7 +112,7 @@ base
           ability2,
           ability3,
           lore,
-          artist,
+          artist: createArtistLink(artistName, artistUrl),
           slug,
           key: symbol,
           value: name
@@ -168,7 +169,8 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
-        artist,
+        artistName,
+        artistUrl,
         cardClass,
         entourage,
         id,
@@ -183,7 +185,7 @@ base
       return {
         [id]: {
           ...fields,
-          artist: artist ? artist : null,
+          artist: createArtistLink(artistName, artistUrl),
           cardClass: parseCardClass(cardClass),
           entourage: parseCardEntourage(entourage),
           mechanics: GAME_CONFIG.debugData.enableMechanics

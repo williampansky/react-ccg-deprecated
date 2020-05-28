@@ -1,38 +1,25 @@
+// prettier-ignore
 .card__grid {
   --card-height: 200px;
+  @include breakpoint('medium') { --card-height: 400px; }
+}
 
-  @include breakpoint('medium') {
-    --card-height: 400px;
-  }
-
+.card__grid {
   color: white;
   outline: none;
   margin: 0 auto;
   padding: 0;
-  // height: 100%;
-  // display: grid;
-  // grid-gap: 0;
-  // grid-template-columns: repeat(
-  //   auto-fill,
-  //   minmax(calc(var(--card-height) / 1.4), 1fr)
-  // );
 
   .card__grid-row {
     padding: 0 20px;
     box-sizing: border-box;
-    @include display-flex(row nowrap, center, space-around);
+    @include display-flex(row nowrap, center, center);
   }
 
   .card__item__wrapper {
     position: relative;
-    // width: calc(var(--card-height) / 1.4);
     margin: 0 auto 0;
     outline: 0;
-    // transform: scale(0.85);
-
-    @include breakpoint('medium') {
-      transform: scale(1);
-    }
   }
 
   .card__item__wrapper .card {

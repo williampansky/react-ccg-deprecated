@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
-import { ReactSVG } from 'react-svg';
 import { setData as setCardModalData } from '@/features/card-modal/card-modal.slice';
 import exists from '@/utils/element.exists';
-import CardGrid from '@/components/collection/CardGridWindow';
+import CardGrid from '@/components/collection/CardGridVirtualized';
 
 export default function CardCollection() {
   const dispatch = useDispatch();
@@ -61,14 +60,6 @@ export default function CardCollection() {
           ].join(' ')}
           data-deckid={id}
         >
-          {/* {isLoading && (
-            <div className="grid__spinner">
-              <ReactSVG
-                className="uk-spinner"
-                src="/images/site/icon-uikit-spinner.svg"
-              />
-            </div>
-          )} */}
           {exists(database) ? (
             <CardGrid
               data={data}

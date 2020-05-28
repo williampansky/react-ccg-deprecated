@@ -6,6 +6,10 @@
   padding: 0 0 100px;
   width: 100vw;
 
+  .container {
+    min-height: 40vh;
+  }
+
   h1 {
     text-transform: uppercase;
   }
@@ -43,11 +47,7 @@
 }
 
 .page__heros .card__grid {
-  grid-gap: 20px;
-
-  @include breakpoint('medium') {
-    grid-gap: 40px 30px;
-  }
+  overflow: visible !important;
 }
 
 .page__heros .hero {
@@ -64,8 +64,18 @@
   }
 }
 
+// prettier-ignore
 .page__heros .hero__item {
+  --card-height: 200px;
+  @include breakpoint('medium') { --card-height: 400px; }
+}
+
+.page__heros .hero__item {
+  height: var(--card-height);
+  width: calc(var(--card-height) / 1.400266051);
+  display: block;
   text-decoration: none;
+  @include display-flex(column nowrap, center, center);
 
   span {
     display: block;
@@ -78,38 +88,38 @@
   // prettier-ignore
   .hero__image,
   .hero__image__loader {
-    height: 200px;
-    @include breakpoint('small') { height: 260px; }
-    @include breakpoint('medium') { height: 360px; }
-    @include breakpoint('xlarge') { height: 420px; }
+    height: var(--card-height);
+    width: calc(var(--card-height) / 1.400266051);
+    position: relative;
+    display: block;
+    overflow: hidden;
   }
 
   .hero__image {
     border-top-right-radius: var(--card-border-radius);
     border-top-left-radius: var(--card-border-radius);
-    position: relative;
-    display: block;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .hero__image img {
     object-fit: cover;
     position: absolute;
     display: block;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
   }
 
   .hero__name {
-    border-bottom-right-radius: var(--card-border-radius);
-    border-bottom-left-radius: var(--card-border-radius);
+    // border-bottom-right-radius: var(--card-border-radius);
+    // border-bottom-left-radius: var(--card-border-radius);
     display: block;
     background-color: var(--theme-primary);
     overflow: hidden;
     font-size: 1.25em;
-    padding: 6% 8%;
+    z-index: 1;
+    position: relative;
+    // padding: 6% 8%;
+    margin: auto 0 0;
+    width: 100%;
+    padding: 20px;
     transition: background-color 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 
     @include breakpoint('large') {
