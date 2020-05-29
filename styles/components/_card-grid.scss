@@ -16,6 +16,14 @@
     @include display-flex(row nowrap, center, center);
   }
 
+  .blank__card__item {
+    height: var(--card-height);
+    width: calc(var(--card-height) / 1.400266051);
+    position: relative;
+    margin: 0 auto 0;
+    outline: 0;
+  }
+
   .card__item__wrapper {
     position: relative;
     margin: 0 auto 0;

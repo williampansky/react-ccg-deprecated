@@ -57,6 +57,8 @@ base
           symbol,
           type,
           description,
+
+          // required for react-select pkg
           key: symbol,
           value: name
         }
@@ -85,6 +87,8 @@ base
           type: 'MECHANIC',
           description,
           shortDescription,
+
+          // required for react-select pkg
           key: symbol,
           value: name
         }
@@ -128,6 +132,8 @@ base
           lore,
           artist: createArtistLink(artistName, artistUrl),
           slug,
+
+          // required for react-select pkg
           key: symbol,
           value: name
         }
@@ -163,6 +169,8 @@ base
             : '',
           name: name,
           text: GAME_CONFIG.debugData.enableText ? text : '',
+
+          // required for react-select pkg
           key: id,
           value: name
         }

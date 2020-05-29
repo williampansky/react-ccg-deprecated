@@ -4,6 +4,10 @@ import { AutoSizer, List } from 'react-virtualized';
 import HerosGridItem from './HerosGridItem';
 
 export default function HerosGridVirtualized({ data }) {
+  function diff(a, b) {
+    return a > b ? a - b : b - a;
+  }
+
   return (
     <React.Fragment>
       <AutoSizer>
@@ -26,6 +30,8 @@ export default function HerosGridVirtualized({ data }) {
                 const fromIndex = index * itemsPerRow;
                 const toIndex = Math.min(fromIndex + itemsPerRow, data.length);
 
+                // console.log(fromIndex, toIndex, itemsPerRow);
+
                 for (let i = fromIndex; i < toIndex; i++) {
                   items.push(
                     <div className="card__item__wrapper" key={i}>
@@ -43,6 +49,14 @@ export default function HerosGridVirtualized({ data }) {
                       />
                     </div>
                   );
+                }
+
+                if (diff(fromIndex, toIndex) < itemsPerRow) {
+                  let diff1 = diff(fromIndex, toIndex);
+                  let diff2 = diff(diff1, itemsPerRow);
+                  for (let d = 0; d < diff2; d++) {
+                    items.push(<div className="blank__hero__item" key={d} />);
+                  }
                 }
 
                 return (

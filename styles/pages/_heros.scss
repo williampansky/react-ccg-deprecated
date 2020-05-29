@@ -70,6 +70,14 @@
   @include breakpoint('medium') { --card-height: 400px; }
 }
 
+.page__heros .blank__hero__item {
+  height: var(--card-height);
+  width: calc(var(--card-height) / 1.400266051);
+  position: relative;
+  margin: 0 auto 0;
+  outline: 0;
+}
+
 .page__heros .hero__item {
   height: var(--card-height);
   width: calc(var(--card-height) / 1.400266051);

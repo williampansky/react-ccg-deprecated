@@ -12,6 +12,10 @@ export default function CardGridVirtualized({
   isLoading,
   itemCount
 }) {
+  function diff(a, b) {
+    return a > b ? a - b : b - a;
+  }
+
   return (
     <React.Fragment>
       <AutoSizer>
@@ -108,6 +112,14 @@ export default function CardGridVirtualized({
                       )}
                     </div>
                   );
+                }
+
+                if (diff(fromIndex, toIndex) < itemsPerRow) {
+                  let diff1 = diff(fromIndex, toIndex);
+                  let diff2 = diff(diff1, itemsPerRow);
+                  for (let d = 0; d < diff2; d++) {
+                    items.push(<div className="blank__card__item" key={d} />);
+                  }
                 }
 
                 return (

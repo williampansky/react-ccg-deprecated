@@ -2,7 +2,7 @@ import replaceConstant from './replace-constants';
 import exists from './element.exists';
 
 export default function formatHeroAbility(string, key) {
-  if (!exists(string)) return;
+  if (!exists(string) || !string) return;
 
   const costMATCH = string.match(/cost\((.*?)\)/g)[0],
     cooldownMATCH = string.match(/cooldown\((.*?)\)/g)[0],
