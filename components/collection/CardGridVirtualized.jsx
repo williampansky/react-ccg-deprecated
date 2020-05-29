@@ -84,13 +84,13 @@ export default function CardGridVirtualized({
                           rarity={data[i].rarity}
                           set={data[i].set}
                           sounds={data[i].sounds}
-                          spellContext={data[i].spellContext}
+                          playContext={data[i].playContext}
                           spellDamage={data[i].spellDamage}
-                          spellType={data[i].spellType}
+                          playType={data[i].playType}
                           targetingArrowText={data[i].targetingArrowText}
                           text={data[i].text}
                           type={data[i].type}
-                          warcryNumber={data[i].warcryNumber}
+                          numberPrimary={data[i].numberPrimary}
                           onClick={() => addSelectedCardCallback(data[i])}
                         />
                       </div>

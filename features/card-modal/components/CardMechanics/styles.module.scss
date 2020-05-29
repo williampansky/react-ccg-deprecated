@@ -18,19 +18,6 @@
   @include display-flex(column wrap, center, center);
 }
 
-.item > [data-id='tooltip'] {
-  $bg: #49b6fe;
-  background: $bg;
-  color: mix(black, $bg, 70%);
-  padding: 7px 5px 8px;
-  text-align: center;
-  width: 240px;
-
-  &:after {
-    border-top-color: $bg !important;
-  }
-}
-
 .mechanic {
   text-align: center;
   top: 0;

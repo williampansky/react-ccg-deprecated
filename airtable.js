@@ -7,6 +7,13 @@ const Airtable = require('airtable-node');
 const APIKEY = process.env.AIRTABLE_API_KEY;
 const base = new Airtable({ apiKey: APIKEY }).base('appP9UrOufNDMKpfm');
 
+function createArtistLink(name, url) {
+  if (!name || !url) return null;
+  if (!name && url) return url;
+  if (name && !url) return name;
+  return `<a href="${url}" rel="noopener noreferrer" target="_blank">${name}</a>`;
+}
+
 function parseCardClass(string) {
   if (!string) return;
   return string.replace(/([0-9] )/g, '');
@@ -19,11 +26,18 @@ function parseCardEntourage(string) {
   return array;
 }
 
-function createArtistLink(name, url) {
-  if (!name || !url) return null;
-  if (!name && url) return url;
-  if (name && !url) return name;
-  return `<a href="${url}" rel="noopener noreferrer" target="_blank">${name}</a>`;
+function parseCardMechanics(array) {
+  if (!GAME_CONFIG.debugData.enableMechanics) return '';
+  return array ? array : [];
+}
+
+function parseCardName(string1, string2) {
+  return string1 ? string1 : string2;
+}
+
+function parseCardText(string) {
+  if (!GAME_CONFIG.debugData.enableText) return '';
+  return string;
 }
 
 // CONSTANTS
@@ -169,32 +183,71 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
+        active,
         artistName,
         artistUrl,
+        attack,
         cardClass,
+        collectible,
+        cost,
+        description,
+        elite,
         entourage,
+        flavor,
+        health,
+        howToEarn,
+        howToEarnGolden,
         id,
-        inspiration,
         mechanics,
         name,
-        text
+        numberOvercharge,
+        numberPrimary,
+        numberRNG,
+        numberSecondary,
+        playContext,
+        playType,
+        race,
+        rarity,
+        set,
+        targetingArrowText,
+        text,
+        type
       } = fields;
 
       if (!id) return;
 
       return {
         [id]: {
-          ...fields,
+          active,
           artist: createArtistLink(artistName, artistUrl),
+          attack,
           cardClass: parseCardClass(cardClass),
+          collectible,
+          cost,
+          description,
+          elite,
           entourage: parseCardEntourage(entourage),
-          mechanics: GAME_CONFIG.debugData.enableMechanics
-            ? mechanics
-              ? mechanics
-              : []
-            : '',
-          name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : '',
+          flavor,
+          health,
+          howToEarn,
+          howToEarnGolden,
+          mechanics: parseCardMechanics(mechanics),
+          id,
+          name: parseCardName(name, id),
+          numberOvercharge,
+          numberPrimary,
+          numberRNG,
+          numberSecondary,
+          playContext,
+          playType,
+          race,
+          rarity,
+          set,
+          targetingArrowText,
+          text: parseCardText(text),
+          type,
+
+          // required for react-select pkg
           key: id,
           value: name
         }
@@ -215,32 +268,71 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
+        active,
         artistName,
         artistUrl,
+        attack,
         cardClass,
+        collectible,
+        cost,
+        description,
+        elite,
         entourage,
+        flavor,
+        health,
+        howToEarn,
+        howToEarnGolden,
         id,
-        inspiration,
         mechanics,
         name,
-        text
+        numberOvercharge,
+        numberPrimary,
+        numberRNG,
+        numberSecondary,
+        playContext,
+        playType,
+        race,
+        rarity,
+        set,
+        targetingArrowText,
+        text,
+        type
       } = fields;
 
       if (!id) return;
 
       return {
         [id]: {
-          ...fields,
+          active,
           artist: createArtistLink(artistName, artistUrl),
+          attack,
           cardClass: parseCardClass(cardClass),
+          collectible,
+          cost,
+          description,
+          elite,
           entourage: parseCardEntourage(entourage),
-          mechanics: GAME_CONFIG.debugData.enableMechanics
-            ? mechanics
-              ? mechanics
-              : []
-            : '',
-          name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : '',
+          flavor,
+          health,
+          howToEarn,
+          howToEarnGolden,
+          id,
+          mechanics: parseCardMechanics(mechanics),
+          name: parseCardName(name, id),
+          numberOvercharge,
+          numberPrimary,
+          numberRNG,
+          numberSecondary,
+          playContext,
+          playType,
+          race,
+          rarity,
+          set,
+          targetingArrowText,
+          text: parseCardText(text),
+          type,
+
+          // required for react-select pkg
           key: id,
           value: name
         }
@@ -261,30 +353,71 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
+        active,
         artistName,
         artistUrl,
+        attack,
         cardClass,
+        collectible,
+        cost,
+        description,
+        elite,
+        flavor,
+        health,
+        howToEarn,
+        howToEarnGolden,
         id,
-        inspiration,
+        isEntourage,
         mechanics,
         name,
-        text
+        numberOvercharge,
+        numberPrimary,
+        numberRNG,
+        numberSecondary,
+        playContext,
+        playType,
+        race,
+        rarity,
+        set,
+        targetingArrowText,
+        text,
+        type
       } = fields;
 
       if (!id) return;
 
       return {
         [id]: {
-          ...fields,
+          active,
           artist: createArtistLink(artistName, artistUrl),
+          attack,
           cardClass: parseCardClass(cardClass),
-          mechanics: GAME_CONFIG.debugData.enableMechanics
-            ? mechanics
-              ? mechanics
-              : []
-            : '',
-          name: name ? name : inspiration,
-          text: GAME_CONFIG.debugData.enableText ? text : '',
+          collectible,
+          cost,
+          description,
+          elite,
+          flavor,
+          health,
+          howToEarn,
+          howToEarnGolden,
+          id,
+          isEntourage,
+          mechanics: parseCardMechanics(mechanics),
+          name: parseCardName(name, id),
+          numberOvercharge,
+          numberPrimary,
+          numberRNG,
+          numberSecondary,
+          playContext,
+          playType,
+          race,
+          rarity,
+          set,
+          targetingArrowText,
+          text: parseCardText(text),
+          type,
+
+          // required for react-select pkg
           key: id,
           value: name
         }

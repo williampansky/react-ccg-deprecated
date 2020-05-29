@@ -54,16 +54,16 @@ export default function YourCardSelection({
                 set,
                 sounds,
                 spellDamage,
-                spellType,
+                playType,
                 uuid,
                 targetingArrowText,
                 text,
                 type,
-                warcryNumber
+                numberPrimary
               } = card;
 
               const playerSpellBuff = G.buffs[yourID].spellDamage;
-              const playerSpellDamage = warcryNumber;
+              const playerSpellDamage = numberPrimary;
               const dynamicSpellDamageText = Math.abs(
                 playerSpellBuff + playerSpellDamage
               );
@@ -102,7 +102,7 @@ export default function YourCardSelection({
                     set={set}
                     sounds={sounds}
                     spellDamage={spellDamage}
-                    spellType={spellType}
+                    playType={playType}
                     uuid={uuid}
                     targetingArrowText={targetingArrowText}
                     text={text}

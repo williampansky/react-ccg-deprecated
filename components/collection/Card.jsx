@@ -35,13 +35,16 @@ export default function Card({
   rarity,
   set,
   sounds,
-  spellContext,
+  playContext,
   spellDamage,
-  spellType,
+  playType,
   targetingArrowText,
   text,
   type,
-  warcryNumber,
+  numberOvercharge,
+  numberPrimary,
+  numberSecondary,
+  numberRNG,
   dynamicSpellDamageText,
   onClick,
   dev
@@ -50,12 +53,12 @@ export default function Card({
   const IS_ITEM = type === TYPE[2] ? true : false;
   const IS_SPELL = type === TYPE[3] ? true : false;
   const IS_WEAPON = type === TYPE[4] ? true : false;
-  const SPELL_DMG = warcryNumber || dynamicSpellDamageText;
+  const SPELL_DMG = numberPrimary || dynamicSpellDamageText;
 
-  function cardImage(cardId, cardSet, isGold, goldSrc) {
+  function cardImage(cardId, cardSet, isGold) {
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
     return isGold
-      ? `url(${goldSrc})`
+      ? `/images/sets/${set}/${cardId}-CARD-GOLDEN.jpg`
       : `/images/sets/${set}/${cardId}-CARD.jpg`;
   }
 
@@ -79,22 +82,20 @@ export default function Card({
       </div>
 
       <div className={'card__image__wrapper'}>
-        {id && set ? (
-          <Img
-            alt={name}
-            className={'card__image'}
-            decode={false}
-            src={cardImage(id, set, isGolden, goldenImageSrc)}
-            loader={<div className="loader" />}
-            unloader={
-              <img
-                alt=""
-                className={'card__image'}
-                src="/images/sets/PLACEHOLDER.jpg"
-              />
-            }
-          />
-        ) : null}
+        <Img
+          alt={name}
+          className={'card__image'}
+          decode={false}
+          src={cardImage(id, set, isGolden)}
+          loader={<div className="loader" />}
+          unloader={
+            <img
+              alt=""
+              className={'card__image'}
+              src="/images/sets/PLACEHOLDER.jpg"
+            />
+          }
+        />
       </div>
 
       {name ? (
@@ -210,7 +211,7 @@ export default function Card({
               ).toUpperCase()}.png`}
             />
           </div>
-          {IS_WEAPON || spellContext === 'ATTACK' ? (
+          {IS_WEAPON || playContext === '%DAMAGE%' ? (
             <img
               alt=""
               className={`card__type__image__badge`}
@@ -237,7 +238,7 @@ export default function Card({
               ).toUpperCase()}.png`}
             />
           </div>
-          {IS_WEAPON || spellContext === 'ATTACK' ? (
+          {IS_WEAPON || playContext === '%DAMAGE%' ? (
             <img
               alt=""
               className={`card__subtype__image__badge`}
@@ -303,13 +304,16 @@ Card.propTypes = {
     deathSound: PropTypes.string,
     dropSound: PropTypes.string
   }),
-  spellContext: PropTypes.string,
+  playContext: PropTypes.string,
   spellDamage: PropTypes.number,
-  spellType: PropTypes.string,
+  playType: PropTypes.string,
   targetingArrowText: PropTypes.string,
   text: PropTypes.string,
   type: PropTypes.string,
-  warcryNumber: PropTypes.number,
+  numberOvercharge: PropTypes.number,
+  numberPrimary: PropTypes.number,
+  numberSecondary: PropTypes.number,
+  numberRNG: PropTypes.number,
   dynamicSpellDamageText: PropTypes.number,
   onClick: PropTypes.func,
   dev: PropTypes.bool
@@ -335,6 +339,10 @@ Card.defaultProps = {
   imageSrc: '',
   mechanics: [],
   name: '',
+  numberOvercharge: 0,
+  numberPrimary: 0,
+  numberSecondary: 0,
+  numberRNG: 0,
   playRequirements: [],
   race: '',
   rarity: RARITY[0],

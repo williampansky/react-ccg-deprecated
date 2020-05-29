@@ -19,9 +19,7 @@ export default function CardMechanics({ data }) {
               <span>{replaceConstant(mechanic)}</span>
             </div>
             <ReactTooltip id={mechanic} effect="solid" place={'top'}>
-              <p className={styles.description}>
-                {getConstantDescription(mechanic)}
-              </p>
+              <p>{getConstantDescription(mechanic)}</p>
             </ReactTooltip>
           </div>
         );

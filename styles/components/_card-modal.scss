@@ -112,7 +112,7 @@
   $bg: #49b6fe;
   background: $bg;
   color: mix(black, $bg, 70%);
-  width: 240px;
+  max-width: 240px;
   text-align: center;
 
   &.place-top:after {
@@ -126,6 +126,10 @@
   &.show {
     opacity: 1;
     text-align: center;
+  }
+
+  p {
+    margin: 0;
   }
 }
 

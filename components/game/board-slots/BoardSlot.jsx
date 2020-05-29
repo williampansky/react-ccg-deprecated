@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PLAYER_BOARDS from '@/enums/playerBoards.enums';
-import SPELLTYPE from '@/enums/spellType.enums';
+import SPELLTYPE from '@/enums/playType.enums';
 import useHover from 'react-use-hover';
 
 // child components
@@ -46,7 +46,7 @@ export default function BoardSlot({
   const yourCelectedCardObject =
     selectedCardObject && selectedCardObject[yourID];
   const yourCardSpellType =
-    selectedCardObject[yourID] && selectedCardObject[yourID].spellType;
+    selectedCardObject[yourID] && selectedCardObject[yourID].playType;
   const { killMinion } = moves;
   const {
     canAttack,
@@ -106,13 +106,13 @@ export default function BoardSlot({
       rarity,
       set,
       sounds,
-      spellContext,
+      playContext,
       spellDamage,
-      spellType,
+      playType,
       targetingArrowText,
       text,
       type,
-      warcryNumber
+      numberPrimary
     },
     totalAttack,
     totalHealth,
@@ -326,13 +326,13 @@ export default function BoardSlot({
           rarity={rarity}
           set={set}
           sounds={sounds}
-          spellContext={spellContext}
+          playContext={playContext}
           spellDamage={spellDamage}
-          spellType={spellType}
+          playType={playType}
           targetingArrowText={targetingArrowText}
           text={text}
           type={type}
-          warcryNumber={warcryNumber}
+          numberPrimary={numberPrimary}
           hasCurse={hasCurse}
           hasEnergyShield={hasEnergyShield}
           hasEventListener={hasEventListener}
@@ -377,11 +377,11 @@ export default function BoardSlot({
             set={set}
             sounds={sounds}
             spellDamage={spellDamage}
-            spellType={spellType}
+            playType={playType}
             targetingArrowText={targetingArrowText}
             text={text}
             type={type}
-            warcryNumber={warcryNumber}
+            numberPrimary={numberPrimary}
           />
           {mechanics && mechanics.length ? (
             <div className="tooltip__mechanics__wrapper">
@@ -426,7 +426,7 @@ BoardSlot.propTypes = {
 BoardSlot.defaultProps = {
   G: {
     selectedCardObject: {
-      spellType: SPELLTYPE[2]
+      playType: SPELLTYPE[2]
     }
   },
   moves: {

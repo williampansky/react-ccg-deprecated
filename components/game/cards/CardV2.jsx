@@ -31,7 +31,7 @@ export default function Card({
   set,
   sounds,
   spellDamage,
-  spellType,
+  playType,
   targetingArrowText,
   text,
   type
@@ -63,7 +63,7 @@ export default function Card({
     { name: 'sounds.deathSound', content: deathSound },
     { name: 'sounds.dropSound', content: dropSound },
     { name: 'spellDamage', content: spellDamage },
-    { name: 'spellType', content: spellType },
+    { name: 'playType', content: playType },
     { name: 'targetingText', content: targetingArrowText },
     { name: 'text', content: text },
     { name: 'type', content: type }
@@ -226,7 +226,7 @@ Card.propTypes = {
     dropSound: PropTypes.string
   }),
   spellDamage: PropTypes.number,
-  spellType: PropTypes.string,
+  playType: PropTypes.string,
   targetingArrowText: PropTypes.string,
   text: PropTypes.string,
   type: PropTypes.string

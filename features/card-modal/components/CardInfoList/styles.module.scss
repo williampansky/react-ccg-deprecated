@@ -65,6 +65,40 @@
   image-rendering: pixelated;
 }
 
+.numbers {
+  list-style-type: none;
+  padding: 0 !important;
+  @include display-flex(row nowrap, center, flex-start);
+
+  li {
+    @include display-flex(column nowrap, center, center);
+  }
+
+  & > li + li {
+    margin: 0 0 0 0.8265em !important;
+  }
+
+  span,
+  strong {
+    display: block;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .numbers__label {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.725em;
+    letter-spacing: 0.03em;
+    margin: 0 0 0.25em;
+    opacity: 0.65;
+    text-transform: uppercase;
+  }
+
+  strong {
+    font-size: 1.675em;
+  }
+}
+
 .description {
   color: white;
   margin: 0.875em auto 0;

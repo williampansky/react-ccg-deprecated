@@ -5,7 +5,7 @@ import replaceConstant from 'utils/replace-constants';
 import replaceDynamicText from 'utils/replace-dynamic-text';
 
 export default function WarcryObject({ data }) {
-  const { id, attack, spellType, spellContext, targetingArrowText } = data;
+  const { id, attack, playType, playContext, targetingArrowText } = data;
 
   function cardText(string, spellDmg = attack) {
     const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
@@ -16,8 +16,8 @@ export default function WarcryObject({ data }) {
   return (
     <Component data-file="warcrys/WarcryObject" data-id={id}>
       <div className="content">
-        <div className="label">{`${spellType} ${
-          spellContext ? spellContext : 'Warcry'
+        <div className="label">{`${playType} ${
+          playContext ? playContext : 'Warcry'
         }`}</div>
         <div className="text">
           <div className="text__value">{cardText(targetingArrowText)}</div>

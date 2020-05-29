@@ -15,7 +15,7 @@ import PLAYER_BOARDS from 'enums/playerBoards.enums';
 import Deck from 'components/game/decks/Deck';
 import SpellSlot from 'components/game/board-slots/SpellSlot';
 import WeaponSlot from 'components/game/board-slots/WeaponSlot';
-import SPELLTYPE from 'enums/spellType.enums';
+import SPELLTYPE from 'enums/playType.enums';
 import TYPE from 'enums/type.enums';
 import SpellObject from 'components/game/spells/SpellObject';
 import WarcryObject from 'components/game/warcrys/WarcryObjectV2';
@@ -65,7 +65,7 @@ export default function Board({
   const cardId = selectedCard && selectedCard.id;
   const cardUUID = selectedCard && selectedCard.uuid;
   const cardType = selectedCard && selectedCardType[yourID];
-  const spellType = selectedCard && selectedCardSpellType[yourID];
+  const playType = selectedCard && selectedCardSpellType[yourID];
   const spellObjectId = spellObject[yourID] && spellObject[yourID].id;
 
   function castGlobalSpell(index = 0, uuid = cardUUID, id = cardId) {
@@ -83,7 +83,7 @@ export default function Board({
         ' '
       )}
     >
-      {cardType === TYPE[2] && spellType === SPELLTYPE[1] ? (
+      {cardType === TYPE[2] && playType === SPELLTYPE[1] ? (
         <ItemSlot
           index={0}
           gameWidth={1920}
@@ -91,7 +91,7 @@ export default function Board({
         />
       ) : null}
 
-      {cardType === TYPE[3] && spellType === SPELLTYPE[1] ? (
+      {cardType === TYPE[3] && playType === SPELLTYPE[1] ? (
         <SpellSlot
           index={0}
           gameWidth={1920}

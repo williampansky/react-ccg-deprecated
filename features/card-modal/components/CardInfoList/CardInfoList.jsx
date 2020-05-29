@@ -19,13 +19,16 @@ export default function CardInfoList({ data, database }) {
     entourage,
     howToEarn,
     id,
+    numberOvercharge,
+    numberPrimary,
+    numberSecondary,
+    numberRNG,
     playRequirements,
     race,
     rarity,
     set,
     targetingArrowText,
-    type,
-    warcryNumber
+    type
   } = data;
 
   const CARD_TYPE = replaceConstant(type).toUpperCase();
@@ -34,24 +37,32 @@ export default function CardInfoList({ data, database }) {
   const CARD_SET = replaceConstant(set).toUpperCase();
   const CARD_RARITY = replaceConstant(rarity).toUpperCase();
   const CARD_DESCRIPTION = createMarkup(replaceConstant(description));
+  const CARD_NUMBERS =
+    numberPrimary || numberSecondary || numberOvercharge || numberRNG;
 
   return (
     <div className={styles.component}>
       <ul>
-        <li>
-          <strong className="text__value">ID:</strong> <span>{id}</span>
-        </li>
-        <li>
-          <strong className="text__value">Type:</strong>{' '}
-          <span className={styles.icon__wrapper}>
-            <img
-              alt=""
-              className={styles.card__type__image}
-              src={`/images/card-assets/TYPE_${CARD_TYPE}.png`}
-            />
-            <span className={styles.uppercase}>{CARD_TYPE}</span>
-          </span>
-        </li>
+        {id && (
+          <li>
+            <strong className="text__value">ID:</strong> <span>{id}</span>
+          </li>
+        )}
+
+        {type && (
+          <li>
+            <strong className="text__value">Type:</strong>{' '}
+            <span className={styles.icon__wrapper}>
+              <img
+                alt=""
+                className={styles.card__type__image}
+                src={`/images/card-assets/TYPE_${CARD_TYPE}.png`}
+              />
+              <span className={styles.uppercase}>{CARD_TYPE}</span>
+            </span>
+          </li>
+        )}
+
         {exists(race) && race !== RACE[0] && (
           <li>
             <strong className="text__value">Race:</strong>{' '}
@@ -65,25 +76,61 @@ export default function CardInfoList({ data, database }) {
             </span>
           </li>
         )}
-        <li>
-          <strong className="text__value">Set:</strong>{' '}
-          <span className={styles.uppercase}>{CARD_SET}</span>
-        </li>
-        <li>
-          <strong className="text__value">Rarity:</strong>{' '}
-          {rarity !== RARITY[0] && rarity !== RARITY[1] ? (
-            <span className={styles.icon__wrapper}>
-              <img
-                alt=""
-                className={styles.card__rarity__gem}
-                src={`/images/gems/Gem_Rarity_${CARD_RARITY}.png`}
-              />
+
+        {set && (
+          <li>
+            <strong className="text__value">Set:</strong>{' '}
+            <span className={styles.uppercase}>{CARD_SET}</span>
+          </li>
+        )}
+
+        {rarity && (
+          <li>
+            <strong className="text__value">Rarity:</strong>{' '}
+            {rarity !== RARITY[0] && rarity !== RARITY[1] ? (
+              <span className={styles.icon__wrapper}>
+                <img
+                  alt=""
+                  className={styles.card__rarity__gem}
+                  src={`/images/gems/Gem_Rarity_${CARD_RARITY}.png`}
+                />
+                <span className={styles.uppercase}>{CARD_RARITY}</span>
+              </span>
+            ) : (
               <span className={styles.uppercase}>{CARD_RARITY}</span>
-            </span>
-          ) : (
-            <span className={styles.uppercase}>{CARD_RARITY}</span>
-          )}
-        </li>
+            )}
+          </li>
+        )}
+
+        {numberPrimary && (
+          <li>
+            <strong className="text__value">Primary #:</strong>{' '}
+            <span>{numberPrimary}</span>
+          </li>
+        )}
+
+        {numberSecondary && (
+          <li>
+            <strong className="text__value">Secondary #:</strong>{' '}
+            <span>{numberSecondary}</span>
+          </li>
+        )}
+
+        {numberRNG && (
+          <li>
+            <strong className="text__value">RNG #:</strong>{' '}
+            <span>{numberRNG}</span>
+          </li>
+        )}
+
+        {numberOvercharge && (
+          <li>
+            <strong className="text__value">
+              {replaceConstant('%OVERLOAD%')} #:
+            </strong>{' '}
+            <span>{numberOvercharge}</span>
+          </li>
+        )}
 
         {playRequirements && (
           <li>
@@ -97,7 +144,7 @@ export default function CardInfoList({ data, database }) {
             <strong className="text__value">Targeting Text:</strong>{' '}
             <span>
               {replaceConstant(
-                replaceDynamicText(targetingArrowText, warcryNumber)
+                replaceDynamicText(targetingArrowText, numberPrimary)
               )}
             </span>
           </li>
@@ -146,7 +193,10 @@ export default function CardInfoList({ data, database }) {
             <strong className="text__value">Entourage:</strong>{' '}
             <span>{entourage.join(', ')}</span>
           </p>
-          <div className={styles.entourage__card__wrapper}>
+          <div
+            className={styles.entourage__card__wrapper}
+            data-length={entourage.length}
+          >
             {entourage.map(string => {
               const card = database.find(o => o.id === string);
               return exists(card) ? (

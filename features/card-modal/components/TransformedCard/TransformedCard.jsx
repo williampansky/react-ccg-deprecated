@@ -30,13 +30,13 @@ export default function TransformedCard({ data }) {
         rarity={data.rarity}
         set={data.set}
         sounds={data.sounds}
-        spellContext={data.spellContext}
+        playContext={data.playContext}
         spellDamage={data.spellDamage}
-        spellType={data.spellType}
+        playType={data.playType}
         targetingArrowText={data.targetingArrowText}
         text={data.text}
         type={data.type}
-        warcryNumber={data.warcryNumber}
+        numberPrimary={data.numberPrimary}
       />
     </div>
   );

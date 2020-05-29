@@ -67,13 +67,13 @@ export default function CardGrid({
                   rarity={card.rarity}
                   set={card.set}
                   sounds={card.sounds}
-                  spellContext={card.spellContext}
+                  playContext={card.playContext}
                   spellDamage={card.spellDamage}
-                  spellType={card.spellType}
+                  playType={card.playType}
                   targetingArrowText={card.targetingArrowText}
                   text={card.text}
                   type={card.type}
-                  warcryNumber={card.warcryNumber}
+                  numberPrimary={card.numberPrimary}
                   onClick={() => addSelectedCardCallback(card)}
                 />
               </div>

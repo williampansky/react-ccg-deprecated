@@ -67,16 +67,16 @@ export default function CardInteraction({
     set,
     sounds,
     spellDamage,
-    spellType,
+    playType,
     uuid,
     targetingArrowText,
     text,
     type,
-    warcryNumber
+    numberPrimary
   } = card;
 
   const playerSpellBuff = G.buffs[currentPlayer].spellDamage;
-  const playerSpellDamage = warcryNumber;
+  const playerSpellDamage = numberPrimary;
   const dynamicSpellDamageText = Math.abs(playerSpellBuff + playerSpellDamage);
 
   const numberOfCards = G.counts[yourID].hand;
@@ -204,7 +204,7 @@ export default function CardInteraction({
         set={set}
         sounds={sounds}
         spellDamage={spellDamage}
-        spellType={spellType}
+        playType={playType}
         uuid={uuid}
         targetingArrowText={targetingArrowText}
         text={text}

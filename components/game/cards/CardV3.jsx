@@ -31,11 +31,11 @@ export default function Card({
   set,
   sounds,
   spellDamage,
-  spellType,
+  playType,
   targetingArrowText,
   text,
   type,
-  warcryNumber,
+  numberPrimary,
   dynamicSpellDamageText
 }) {
   const IS_MINION = type === TYPE[1] ? true : false;
@@ -49,7 +49,7 @@ export default function Card({
       : `url(/images/sets/${cardSet}/${cardId}-CARD.jpg)`;
   }
 
-  function cardText(string, spellDmg = warcryNumber) {
+  function cardText(string, spellDmg = numberPrimary) {
     const replacedDynamicDmg = replaceDynamicText(string, spellDmg);
     const replacedSymbols = replaceConstant(replacedDynamicDmg);
     return replacedSymbols;
@@ -198,11 +198,11 @@ Card.propTypes = {
     dropSound: PropTypes.string
   }),
   spellDamage: PropTypes.number,
-  spellType: PropTypes.string,
+  playType: PropTypes.string,
   targetingArrowText: PropTypes.string,
   text: PropTypes.string,
   type: PropTypes.string,
-  warcryNumber: PropTypes.number,
+  numberPrimary: PropTypes.number,
   dynamicSpellDamageText: PropTypes.number
 };
 

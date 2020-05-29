@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 // configs
 import PLAYER_BOARDS from 'enums/playerBoards.enums';
-import SPELLTYPE from 'enums/spellType.enums';
+import SPELLTYPE from 'enums/playType.enums';
 import TYPE from 'enums/type.enums';
 
 // child components
@@ -31,7 +31,7 @@ export default function YourBoard({ G, ctx, moves, isActive, yourID }) {
   const cardId = selectedCard && selectedCard.id;
   const cardUUID = selectedCard && selectedCard.uuid;
   const cardType = selectedCard && selectedCardType[yourID];
-  const spellType = selectedCard && selectedCardSpellType[yourID];
+  const playType = selectedCard && selectedCardSpellType[yourID];
 
   function castGlobalSpell(index = 0, uuid = cardUUID, id = cardId) {
     return playCard(index, uuid, id);
@@ -43,11 +43,11 @@ export default function YourBoard({ G, ctx, moves, isActive, yourID }) {
 
   return (
     <div data-file="boards/YourBoard" className={'your-board'}>
-      {cardType === TYPE[2] && spellType === SPELLTYPE[1] ? (
+      {cardType === TYPE[2] && playType === SPELLTYPE[1] ? (
         <ItemSlot index={0} onClick={() => castGlobalSpell()} />
       ) : null}
 
-      {cardType === TYPE[3] && spellType === SPELLTYPE[1] ? (
+      {cardType === TYPE[3] && playType === SPELLTYPE[1] ? (
         <SpellSlot index={0} onClick={() => castGlobalSpell()} />
       ) : null}
 

@@ -68,13 +68,13 @@ export default function CardModal({
                   rarity={modalObject.rarity}
                   set={modalObject.set}
                   sounds={modalObject.sounds}
-                  spellContext={modalObject.spellContext}
+                  playContext={modalObject.playContext}
                   spellDamage={modalObject.spellDamage}
-                  spellType={modalObject.spellType}
+                  playType={modalObject.playType}
                   targetingArrowText={modalObject.targetingArrowText}
                   text={modalObject.text}
                   type={modalObject.type}
-                  warcryNumber={modalObject.warcryNumber}
+                  numberPrimary={modalObject.numberPrimary}
                 />
                 {!modalObject.elite ? (
                   <div className="transformed-card uk-animation-slide-bottom-small">
@@ -101,13 +101,13 @@ export default function CardModal({
                       rarity={modalObject.rarity}
                       set={modalObject.set}
                       sounds={modalObject.sounds}
-                      spellContext={modalObject.spellContext}
+                      playContext={modalObject.playContext}
                       spellDamage={modalObject.spellDamage}
-                      spellType={modalObject.spellType}
+                      playType={modalObject.playType}
                       targetingArrowText={modalObject.targetingArrowText}
                       text={modalObject.text}
                       type={modalObject.type}
-                      warcryNumber={modalObject.warcryNumber}
+                      numberPrimary={modalObject.numberPrimary}
                     />
                   </div>
                 ) : null}

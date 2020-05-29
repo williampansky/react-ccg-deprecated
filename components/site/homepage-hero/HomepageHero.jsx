@@ -113,12 +113,12 @@ const Hero = () => {
                       set={obj.set}
                       sounds={obj.sounds}
                       spellDamage={obj.spellDamage}
-                      spellType={obj.spellType}
+                      playType={obj.playType}
                       targetingArrowText={obj.targetingArrowText}
                       text={obj.text}
                       type={obj.type}
-                      warcryNumber={obj.warcryNumber}
-                      dynamicSpellDamageText={obj.warcryNumber}
+                      numberPrimary={obj.numberPrimary}
+                      dynamicSpellDamageText={obj.numberPrimary}
                     />
                   </div>
                 </div>
