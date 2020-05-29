@@ -37,7 +37,7 @@ const filteredResultsSlice = createSlice({
         .map(i => CARD_DATABASE[i])
         .filter(item => !item.isEntourage)
         .filter(item => item.active)
-        .filter(item => item.set === SET[1] || item.set === SET[2])
+        .filter(item => item.set === SET[1])
         .filter(item => {
           if (energyFilter === -1) return item;
           else if (energyFilter === 10) return item.cost >= 10;

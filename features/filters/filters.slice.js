@@ -65,8 +65,8 @@ let initialState = {
     { _order: 5, label: replaceConstant(RARITY[5]), value: RARITY[5] }
   ],
   availableCardSets: [
-    { _order: 2, label: replaceConstant(SET[1]), value: SET[1] },
-    { _order: 3, label: replaceConstant(SET[2]), value: SET[2] }
+    { _order: 2, label: replaceConstant(SET[1]), value: SET[1] }
+    // { _order: 3, label: replaceConstant(SET[2]), value: SET[2] }
   ],
   availableCardTypes: [
     { _order: 1, label: replaceConstant(TYPE[1]), value: TYPE[1] },
