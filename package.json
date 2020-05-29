@@ -8,8 +8,8 @@
   },
   "scripts": {
     "dev": "next",
-    "build": "next build",
-    "start": "next start",
+    "build": "next -r esm build",
+    "start": "next -r esm start",
     "server": "node --experimental-modules -r esm server.js",
     "airtable": "node -r esm airtable.js"
   },
