@@ -85,3 +85,18 @@
 .select {
   width: 100%;
 }
+
+.icon__type {
+  @include display-flex(row nowrap, center, flex-start);
+
+  .icon__wrapper {
+    margin: 0 0 0 10px;
+    width: 40px;
+    @include display-flex(row nowrap, center, flex-start);
+  }
+
+  img {
+    width: 100%;
+    image-rendering: pixelated;
+  }
+}
