@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import styles from 'features/filters/filters-container.module.scss';
+import Select, { components } from 'react-select';
+import removeSymbols from '@/utils/remove-symbols';
+import styles from '@/features/filters/filters-container.module.scss';
 
 export default function RaceFilters({
   active,
@@ -9,11 +10,29 @@ export default function RaceFilters({
   data,
   onChange
 }) {
+  const Option = props => {
+    // eslint-disable-next-line react/prop-types
+    const { label, value } = props;
+    return (
+      <components.Option {...props}>
+        <div className="icon__wrapper">
+          <img
+            alt={label}
+            src={`/images/card-assets/SUBTYPE_${removeSymbols(value)}.png`}
+          />
+        </div>
+        <div className="label__wrapper">{label}</div>
+      </components.Option>
+    );
+  };
+
   return data.length !== 0 ? (
     <div className={styles.select__filter}>
       {/* <div className="label">Race</div> */}
       <Select
-        className={styles.select}
+        className="filter-select-component"
+        classNamePrefix="filter-select"
+        components={{ Option }}
         id="RaceFilters"
         instanceId="RaceFilters"
         isClearable

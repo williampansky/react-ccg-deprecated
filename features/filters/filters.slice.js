@@ -52,8 +52,8 @@ let initialState = {
     { _order: 4, label: replaceConstant(RACE[3]), value: RACE[3] },
     { _order: 5, label: replaceConstant(RACE[4]), value: RACE[4] },
     { _order: 6, label: replaceConstant(RACE[5]), value: RACE[5] },
-    { _order: 7, label: replaceConstant(RACE[6]), value: RACE[6] },
-    { _order: 8, label: replaceConstant(RACE[7]), value: RACE[7] },
+    // { _order: 7, label: replaceConstant(RACE[6]), value: RACE[6] },
+    // { _order: 8, label: replaceConstant(RACE[7]), value: RACE[7] },
     { _order: 9, label: replaceConstant(RACE[8]), value: RACE[8] },
     { _order: 10, label: replaceConstant(RACE[9]), value: RACE[9] }
   ],

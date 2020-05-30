@@ -3,6 +3,7 @@ import HEROS from '@/enums/HEROS.json';
 
 let initialState = Object.keys(HEROS)
   .map(i => HEROS[i])
+  .filter(a => a.active)
   .sort((a, b) => {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;

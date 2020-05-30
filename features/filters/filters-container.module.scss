@@ -60,6 +60,13 @@
   margin: 10px 0;
   height: 40px;
   width: 100%;
+  flex: 1;
+
+  &.mechanics__container {
+    @include breakpoint('medium') {
+      flex: 2;
+    }
+  }
 
   &:first-child {
     margin-top: 0;
@@ -79,24 +86,5 @@
     font-size: 10px;
     margin: 0 0 4px;
     text-align: left;
-  }
-}
-
-.select {
-  width: 100%;
-}
-
-.icon__type {
-  @include display-flex(row nowrap, center, flex-start);
-
-  .icon__wrapper {
-    margin: 0 0 0 10px;
-    width: 40px;
-    @include display-flex(row nowrap, center, flex-start);
-  }
-
-  img {
-    width: 100%;
-    image-rendering: pixelated;
   }
 }

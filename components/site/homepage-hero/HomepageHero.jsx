@@ -12,7 +12,7 @@ const Hero = () => {
 
   const randomCardsCB = useCallback((array, size) => {
     const filteredArray = array
-      .filter(item => item.set === SET[1] || item.set === SET[2])
+      .filter(item => item.set === SET[1])
       .filter(item => !item.isEntourage);
 
     let shuffled = filteredArray.slice(0),

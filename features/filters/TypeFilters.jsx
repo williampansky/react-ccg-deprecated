@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select, { components } from 'react-select';
-import styles from 'features/filters/filters-container.module.scss';
+import styles from '@/features/filters/filters-container.module.scss';
 import removeSymbols from '@/utils/remove-symbols';
 
 export default function TypeFilters({
@@ -14,15 +14,15 @@ export default function TypeFilters({
     // eslint-disable-next-line react/prop-types
     const { label, value } = props;
     return (
-      <div className={styles.icon__type}>
-        <div className={styles.icon__wrapper}>
+      <components.Option {...props}>
+        <div className="icon__wrapper">
           <img
             alt={label}
             src={`/images/card-assets/${removeSymbols(value)}.png`}
           />
         </div>
-        <components.Option {...props} />
-      </div>
+        <div className="label__wrapper">{label}</div>
+      </components.Option>
     );
   };
 
@@ -30,7 +30,8 @@ export default function TypeFilters({
     <div className={styles.select__filter}>
       {/* <div className="label">Type</div> */}
       <Select
-        className={styles.select}
+        className="filter-select-component"
+        classNamePrefix="filter-select"
         components={{ Option }}
         id="TypeFilters"
         instanceId="TypeFilters"

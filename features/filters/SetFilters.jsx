@@ -13,7 +13,8 @@ export default function SetFilters({
     <div className={styles.select__filter}>
       {/* <div className="label">Sets</div> */}
       <Select
-        className={styles.select}
+        className="filter-select-component"
+        classNamePrefix="filter-select"
         id="SetFilters"
         instanceId="SetFilters"
         isClearable

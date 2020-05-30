@@ -195,12 +195,12 @@ export default function Filters() {
         isDesktopOrLaptop={isDesktopOrLaptop}
         onClick={selectedOption => handleFilter('mechanics', selectedOption)}
       />
-      <SetFilters
+      {/* <SetFilters
         active={selectedCardSet}
         data={availableCardSets}
         isDesktopOrLaptop={isDesktopOrLaptop}
         onChange={selectedOption => handleFilter('set', selectedOption)}
-      />
+      /> */}
       <RarityFilters
         active={selectedCardRarity}
         data={availableCardRarities}

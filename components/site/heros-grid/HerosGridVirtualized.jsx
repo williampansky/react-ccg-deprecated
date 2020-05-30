@@ -55,7 +55,9 @@ export default function HerosGridVirtualized({ data }) {
                   let diff1 = diff(fromIndex, toIndex);
                   let diff2 = diff(diff1, itemsPerRow);
                   for (let d = 0; d < diff2; d++) {
-                    items.push(<div className="blank__hero__item" key={d} />);
+                    items.push(
+                      <div className="blank__hero__item" key={`blank_${d}`} />
+                    );
                   }
                 }
 

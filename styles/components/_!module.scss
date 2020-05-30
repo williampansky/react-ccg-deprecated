@@ -4,8 +4,11 @@
 @import 'card-modal';
 @import 'deck-builder/_!module';
 @import 'energy-filters';
-@import 'site-mobile-footer';
+
+// site
 @import 'site-desktop-footer';
+@import 'site-filters-select';
+@import 'site-mobile-footer';
 
 // game
 @import 'game/_!module';

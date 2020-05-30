@@ -13,7 +13,8 @@ export default function RarityFilters({
     <div className={styles.select__filter}>
       {/* <div className="label">Race</div> */}
       <Select
-        className={styles.select}
+        className="filter-select-component"
+        classNamePrefix="filter-select"
         id="RarityFilters"
         instanceId="RarityFilters"
         isClearable

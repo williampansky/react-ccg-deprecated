@@ -13,11 +13,13 @@ export default function MechanicsFilters({
   const animatedComponents = makeAnimated();
 
   return data.length !== 0 ? (
-    <div className={styles.select__filter}>
+    <div
+      className={[styles.select__filter, styles.mechanics__container].join(' ')}
+    >
       {/* <div className="label">Mechanics</div> */}
       <Select
-        className={styles.select}
-        classNamePrefix="mechanics"
+        className="filter-select-component"
+        classNamePrefix="filter-select"
         closeMenuOnSelect={false}
         components={animatedComponents}
         defaultValue={[]}

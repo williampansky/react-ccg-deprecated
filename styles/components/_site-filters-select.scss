@@ -1,0 +1,70 @@
+.filter-select-component {
+  width: 100%;
+}
+
+.filter-select-component .mechanics__control {
+  background: #333;
+}
+
+.filter-select-component .filter-select {
+  &__control {
+    background: #333;
+    border-color: #555;
+    box-shadow: 0 0 0 1px #333;
+  }
+
+  &__control:hover,
+  &__control:focus,
+  &__control--is-focused {
+    border-color: #999;
+  }
+
+  &__menu {
+    background: #111;
+  }
+
+  &__option {
+    color: #ddd;
+    background: #111;
+    @include display-flex(row nowrap, center, flex-start);
+
+    .icon__wrapper {
+      width: 40px;
+      @include display-flex(row nowrap, center, flex-start);
+
+      img {
+        width: 100%;
+        image-rendering: -webkit-optimize-contrast;
+      }
+    }
+
+    .label__wrapper {
+      margin: 0 0 0 10px;
+    }
+  }
+
+  &__option--is-focused {
+    background: #333;
+  }
+
+  &__option:hover {
+    background: #333;
+  }
+
+  .option:hover {
+    background: #333;
+  }
+
+  &__single-value {
+    color: #fdfdfd;
+  }
+
+  &__dropdown-indicator {
+    color: hsl(0, 0%, 80%) !important;
+  }
+
+  &__clear-indicator:hover {
+    color: hsl(0, 0%, 100%);
+    transform: scale(1.25);
+  }
+}

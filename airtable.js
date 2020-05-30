@@ -109,29 +109,31 @@ base
     const map = resp.records.map(item => {
       const { fields } = item;
       const {
-        name,
-        symbol,
-        archetype,
         ability1,
         ability2,
         ability3,
-        lore,
+        active,
+        archetype,
         artistName,
         artistUrl,
-        slug
+        lore,
+        name,
+        slug,
+        symbol
       } = fields;
 
       return {
         [symbol]: {
-          name,
-          symbol,
-          archetype,
           ability1,
           ability2,
           ability3,
-          lore,
+          active,
+          archetype,
           artist: createArtistLink(artistName, artistUrl),
+          lore,
+          name,
           slug,
+          symbol,
 
           // required for react-select pkg
           key: symbol,
