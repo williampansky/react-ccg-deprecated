@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
-import styles from 'features/filters/filters-container.module.scss';
+import styles from '@/features/filters/filters-container.module.scss';
 
 export default function RarityFilters({
   active,
@@ -19,7 +19,7 @@ export default function RarityFilters({
         instanceId="RarityFilters"
         isClearable
         isSearchable={isDesktopOrLaptop ? true : false}
-        menuPlacement={'top'}
+        menuPlacement={isDesktopOrLaptop ? 'top' : 'bottom'}
         onChange={selectedOption =>
           selectedOption === null ? onChange(null) : onChange(selectedOption)
         }

@@ -9,9 +9,9 @@
   user-select: none;
   width: 100%;
   z-index: 0;
-  flex: 1;
 
   @include breakpoint('medium') {
+    flex: 1;
     height: 100%;
     margin: 0 10px;
   }

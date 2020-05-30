@@ -60,10 +60,10 @@
   margin: 10px 0;
   height: 40px;
   width: 100%;
-  flex: 1;
 
-  &.mechanics__container {
-    @include breakpoint('medium') {
+  @include breakpoint('medium') {
+    flex: 1;
+    &.mechanics__container {
       flex: 2;
     }
   }

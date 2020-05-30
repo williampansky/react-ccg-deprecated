@@ -13,6 +13,6 @@
 
   /* ================================ */
   /* site theme color vars */
-  --theme-primary:        var(--color-rarity-MYTHIC);
-  --theme-primary-text: #065174;
+  --theme-primary:        #ebbd41;
+  --theme-primary-text:   #065174;
 }

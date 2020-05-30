@@ -68,3 +68,41 @@
     transform: scale(1.25);
   }
 }
+
+// rarity colors
+.filter-select-component {
+  #react-select-RarityFilters-option-0:hover,
+  #react-select-RarityFilters-option-0:focus {
+    $prim0: #a4bed3;
+    color: mix(black, $prim0, 75%);
+    background: $prim0;
+  }
+
+  #react-select-RarityFilters-option-1:hover,
+  #react-select-RarityFilters-option-1:focus {
+    $prim1: #81ff85;
+    color: mix(black, $prim1, 75%);
+    background: $prim1;
+  }
+
+  #react-select-RarityFilters-option-2:hover,
+  #react-select-RarityFilters-option-2:focus {
+    $prim2: #7ad5ff;
+    color: mix(black, $prim2, 75%);
+    background: $prim2;
+  }
+
+  #react-select-RarityFilters-option-3:hover,
+  #react-select-RarityFilters-option-3:focus {
+    $prim3: #a465ff;
+    color: mix(black, $prim3, 100%);
+    background: $prim3;
+  }
+
+  #react-select-RarityFilters-option-4:hover,
+  #react-select-RarityFilters-option-4:focus {
+    $prim4: #ff6941;
+    color: mix(black, $prim4, 90%);
+    background: $prim4;
+  }
+}
