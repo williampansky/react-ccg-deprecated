@@ -12,6 +12,7 @@ import mechanicsSlice from '@/features/mechanics.slice';
 import siteMobileMenuSlice from 'features/site-mobile-menu/site-mobile-menu.slice';
 import siteSidebarSlice from 'features/site-sidebar/site-sidebar.slice';
 import decksSlice from '@/features/decks/decks.slice';
+import abilitiesSlice from '@/features/abilities.slice';
 
 const rootReducer = combineReducers({
   cardModal: cardModalSlice,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   database: databaseSlice,
   constants: constantsSlice,
   heros: herosSlice,
+  abilities: abilitiesSlice,
   mechanics: mechanicsSlice,
   siteMobileMenuActive: siteMobileMenuSlice,
   siteSidebarActive: siteSidebarSlice,

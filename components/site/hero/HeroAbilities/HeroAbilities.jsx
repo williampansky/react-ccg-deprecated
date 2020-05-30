@@ -2,28 +2,22 @@ import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ReactSVG } from 'react-svg';
 import Img from 'react-image';
-import formatHeroAbility from '@/utils/format-hero-ability';
+import replaceConstant from '@/utils/replace-constants';
 import styles from './styles.module.scss';
 
 export default function HeroAbilities({ abilities, symbol }) {
   const [selectedAbility, setSelectedAbility] = useState(null);
-  const abilityIndex = selectedAbility && selectedAbility.index;
-  const abilityType = selectedAbility && selectedAbility.type;
+  const abilityId = selectedAbility && selectedAbility.id;
+  const abilityType = selectedAbility && replaceConstant(selectedAbility.type);
   const abilityName = selectedAbility && selectedAbility.name;
   const abilityCost = selectedAbility && selectedAbility.cost;
   const abilityCooldown = selectedAbility && selectedAbility.cooldown;
-  const abilityDescription = selectedAbility && selectedAbility.description;
+  const abilityText = selectedAbility && selectedAbility.text;
+  const abilityIsUlt = selectedAbility && selectedAbility.ultimate;
 
-  const handleClick = useCallback((event, index, string) => {
+  const handleClick = useCallback((event, index, obj) => {
     event !== null && event.target.blur();
-    return setSelectedAbility({
-      index,
-      type: formatHeroAbility(string, 'type'),
-      name: formatHeroAbility(string, 'name'),
-      cost: formatHeroAbility(string, 'cost'),
-      cooldown: formatHeroAbility(string, 'cooldown'),
-      description: formatHeroAbility(string, 'description')
-    });
+    return setSelectedAbility(obj);
   }, []);
 
   useEffect(() => {
@@ -35,8 +29,7 @@ export default function HeroAbilities({ abilities, symbol }) {
       className={styles.component}
       style={{
         backgroundImage:
-          abilityIndex &&
-          `url(/images/heros/${symbol}/ABILITY_0${abilityIndex}.jpg)`
+          abilityId && `url(/images/heros/${symbol}/${abilityId}.jpg)`
       }}
     >
       <div className={styles.content__wrapper}>
@@ -44,17 +37,18 @@ export default function HeroAbilities({ abilities, symbol }) {
           <div className={styles.ability__selector}>
             <h2>Abilities</h2>
             <ul>
-              {abilities.map((str, idx) => {
+              {abilities.map((obj, idx) => {
+                const { id, name } = obj;
                 idx = idx + 1;
                 return (
                   <li
-                    className={idx === abilityIndex ? styles.active : ''}
+                    className={id === abilityId ? styles.active : ''}
                     key={idx}
                   >
-                    <button onClick={e => handleClick(e, idx, str)}>
+                    <button onClick={e => handleClick(e, idx, obj)}>
                       <Img
-                        alt={formatHeroAbility(str, 'name')}
-                        src={`/images/heros/${symbol}/ABILITY_0${idx}.jpg`}
+                        alt={name}
+                        src={`/images/heros/${symbol}/${id}.jpg`}
                       />
                     </button>
                   </li>
@@ -66,7 +60,7 @@ export default function HeroAbilities({ abilities, symbol }) {
           <div
             className={[
               styles.selected__ability,
-              'uk-animation-slide-left-medium'
+              selectedAbility ? 'uk-animation-slide-left-medium' : ''
             ].join(' ')}
           >
             {selectedAbility ? (
@@ -84,14 +78,16 @@ export default function HeroAbilities({ abilities, symbol }) {
                     </span>
                     <span className={styles.ability__cooldown}>
                       <span>
-                        <span className="text__value">{abilityCooldown}</span>
+                        <span className="text__value">
+                          {abilityIsUlt ? 'Ult' : abilityCooldown}
+                        </span>
                       </span>
                       <ReactSVG src="/images/site/icon-uikit-refresh.svg" />
                     </span>
                   </span>
                 </h3>
                 <div className={styles.ability__description}>
-                  <p>{abilityDescription}</p>
+                  <p>{abilityText}</p>
                 </div>
               </React.Fragment>
             ) : null}

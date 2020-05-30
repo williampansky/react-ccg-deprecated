@@ -18,10 +18,9 @@ export default function Hero() {
   const router = useRouter();
   const { slug } = router.query;
   const heros = useSelector(s => s.heros);
+  const abilities = useSelector(s => s.abilities);
   const [hero, setHero] = useState(null);
-  const ability1 = hero && hero.ability1 ? hero.ability1 : '';
-  const ability2 = hero && hero.ability2 ? hero.ability2 : '';
-  const ability3 = hero && hero.ability3 ? hero.ability3 : '';
+  const key = hero && hero.key ? hero.key : '';
   const name = hero && hero.name ? replaceConstant(hero.name) : '';
   const lore = hero && hero.lore ? hero.lore : '';
   const symbol = hero && hero.symbol ? hero.symbol.replace(/(%)/g, '') : '';
@@ -44,7 +43,9 @@ export default function Hero() {
         <HeroName name={name} />
         <HeroLore lore={lore} />
         <HeroAbilities
-          abilities={[ability1, ability2, ability3]}
+          abilities={abilities
+            .filter(obj => obj.key === key)
+            .sort((a, b) => a.cost - b.cost)}
           symbol={symbol}
         />
 

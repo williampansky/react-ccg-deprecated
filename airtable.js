@@ -146,6 +146,76 @@ base
     fs.writeFileSync('./enums/HEROS.json', heros);
   });
 
+// ABILITIES
+base
+  .table('ABILITIES')
+  .list({
+    maxRecords: 200
+  })
+  .then(resp => {
+    const map = resp.records.map(item => {
+      const { fields } = item;
+      const {
+        active,
+        artistName,
+        artistUrl,
+        cooldown,
+        cost,
+        description,
+        entourage,
+        flavor,
+        health,
+        hero,
+        howToEarnGolden,
+        id,
+        mechanics,
+        name,
+        numberPrimary,
+        numberRNG,
+        numberSecondary,
+        playContext,
+        playType,
+        targetingArrowText,
+        text,
+        type,
+        ultimate
+      } = fields;
+
+      return {
+        [id]: {
+          active,
+          artist: createArtistLink(artistName, artistUrl),
+          cooldown,
+          cost,
+          description,
+          entourage: parseCardEntourage(entourage),
+          flavor,
+          health,
+          howToEarnGolden,
+          id,
+          mechanics: parseCardMechanics(mechanics),
+          name: parseCardName(name, id),
+          numberPrimary,
+          numberRNG,
+          numberSecondary,
+          playContext,
+          playType,
+          targetingArrowText,
+          text: parseCardText(text),
+          type,
+          ultimate,
+
+          // required for react-select pkg
+          key: hero,
+          value: name
+        }
+      };
+    });
+
+    const abilities = JSON.stringify(Object.assign({}, ...map));
+    fs.writeFileSync('./enums/ABILITIES.json', abilities);
+  });
+
 // CORE
 base
   .table('GAME')
