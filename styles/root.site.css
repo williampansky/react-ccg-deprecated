@@ -13,6 +13,7 @@
 
   /* ================================ */
   /* site theme color vars */
-  --theme-primary:        #ebbd41;
+  /* --theme-primary:        #ebbd41; */
+  --theme-primary:        var(--color-rarity-SUPERIOR);
   --theme-primary-text:   #065174;
 }

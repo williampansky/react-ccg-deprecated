@@ -67,7 +67,7 @@
 
 // prettier-ignore
 .page__heros .hero__item {
-  --card-height: 200px;
+  --card-height: 175px;
   @include breakpoint('medium') { --card-height: 400px; }
 }
 

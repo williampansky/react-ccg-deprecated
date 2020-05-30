@@ -15,7 +15,7 @@ export default function HerosGridVirtualized({ data }) {
           const itemsPerRow =
             width >= 960
               ? Math.floor(width / (400 / 1.36))
-              : Math.floor(width / 200);
+              : Math.floor(width / 175);
           const rowCount = Math.ceil(data.length / itemsPerRow);
 
           return (
@@ -23,7 +23,7 @@ export default function HerosGridVirtualized({ data }) {
               className="card__grid"
               height={height}
               rowCount={rowCount}
-              rowHeight={width >= 960 ? 440 : 220}
+              rowHeight={width >= 960 ? 440 : 195}
               width={width}
               rowRenderer={({ index, key, style }) => {
                 const items = [];

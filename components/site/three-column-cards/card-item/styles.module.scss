@@ -1,0 +1,104 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/animations';
+@import 'styles/mixins/flex';
+
+.component {
+  color: #2b282c;
+  height: 100%;
+  min-height: 432.406px;
+  position: relative;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #c6b7a0;
+  }
+}
+
+.frame {
+  position: relative;
+  height: 100%;
+}
+
+.inner__wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.image__wrapper {
+  margin: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  // prettier-ignore
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 65%;
+    @include breakpoint('xsmall') { padding-top: 60%; }
+    @include breakpoint('medium') { padding-top: 100%; }
+  }
+
+  &:after {
+    // content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(
+      180deg,
+      rgba(207, 198, 191, 0) 10%,
+      #cfc6bf 90%
+    );
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.loader {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: 50% 50%;
+  @include animation-swipe-card-image;
+}
+
+.content__wrapper {
+  background-color: #c6b7a0;
+  color: #2b282c;
+  padding: 1.5rem 1.5rem 4.6rem;
+  position: relative;
+  background: linear-gradient(0deg, #c6b7a0, #cfc6bf 100%);
+}
+
+.title {
+  font-family: 'Carter One', sans-serif;
+  font-size: calc(var(--card-height) / 15);
+  // margin: 0 auto 0.465em;
+}
+
+.text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  margin: 0;
+}

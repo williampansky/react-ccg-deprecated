@@ -1,10 +1,11 @@
-@import 'styles/abstracts/breakpoints';
+@import 'styles/utils/breakpoints';
 @import 'styles/mixins/flex';
 
 .component {
   position: relative;
   text-align: center;
   padding: 2.8rem 0 16rem;
+  margin: 0 auto;
   background-image: url('/images/site/light-texture.jpg');
   background-size: auto;
   background-position: top center;
