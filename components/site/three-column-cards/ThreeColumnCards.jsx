@@ -4,16 +4,14 @@ import Card from '@/components/collection/Card';
 import SET from '@/enums/set.enums';
 import styles from './three-column-cards.module.scss';
 import ItemsCarousel from 'react-items-carousel';
-import { useMediaQuery } from 'react-responsive';
+import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel';
+import useResponsive from '@/components/hooks/use-responsive';
 
 const ThreeColumnCards = () => {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
-  const isDesktopOrLaptop = useMediaQuery(
-    { minDeviceWidth: 960 },
-    { deviceWidth: 960 }
-  );
+  const { isDesktop } = useResponsive();
 
-  return isDesktopOrLaptop ? (
+  return isDesktop ? (
     <div className={styles.component}>
       <div className={styles.columns__wrapper}>
         <ul className={styles.columns__list}>
@@ -52,47 +50,48 @@ const ThreeColumnCards = () => {
     </div>
   ) : (
     <div className={styles.component}>
-      <ItemsCarousel
-        requestToChangeActive={setActiveItemIndex}
-        activeItemIndex={activeItemIndex}
-        numberOfCards={1}
-        gutter={20}
-        leftChevron={<button>{'<'}</button>}
-        rightChevron={<button>{'>'}</button>}
-        outsideChevron
-        chevronWidth={40}
+      <CarouselProvider
+        naturalSlideWidth={317.84}
+        naturalSlideHeight={233.03}
+        totalSlides={3}
+        visibleSlides={1}
+        isIntrinsicHeight
+        lockOnWindowScroll
       >
-        <div>
-          <article>
-            <h3 className="text__value">Collect</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              itaque quas molestias accusantium a nobis tenetur esse
-              reprehenderit rerum libero soluta.
-            </p>
-          </article>
-        </div>
-        <div>
-          <article>
-            <h3 className="text__value">Build</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              itaque quas molestias accusantium a nobis tenetur esse
-              reprehenderit rerum libero soluta.
-            </p>
-          </article>
-        </div>
-        <div>
-          <article>
-            <h3 className="text__value">Destroy</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
-              itaque quas molestias accusantium a nobis tenetur esse
-              reprehenderit rerum libero soluta.
-            </p>
-          </article>
-        </div>
-      </ItemsCarousel>
+        <Slider>
+          <Slide index={0}>
+            <article>
+              <h3 className="text__value">Collect</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Officiis, itaque quas molestias accusantium a nobis tenetur esse
+                reprehenderit rerum libero soluta.
+              </p>
+            </article>
+          </Slide>
+          <Slide index={1}>
+            <article>
+              <h3 className="text__value">Build</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Officiis, itaque quas molestias accusantium a nobis tenetur esse
+                reprehenderit rerum libero soluta.
+              </p>
+            </article>
+          </Slide>
+          <Slide index={2}>
+            <article>
+              <h3 className="text__value">Destroy</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Officiis, itaque quas molestias accusantium a nobis tenetur esse
+                reprehenderit rerum libero soluta.
+              </p>
+            </article>
+          </Slide>
+        </Slider>
+        <DotGroup />
+      </CarouselProvider>
     </div>
   );
 };

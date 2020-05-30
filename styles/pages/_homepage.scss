@@ -10,3 +10,17 @@
   padding: 0 0 100px;
   width: 100vw;
 }
+
+.page__homepage .carousel {
+  &__slider-tray {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    transition: transform 800ms var(--animation-transition-cubic);
+    will-change: transform;
+  }
+
+  &__slide {
+    margin: 0;
+  }
+}
