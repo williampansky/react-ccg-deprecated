@@ -2,8 +2,8 @@
 
 // prettier-ignore
 .component {
-  margin: -15.375rem auto 0;
-  @include breakpoint('medium') { margin: -15.625rem auto 0; }
+  margin: -5.375rem auto 0;
+  @include breakpoint('medium') { margin: -8.625rem auto 0; }
   max-width: 900px;
   position: relative;
 }
