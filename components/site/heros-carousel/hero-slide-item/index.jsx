@@ -8,7 +8,7 @@ export default function HeroSlideItem({ data }) {
   const { symbol } = data;
 
   function cardImage(string = symbol) {
-    if (!string) return;
+    // if (!string) return;
     const path = replaceConstant(string.replace(/(%)/g, ''));
     return `/images/heros/${path}/layout.jpg`;
   }
@@ -25,7 +25,7 @@ export default function HeroSlideItem({ data }) {
           unloader={
             <img
               alt=""
-              className={styles['image']}
+              className={styles['image__placeholder']}
               src="/images/sets/PLACEHOLDER.jpg"
             />
           }
