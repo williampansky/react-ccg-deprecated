@@ -1,6 +1,7 @@
 @import 'styles/utils/breakpoints';
 @import 'styles/mixins/animations';
 @import 'styles/mixins/flex';
+@import 'styles/mixins/position';
 
 .component {
   position: relative;
@@ -15,6 +16,21 @@
     content: '';
     display: block;
     padding-top: 100%;
+  }
+
+  &:after {
+    content: '';
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    @include position-absolute(4%, 10%, 4%, 10%, 1);
+
+    @include breakpoint('medium') {
+      left: 4%;
+      opacity: 0;
+      right: 4%;
+      transform: scale(0.1);
+      transition: opacity 300ms cubic-bezier(0.55, 0.085, 0.68, 0.53) 400ms,
+        transform 350ms cubic-bezier(0.55, 0.085, 0.68, 0.53) 800ms;
+    }
   }
 
   @include breakpoint('medium') {
@@ -51,4 +67,5 @@
   object-position: top center;
   top: 0;
   left: 0;
+  pointer-events: none;
 }

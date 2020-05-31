@@ -117,10 +117,21 @@
     padding: 0;
   }
 
+  .carousel__inner-slide {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: box-shadow 350ms cubic-bezier(0.55, 0.085, 0.68, 0.53) 800ms;
+  }
+
   // prettier-ignore
   .carousel__slide--visible {
+    z-index: 1;
+
+    & > div > div:after { opacity: 1; transform: scale(1); }
     .carousel__inner-slide > div { opacity: 1; }
     .carousel__inner-slide > div > picture { filter: blur(0); transform: scale(1); }
+    .carousel__inner-slide {
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
   }
 
   .carousel__back-button,
@@ -142,18 +153,24 @@
     padding: 0;
     // position: absolute;
     top: 45%;
-    transition: opacity, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 1em;
     z-index: 1;
 
     &[disabled] {
-      cursor: not-allowed;
-      opacity: 0.45;
+      cursor: default;
+      opacity: 0;
     }
 
     .btn-outer,
     .btn-inner {
+      color: var(--theme-primary);
       pointer-events: none;
+
+      svg {
+        fill: currentColor;
+      }
     }
 
     .btn-outer {
@@ -169,7 +186,6 @@
         display: block;
         height: 100%;
         width: 100%;
-        fill: currentColor;
       }
     }
 
@@ -190,10 +206,12 @@
     margin-left: 10px;
     transform: translate(0, -50%);
     .btn-inner svg { transform: rotate(180deg); }
-
+    &[disabled] { transform: scale(0.65) translate(0, -65%); }
+    
     @media (min-width: map-get($breakpoints, 'large') + 100px) {
       margin-left: 0;
       transform: translate(-50%, -50%);
+      &[disabled] { transform: scale(0.65) translate(-65%, -65%); }
     }
   }
 
@@ -201,10 +219,12 @@
   .carousel__next-button {
     margin-right: 10px;
     transform: translate(0, -50%);
+    &[disabled] { transform: scale(0.65) translate(0, -65%); }
 
     @media (min-width: map-get($breakpoints, 'large') + 100px) {
       margin-right: 0;
       transform: translate(50%, -50%);
+      &[disabled] { transform: scale(0.65) translate(-65%, -65%); }
     }
   }
 
