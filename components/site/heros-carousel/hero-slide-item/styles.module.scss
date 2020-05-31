@@ -1,0 +1,52 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/animations';
+@import 'styles/mixins/flex';
+
+.component {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 25em;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  @include breakpoint('medium') {
+    min-height: 40em;
+    opacity: 0.2;
+    transition: opacity 0.4s linear 0.1s;
+
+    &:before {
+      padding-top: 55.45528%;
+    }
+  }
+}
+
+.image__wrapper {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  @include breakpoint('medium') {
+    transform: scale(1.1);
+    transition: transform 0.35s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.8s;
+  }
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  object-position: top center;
+  top: 0;
+  left: 0;
+}

@@ -119,6 +119,7 @@ base
         lore,
         name,
         slug,
+        shortDescription,
         symbol
       } = fields;
 
@@ -133,6 +134,7 @@ base
           lore,
           name,
           slug,
+          shortDescription,
           symbol,
 
           // required for react-select pkg

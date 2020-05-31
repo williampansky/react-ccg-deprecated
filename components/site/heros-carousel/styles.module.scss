@@ -1,0 +1,136 @@
+@import 'styles/utils/breakpoints';
+@import 'styles/mixins/flex';
+
+.component {
+  position: relative;
+  margin: 5rem 0;
+
+  @include breakpoint('medium') {
+    margin: 9rem auto;
+  }
+}
+
+.header {
+  color: #d5d2c9;
+  font-size: 10px;
+  text-align: center;
+  padding: 0 2rem;
+
+  .headline {
+    font-family: 'Oswald', Arial, Georgia, sans-serif;
+    font-size: 3.1em;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    padding: 0 10%;
+    margin: 0;
+    text-transform: uppercase;
+
+    @include breakpoint('medium') {
+      font-size: 3.6em;
+    }
+  }
+
+  .subheadline {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    line-height: 1.5;
+    margin: 0;
+    color: #c0b6a0;
+    margin: 0.75em 0 1.5em;
+    padding: 0 5%;
+
+    @include breakpoint('medium') {
+      margin-bottom: 3em;
+    }
+  }
+}
+
+.carousel {
+  position: relative;
+  @include breakpoint('medium') {
+    // overflow: hidden;
+  }
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    @include breakpoint('medium') {
+      width: 85.4%;
+      max-width: 1230px;
+      margin: 0 auto;
+      overflow: visible;
+    }
+  }
+}
+
+.content {
+  background-color: rgba(31, 28, 31, 0.94);
+  border: 1px solid #68482c;
+  color: #c0b6a0;
+  font-size: 10px;
+  margin: -10em 5.3% 0;
+  min-height: 165px;
+  padding: 2.5em 2em 3.5em;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  @include breakpoint('medium') {
+    width: 75%;
+    margin: -12em auto 0;
+    padding: 2em 2em 3em;
+    perspective: 900px;
+    perspective-origin: 80% 30%;
+  }
+
+  @include breakpoint('large') {
+    width: 61%;
+    max-width: 94em;
+  }
+
+  &__title__wrapper {
+    margin: 0 0 1.4em;
+  }
+
+  // prettier-ignore
+  &__title {
+    font-family: 'Oswald', Arial, Georgia, sans-serif;
+    font-size: 2.4em;
+    @include breakpoint('medium') { font-size: 3em; }
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  // prettier-ignore
+  &__divider {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 0;
+    border-top: 1px solid #99664d;
+    padding-top: 0.4em;
+    margin: 0 auto 2em;
+    height: 8px;
+    width: 100%;
+    @include breakpoint('medium') { width: 70%; }
+  }
+
+  // prettier-ignore
+  &__text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3em;
+    line-height: 1.4;
+    margin: -0.8em 0 0;
+
+    padding: 0;
+    @include breakpoint('small')  { padding: 0 15%; }
+    @include breakpoint('medium') { padding: 0 30%; }
+  }
+}
