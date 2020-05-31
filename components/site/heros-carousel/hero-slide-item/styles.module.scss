@@ -19,7 +19,7 @@
 
   @include breakpoint('medium') {
     min-height: 40em;
-    opacity: 0.2;
+    opacity: 0.45;
     transition: opacity 0.4s linear 0.1s;
 
     &:before {
@@ -36,8 +36,10 @@
   left: 0;
 
   @include breakpoint('medium') {
+    filter: blur(10px);
     transform: scale(1.1);
-    transition: transform 0.35s cubic-bezier(0.55, 0.085, 0.68, 0.53) 0.8s;
+    transition: filter 300ms cubic-bezier(0.55, 0.085, 0.68, 0.53) 400ms,
+      transform 350ms cubic-bezier(0.55, 0.085, 0.68, 0.53) 800ms;
   }
 }
 

@@ -19,6 +19,10 @@
     @media (min-width: map-get($breakpoints, 'hd'))     { @content ; }
   }
 
+  @else if $point == 'xxlarge' {
+    @media (min-width: map-get($breakpoints, 'xxlarge')){ @content ; }
+  }
+
   @else if $point == 'xlarge' {
     @media (min-width: map-get($breakpoints, 'xlarge')) { @content ; }
   }
