@@ -10,7 +10,7 @@ export default function HeroSlideItem({ data }) {
   function cardImage(string = symbol) {
     // if (!string) return;
     const path = replaceConstant(string.replace(/(%)/g, ''));
-    return `/images/heros/${path}/layout.jpg`;
+    return `/images/heros/${path}/LAYOUT.jpg`;
   }
 
   return (
