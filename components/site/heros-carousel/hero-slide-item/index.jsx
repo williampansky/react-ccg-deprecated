@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import replaceConstant from '@/utils/replace-constants';
 
 export default function HeroSlideItem({ data }) {
-  const { symbol } = data;
+  const { name, symbol } = data;
 
   function cardImage(string = symbol) {
     // if (!string) return;
@@ -17,7 +17,7 @@ export default function HeroSlideItem({ data }) {
     <div className={styles['component']}>
       <picture className={styles['image__wrapper']}>
         <Img
-          alt={``}
+          alt={name}
           className={styles['image']}
           decode={false}
           src={cardImage(symbol)}
@@ -37,12 +37,14 @@ export default function HeroSlideItem({ data }) {
 
 HeroSlideItem.propTypes = {
   data: PropTypes.shape({
+    name: PropTypes.string,
     symbol: PropTypes.string
   })
 };
 
 HeroSlideItem.defaultTypes = {
   data: {
+    name: '',
     symbol: ''
   }
 };
