@@ -67,7 +67,9 @@ export default function HeroAbilities({ abilities, symbol }) {
               <React.Fragment>
                 <div className={styles.ability__type}>{abilityType}</div>
                 <h3 className={styles.ability__name}>
-                  <span className="text__value">{abilityName}</span>
+                  <span className="text__value">
+                    {replaceConstant(abilityName)}
+                  </span>
                   <span>
                     <span className={styles.ability__cost}>
                       <span className="text__value">{abilityCost}</span>
@@ -87,7 +89,7 @@ export default function HeroAbilities({ abilities, symbol }) {
                   </span>
                 </h3>
                 <div className={styles.ability__description}>
-                  <p>{abilityText}</p>
+                  <p>{replaceConstant(abilityText)}</p>
                 </div>
               </React.Fragment>
             ) : null}
