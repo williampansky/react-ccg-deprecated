@@ -16,13 +16,16 @@ import styles from './styles.module.scss';
 import HeroSlideItem from './hero-slide-item';
 import exists from '@/utils/element.exists';
 import Img from 'react-image';
+import ReactTooltip from 'react-tooltip';
+import replaceConstant from '@/utils/replace-constants';
 
 const HerosCarousel = () => {
   const heros = useSelector(s => s.heros);
   const abilities = useSelector(s => s.abilities);
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(2);
   const [randomHeros, setRandomHeros] = useState([]);
   const [currentHero, setCurrentHero] = useState(null);
+  const [contentAnimation, setContentAnimation] = useState(false);
   const { isDesktop } = useResponsive();
   const symbol = currentHero && currentHero.symbol;
   const symbol2 =
@@ -48,11 +51,11 @@ const HerosCarousel = () => {
   }, []);
 
   useEffect(() => {
-    randomHerosCB(heros, 3);
+    randomHerosCB(heros, 5);
   }, [heros, randomHerosCB]);
 
   useEffect(() => {
-    setCurrentHero(randomHeros[1]);
+    setCurrentHero(randomHeros[2]);
   }, [randomHeros, setCurrentHero]);
 
   const textContent = {
@@ -68,38 +71,24 @@ const HerosCarousel = () => {
       target.blur();
 
       if (attr === 'previous') {
-        if (
-          symbol === (randomHeros && randomHeros[2] && randomHeros[2].symbol)
-        ) {
-          setCurrentSlide(1);
-          return setCurrentHero(randomHeros[1]);
-        }
-
-        if (
-          symbol === (randomHeros && randomHeros[1] && randomHeros[1].symbol)
-        ) {
-          setCurrentSlide(0);
-          return setCurrentHero(randomHeros[0]);
-        }
+        setCurrentSlide(currentSlide - 1);
+        setContentAnimation(false);
+        return setTimeout(() => {
+          setContentAnimation(true);
+          return setCurrentHero(randomHeros[currentSlide - 1]);
+        }, 100);
       }
 
       if (attr === 'next') {
-        if (
-          symbol === (randomHeros && randomHeros[0] && randomHeros[0].symbol)
-        ) {
-          setCurrentSlide(1);
-          return setCurrentHero(randomHeros[1]);
-        }
-
-        if (
-          symbol === (randomHeros && randomHeros[1] && randomHeros[1].symbol)
-        ) {
-          setCurrentSlide(2);
-          return setCurrentHero(randomHeros[2]);
-        }
+        setCurrentSlide(currentSlide + 1);
+        setContentAnimation(false);
+        return setTimeout(() => {
+          setContentAnimation(true);
+          return setCurrentHero(randomHeros[currentSlide + 1]);
+        }, 100);
       }
     },
-    [symbol, randomHeros]
+    [currentSlide, randomHeros]
   );
 
   function dotHandler(event) {
@@ -126,7 +115,7 @@ const HerosCarousel = () => {
           lockOnWindowScroll
           naturalSlideHeight={700}
           naturalSlideWidth={1200}
-          totalSlides={3}
+          totalSlides={5}
           touchEnabled={false}
           visibleSlides={1}
         >
@@ -167,19 +156,12 @@ const HerosCarousel = () => {
             </ButtonNext>
           </div>
           <Slider trayProps={{ onChange: buttonHandler }}>
-            {randomHeros.length ? (
-              <React.Fragment>
-                <Slide index={0}>
-                  <HeroSlideItem data={randomHeros[0]} />
+            {randomHeros.length &&
+              randomHeros.map((hero, index) => (
+                <Slide index={index} key={index}>
+                  <HeroSlideItem data={hero} />
                 </Slide>
-                <Slide index={1}>
-                  <HeroSlideItem data={randomHeros[1]} />
-                </Slide>
-                <Slide index={2}>
-                  <HeroSlideItem data={randomHeros[2]} />
-                </Slide>
-              </React.Fragment>
-            ) : null}
+              ))}
           </Slider>
           {/* <DotGroup renderDots={dotHandler}>
             <Dot data-index={0} slide={0} onClick={dotHandler} />
@@ -193,20 +175,49 @@ const HerosCarousel = () => {
           {exists(currentHero) ? (
             <React.Fragment>
               <div className={styles['content__title__wrapper']}>
-                <h2 className={styles['content__title']}>{currentHero.name}</h2>
+                <h2 className={styles['content__title']}>
+                  <span
+                    className={
+                      contentAnimation ? 'uk-animation-slide-bottom-small' : ''
+                    }
+                    style={{ animationDelay: '200ms' }}
+                  >
+                    {currentHero.name}
+                  </span>
+                </h2>
               </div>
-              <hr className={styles['content__divider']} />
+
+              <span
+                className={
+                  contentAnimation ? 'uk-animation-slide-bottom-small' : ''
+                }
+                style={{ animationDelay: '400ms' }}
+              >
+                <hr className={styles['content__divider']} />
+              </span>
+
               <p className={styles['content__text']}>
-                {currentHero.shortDescription}
+                <span
+                  className={
+                    contentAnimation ? 'uk-animation-slide-bottom-small' : ''
+                  }
+                  style={{ animationDelay: '600ms' }}
+                >
+                  {currentHero.shortDescription}
+                </span>
               </p>
               <div className={styles['content__abilities__wrapper']}>
                 {abilities
                   .filter(obj => obj.key === symbol)
                   .sort((a, b) => a.cost - b.cost)
-                  .map(obj => {
+                  .map((obj, idx) => {
                     const { id, name } = obj;
                     return (
-                      <div key={id}>
+                      <div
+                        className="uk-animation-slide-bottom-small"
+                        key={id}
+                        style={{ animationDelay: `${idx * 3}00ms` }}
+                      >
                         <Img
                           alt={name}
                           className={styles['content__ability__image']}

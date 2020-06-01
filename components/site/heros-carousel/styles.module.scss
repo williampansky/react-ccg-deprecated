@@ -94,6 +94,11 @@
     max-width: 85em;
   }
 
+  span {
+    animation-delay: 400ms;
+    display: block;
+  }
+
   &__title__wrapper {
     margin: 0 0 1.4em;
   }
@@ -134,7 +139,7 @@
     @include breakpoint('medium') { padding: 0 20%; }
   }
 
-  $item__size: 60px;
+  $item__size: 40px;
 
   // prettier-ignore
   &__abilities__wrapper {
@@ -144,6 +149,12 @@
     right: 0;
     width: 100%;
     @include display-flex(row nowrap, center, center);
+
+    & > div {
+      animation-delay: 600ms;
+      animation-duration: 200ms;
+      position: relative;
+    }
 
     & > div:nth-child(2) {
       margin: 0 4em;
