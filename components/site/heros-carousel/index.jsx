@@ -15,14 +15,20 @@ import SET from '@/enums/set.enums';
 import styles from './styles.module.scss';
 import HeroSlideItem from './hero-slide-item';
 import exists from '@/utils/element.exists';
+import Img from 'react-image';
 
 const HerosCarousel = () => {
   const heros = useSelector(s => s.heros);
+  const abilities = useSelector(s => s.abilities);
   const [currentSlide, setCurrentSlide] = useState(1);
   const [randomHeros, setRandomHeros] = useState([]);
   const [currentHero, setCurrentHero] = useState(null);
   const { isDesktop } = useResponsive();
   const symbol = currentHero && currentHero.symbol;
+  const symbol2 =
+    currentHero && currentHero.symbol
+      ? currentHero.symbol.replace(/(%)/g, '')
+      : '';
 
   const randomHerosCB = useCallback((array, size) => {
     let shuffled = array.slice(0),
@@ -193,6 +199,23 @@ const HerosCarousel = () => {
               <p className={styles['content__text']}>
                 {currentHero.shortDescription}
               </p>
+              <div className={styles['content__abilities__wrapper']}>
+                {abilities
+                  .filter(obj => obj.key === symbol)
+                  .sort((a, b) => a.cost - b.cost)
+                  .map(obj => {
+                    const { id, name } = obj;
+                    return (
+                      <div key={id}>
+                        <Img
+                          alt={name}
+                          className={styles['content__ability__image']}
+                          src={`/images/heros/${symbol2}/${id}.jpg`}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
             </React.Fragment>
           ) : null}
         </div>

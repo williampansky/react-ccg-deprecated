@@ -84,7 +84,7 @@
   @include breakpoint('medium') {
     width: 75%;
     margin: -12em auto 0;
-    padding: 2em 2em 3em;
+    padding: 2em 2em 6em;
     perspective: 900px;
     perspective-origin: 80% 30%;
   }
@@ -132,5 +132,32 @@
     padding: 0;
     @include breakpoint('small')  { padding: 0 15%; }
     @include breakpoint('medium') { padding: 0 20%; }
+  }
+
+  $item__size: 60px;
+
+  // prettier-ignore
+  &__abilities__wrapper {
+    position: absolute;
+    bottom: calc(calc(#{$item__size} - 15px) * -1);
+    left: 0;
+    right: 0;
+    width: 100%;
+    @include display-flex(row nowrap, center, center);
+
+    & > div:nth-child(2) {
+      margin: 0 4em;
+    }
+
+    @include breakpoint('medium') {
+      bottom: calc(calc(calc(#{$item__size} * 2) - 25px) * -1);
+    }
+  }
+
+  // prettier-ignore
+  &__ability__image {
+    border: 1px solid var(--theme-primary);
+    width: $item__size;
+    @include breakpoint('medium') { width: calc(#{$item__size} * 2); }
   }
 }
