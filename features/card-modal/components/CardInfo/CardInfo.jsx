@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import replaceConstant from '@/utils/replace-constants';
 import styles from './styles.module.scss';
 
 // direct child components
@@ -20,7 +21,7 @@ export default function CardInfo({ data, database }) {
 
   return (
     <div className={[styles.component, animation].join(' ')}>
-      <CardName active={active} name={name} />
+      <CardName active={active} name={replaceConstant(name)} />
       <CardFlavor spellDmg={dynamicSpellDamageText} text={flavor} />
       <CardMechanics data={mechanics} />
       <CardInfoList data={data} database={database} />

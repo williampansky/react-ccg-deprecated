@@ -178,10 +178,10 @@ export default function CardInfoList({ data, database }) {
       )}
 
       {description && (
-        <div className={styles.description}>
+        <div className={styles['description']}>
           <strong className="text__value">Description</strong>{' '}
           <div
-            className="description__text"
+            className={styles['description__text']}
             dangerouslySetInnerHTML={CARD_DESCRIPTION}
           />
         </div>

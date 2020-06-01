@@ -49,11 +49,11 @@ export default function Card({
   onClick,
   dev
 }) {
+  const NAME = replaceConstant(name);
   const IS_MINION = type === TYPE[1] ? true : false;
   const IS_ITEM = type === TYPE[2] ? true : false;
   const IS_SPELL = type === TYPE[3] ? true : false;
   const IS_WEAPON = type === TYPE[4] ? true : false;
-  const SPELL_DMG = numberPrimary || dynamicSpellDamageText;
 
   function cardImage(cardId, cardSet, isGold) {
     const set = replaceConstant(cardSet.replace(/(%)/g, ''));
@@ -102,9 +102,9 @@ export default function Card({
         <div className={'card__name'}>
           <div
             className={'text__value'}
-            style={{ fontSize: `${fontSizeBasedOnCharacterLength(name)}em` }}
+            style={{ fontSize: `${fontSizeBasedOnCharacterLength(NAME)}em` }}
           >
-            {name}
+            {NAME}
           </div>
         </div>
       ) : null}
@@ -114,7 +114,12 @@ export default function Card({
           <p
             className={'text__value'}
             dangerouslySetInnerHTML={createMarkup(
-              formatCardText(text, SPELL_DMG)
+              formatCardText(
+                text,
+                numberPrimary,
+                numberSecondary,
+                dynamicSpellDamageText
+              )
             )}
           />
         </div>

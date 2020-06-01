@@ -26,18 +26,21 @@ export default function CardWrapper({ data }) {
         isGolden={data.isGolden}
         mechanics={data.mechanics}
         name={data.name}
+        numberOvercharge={data.numberOvercharge}
+        numberPrimary={data.numberPrimary}
+        numberRNG={data.numberRNG}
+        numberSecondary={data.numberSecondary}
+        playContext={data.playContext}
         playRequirements={data.playRequirements}
+        playType={data.playType}
         race={data.race}
         rarity={data.rarity}
         set={data.set}
         sounds={data.sounds}
-        playContext={data.playContext}
         spellDamage={data.spellDamage}
-        playType={data.playType}
         targetingArrowText={data.targetingArrowText}
         text={data.text}
         type={data.type}
-        numberPrimary={data.numberPrimary}
       />
 
       {!data.elite ? <TransformedCard data={data} /> : null}

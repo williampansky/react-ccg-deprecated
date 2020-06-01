@@ -119,17 +119,21 @@ export default function CardDevelopment() {
                   isGolden={CARD.isGolden}
                   mechanics={CARD.mechanics}
                   name={CARD.name}
+                  numberOvercharge={CARD.numberOvercharge}
+                  numberPrimary={CARD.numberPrimary}
+                  numberRNG={CARD.numberRNG}
+                  numberSecondary={CARD.numberSecondary}
+                  playContext={CARD.playContext}
                   playRequirements={CARD.playRequirements}
+                  playType={CARD.playType}
                   race={CARD.race}
                   rarity={CARD.rarity}
                   set={CARD.set}
                   sounds={CARD.sounds}
                   spellDamage={CARD.spellDamage}
-                  spellType={CARD.spellType}
                   targetingArrowText={CARD.targetingArrowText}
                   text={CARD.text}
                   type={CARD.type}
-                  warcryNumber={CARD.warcryNumber}
                 />
               </div>
             ) : null}
