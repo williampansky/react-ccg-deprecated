@@ -5,8 +5,10 @@ import { ReactSVG } from 'react-svg';
 import { toggleMobileMenu } from '@/features/site-mobile-menu/site-mobile-menu.slice';
 import NavbarNav from '@/features/site-header/components/NavbarNav';
 import styles from './the-site-header.module.scss';
+import { useFetchUser } from '@/user';
 
 export default function TheSiteHeader() {
+  const { user, loading } = useFetchUser();
   const dispatch = useDispatch();
   const siteMobileMenuActive = useSelector(s => s.siteMobileMenuActive);
 
@@ -38,7 +40,9 @@ export default function TheSiteHeader() {
           <section className={styles.navbar__right}>
             <NavbarNav
               data={[
-                { path: '/account', name: 'Account' },
+                !loading && user
+                  ? { path: '/account', name: 'Account' }
+                  : { path: '/account', name: 'Login' },
                 { path: '/heros', name: 'Heros' },
                 { path: '/collection', name: 'Collection' }
               ]}
