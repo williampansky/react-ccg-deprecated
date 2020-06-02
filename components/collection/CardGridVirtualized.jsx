@@ -83,19 +83,22 @@ export default function CardGridVirtualized({
                           isGolden={data[i].isGolden}
                           mechanics={data[i].mechanics}
                           name={data[i].name}
+                          numberOvercharge={data[i].numberOvercharge}
+                          numberPrimary={data[i].numberPrimary}
+                          numberRNG={data[i].numberRNG}
+                          numberSecondary={data[i].numberSecondary}
+                          onClick={() => addSelectedCardCallback(data[i])}
+                          playContext={data[i].playContext}
                           playRequirements={data[i].playRequirements}
+                          playType={data[i].playType}
                           race={data[i].race}
                           rarity={data[i].rarity}
                           set={data[i].set}
                           sounds={data[i].sounds}
-                          playContext={data[i].playContext}
                           spellDamage={data[i].spellDamage}
-                          playType={data[i].playType}
                           targetingArrowText={data[i].targetingArrowText}
                           text={data[i].text}
                           type={data[i].type}
-                          numberPrimary={data[i].numberPrimary}
-                          onClick={() => addSelectedCardCallback(data[i])}
                         />
                       </div>
                       {itemCount(data[i]) && (

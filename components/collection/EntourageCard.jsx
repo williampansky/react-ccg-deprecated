@@ -27,9 +27,14 @@ export default function EntourageCard({ data }) {
     set,
     text,
     type,
+    numberOvercharge,
     numberPrimary,
+    numberSecondary,
+    numberRNG,
     playContext
   } = data;
+
+  const NAME = replaceConstant(name);
   const dynamicSpellDamageText = 0;
   const IS_MINION = type === TYPE[1] ? true : false;
   const IS_ITEM = type === TYPE[2] ? true : false;
@@ -79,9 +84,9 @@ export default function EntourageCard({ data }) {
         <div className={'card__name'}>
           <div
             className={'text__value'}
-            style={{ fontSize: `${fontSizeBasedOnCharacterLength(name)}em` }}
+            style={{ fontSize: `${fontSizeBasedOnCharacterLength(NAME)}em` }}
           >
-            {name}
+            {NAME}
           </div>
         </div>
       ) : null}
@@ -91,7 +96,12 @@ export default function EntourageCard({ data }) {
           <p
             className={'text__value'}
             dangerouslySetInnerHTML={createMarkup(
-              formatCardText(text, dynamicSpellDamageText)
+              formatCardText(
+                text,
+                numberPrimary,
+                numberSecondary,
+                dynamicSpellDamageText
+              )
             )}
           />
         </div>
