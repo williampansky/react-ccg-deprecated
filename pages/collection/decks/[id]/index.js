@@ -9,6 +9,7 @@ import TheSiteMobileMenu from '@/features/site-mobile-menu/TheSiteMobileMenu';
 import MobileFooter from '@/components/collection/MobileFooter';
 import DesktopFooter from '@/components/collection/DesktopFooter';
 import SearchModal from '@/features/filters/components/SearchModal/SearchModal';
+import CardModalContainer from '@/features/card-modal/CardModal.container';
 
 export default function Deck() {
   const router = useRouter();
@@ -18,18 +19,19 @@ export default function Deck() {
     <React.Fragment>
       <Helmet
         title={`Deck ${id} | HSclone`}
-        meta={[{ property: 'og:title', content: 'Collection' }]}
+        meta={[{ property: 'og:title', content: `Deck ${id}` }]}
       />
-      <TheSiteHeader />
       <main className="site__wrapper">
-        <Filters />
         <DeckBuilder deckId={id} />
         <Sidebar deckId={id} />
+        <Filters />
         <DesktopFooter />
         <MobileFooter />
       </main>
+      <TheSiteHeader />
       <TheSiteMobileMenu />
       <SearchModal />
+      <CardModalContainer />
     </React.Fragment>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RARITY from 'enums/rarity.enums';
+import replaceConstant from '@/utils/replace-constants';
+import RARITY from '@/enums/rarity.enums';
 
 export default function DeckItem({
   amount,
@@ -41,7 +42,7 @@ export default function DeckItem({
       </div>
       <div className={'item__info'}>
         <div className={'item__name'}>
-          <div className={'text__value'}>{name}</div>
+          <div className={'text__value'}>{replaceConstant(name)}</div>
         </div>
         {amount === 2 ? (
           <div className={'item__amount'}>

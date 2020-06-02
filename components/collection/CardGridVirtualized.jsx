@@ -43,6 +43,7 @@ export default function CardGridVirtualized({
                     <div
                       className={[
                         'card__item__wrapper',
+                        'deck__card__item__wrapper',
                         handleClass(data[i])
                       ].join(' ')}
                       key={i}
@@ -61,8 +62,12 @@ export default function CardGridVirtualized({
                         />
                       </div>
                       <div
-                        className="card__wrapper"
+                        className="card__wrapper deck__card__wrapper"
                         data-is-loading={isLoading}
+                        onClick={() => addSelectedCardCallback(data[i])}
+                        onKeyPress={() => addSelectedCardCallback(data[i])}
+                        role="button"
+                        tabIndex={0}
                       >
                         <Card
                           active={data[i].active}
@@ -87,7 +92,6 @@ export default function CardGridVirtualized({
                           numberPrimary={data[i].numberPrimary}
                           numberRNG={data[i].numberRNG}
                           numberSecondary={data[i].numberSecondary}
-                          onClick={() => addSelectedCardCallback(data[i])}
                           playContext={data[i].playContext}
                           playRequirements={data[i].playRequirements}
                           playType={data[i].playType}

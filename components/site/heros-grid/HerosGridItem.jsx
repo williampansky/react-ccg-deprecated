@@ -32,8 +32,8 @@ export default function HerosGridItem({
               className="hero__image"
               decode={false}
               src={[
-                `${path(symbol)}/default.jpg`,
-                `${path(symbol)}/default2x.jpg`
+                `${path(symbol)}/DEFAULT.jpg`,
+                `${path(symbol)}/DEFAULT2x.jpg`
               ]}
               loader={<div className="hero__image__loader" />}
               unloader={

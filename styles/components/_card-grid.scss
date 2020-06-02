@@ -24,6 +24,19 @@
     outline: 0;
   }
 
+  .deck__card__wrapper {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .locked .deck__card__wrapper {
+    cursor: not-allowed;
+  }
+
+  .deck__card__item__wrapper .tooltip {
+    cursor: help;
+  }
+
   .card__item__wrapper {
     position: relative;
     margin: 0 auto 0;

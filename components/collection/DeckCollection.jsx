@@ -19,13 +19,15 @@ export default function DeckCollection() {
 
   function handleNewDeck(event, idx) {
     event.preventDefault();
+
     dispatch(
       newDeck({
         deckId: idx,
         name: `Deck Slot ${idx}`
       })
     );
-    router.replace(`/collection/decks/${idx}`, `/collection/decks/${idx}`, {
+
+    router.push(`/collection/decks/[id]`, `/collection/decks/${idx}`, {
       shallow: true
     });
   }
@@ -39,15 +41,19 @@ export default function DeckCollection() {
         const deckClass = deck && deck.class;
 
         return name ? (
-          <Link href="decks/[id]" key={index} as={`/collection/decks/${index}`}>
+          <Link
+            href="/collection/decks/[id]"
+            as={`/collection/decks/${index}`}
+            key={index}
+          >
             <a className="deck__slot" role="button">
-              <div className="class__badge--wrapper">
+              {/* <div className="class__badge--wrapper">
                 <img
                   alt=""
                   className="class__badge"
                   src={badgeSrc(deckClass)}
                 />
-              </div>
+              </div> */}
               <div className="text">
                 <span className="text__value index">{name}</span>
                 <span className="text__value plus">{`Edit Deck`}</span>
@@ -55,20 +61,24 @@ export default function DeckCollection() {
             </a>
           </Link>
         ) : (
-          <a
-            className="deck__slot"
-            href={`/collection/decks/${index}`}
+          <Link
             key={index}
-            onClick={e => {
-              handleNewDeck(e, index);
-            }}
-            role="button"
+            href="/collection/decks/[id]"
+            as={`/collection/decks/${index}`}
           >
-            <div className="text">
-              <span className="text__value index">{index}</span>
-              <span className="text__value plus">{`New Deck`}</span>
-            </div>
-          </a>
+            <a
+              className="deck__slot"
+              onClick={e => handleNewDeck(e, index)}
+              onKeyPress={e => handleNewDeck(e, index)}
+              tabIndex={0}
+              role="link"
+            >
+              <div className="text">
+                <span className="text__value index">{index}</span>
+                <span className="text__value plus">{`New Deck`}</span>
+              </div>
+            </a>
+          </Link>
         );
       })}
     </div>

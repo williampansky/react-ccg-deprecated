@@ -12,12 +12,22 @@ import CardInfo from './components/CardInfo/CardInfo';
 
 export default function CardModal() {
   const router = useRouter();
+  const { query } = router;
   const dispatch = useDispatch();
   const data = useSelector(state => state.cardModal);
   const database = useSelector(state => state.database);
 
   function handleModalClose() {
-    router.push(router.pathname);
+    const id = query && query.id;
+
+    if (id) {
+      router.push(`/collection/decks/[id]`, `${router.asPath}`, {
+        shallow: true
+      });
+    } else {
+      router.push(router.pathname);
+    }
+
     return dispatch(setData(null));
   }
 

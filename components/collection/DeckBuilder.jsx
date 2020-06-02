@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ReactSVG } from 'react-svg';
 import { setData as setCardModalData } from '@/features/card-modal/card-modal.slice';
 import exists from '@/utils/element.exists';
-import CardGrid from '@/components/collection/CardGrid';
+import CardGrid from '@/components/collection/CardGridVirtualized';
 import { addCard, newDeck } from 'features/decks/decks.slice';
 // import DeleteDeckButton from './DeleteDeckButton';
 
@@ -53,7 +53,8 @@ export default function DeckBuilder({ deckId }) {
     return _amount === 2 || elite === true ? 'locked' : '';
   }
 
-  function handleCount(card, db = selectedCards) {
+  function handleCount(card = { id: '' }, db = selectedCards || []) {
+    if (!db.length) return;
     const { id } = card;
     const cardObj = db.find(o => o.id === id);
     if (!exists(cardObj)) return;
@@ -74,7 +75,7 @@ export default function DeckBuilder({ deckId }) {
         <div
           className={[
             'grid__wrapper',
-            '_scrollable',
+            // '_scrollable',
             'card-collection',
             siteSidebarActive ? 'collection__sidebar--active' : ''
           ].join(' ')}
@@ -92,10 +93,10 @@ export default function DeckBuilder({ deckId }) {
               addSelectedCardCallback={addSelectedCardCallback}
               data={data}
               error={error}
-              // handleClass={handleClass}
+              handleClass={handleClass}
               handleTooltipClick={handleTooltipClick}
               isLoading={isLoading}
-              // itemCount={handleCount}
+              itemCount={handleCount}
             />
           ) : null}
         </div>
