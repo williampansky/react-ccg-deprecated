@@ -21,7 +21,7 @@
     "fetch": "^1.1.0",
     "koa-static": "^5.0.0",
     "magic.css": "^1.4.5",
-    "mathjs": "^6.6.4",
+    "mathjs": "^7.5.1",
     "memoize-one": "^5.1.1",
     "next": "latest",
     "node-fetch": "^2.6.0",
